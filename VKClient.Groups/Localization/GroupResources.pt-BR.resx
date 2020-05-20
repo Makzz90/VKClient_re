@@ -1,0 +1,2439 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="LikesPage_Shared" xml:space="preserve">
+    <value>compartilharam</value>
+  </data>
+  <data name="TwoFourDocumentsFrm" xml:space="preserve">
+    <value>{0} documentos</value>
+  </data>
+  <data name="ReportReasonExtremism" xml:space="preserve">
+    <value>extremismo</value>
+  </data>
+  <data name="DeleteWallPost" xml:space="preserve">
+    <value>Remoção do recado</value>
+  </data>
+  <data name="ImageSaving_Done" xml:space="preserve">
+    <value>Concluído</value>
+  </data>
+  <data name="OneWallPostFrm" xml:space="preserve">
+    <value>{0} recado</value>
+  </data>
+  <data name="PhotoFromGallery" xml:space="preserve">
+    <value>foto da galeria</value>
+  </data>
+  <data name="VideoNew_Uploaded" xml:space="preserve">
+    <value>Carregados</value>
+  </data>
+  <data name="FiveVideosFrm" xml:space="preserve">
+    <value>{0} vídeos</value>
+  </data>
+  <data name="VideoNew_Added" xml:space="preserve">
+    <value>Adicionados</value>
+  </data>
+  <data name="Conversation_Copy" xml:space="preserve">
+    <value>copiar</value>
+  </data>
+  <data name="Conversation_FiveOrMorePersionsFrm" xml:space="preserve">
+    <value>{0} pessoas</value>
+  </data>
+  <data name="Conversation_LastSeenAMomentAgoMale" xml:space="preserve">
+    <value>visto agora mesmo</value>
+  </data>
+  <data name="TurnOnNotifications" xml:space="preserve">
+    <value>habilitar notificações</value>
+  </data>
+  <data name="MainPage_Menu_Friends" xml:space="preserve">
+    <value>amigos</value>
+  </data>
+  <data name="Audio_AddToMyAudios" xml:space="preserve">
+    <value>adicionar à minha música</value>
+  </data>
+  <data name="PostCommentPage_OneCommentFrm" xml:space="preserve">
+    <value>{0} comentário</value>
+  </data>
+  <data name="TwoFourFriendsFrm" xml:space="preserve">
+    <value>{0} amigos</value>
+  </data>
+  <data name="Settings_LocationServices" xml:space="preserve">
+    <value>serviços de localização</value>
+  </data>
+  <data name="ChatEdit_AppBar_Save" xml:space="preserve">
+    <value>salvar</value>
+  </data>
+  <data name="WallPost_UploadingAttachments" xml:space="preserve">
+    <value>Carregando anexos</value>
+  </data>
+  <data name="FriendsPage_OwnFriendsTitle" xml:space="preserve">
+    <value>AMIGOS</value>
+  </data>
+  <data name="AppBarMenu_Share" xml:space="preserve">
+    <value>compartilhar...</value>
+  </data>
+  <data name="GroupsListPage_Title" xml:space="preserve">
+    <value>GRUPOS</value>
+  </data>
+  <data name="GroupsListPage_Manage" xml:space="preserve">
+    <value>administração</value>
+  </data>
+  <data name="BannedUsers_BanUser" xml:space="preserve">
+    <value>bloquear</value>
+  </data>
+  <data name="ReportReasonInsult" xml:space="preserve">
+    <value>abuso verbal</value>
+  </data>
+  <data name="GroupPage_AcceptInvitation" xml:space="preserve">
+    <value>aceitar o convite</value>
+  </data>
+  <data name="NewsPage_EnterComment" xml:space="preserve">
+    <value>Adicionar comentário</value>
+  </data>
+  <data name="WallPost_Title" xml:space="preserve">
+    <value>PUBLICAÇÃO</value>
+  </data>
+  <data name="Settings_DontDisturbOneHour" xml:space="preserve">
+    <value>não perturbar durante uma hora</value>
+  </data>
+  <data name="VideoNew_AddToAlbum" xml:space="preserve">
+    <value>Adicionar ao álbum</value>
+  </data>
+  <data name="TwoFourSubscribersFrm" xml:space="preserve">
+    <value>{0} seguidores</value>
+  </data>
+  <data name="NewFriendsList_EditTitle" xml:space="preserve">
+    <value>Alteração da lista de amigos</value>
+  </data>
+  <data name="Documents_Documents" xml:space="preserve">
+    <value>DOCUMENTOS</value>
+  </data>
+  <data name="ManageAttachments_TwoFourAttachmentsFrm" xml:space="preserve">
+    <value>{0} anexos</value>
+  </data>
+  <data name="Login_Error_InvalidCredential1" xml:space="preserve">
+    <value>Verifique se o login e senha estão corretos.</value>
+  </data>
+  <data name="VideoFromGallery" xml:space="preserve">
+    <value>vídeo da galeria</value>
+  </data>
+  <data name="ChatInviteFemaleFrm" xml:space="preserve">
+    <value>{0} convidou {1}</value>
+  </data>
+  <data name="Profile_RequestSent" xml:space="preserve">
+    <value>Solicitação enviada</value>
+  </data>
+  <data name="AppBar_Refresh" xml:space="preserve">
+    <value>atualizar</value>
+  </data>
+  <data name="Conversations_FiveOrMorePhotosFrm" xml:space="preserve">
+    <value>{0} fotos</value>
+  </data>
+  <data name="GroupsListPage_FutureEvents" xml:space="preserve">
+    <value>Eventos em breve</value>
+  </data>
+  <data name="NoFollowers" xml:space="preserve">
+    <value>Não há seguidores</value>
+  </data>
+  <data name="Documents_Document" xml:space="preserve">
+    <value>Documento</value>
+  </data>
+  <data name="TheVideoIsPublishedOnWallFrm" xml:space="preserve">
+    <value>O vídeo está publicado no mural de {0}</value>
+  </data>
+  <data name="Documents_NoDocuments" xml:space="preserve">
+    <value>Ainda não há documentos</value>
+  </data>
+  <data name="FriendRequests_Suggestions" xml:space="preserve">
+    <value>Possíveis amigos</value>
+  </data>
+  <data name="Notification_FollowMale" xml:space="preserve">
+    <value>começou a seguir você</value>
+  </data>
+  <data name="GroupPage_LeaveCommunity" xml:space="preserve">
+    <value>deixar o grupo</value>
+  </data>
+  <data name="Notification_LikePostPlural" xml:space="preserve">
+    <value>curtiram seu recado</value>
+  </data>
+  <data name="Notification_LikeCommentFemale" xml:space="preserve">
+    <value>curtiu seu comentário</value>
+  </data>
+  <data name="GroupsListPage_TitleFrm" xml:space="preserve">
+    <value>GRUPOS DE {0}</value>
+  </data>
+  <data name="Notification_CopyPostFemale" xml:space="preserve">
+    <value>compartilhou seu recado</value>
+  </data>
+  <data name="EditCommentUC_Title" xml:space="preserve">
+    <value>Edição do comentário</value>
+  </data>
+  <data name="VideoNew_VideoHasBeenAddedToMyVideos" xml:space="preserve">
+    <value>O vídeo foi adicionado aos Meus vídeos</value>
+  </data>
+  <data name="FriendsPage_Pivot_Online" xml:space="preserve">
+    <value>online</value>
+  </data>
+  <data name="FriendsPage_PivotCommon" xml:space="preserve">
+    <value>em comum</value>
+  </data>
+  <data name="NewsFeedSuggestions" xml:space="preserve">
+    <value>recomendações</value>
+  </data>
+  <data name="Login_Password1" xml:space="preserve">
+    <value>Senha</value>
+  </data>
+  <data name="NewPost_DeleteDraft" xml:space="preserve">
+    <value>Excluir rascunho</value>
+  </data>
+  <data name="CommentContains" xml:space="preserve">
+    <value>O COMENTÁRIO CONTÉM</value>
+  </data>
+  <data name="OfSeptember" xml:space="preserve">
+    <value>setembro</value>
+  </data>
+  <data name="NoWallPosts" xml:space="preserve">
+    <value>Não há recados</value>
+  </data>
+  <data name="Audios" xml:space="preserve">
+    <value>arquivos de áudio</value>
+  </data>
+  <data name="LastOfTwoFourCommentsFrm" xml:space="preserve">
+    <value>Últimos de {0} comentários</value>
+  </data>
+  <data name="Friends_ErrorLoading" xml:space="preserve">
+    <value>Ocorreu um erro inesperado ao carregar a lista de amigos. Por favor, tente mais uma vez utilizando o botão Atualizar.</value>
+  </data>
+  <data name="Share_ShareWithCommunity" xml:space="preserve">
+    <value>publicar na comunidade</value>
+  </data>
+  <data name="Conversations_TwoFourVideosFrm" xml:space="preserve">
+    <value>{0} vídeos</value>
+  </data>
+  <data name="PostCommentsPage_AppBar_Share" xml:space="preserve">
+    <value>compartilhar</value>
+  </data>
+  <data name="ChatPhotoRemoveFemale" xml:space="preserve">
+    <value>Removeu a foto de capa da conversa</value>
+  </data>
+  <data name="FriendsPage_CreateList" xml:space="preserve">
+    <value>criar</value>
+  </data>
+  <data name="ATTACH" xml:space="preserve">
+    <value>ANEXAR</value>
+  </data>
+  <data name="Post_Attach" xml:space="preserve">
+    <value>Anexar</value>
+  </data>
+  <data name="Contacts_CannotSync" xml:space="preserve">
+    <value>Para utilizar a função da sincronização de contatos, registre seu celular nas configurações de seu perfil de VK.com.</value>
+  </data>
+  <data name="NewsFeed" xml:space="preserve">
+    <value>notícias</value>
+  </data>
+  <data name="Poll_FiveVotesFrm" xml:space="preserve">
+    <value>{0} votos</value>
+  </data>
+  <data name="FavoritesPage_Videos" xml:space="preserve">
+    <value>vídeos</value>
+  </data>
+  <data name="About_DevelopedByMe" xml:space="preserve">
+    <value>Desenvolvido por Aleksandr Sitchov</value>
+  </data>
+  <data name="MainPage_News_AddPhoto" xml:space="preserve">
+    <value>adicionar uma foto</value>
+  </data>
+  <data name="PostCommentsPage_AppBar_Refresh" xml:space="preserve">
+    <value>atualizar</value>
+  </data>
+  <data name="PostCommentsPage_PreviousComment" xml:space="preserve">
+    <value>mostrar o comentário anterior</value>
+  </data>
+  <data name="Photo_OnFivePhotosFrm" xml:space="preserve">
+    <value>на {0} fotos</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>remover</value>
+  </data>
+  <data name="OneTopicFrm" xml:space="preserve">
+    <value>{0} tópico</value>
+  </data>
+  <data name="NewTopic" xml:space="preserve">
+    <value>NOVO ASSUNTO</value>
+  </data>
+  <data name="GroupsListPage_Communities" xml:space="preserve">
+    <value>comunidades</value>
+  </data>
+  <data name="Pivot_Conversations" xml:space="preserve">
+    <value>diálogos</value>
+  </data>
+  <data name="CancelRequest" xml:space="preserve">
+    <value>cancelar a solicitação</value>
+  </data>
+  <data name="Conversation_LastSeenXTwoFourMinutesAgoFemaleFrm" xml:space="preserve">
+    <value>vista {0} minutos atrás</value>
+  </data>
+  <data name="Conversation_OnePerson" xml:space="preserve">
+    <value>{0} pessoa</value>
+  </data>
+  <data name="Notification_LikeVideoFemale" xml:space="preserve">
+    <value>curtiu seu vídeo</value>
+  </data>
+  <data name="TwoFourCommonFriendsFrm" xml:space="preserve">
+    <value>{0} amigos em comum</value>
+  </data>
+  <data name="Notification_CopyVideoFemale" xml:space="preserve">
+    <value>compartilhou seu vídeo</value>
+  </data>
+  <data name="TwoFourMinutes" xml:space="preserve">
+    <value>{0} minutos atrás</value>
+  </data>
+  <data name="EditCommentUC_Save" xml:space="preserve">
+    <value>salvar</value>
+  </data>
+  <data name="Notification_FriendAcceptedMale" xml:space="preserve">
+    <value>aceitou sua solicitação de amizade</value>
+  </data>
+  <data name="EditCommentUC_Text" xml:space="preserve">
+    <value>Texto</value>
+  </data>
+  <data name="OfFebruary" xml:space="preserve">
+    <value>fevereiro</value>
+  </data>
+  <data name="feedback_pivotItem" xml:space="preserve">
+    <value>respostas</value>
+  </data>
+  <data name="Conversations_OneDialogFrm" xml:space="preserve">
+    <value>{0} diálogo</value>
+  </data>
+  <data name="ThemeChoiceDark" xml:space="preserve">
+    <value>escuro</value>
+  </data>
+  <data name="Conversation_TwoToFourPersonsFrm" xml:space="preserve">
+    <value>{0} pessoas</value>
+  </data>
+  <data name="Notification_LikePhotoPlural" xml:space="preserve">
+    <value>curtiram sua foto</value>
+  </data>
+  <data name="AppBarMenu_SaveInAlbum" xml:space="preserve">
+    <value>salvar no meu álbum</value>
+  </data>
+  <data name="CHOOSE" xml:space="preserve">
+    <value>ESCOLHER</value>
+  </data>
+  <data name="TwoFourMessagesFrm" xml:space="preserve">
+    <value>{0} mensagens</value>
+  </data>
+  <data name="LikesPage_TwoFourLikedFrm" xml:space="preserve">
+    <value>{0} PESSOAS CURTIRAM</value>
+  </data>
+  <data name="Notification_CommentPhotoFemale" xml:space="preserve">
+    <value>comentou sua foto</value>
+  </data>
+  <data name="FriendRequest_Reject" xml:space="preserve">
+    <value>recusar a solicitação</value>
+  </data>
+  <data name="EditStatusUC_EditStatusHeader" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Captcha_InvalidText" xml:space="preserve">
+    <value>O código da imagem foi digitado incorretamente. Por favor tente mais uma vez.</value>
+  </data>
+  <data name="CommentItem_RepliedToFemaleFrm" xml:space="preserve">
+    <value>{0} respondeu a {1}</value>
+  </data>
+  <data name="ChatEdit_AppBar_Add" xml:space="preserve">
+    <value>adicionar</value>
+  </data>
+  <data name="AccentChoiceVK" xml:space="preserve">
+    <value>vk azul</value>
+  </data>
+  <data name="Conversation_LastSeenYesterdayMaleFrm" xml:space="preserve">
+    <value>visto ontem às {0}</value>
+  </data>
+  <data name="NoNews" xml:space="preserve">
+    <value>Não há noticías</value>
+  </data>
+  <data name="JoinGroup" xml:space="preserve">
+    <value>Participar do grupo</value>
+  </data>
+  <data name="EnterTheText" xml:space="preserve">
+    <value>Digita o texto</value>
+  </data>
+  <data name="Settings_MessageTextInNotification" xml:space="preserve">
+    <value>Texto da mensagem na notificação</value>
+  </data>
+  <data name="Contacts_SyncContacts" xml:space="preserve">
+    <value>sincronizar os contatos</value>
+  </data>
+  <data name="FiveLinksFrm" xml:space="preserve">
+    <value>{0} links</value>
+  </data>
+  <data name="OfJuly" xml:space="preserve">
+    <value>julho</value>
+  </data>
+  <data name="OfJune" xml:space="preserve">
+    <value>junho</value>
+  </data>
+  <data name="Audio_AudioIsAdded" xml:space="preserve">
+    <value>Arquivo de áudio foi adicionado</value>
+  </data>
+  <data name="OnePageFrm" xml:space="preserve">
+    <value>{0} página</value>
+  </data>
+  <data name="Error_AccessDenied" xml:space="preserve">
+    <value>Acesso negado.</value>
+  </data>
+  <data name="Photo_OnOnePhotoFrm" xml:space="preserve">
+    <value>на {0} foto</value>
+  </data>
+  <data name="OneFriendRequestFrm" xml:space="preserve">
+    <value>{0} solicitação de amizade</value>
+  </data>
+  <data name="Photos_GoToAlbum" xml:space="preserve">
+    <value>ir para o álbum</value>
+  </data>
+  <data name="PostCommentPage_FiveCommentsFrm" xml:space="preserve">
+    <value>{0} comentários</value>
+  </data>
+  <data name="TwoRecentNewsFrm" xml:space="preserve">
+    <value>{0} últimas notícias</value>
+  </data>
+  <data name="Share_SendWithMessage" xml:space="preserve">
+    <value>enviar por mensagem pessoal</value>
+  </data>
+  <data name="FiveMinutes" xml:space="preserve">
+    <value>{0} minutos atrás</value>
+  </data>
+  <data name="FriendsPage_NoCommon" xml:space="preserve">
+    <value>não há amigos em comum</value>
+  </data>
+  <data name="GlobalSearch" xml:space="preserve">
+    <value>Busca</value>
+  </data>
+  <data name="FiveRecentNewsFrm" xml:space="preserve">
+    <value>{0} últimas notícias</value>
+  </data>
+  <data name="ThePostIsPublishedInCommunityFrm" xml:space="preserve">
+    <value>O recado está publicado na comunidade {0}</value>
+  </data>
+  <data name="Message_Received" xml:space="preserve">
+    <value>Recebidas</value>
+  </data>
+  <data name="LastOfOneCommentFrm" xml:space="preserve">
+    <value>Últimos de {0} комментария</value>
+  </data>
+  <data name="FavoritesPage_Photos" xml:space="preserve">
+    <value>fotos</value>
+  </data>
+  <data name="SignUp_ValidationMessage" xml:space="preserve">
+    <value>Validando o código...</value>
+  </data>
+  <data name="FiveEventsFrm" xml:space="preserve">
+    <value>{0} eventos</value>
+  </data>
+  <data name="PublicGroup" xml:space="preserve">
+    <value>grupo aberto</value>
+  </data>
+  <data name="MainPage_Menu_Audio" xml:space="preserve">
+    <value>arquivos de áudio</value>
+  </data>
+  <data name="PublicPage1" xml:space="preserve">
+    <value>página pública</value>
+  </data>
+  <data name="MainPage_Menu_Video" xml:space="preserve">
+    <value>arquivos de vídeo</value>
+  </data>
+  <data name="Action_RateApp" xml:space="preserve">
+    <value>avaliar o aplicativo</value>
+  </data>
+  <data name="CHOOSEPHOTOS" xml:space="preserve">
+    <value>ESCOLHE FOTOS</value>
+  </data>
+  <data name="TwoFourPagesFrm" xml:space="preserve">
+    <value>{0} páginas</value>
+  </data>
+  <data name="AlbumCameraRoll" xml:space="preserve">
+    <value>Rolo da câmera</value>
+  </data>
+  <data name="FriendsPage_NoFriendsOnline" xml:space="preserve">
+    <value>Não há amigos online</value>
+  </data>
+  <data name="General_OneUserLikedFrm" xml:space="preserve">
+    <value>{0} pessoa curtiu</value>
+  </data>
+  <data name="FiveFriendsFrm" xml:space="preserve">
+    <value>{0} amigos</value>
+  </data>
+  <data name="GroupPage_Follow" xml:space="preserve">
+    <value>Inscrever-se</value>
+  </data>
+  <data name="TwoFourEventsFrm" xml:space="preserve">
+    <value>{0} eventos</value>
+  </data>
+  <data name="SignUp_LastName" xml:space="preserve">
+    <value>Seu sobrenome</value>
+  </data>
+  <data name="NoLinks" xml:space="preserve">
+    <value>Não há links</value>
+  </data>
+  <data name="MomentAgo" xml:space="preserve">
+    <value>alguns segundos atrás</value>
+  </data>
+  <data name="FiveWallPostsFrm" xml:space="preserve">
+    <value>{0} recados</value>
+  </data>
+  <data name="ChatPhotoDeleteFemaleFrm" xml:space="preserve">
+    <value>{0} removeu a foto de capa da conversa</value>
+  </data>
+  <data name="NewPost_Signature" xml:space="preserve">
+    <value>Assinatura</value>
+  </data>
+  <data name="Settings_Account" xml:space="preserve">
+    <value>conta</value>
+  </data>
+  <data name="FiveCommonFriendsFrm" xml:space="preserve">
+    <value>{0} amigos em comum</value>
+  </data>
+  <data name="Notification_CopyPhotoPlural" xml:space="preserve">
+    <value>compartilharam suas fotos</value>
+  </data>
+  <data name="NoPages" xml:space="preserve">
+    <value>Não há páginas</value>
+  </data>
+  <data name="FiveSubscribersFrm" xml:space="preserve">
+    <value>{0} seguidores</value>
+  </data>
+  <data name="Notification_LikeCommentPlural" xml:space="preserve">
+    <value>curtiram seu comentário</value>
+  </data>
+  <data name="FriendsAndContactsSearchPage_FailedToCreateChat" xml:space="preserve">
+    <value>Não foi possível criar uma conversa. Tente mais tarde.</value>
+  </data>
+  <data name="Conversations_FiveMoreForwardedMessagesFrm" xml:space="preserve">
+    <value>{0} mensagens encaminhadas</value>
+  </data>
+  <data name="FEEDBACK" xml:space="preserve">
+    <value>RESPOSTAS</value>
+  </data>
+  <data name="Videos" xml:space="preserve">
+    <value>vídeos</value>
+  </data>
+  <data name="Photo_FivePhotosAddedFrm" xml:space="preserve">
+    <value>{0} fotos</value>
+  </data>
+  <data name="Notification_CommentVideoMale" xml:space="preserve">
+    <value>comentou seu vídeo</value>
+  </data>
+  <data name="Notification_CopyPostPlural" xml:space="preserve">
+    <value>compartilharam seu recado</value>
+  </data>
+  <data name="Conversations_FiveOrMoreAudioFrm" xml:space="preserve">
+    <value>{0} arquivo de áudio</value>
+  </data>
+  <data name="MainPage_Menu_AppBar_Settings" xml:space="preserve">
+    <value>configurações</value>
+  </data>
+  <data name="ManageAttachments_FiveMoreAttachmentsFrm" xml:space="preserve">
+    <value>{0} anexos</value>
+  </data>
+  <data name="BannedUsers_UserIsBanned" xml:space="preserve">
+    <value>Usuário está bloqueado.</value>
+  </data>
+  <data name="OneMemberFrm" xml:space="preserve">
+    <value>{0} участник</value>
+  </data>
+  <data name="AppBarMenu_Save" xml:space="preserve">
+    <value>salvar</value>
+  </data>
+  <data name="Photo_UpdatedProfileFemale" xml:space="preserve">
+    <value>atualizou a foto do perfil dela</value>
+  </data>
+  <data name="SuggestedPosts_NoPosts" xml:space="preserve">
+    <value>Não há notícias sugeridas</value>
+  </data>
+  <data name="GroupPage_CancelRequest" xml:space="preserve">
+    <value>cancelar a solicitação</value>
+  </data>
+  <data name="Conversation_MessageWasNotSent" xml:space="preserve">
+    <value>A mensagem não foi enviada</value>
+  </data>
+  <data name="Conversation_MessageWasNotRead" xml:space="preserve">
+    <value>Não lida</value>
+  </data>
+  <data name="OneCommunityFrm" xml:space="preserve">
+    <value>{0} comunidade</value>
+  </data>
+  <data name="EventMaybe" xml:space="preserve">
+    <value>talvez virei</value>
+  </data>
+  <data name="TwoWallPostsFrm" xml:space="preserve">
+    <value>{0} recados</value>
+  </data>
+  <data name="FriendRequest_Accept" xml:space="preserve">
+    <value>adicionar aos amigos</value>
+  </data>
+  <data name="Photo_AddedFemale" xml:space="preserve">
+    <value>adicionou</value>
+  </data>
+  <data name="GenericErrorText" xml:space="preserve">
+    <value>erro</value>
+  </data>
+  <data name="FiveCommunitiesFrm" xml:space="preserve">
+    <value>{0} comunidades</value>
+  </data>
+  <data name="Notification_MentionCommentsFemale" xml:space="preserve">
+    <value>nos comentários ao recado</value>
+  </data>
+  <data name="SearchGroup_Friends" xml:space="preserve">
+    <value>Amigos</value>
+  </data>
+  <data name="SuggestedNews_SuggestAPost" xml:space="preserve">
+    <value>Sugerir uma notícia</value>
+  </data>
+  <data name="FriendRequests_RequestText" xml:space="preserve">
+    <value>SOLICITAÇÕES DE AMIZADE ({0})</value>
+  </data>
+  <data name="Conversations_FiveDialogsFrm" xml:space="preserve">
+    <value>{0} diálogos</value>
+  </data>
+  <data name="NewPost_PublishOnFacebook" xml:space="preserve">
+    <value>Exportar para o Facebook</value>
+  </data>
+  <data name="AttachmentType_Location" xml:space="preserve">
+    <value>localidade</value>
+  </data>
+  <data name="TwoFourPersonsFrm" xml:space="preserve">
+    <value>{0} pessoas</value>
+  </data>
+  <data name="SuggestedNews_OneSuggestedPostFrm" xml:space="preserve">
+    <value>{0} notícia sugerida</value>
+  </data>
+  <data name="General_FiveUsersLikedFrm" xml:space="preserve">
+    <value>{0} pessoas curtiram</value>
+  </data>
+  <data name="SignUp_Error_TooShortPassword" xml:space="preserve">
+    <value>Senha deve possuir no mínimo 6 caracteres</value>
+  </data>
+  <data name="Conversation_Delete" xml:space="preserve">
+    <value>remover</value>
+  </data>
+  <data name="Conversations_OneForwardedMessage" xml:space="preserve">
+    <value>1 mensagem encaminhada</value>
+  </data>
+  <data name="Report" xml:space="preserve">
+    <value>denunciar...</value>
+  </data>
+  <data name="Settings_ChangePhoto" xml:space="preserve">
+    <value>alterar foto</value>
+  </data>
+  <data name="Audio_AppBar_AddToMyAudios" xml:space="preserve">
+    <value>adicionar à minha música</value>
+  </data>
+  <data name="ThisConversationAlreadyContainsMaxAllowedCount" xml:space="preserve">
+    <value>O número máximo permitido de membros já foi atingido para esta conversa.</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>busca</value>
+  </data>
+  <data name="FiveDocumentsFrm" xml:space="preserve">
+    <value>{0} documentos</value>
+  </data>
+  <data name="Login_Error_Header" xml:space="preserve">
+    <value>Não foi possível acessar</value>
+  </data>
+  <data name="SignUp" xml:space="preserve">
+    <value>Cadastrar-se</value>
+  </data>
+  <data name="Error_Generic" xml:space="preserve">
+    <value>Ocorreu um erro. Tente mais tarde.</value>
+  </data>
+  <data name="ReadInFull" xml:space="preserve">
+    <value>Expandir texto</value>
+  </data>
+  <data name="Conversation_AppBar_AttachImage" xml:space="preserve">
+    <value>anexar uma foto</value>
+  </data>
+  <data name="Notification_CopyVideoPlural" xml:space="preserve">
+    <value>compartilharam seu vídeo</value>
+  </data>
+  <data name="FavoritesPage_Persons" xml:space="preserve">
+    <value>pessoas</value>
+  </data>
+  <data name="NewFriendsList_TitleLbl" xml:space="preserve">
+    <value>Título</value>
+  </data>
+  <data name="SignUp_Error_Unknown" xml:space="preserve">
+    <value>Occoreu um erro desconhecido. Por favor tente novamente.</value>
+  </data>
+  <data name="Photos" xml:space="preserve">
+    <value>fotos</value>
+  </data>
+  <data name="AppBar_SelectSeveral" xml:space="preserve">
+    <value>escolher vários</value>
+  </data>
+  <data name="Conversation_AppBar_Attachments" xml:space="preserve">
+    <value>anexos</value>
+  </data>
+  <data name="AppBarChooseAlbum" xml:space="preserve">
+    <value>escolher um álbum</value>
+  </data>
+  <data name="AppBarConfirmChoice" xml:space="preserve">
+    <value>confirmar escolha</value>
+  </data>
+  <data name="SignUp_Error_ServerBusy" xml:space="preserve">
+    <value>O servidor está processando a solicitação. Por favor tente novamente em alguns segundos.</value>
+  </data>
+  <data name="AndFiveOthersFrm" xml:space="preserve">
+    <value>e mais {0} pessoas</value>
+  </data>
+  <data name="SettingsConnection" xml:space="preserve">
+    <value>Передача данных</value>
+  </data>
+  <data name="Conversations_Location" xml:space="preserve">
+    <value>Localização</value>
+  </data>
+  <data name="Bookmarks_UserIsRemoved" xml:space="preserve">
+    <value>Usuário foi removido dos favoritos</value>
+  </data>
+  <data name="Profile_ReplyToRequest" xml:space="preserve">
+    <value>Responder à solicitação</value>
+  </data>
+  <data name="ViewContact_SendInviteInfo" xml:space="preserve">
+    <value>Usuário ainda não está registrado. Você pode enviar-lhe um convite.</value>
+  </data>
+  <data name="NewPost_NewPost" xml:space="preserve">
+    <value>NOVO RECADO</value>
+  </data>
+  <data name="ViewContact_SendInvitation" xml:space="preserve">
+    <value>enviar um convite</value>
+  </data>
+  <data name="Notification_CopyPostMale" xml:space="preserve">
+    <value>compartilhou seu recado</value>
+  </data>
+  <data name="Settings_EnabledFemale" xml:space="preserve">
+    <value>Включена</value>
+  </data>
+  <data name="Captcha_Cancel" xml:space="preserve">
+    <value>cancelar</value>
+  </data>
+  <data name="VideoContains" xml:space="preserve">
+    <value>O VÍDEO CONTÉM</value>
+  </data>
+  <data name="Notification_LikeVideoPlural" xml:space="preserve">
+    <value>curtiram seu vídeo</value>
+  </data>
+  <data name="PullToRefresh" xml:space="preserve">
+    <value>Puxe para atualizar</value>
+  </data>
+  <data name="GroupPage_SendRequest" xml:space="preserve">
+    <value>Enviar solicitação</value>
+  </data>
+  <data name="Conversation_ForwardedMessages" xml:space="preserve">
+    <value>Mensagens encaminhadas</value>
+  </data>
+  <data name="NoCommunitiesFound" xml:space="preserve">
+    <value>Não há comunidades</value>
+  </data>
+  <data name="FriendsLowCase" xml:space="preserve">
+    <value>amigos</value>
+  </data>
+  <data name="SuggestedNews_Publish" xml:space="preserve">
+    <value>publicar</value>
+  </data>
+  <data name="CommunitiesLowCase" xml:space="preserve">
+    <value>comunidades</value>
+  </data>
+  <data name="OfAugust" xml:space="preserve">
+    <value>agosto</value>
+  </data>
+  <data name="Conversation_LastSeenAMomentAgo" xml:space="preserve">
+    <value />
+  </data>
+  <data name="AddEditVideo_WhoCanComment" xml:space="preserve">
+    <value>Quem pode comentar este vídeo?</value>
+  </data>
+  <data name="NewFriendsList_Create" xml:space="preserve">
+    <value>criar</value>
+  </data>
+  <data name="GroupPage_ReplyToInvitation" xml:space="preserve">
+    <value>Responder ao convite</value>
+  </data>
+  <data name="Photo_TwoFourPhotosAddedFrm" xml:space="preserve">
+    <value>{0} fotos</value>
+  </data>
+  <data name="PhotoPage_My" xml:space="preserve">
+    <value>minhas</value>
+  </data>
+  <data name="BannedUsers_BannedUsersTitle" xml:space="preserve">
+    <value>LISTA NEGRA</value>
+  </data>
+  <data name="Share_YourComment" xml:space="preserve">
+    <value>Seu comentário</value>
+  </data>
+  <data name="ChooseConversation" xml:space="preserve">
+    <value>Escolhe o diálogo</value>
+  </data>
+  <data name="PostContains" xml:space="preserve">
+    <value>O RECADO CONTÉM</value>
+  </data>
+  <data name="Login_Password" xml:space="preserve">
+    <value>Senha</value>
+  </data>
+  <data name="Settings_NotifyFriends" xml:space="preserve">
+    <value>Notificar sobre solicitações de amizade</value>
+  </data>
+  <data name="Share_ShareWithYourFriends" xml:space="preserve">
+    <value>Compartilhar o recado com seus amigos e seguidores</value>
+  </data>
+  <data name="DialogWithFrm" xml:space="preserve">
+    <value>Diálogo com {0}</value>
+  </data>
+  <data name="ReportReasonViolence" xml:space="preserve">
+    <value>violência</value>
+  </data>
+  <data name="SignUp_FirstName" xml:space="preserve">
+    <value>Seu nome</value>
+  </data>
+  <data name="Conversation_OneForwardedMessageFrm" xml:space="preserve">
+    <value>{0} mensagem encaminhada</value>
+  </data>
+  <data name="AcceptInvitation" xml:space="preserve">
+    <value>aceitar a solicitação</value>
+  </data>
+  <data name="Captcha_RequiredText" xml:space="preserve">
+    <value>Digite o código da imagem</value>
+  </data>
+  <data name="DeleteConfirmation" xml:space="preserve">
+    <value>Isto não pode ser desfeito. Continuar?</value>
+  </data>
+  <data name="ViewContact_SendMessage" xml:space="preserve">
+    <value>Enviar uma mensagem</value>
+  </data>
+  <data name="Conversation_AppBar_DeleteDialog" xml:space="preserve">
+    <value>remover o diálogo</value>
+  </data>
+  <data name="VideoNew_VideoHasBeenRemovedFromMyVideos" xml:space="preserve">
+    <value>O vídeo foi removido dos Meus vídeos</value>
+  </data>
+  <data name="HasABirthdayTomorrow" xml:space="preserve">
+    <value>Amanhã é aniversário de</value>
+  </data>
+  <data name="NewFriendsList_Save" xml:space="preserve">
+    <value>salvar</value>
+  </data>
+  <data name="Refreshing" xml:space="preserve">
+    <value>Atualização</value>
+  </data>
+  <data name="NEWSSOURCES" xml:space="preserve">
+    <value>РАЗДЕЛЫ НОВОСТЕЙ</value>
+  </data>
+  <data name="MainPage_Menu_Feedback" xml:space="preserve">
+    <value>respostas</value>
+  </data>
+  <data name="FiveViewsFrm" xml:space="preserve">
+    <value>{0} visualizações</value>
+  </data>
+  <data name="Notification_CopyPhotoFemale" xml:space="preserve">
+    <value>compartilhou sua foto</value>
+  </data>
+  <data name="Conversation_LastSeenTodayMaleFrm" xml:space="preserve">
+    <value>visto hoje às {0}</value>
+  </data>
+  <data name="NoFriends" xml:space="preserve">
+    <value>Não há amigos</value>
+  </data>
+  <data name="Conversation_Online" xml:space="preserve">
+    <value>online</value>
+  </data>
+  <data name="FiveMembersFrm" xml:space="preserve">
+    <value>{0} membros</value>
+  </data>
+  <data name="FiveFriendRequestsFrm" xml:space="preserve">
+    <value>{0} solicitações de amizade</value>
+  </data>
+  <data name="OneFriendFrm" xml:space="preserve">
+    <value>{0} amigo</value>
+  </data>
+  <data name="Conversations_OneAudio" xml:space="preserve">
+    <value>1 arquivo de áudio</value>
+  </data>
+  <data name="AccentChoiceSystem" xml:space="preserve">
+    <value>das configurações do celular</value>
+  </data>
+  <data name="Conversations_OnePhoto" xml:space="preserve">
+    <value>1 foto</value>
+  </data>
+  <data name="Conversations_OneVideo" xml:space="preserve">
+    <value>1 vídeo</value>
+  </data>
+  <data name="PublicPage" xml:space="preserve">
+    <value>Página pública</value>
+  </data>
+  <data name="OneNewsFrm" xml:space="preserve">
+    <value>{0} notícia</value>
+  </data>
+  <data name="Notification_LikePhotoFemale" xml:space="preserve">
+    <value>curtiu sua foto</value>
+  </data>
+  <data name="Conversation_Forward" xml:space="preserve">
+    <value>encaminhar</value>
+  </data>
+  <data name="ChatPhotoUpdate" xml:space="preserve">
+    <value>Atualizou a foto de capa da conversa</value>
+  </data>
+  <data name="Notification_FriendAcceptedFemale" xml:space="preserve">
+    <value>aceitou sua solicitação de amizade</value>
+  </data>
+  <data name="ThemeChoiceLight" xml:space="preserve">
+    <value>claro</value>
+  </data>
+  <data name="ForwardedMessage_TextFiveOrMore" xml:space="preserve">
+    <value>{0} mensagens encaminhadas</value>
+  </data>
+  <data name="SignUp_SignUp" xml:space="preserve">
+    <value>cadastrar-se</value>
+  </data>
+  <data name="Subscribers_Add" xml:space="preserve">
+    <value>adicionar</value>
+  </data>
+  <data name="Settings_Sound" xml:space="preserve">
+    <value>Som</value>
+  </data>
+  <data name="Settings_Theme" xml:space="preserve">
+    <value>assunto</value>
+  </data>
+  <data name="AndTwoFourOthersFrm" xml:space="preserve">
+    <value>e mais {0} pessoas</value>
+  </data>
+  <data name="ReportSent" xml:space="preserve">
+    <value>Sua denúncia foi enviada</value>
+  </data>
+  <data name="BannedUsers_UnbanUser" xml:space="preserve">
+    <value>desbloquear</value>
+  </data>
+  <data name="Pivot_Contacts" xml:space="preserve">
+    <value>contatos</value>
+  </data>
+  <data name="OfOctober" xml:space="preserve">
+    <value>outubro</value>
+  </data>
+  <data name="Settings_DontDisturbEightHours" xml:space="preserve">
+    <value>não perturbar durante 8 horas</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Idioma</value>
+  </data>
+  <data name="Poll_Vote" xml:space="preserve">
+    <value>Votar</value>
+  </data>
+  <data name="ChatReturnedToConversationMaleFrm" xml:space="preserve">
+    <value>{0} voltou à conversa</value>
+  </data>
+  <data name="ThePhotoIsPublishedOnWallFrm" xml:space="preserve">
+    <value>A foto está publicada no mural de {0} </value>
+  </data>
+  <data name="FriendsPage_NoFriends" xml:space="preserve">
+    <value>Ainda não há amigos</value>
+  </data>
+  <data name="ChatReturnedToConversationFemaleFrm" xml:space="preserve">
+    <value>{0} voltou à conversa</value>
+  </data>
+  <data name="Background" xml:space="preserve">
+    <value>Fundo</value>
+  </data>
+  <data name="BannedUsers_UserIsUnbanned" xml:space="preserve">
+    <value>Usuário desbloqueado.</value>
+  </data>
+  <data name="CommentItem_DeleteComment" xml:space="preserve">
+    <value>remover o comentário</value>
+  </data>
+  <data name="ConversationsList_Yesterday" xml:space="preserve">
+    <value>ontem</value>
+  </data>
+  <data name="Subscribers_Hide" xml:space="preserve">
+    <value>ocultar</value>
+  </data>
+  <data name="General_TwoFourUsersLikedFrm" xml:space="preserve">
+    <value>{0} pessoas curtiram</value>
+  </data>
+  <data name="Conversation_CancelUpload" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="Notification_LikeCommentMale" xml:space="preserve">
+    <value>curtiu seu comentário</value>
+  </data>
+  <data name="NoFriendsLists" xml:space="preserve">
+    <value>Ainda não há listas de amigos</value>
+  </data>
+  <data name="ChatPhotoRemove" xml:space="preserve">
+    <value>Removeu a foto de capa da conversa</value>
+  </data>
+  <data name="MainPage_Menu_Messages" xml:space="preserve">
+    <value>mensagens</value>
+  </data>
+  <data name="FriendsAndContactsSearchPage_CreatingChat" xml:space="preserve">
+    <value>Criando uma conversa</value>
+  </data>
+  <data name="Notification_MentionCommentsMale" xml:space="preserve">
+    <value>nos comentários ao recado</value>
+  </data>
+  <data name="Settings_PushNotifications" xml:space="preserve">
+    <value>notificações push</value>
+  </data>
+  <data name="AttachTwoFourPhotosFrm" xml:space="preserve">
+    <value>anexar {0} fotos</value>
+  </data>
+  <data name="SubscriptionsPage_OwnSubscriptionsTitle" xml:space="preserve">
+    <value>INSCRIÇÕES</value>
+  </data>
+  <data name="Conversation_ConfirmDeletion" xml:space="preserve">
+    <value>Esta ação é irreversível. Continuar?</value>
+  </data>
+  <data name="FriendsPage_AppBar_AddToList" xml:space="preserve">
+    <value>adicionar à lista</value>
+  </data>
+  <data name="Action_SendFeedback" xml:space="preserve">
+    <value>enviar um feedback</value>
+  </data>
+  <data name="ManageAttachments_OneAttachment" xml:space="preserve">
+    <value>1 anexo</value>
+  </data>
+  <data name="PostCommentsPage_PreviousTwoFourCommentsFrm" xml:space="preserve">
+    <value>mostrar {0} comentários anteriores</value>
+  </data>
+  <data name="AppBar_Lists" xml:space="preserve">
+    <value>listas</value>
+  </data>
+  <data name="NoInvitations" xml:space="preserve">
+    <value>Não há convites</value>
+  </data>
+  <data name="Settings_AppliedAfterRestart" xml:space="preserve">
+    <value>Novas configurações serão ativadas após a reinicialização.</value>
+  </data>
+  <data name="FailedToConnect" xml:space="preserve">
+    <value>Verifique se as configurações de data e hora estão corretas e há conexão à internet.</value>
+  </data>
+  <data name="ImageViewer_PhotoCounterFrm" xml:space="preserve">
+    <value>{0} de {1}</value>
+  </data>
+  <data name="NoEvents" xml:space="preserve">
+    <value>Ainda não há eventos</value>
+  </data>
+  <data name="Menu_About" xml:space="preserve">
+    <value>sobre o aplicativo</value>
+  </data>
+  <data name="ReportReasonDrug" xml:space="preserve">
+    <value>apologia às drogas</value>
+  </data>
+  <data name="ReportReasonSpam" xml:space="preserve">
+    <value>spam</value>
+  </data>
+  <data name="Settings_TileColor" xml:space="preserve">
+    <value>Цвет тайла</value>
+  </data>
+  <data name="ChatCreateMaleFrm" xml:space="preserve">
+    <value>{0} criou a conversa "{1}"</value>
+  </data>
+  <data name="FriendRequestsPage_DeclineFriend" xml:space="preserve">
+    <value>recusar</value>
+  </data>
+  <data name="FavoritesPage_Links" xml:space="preserve">
+    <value>links</value>
+  </data>
+  <data name="NewPost_AppBar_Publish" xml:space="preserve">
+    <value>publicar</value>
+  </data>
+  <data name="GroupPage_DeclineInvitation" xml:space="preserve">
+    <value>recusar o convite</value>
+  </data>
+  <data name="Login_LogIn1" xml:space="preserve">
+    <value>acessar</value>
+  </data>
+  <data name="Conversation_AppBar_AddMember" xml:space="preserve">
+    <value>adicionar um membro</value>
+  </data>
+  <data name="TwoFourNewsFrm" xml:space="preserve">
+    <value>{0} notícias</value>
+  </data>
+  <data name="Settings_DisabledNeutral" xml:space="preserve">
+    <value>Отключено</value>
+  </data>
+  <data name="Share_PublishOnWall" xml:space="preserve">
+    <value>publicar no mural</value>
+  </data>
+  <data name="FavoritesPage_Title" xml:space="preserve">
+    <value>FAVORITOS</value>
+  </data>
+  <data name="FavoritesPage_Posts" xml:space="preserve">
+    <value>recados</value>
+  </data>
+  <data name="AccentColor" xml:space="preserve">
+    <value>Cor acentuada</value>
+  </data>
+  <data name="EventJoin" xml:space="preserve">
+    <value>estarei presente</value>
+  </data>
+  <data name="NoPersons" xml:space="preserve">
+    <value>Não há pessoas</value>
+  </data>
+  <data name="Conversation_ForwardedMessage" xml:space="preserve">
+    <value>Mensagem encaminhada</value>
+  </data>
+  <data name="Conversations_NoDialogs" xml:space="preserve">
+    <value>Não há diálogos</value>
+  </data>
+  <data name="SUBSCRIBERS" xml:space="preserve">
+    <value>SEGUIDORES</value>
+  </data>
+  <data name="ThePostIsPublishedOnWallFrm" xml:space="preserve">
+    <value>O recado está publicado no mural de {0}</value>
+  </data>
+  <data name="ChatPhotoUpdateFemaleFrm" xml:space="preserve">
+    <value>{0} atualizou a foto de capa da conversa</value>
+  </data>
+  <data name="Settings_DisabledNotifications" xml:space="preserve">
+    <value>Notificações estão desabilitadas até</value>
+  </data>
+  <data name="TwoFourFollowersFrm" xml:space="preserve">
+    <value>{0} seguidores</value>
+  </data>
+  <data name="Login_Info_LoggingIn" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SubscriptionsPage_TitleFrm" xml:space="preserve">
+    <value>Inscrições de {0}</value>
+  </data>
+  <data name="ChooseRecipients" xml:space="preserve">
+    <value>ВЫБЕРИТЕ СОБЕСЕДНИКОВ</value>
+  </data>
+  <data name="Notification_CopyPhotoMale" xml:space="preserve">
+    <value>compartilhou sua foto</value>
+  </data>
+  <data name="LikesPage_Friends" xml:space="preserve">
+    <value>amigos</value>
+  </data>
+  <data name="OneMessageFrm" xml:space="preserve">
+    <value>{0} mensagem</value>
+  </data>
+  <data name="PinPost" xml:space="preserve">
+    <value>fixar</value>
+  </data>
+  <data name="Settings_AllowAccessToLocation" xml:space="preserve">
+    <value>Permitir acesso a localização</value>
+  </data>
+  <data name="FiveTopicsFrm" xml:space="preserve">
+    <value>{0} tópicos</value>
+  </data>
+  <data name="MainPage_Menu_Groups" xml:space="preserve">
+    <value>grupos</value>
+  </data>
+  <data name="CommentItem_Reply" xml:space="preserve">
+    <value>responder</value>
+  </data>
+  <data name="Birthdays_Title" xml:space="preserve">
+    <value>ANIVERSÁRIOS</value>
+  </data>
+  <data name="Unsubscribe" xml:space="preserve">
+    <value>desinscrever-se</value>
+  </data>
+  <data name="AppBar_Cancel" xml:space="preserve">
+    <value>cancelar</value>
+  </data>
+  <data name="GroupPage_YouAreFollowingThisPage" xml:space="preserve">
+    <value>Você inscreveu-se nas notícias</value>
+  </data>
+  <data name="OneCommonFriendFrm" xml:space="preserve">
+    <value>{0} amigo em comum</value>
+  </data>
+  <data name="OneFollowerFrm" xml:space="preserve">
+    <value>{0} seguidor</value>
+  </data>
+  <data name="SuggestedNews_DeleteWallPost" xml:space="preserve">
+    <value>Remover a notícia</value>
+  </data>
+  <data name="NewPost_ExportToTwitter" xml:space="preserve">
+    <value>Exportar para o Twitter</value>
+  </data>
+  <data name="OneSubscriberFrm" xml:space="preserve">
+    <value>{0} seguidor</value>
+  </data>
+  <data name="NoParticipantsYet" xml:space="preserve">
+    <value>Não há participantes</value>
+  </data>
+  <data name="AttachOnePhotoFrm" xml:space="preserve">
+    <value>anexar {0} foto</value>
+  </data>
+  <data name="Login_LogIn" xml:space="preserve">
+    <value>acessar</value>
+  </data>
+  <data name="Privacy_PolicyText" xml:space="preserve">
+    <value>Este aplicativo é um programa móvel para a rede social VK.com. Caso você utilize a função "adicionar localidade" os dados da localização serão anexados à mensagem ou ao recado no mural sob a forma de coordenadas geográficas (latitude e longitude). Você pode desabilitar os serviços de localização nas configurações. Fotos anexadas à mensagem ou ao recado no mural são carregadas para o servidor do VK.com.</value>
+  </data>
+  <data name="UnpinPost" xml:space="preserve">
+    <value>fixar (desfazer)</value>
+  </data>
+  <data name="UNREADMESSAGES" xml:space="preserve">
+    <value>MENSAGENS NÃO LIDAS</value>
+  </data>
+  <data name="At" xml:space="preserve">
+    <value>às</value>
+  </data>
+  <data name="NewsFeedCommunities" xml:space="preserve">
+    <value>comunidades</value>
+  </data>
+  <data name="RemoveFromBookmarks" xml:space="preserve">
+    <value>remover dos favoritos</value>
+  </data>
+  <data name="Notification_FriendAcceptedPlural" xml:space="preserve">
+    <value>aceitaram sua solicitação de amizade</value>
+  </data>
+  <data name="VideoNew_AddToMyVideos" xml:space="preserve">
+    <value>adicionar aos meus vídeos</value>
+  </data>
+  <data name="Privacy_PrivacyPolicy" xml:space="preserve">
+    <value>política de privacidade</value>
+  </data>
+  <data name="MainPage_Menu_Favorites" xml:space="preserve">
+    <value>favoritos</value>
+  </data>
+  <data name="FiveFollowersFrm" xml:space="preserve">
+    <value>{0} seguidores</value>
+  </data>
+  <data name="TwoFourFriendRequestsFrm" xml:space="preserve">
+    <value>{0} solicitações de amizade</value>
+  </data>
+  <data name="Conversations_TwoFourPhotosFrm" xml:space="preserve">
+    <value>{0} fotos</value>
+  </data>
+  <data name="Attachements_Uploading" xml:space="preserve">
+    <value>Carregamento de anexos</value>
+  </data>
+  <data name="ChatPhotoUpdateFemale" xml:space="preserve">
+    <value>Atualizou a foto de capa da conversa</value>
+  </data>
+  <data name="AlbumSamplePictures" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="AddEditVideo_Edit" xml:space="preserve">
+    <value>EDITAR O VÍDEO</value>
+  </data>
+  <data name="PostCommentsPage_PreviousOneCommentsFrm" xml:space="preserve">
+    <value>mostrar {0} comentários anteriores</value>
+  </data>
+  <data name="Pivot_Friends" xml:space="preserve">
+    <value>amigos</value>
+  </data>
+  <data name="Captcha_Send" xml:space="preserve">
+    <value>enviar</value>
+  </data>
+  <data name="AppBar_Delete" xml:space="preserve">
+    <value>remover</value>
+  </data>
+  <data name="Conversation_Quote" xml:space="preserve">
+    <value>citar</value>
+  </data>
+  <data name="Conversation_Retry" xml:space="preserve">
+    <value>Tentar novamente</value>
+  </data>
+  <data name="LeaveTheGroup" xml:space="preserve">
+    <value>deixar o grupo</value>
+  </data>
+  <data name="FollowersPage_TitleFrm" xml:space="preserve">
+    <value>SEGUIDORES {0}</value>
+  </data>
+  <data name="MainPage_Menu_News" xml:space="preserve">
+    <value>notícias</value>
+  </data>
+  <data name="Settings_GoToLockScreenSettings" xml:space="preserve">
+    <value>configurar</value>
+  </data>
+  <data name="OfNovember" xml:space="preserve">
+    <value>novembro</value>
+  </data>
+  <data name="NoTopics" xml:space="preserve">
+    <value>Não há tópicos</value>
+  </data>
+  <data name="ForgotYourPassword" xml:space="preserve">
+    <value>Esqueceu sua senha?</value>
+  </data>
+  <data name="Conversations_FiveMoreDocumentsFrm" xml:space="preserve">
+    <value>{0} documentos</value>
+  </data>
+  <data name="NewFriendsList_Title" xml:space="preserve">
+    <value>Nova lista de amigos</value>
+  </data>
+  <data name="CommentItem_Copy" xml:space="preserve">
+    <value>copiar</value>
+  </data>
+  <data name="Photo_WasTaggedMale" xml:space="preserve">
+    <value>foi marcado</value>
+  </data>
+  <data name="ChatKickoutMaleFrm" xml:space="preserve">
+    <value>{0} excluiu {1}</value>
+  </data>
+  <data name="Poll_TwoFourVotesFrm" xml:space="preserve">
+    <value>{0} votos</value>
+  </data>
+  <data name="PhotoContains" xml:space="preserve">
+    <value>A FOTO CONTÉM</value>
+  </data>
+  <data name="VideoNew_RemovedFromMyVideos" xml:space="preserve">
+    <value>remover dos meus vídeos</value>
+  </data>
+  <data name="SearchGroup_Others" xml:space="preserve">
+    <value>Outros usuários</value>
+  </data>
+  <data name="AddToBookmarks" xml:space="preserve">
+    <value>adicionar aos favoritos</value>
+  </data>
+  <data name="TwoFourMembersFrm" xml:space="preserve">
+    <value>{0} membros</value>
+  </data>
+  <data name="Notification_FollowFemale" xml:space="preserve">
+    <value>começou a seguir você</value>
+  </data>
+  <data name="GroupPage_JoinCommunity" xml:space="preserve">
+    <value>Participar do grupo</value>
+  </data>
+  <data name="ViewContact_CallPhone" xml:space="preserve">
+    <value>ligar</value>
+  </data>
+  <data name="And" xml:space="preserve">
+    <value>e</value>
+  </data>
+  <data name="ViewedFeedback" xml:space="preserve">
+    <value>RESPOSTAS MAIS ANTIGAS</value>
+  </data>
+  <data name="Login_SignUp_Title1" xml:space="preserve">
+    <value>ainda não tem conta?</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Erro</value>
+  </data>
+  <data name="Event" xml:space="preserve">
+    <value>evento</value>
+  </data>
+  <data name="Audio" xml:space="preserve">
+    <value>arquivo de áudio</value>
+  </data>
+  <data name="Group" xml:space="preserve">
+    <value>grupo</value>
+  </data>
+  <data name="Login_Id1" xml:space="preserve">
+    <value>Número de telefone ou e-mail</value>
+  </data>
+  <data name="ChatLeftConversationFemaleFrm" xml:space="preserve">
+    <value>{0} deixou a conversa</value>
+  </data>
+  <data name="OfMay" xml:space="preserve">
+    <value>maio</value>
+  </data>
+  <data name="Links" xml:space="preserve">
+    <value>Links</value>
+  </data>
+  <data name="Link1" xml:space="preserve">
+    <value>link</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>usuários</value>
+  </data>
+  <data name="OfMarch" xml:space="preserve">
+    <value>março</value>
+  </data>
+  <data name="TwoFourPhotosFrm" xml:space="preserve">
+    <value>{0} fotos</value>
+  </data>
+  <data name="EditComment" xml:space="preserve">
+    <value>EDIÇÃO DE COMENTÁRIO</value>
+  </data>
+  <data name="Video" xml:space="preserve">
+    <value>vídeo</value>
+  </data>
+  <data name="NewPost_Send" xml:space="preserve">
+    <value>enviar</value>
+  </data>
+  <data name="Today" xml:space="preserve">
+    <value>hoje</value>
+  </data>
+  <data name="UserDeletedOrBanned" xml:space="preserve">
+    <value>O perfil foi removido ou bloqueado</value>
+  </data>
+  <data name="Photo" xml:space="preserve">
+    <value>foto</value>
+  </data>
+  <data name="Yours" xml:space="preserve">
+    <value>Вашей</value>
+  </data>
+  <data name="SynchronizingContactsFrm" xml:space="preserve">
+    <value>Sincronizando contatos {0} de {1}</value>
+  </data>
+  <data name="OfApril" xml:space="preserve">
+    <value>abril</value>
+  </data>
+  <data name="NoFriendRequestsFrm" xml:space="preserve">
+    <value>Não há solicitações de amizade</value>
+  </data>
+  <data name="WikiPage" xml:space="preserve">
+    <value>Página</value>
+  </data>
+  <data name="PhotoIsSaved" xml:space="preserve">
+    <value>Foto foi salva.</value>
+  </data>
+  <data name="Conversation_NoMessagesYet" xml:space="preserve">
+    <value>Ainda não há mensagens</value>
+  </data>
+  <data name="GroupsListPage_PastEvents" xml:space="preserve">
+    <value>Eventos passados</value>
+  </data>
+  <data name="NoPhotos" xml:space="preserve">
+    <value>Não há fotos</value>
+  </data>
+  <data name="FriendsPage_Pivot_All" xml:space="preserve">
+    <value>все</value>
+  </data>
+  <data name="AudioPlayer_NowPlaying" xml:space="preserve">
+    <value>Está tocando agora</value>
+  </data>
+  <data name="SignUp_ConfirmationCode" xml:space="preserve">
+    <value>Código de confirmação</value>
+  </data>
+  <data name="YouCanSelectNoMoreFiveFrm" xml:space="preserve">
+    <value>Você pode adicionar não mais que {0} membros a esta conversa.</value>
+  </data>
+  <data name="Photo_UpdatedProfileMale" xml:space="preserve">
+    <value>atualizou a foto do perfil dele</value>
+  </data>
+  <data name="Photo_OnePhotoAddedFrm" xml:space="preserve">
+    <value>{0} foto</value>
+  </data>
+  <data name="OneMinuteFrm" xml:space="preserve">
+    <value>{0} minuto atrás</value>
+  </data>
+  <data name="FiveNewsFrm" xml:space="preserve">
+    <value>{0} notícias</value>
+  </data>
+  <data name="ChatEdit_CannotExclude" xml:space="preserve">
+    <value>Não é possível excluir os membros selecionados. Só o criador da conversa pode realizar esta ação.</value>
+  </data>
+  <data name="Settings_LockScreen" xml:space="preserve">
+    <value>tela de bloqueio</value>
+  </data>
+  <data name="ViewContact_UserRemovedError" xml:space="preserve">
+    <value>Erro inesperado ao remover usuários dos amigos. Por favor tente novamente.</value>
+  </data>
+  <data name="Conversation_WallPost" xml:space="preserve">
+    <value>Recado no mural</value>
+  </data>
+  <data name="Settings_ApplicationNotifications" xml:space="preserve">
+    <value>notificações no aplicativo</value>
+  </data>
+  <data name="MainPage_News_Refresh" xml:space="preserve">
+    <value>atualizar</value>
+  </data>
+  <data name="NoVideos" xml:space="preserve">
+    <value>Não há vídeos</value>
+  </data>
+  <data name="ChangeStatusText" xml:space="preserve">
+    <value>alterar o status</value>
+  </data>
+  <data name="NewPost_AppBar_AddLocation" xml:space="preserve">
+    <value>adicionar localidade</value>
+  </data>
+  <data name="Profile_RemoveFromFriends" xml:space="preserve">
+    <value>Remover dos amigos</value>
+  </data>
+  <data name="ChatEdit_TwoFourParticipantsFrm" xml:space="preserve">
+    <value>{0} membros da conversa</value>
+  </data>
+  <data name="FivePhotosFrm" xml:space="preserve">
+    <value>{0} fotos</value>
+  </data>
+  <data name="AddEditVideo_AutoReplay" xml:space="preserve">
+    <value>Autoreproduzir vídeo</value>
+  </data>
+  <data name="Conversation_LastSeenTodayFemaleFrm" xml:space="preserve">
+    <value>vista hoje às {0}</value>
+  </data>
+  <data name="Settings_LogOut" xml:space="preserve">
+    <value>sair</value>
+  </data>
+  <data name="Contacts_ErrorLoading" xml:space="preserve">
+    <value>Ocorreu um erro inesperado ao carregar a lista de contatos. Por favor, tente mais uma vez utilizando o botão Atualizar.</value>
+  </data>
+  <data name="GroupPage_RequestSent" xml:space="preserve">
+    <value>Solicitação enviada</value>
+  </data>
+  <data name="MainPage_News_Search" xml:space="preserve">
+    <value>buscar</value>
+  </data>
+  <data name="NewPost_AppBar_AddAttachment" xml:space="preserve">
+    <value>adicionar um anexo</value>
+  </data>
+  <data name="HideFromNews" xml:space="preserve">
+    <value>ocultar as notícias da fonte</value>
+  </data>
+  <data name="Access_OnlyMe" xml:space="preserve">
+    <value>somente eu</value>
+  </data>
+  <data name="AppBar_Add" xml:space="preserve">
+    <value>adicionar</value>
+  </data>
+  <data name="CommentItem_EditComment" xml:space="preserve">
+    <value>editar</value>
+  </data>
+  <data name="ClosedGroup" xml:space="preserve">
+    <value>grupo fechado</value>
+  </data>
+  <data name="Contacts_MatchingInProgress" xml:space="preserve">
+    <value>Comparando os contatos com a lista de amigos...</value>
+  </data>
+  <data name="Conversation_AppBar_Delete" xml:space="preserve">
+    <value>remover</value>
+  </data>
+  <data name="SELECTAGROUP" xml:space="preserve">
+    <value>ESCOLHE UMA COMUNIDADE</value>
+  </data>
+  <data name="SignUp_DesiredPassword" xml:space="preserve">
+    <value>Senha desejada</value>
+  </data>
+  <data name="Message_Sent" xml:space="preserve">
+    <value>Enviadas</value>
+  </data>
+  <data name="Conversation_AppBar_Choose" xml:space="preserve">
+    <value>escolher</value>
+  </data>
+  <data name="CreateChat" xml:space="preserve">
+    <value>crias uma conversa</value>
+  </data>
+  <data name="Access_GroupMembers" xml:space="preserve">
+    <value>membros do grupo</value>
+  </data>
+  <data name="Conversation_AppBar_Cancel" xml:space="preserve">
+    <value>cancelar</value>
+  </data>
+  <data name="FiveMessagesFrm" xml:space="preserve">
+    <value>{0} mensagens</value>
+  </data>
+  <data name="Contacts_InSyncProgress" xml:space="preserve">
+    <value>Sincronizando os contatos...</value>
+  </data>
+  <data name="Notification_CommentVideoFemale" xml:space="preserve">
+    <value>comentou seu vídeo</value>
+  </data>
+  <data name="TwoFourFriendsListsFrm" xml:space="preserve">
+    <value>{0} listas de amigos</value>
+  </data>
+  <data name="ChatLeftConversationMaleFrm" xml:space="preserve">
+    <value>{0} deixou a conversa</value>
+  </data>
+  <data name="ForwardedMessage_TextTwoToFive" xml:space="preserve">
+    <value>{0} mensagens encaminhadas</value>
+  </data>
+  <data name="DeclineInvitation" xml:space="preserve">
+    <value>recusar a solicitação</value>
+  </data>
+  <data name="Conversation_LastSeenOnMaleFrm" xml:space="preserve">
+    <value>visto {0} às {1}</value>
+  </data>
+  <data name="NewPost_DeleteDraftConfirm" xml:space="preserve">
+    <value>O racunho do recado será. Continuar?</value>
+  </data>
+  <data name="Settings_EnabledNeutral" xml:space="preserve">
+    <value>Включено</value>
+  </data>
+  <data name="AppBar_Search" xml:space="preserve">
+    <value>buscar</value>
+  </data>
+  <data name="ThemeChoiceSystemThemeInverted" xml:space="preserve">
+    <value>das configurações do celular, invertado</value>
+  </data>
+  <data name="Conversation_VideoIsNotAvailable" xml:space="preserve">
+    <value>O vídeo não pode ser reproduzido neste dispositivo.</value>
+  </data>
+  <data name="Conversation_EnterAMessage" xml:space="preserve">
+    <value>digite uma mensagem</value>
+  </data>
+  <data name="Comment_Likes" xml:space="preserve">
+    <value>curtiram</value>
+  </data>
+  <data name="SendRequest" xml:space="preserve">
+    <value>enviar solicitação</value>
+  </data>
+  <data name="TwoFourViewsFrm" xml:space="preserve">
+    <value>{0} visualizações</value>
+  </data>
+  <data name="SuggestedNews_FiveSuggestedPostsFrm" xml:space="preserve">
+    <value>{0} notícias sugeridas</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>CONFIGURAÇÕES</value>
+  </data>
+  <data name="Search_Chats" xml:space="preserve">
+    <value>conversas</value>
+  </data>
+  <data name="Settings_Cancel" xml:space="preserve">
+    <value>cancelar</value>
+  </data>
+  <data name="WriteOnWall" xml:space="preserve">
+    <value>escrever no mural</value>
+  </data>
+  <data name="Contacts_SyncMessage" xml:space="preserve">
+    <value>Você pode sincronizar a lista de amigos do VK com a agenda telefônica do seu celular.</value>
+  </data>
+  <data name="MainPage_Menu_Photos" xml:space="preserve">
+    <value>fotos</value>
+  </data>
+  <data name="TwoFourCommunitiesFrm" xml:space="preserve">
+    <value>{0} comunidades</value>
+  </data>
+  <data name="OnePhotoFrm" xml:space="preserve">
+    <value>{0} foto</value>
+  </data>
+  <data name="Conversation_Document" xml:space="preserve">
+    <value>Documento</value>
+  </data>
+  <data name="MapAttachment_AllowUseLocation" xml:space="preserve">
+    <value>Permitir acesso a sua localização atual? Você pode alterar isto nas configurações do aplicativo a qualquer hora.</value>
+  </data>
+  <data name="download" xml:space="preserve">
+    <value>baixar</value>
+  </data>
+  <data name="ChatEdit_FiveMoreParticipantsFrm" xml:space="preserve">
+    <value>{0} membros da conversa</value>
+  </data>
+  <data name="LikesPage_FiveLikedFrm" xml:space="preserve">
+    <value>{0} PESSOAS CURTIRAM</value>
+  </data>
+  <data name="ChatEdit_AppBar_Exclude" xml:space="preserve">
+    <value>excluir</value>
+  </data>
+  <data name="MainPage_News" xml:space="preserve">
+    <value>notícias</value>
+  </data>
+  <data name="MainPage_Menu" xml:space="preserve">
+    <value>menu</value>
+  </data>
+  <data name="FriendsPage_TitleFrm" xml:space="preserve">
+    <value>AMIGOS DE {0}</value>
+  </data>
+  <data name="Photo_AddedMale" xml:space="preserve">
+    <value>adicionou</value>
+  </data>
+  <data name="TryAgain" xml:space="preserve">
+    <value>Repetir</value>
+  </data>
+  <data name="Conversation_LastSeenAMomentAgoFemale" xml:space="preserve">
+    <value>vista agora mesmo</value>
+  </data>
+  <data name="FailedToConnectError" xml:space="preserve">
+    <value>Falha no carregamento de dados. Por favor verifique a conexão à internet.</value>
+  </data>
+  <data name="PARTICIPANTS" xml:space="preserve">
+    <value>УЧАСТНИКИ</value>
+  </data>
+  <data name="ChatEdit_OneParticipant" xml:space="preserve">
+    <value>{0} membro da conversa</value>
+  </data>
+  <data name="TwoFourTopicsFrm" xml:space="preserve">
+    <value>{0} tópicos</value>
+  </data>
+  <data name="Conversations_TwoFourDocumentsFrm" xml:space="preserve">
+    <value>{0} documentos</value>
+  </data>
+  <data name="ChatTitleUpdateMaleFrm" xml:space="preserve">
+    <value>{0} alterou o nome da conversa para "{1}"</value>
+  </data>
+  <data name="Notification_FollowPlural" xml:space="preserve">
+    <value>começaram a seguir você</value>
+  </data>
+  <data name="NewPost_FriendsOnly" xml:space="preserve">
+    <value>Somente amigos</value>
+  </data>
+  <data name="FriendRequestsPage_AcceptFriend" xml:space="preserve">
+    <value>aceitar a solicitação de amizade</value>
+  </data>
+  <data name="ReportReasonChildPorn" xml:space="preserve">
+    <value>pornografia infantil</value>
+  </data>
+  <data name="Subscriptions1" xml:space="preserve">
+    <value>Inscrições</value>
+  </data>
+  <data name="NoSubscribersYet" xml:space="preserve">
+    <value>Não há seguidores</value>
+  </data>
+  <data name="Menu_Application" xml:space="preserve">
+    <value>aplicativo</value>
+  </data>
+  <data name="ChatEdit_CannotExcludeSome" xml:space="preserve">
+    <value>Alguns membros selecionados não foram excluídos. Só o criador da conversa pode realizar esta ação.</value>
+  </data>
+  <data name="Settings_DisabledFemale" xml:space="preserve">
+    <value>Отключена</value>
+  </data>
+  <data name="Settings_InternalErrors" xml:space="preserve">
+    <value>Erro interno do servidor.</value>
+  </data>
+  <data name="SettingsFlightMode" xml:space="preserve">
+    <value>"Modo Avião"</value>
+  </data>
+  <data name="Conversation_AppBar_ManageChat" xml:space="preserve">
+    <value>gerenciar a conversa</value>
+  </data>
+  <data name="SuggestedNews_TwoFourSuggestedPostsFrm" xml:space="preserve">
+    <value>{0} notícias sugeridas</value>
+  </data>
+  <data name="Conversations_TwoFourAudioFrm" xml:space="preserve">
+    <value>{0} arquivos de áudio</value>
+  </data>
+  <data name="AttachmentType_Photo" xml:space="preserve">
+    <value>foto</value>
+  </data>
+  <data name="AttachmentType_Video" xml:space="preserve">
+    <value>vídeo</value>
+  </data>
+  <data name="Profile_FollowingYou" xml:space="preserve">
+    <value>Está seguindo você</value>
+  </data>
+  <data name="Notification_LikeVideoMale" xml:space="preserve">
+    <value>curtiu seu vídeo</value>
+  </data>
+  <data name="AttachmentType_Audio" xml:space="preserve">
+    <value>arquivo de áudio</value>
+  </data>
+  <data name="HasABirthdayToday" xml:space="preserve">
+    <value>Hoje é aniversário de</value>
+  </data>
+  <data name="Bookmarks_CommunityIsAdded" xml:space="preserve">
+    <value>Comunidade foi adicionada aos favoritos</value>
+  </data>
+  <data name="Global_SomethingWentWrong" xml:space="preserve">
+    <value>Desculpe-nos, ocorreu um erro desconhecido. Já estamos a concertar-lo.</value>
+  </data>
+  <data name="Conversation_AppBar_AttachLocation" xml:space="preserve">
+    <value>anexar uma localização</value>
+  </data>
+  <data name="PhotoOption_Save" xml:space="preserve">
+    <value>Salvar</value>
+  </data>
+  <data name="ViewContact_UserRemoved" xml:space="preserve">
+    <value>Usuário foi removido da lista de amigos.</value>
+  </data>
+  <data name="PhotoOption_Wallpaper" xml:space="preserve">
+    <value>Utilizar a imagem como fundo</value>
+  </data>
+  <data name="UpdateChatPhoto" xml:space="preserve">
+    <value>Atualizar a foto de capa da conversa</value>
+  </data>
+  <data name="ShareWallPost_Share" xml:space="preserve">
+    <value>Compartilhar</value>
+  </data>
+  <data name="ContactsAndFriendsSearch_SearchText" xml:space="preserve">
+    <value>Você pode procurar seus amigos e conhecidos entre todos os usuários</value>
+  </data>
+  <data name="Bookmarks_CommunityIsRemoved" xml:space="preserve">
+    <value>Comunidade foi removida dos favoritos</value>
+  </data>
+  <data name="Conversations" xml:space="preserve">
+    <value>diálogos</value>
+  </data>
+  <data name="GroupInvitationsPage_Title" xml:space="preserve">
+    <value>CONVITES</value>
+  </data>
+  <data name="GenericConfirmation" xml:space="preserve">
+    <value>Esta ação é irreversível. Continuar?</value>
+  </data>
+  <data name="Conversation_AppBar_Forward" xml:space="preserve">
+    <value>encaminhar</value>
+  </data>
+  <data name="NoCommunites" xml:space="preserve">
+    <value>Não há comunidades</value>
+  </data>
+  <data name="Conversations_TwoFourDialogsFrm" xml:space="preserve">
+    <value>{0} diálogos</value>
+  </data>
+  <data name="Conversation_AppBar_Send" xml:space="preserve">
+    <value>enviar</value>
+  </data>
+  <data name="EditPost" xml:space="preserve">
+    <value>EDIÇÃO DE RECADO</value>
+  </data>
+  <data name="LikesPage_OneLikedFrm" xml:space="preserve">
+    <value>{0} PESSOA CURTIU</value>
+  </data>
+  <data name="ChatPhotoDeleteMaleFrm" xml:space="preserve">
+    <value>{0} removeu a foto de capa da conversa</value>
+  </data>
+  <data name="Login_SignUp_Line11" xml:space="preserve">
+    <value>criar uma conta</value>
+  </data>
+  <data name="Conversation_LoadingMessages" xml:space="preserve">
+    <value>Carregando mensagens</value>
+  </data>
+  <data name="ThemeChoiceSystemTheme" xml:space="preserve">
+    <value>das configurações do celular</value>
+  </data>
+  <data name="Settings_SyncContacts" xml:space="preserve">
+    <value>Contatos, notícias</value>
+  </data>
+  <data name="ViewContact_UserApplicationRejected" xml:space="preserve">
+    <value>Solicitação de amizade foi recusada.</value>
+  </data>
+  <data name="CopyLink" xml:space="preserve">
+    <value>copiar o link</value>
+  </data>
+  <data name="YouCanSelectNoMoreTwoFourFrm" xml:space="preserve">
+    <value>Você pode adicionar não mais que {0} membro a esta conversa.</value>
+  </data>
+  <data name="Pivot_Messages" xml:space="preserve">
+    <value>mensagens</value>
+  </data>
+  <data name="Notification_MentionInPhotoComment" xml:space="preserve">
+    <value>nos comentários à foto</value>
+  </data>
+  <data name="ChatEdit_AppBar_Cancel" xml:space="preserve">
+    <value>cancelar</value>
+  </data>
+  <data name="ChatEdit_AppBar_Change" xml:space="preserve">
+    <value>alterar</value>
+  </data>
+  <data name="GroupPage_Unfollow" xml:space="preserve">
+    <value>desinscrever-se</value>
+  </data>
+  <data name="OfDecember" xml:space="preserve">
+    <value>dezembro</value>
+  </data>
+  <data name="TurnOffNotifications" xml:space="preserve">
+    <value>desabilitar notificaçõesd</value>
+  </data>
+  <data name="OneDocFrm" xml:space="preserve">
+    <value>{0} documento</value>
+  </data>
+  <data name="Conversation_LastSeenXFiveMinutesAgoMaleFrm" xml:space="preserve">
+    <value>visto {0} minutos atrás</value>
+  </data>
+  <data name="LastOfFiveCommentsFrm" xml:space="preserve">
+    <value>Últimos de {0} comentários</value>
+  </data>
+  <data name="AndOneOtherFrm" xml:space="preserve">
+    <value>e mais {0} pessoa</value>
+  </data>
+  <data name="AppRestartNeeded" xml:space="preserve">
+    <value>É necessário reiniciar o aplicativo</value>
+  </data>
+  <data name="Notification_CommentPhotoMale" xml:space="preserve">
+    <value>comentou sua foto</value>
+  </data>
+  <data name="Conversation_LastSeenOnFemaleFrm" xml:space="preserve">
+    <value>vista {0} às {1}</value>
+  </data>
+  <data name="FriendRequest_Text" xml:space="preserve">
+    <value>SOLICITAÇÃO DE AMIZADE</value>
+  </data>
+  <data name="SuggestedNews_Title" xml:space="preserve">
+    <value>Notícias sugeridas</value>
+  </data>
+  <data name="GroupPage_YouAreAMember" xml:space="preserve">
+    <value>Você é membro do grupo</value>
+  </data>
+  <data name="ForwardedMessage_Text" xml:space="preserve">
+    <value>1 mensagem encaminhada</value>
+  </data>
+  <data name="Toast_AllowQuestion" xml:space="preserve">
+    <value>Você quer receber notificações sobre mensagens recebidas?</value>
+  </data>
+  <data name="ChatTitleUpdateFemaleFrm" xml:space="preserve">
+    <value>{0} alterou o nome da conversa para  "{1}"</value>
+  </data>
+  <data name="ProgressMessage_LoadingFriendRequests" xml:space="preserve">
+    <value />
+  </data>
+  <data name="GroupPage_Page" xml:space="preserve">
+    <value>página</value>
+  </data>
+  <data name="GroupPage_Info" xml:space="preserve">
+    <value>informação</value>
+  </data>
+  <data name="SignUp_Error_UserAlreadyInvited" xml:space="preserve">
+    <value>Este usuário já foi convidado.</value>
+  </data>
+  <data name="AudioPlayer_Next" xml:space="preserve">
+    <value>Próximo</value>
+  </data>
+  <data name="Conversations_OneDocument" xml:space="preserve">
+    <value>1 documento</value>
+  </data>
+  <data name="PostCommentsPage_AppBar_Unlike" xml:space="preserve">
+    <value>descurtir</value>
+  </data>
+  <data name="ThePhotoIsPublishedInCommunityFrm" xml:space="preserve">
+    <value>A foto está publicada na comunidade {0}</value>
+  </data>
+  <data name="Conversation_LastSeenX1MinutesAgoMaleFrm" xml:space="preserve">
+    <value>visto {0} minuto atrás</value>
+  </data>
+  <data name="OneAttachmentFrm" xml:space="preserve">
+    <value>{0} anexo</value>
+  </data>
+  <data name="General_ConnectionNotAvailable" xml:space="preserve">
+    <value>Rede não está disponível</value>
+  </data>
+  <data name="About_DesignedByMichael" xml:space="preserve">
+    <value>Desenhado por Mikhail Likhatchov</value>
+  </data>
+  <data name="ImageSaving_Progress" xml:space="preserve">
+    <value>Salvando a imagem</value>
+  </data>
+  <data name="AlbumSavedPictures" xml:space="preserve">
+    <value>Fotos salvas</value>
+  </data>
+  <data name="Notification_ReplyCommentOrTopic" xml:space="preserve">
+    <value>em resposta a seu comentário</value>
+  </data>
+  <data name="NewsFeedFriends" xml:space="preserve">
+    <value>amigos</value>
+  </data>
+  <data name="Conversation_LastSeenXFiveMinutesAgoFemaleFrm" xml:space="preserve">
+    <value>vista {0} minutos atrás</value>
+  </data>
+  <data name="Settings_Vibration" xml:space="preserve">
+    <value>Vibração</value>
+  </data>
+  <data name="PostCommentsPage_WriteNewComment" xml:space="preserve">
+    <value>escrever um comentário</value>
+  </data>
+  <data name="Conversation_UserIsTypingFrm" xml:space="preserve">
+    <value>{0} está digitando..</value>
+  </data>
+  <data name="OneRecentNewsFrm" xml:space="preserve">
+    <value>{0} última notícia</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Carregando...</value>
+  </data>
+  <data name="FriendsPage_Pivot_Lists" xml:space="preserve">
+    <value>listas</value>
+  </data>
+  <data name="Settings_AllowToast" xml:space="preserve">
+    <value>Notificar sobre mensagens</value>
+  </data>
+  <data name="ReportReasonAdult" xml:space="preserve">
+    <value>conteúdo adulto</value>
+  </data>
+  <data name="FivePagesFrm" xml:space="preserve">
+    <value>{0} páginas</value>
+  </data>
+  <data name="RemoveFromList" xml:space="preserve">
+    <value>remover da lista</value>
+  </data>
+  <data name="Conversations_TwoFourForwardedMessagesFrm" xml:space="preserve">
+    <value>{0} mensagens encaminhadas</value>
+  </data>
+  <data name="ViewContact_RemoveFriend" xml:space="preserve">
+    <value>remover dos amigos</value>
+  </data>
+  <data name="AttachmentType_Document" xml:space="preserve">
+    <value>documento</value>
+  </data>
+  <data name="Conversation_LastSeenYesterdayFemaleFrm" xml:space="preserve">
+    <value>vista ontem às {0}</value>
+  </data>
+  <data name="Profile_AddToFriends" xml:space="preserve">
+    <value>Adicionar aos amigos</value>
+  </data>
+  <data name="CHOOSEALBUM" xml:space="preserve">
+    <value>ESCOLHE UM ÁLBUM</value>
+  </data>
+  <data name="SignUp_Error_InvalidParam" xml:space="preserve">
+    <value>Algum dos valores fornecidos está incorreto.</value>
+  </data>
+  <data name="Login_SignUp_Title" xml:space="preserve">
+    <value>cadastrar-se</value>
+  </data>
+  <data name="NoRecentNews" xml:space="preserve">
+    <value>Não há notícias</value>
+  </data>
+  <data name="Access_FriendsOfFriends" xml:space="preserve">
+    <value>amigos e amigos de amigos</value>
+  </data>
+  <data name="TwoFourVideosFrm" xml:space="preserve">
+    <value>{0} vídeos</value>
+  </data>
+  <data name="GoToOriginal" xml:space="preserve">
+    <value>перейти к оригиналу</value>
+  </data>
+  <data name="Notification_LikePostMale" xml:space="preserve">
+    <value>curtiu seu recado</value>
+  </data>
+  <data name="PostCommentsPage_PreviousFiveCommentsFrm" xml:space="preserve">
+    <value>mostrar {0} comentários anteriores</value>
+  </data>
+  <data name="BannedUsers_UserIsInBlackList" xml:space="preserve">
+    <value>Este usuário está em sua lista negra. Para continuar, por favor o remova da lista.</value>
+  </data>
+  <data name="Login_SignUp_Line2" xml:space="preserve">
+    <value>mensagens instantâneas com amigos.</value>
+  </data>
+  <data name="Login_SignUp_Line1" xml:space="preserve">
+    <value>Cadastre-se no VK e mantenha contato com seus amigos, parentes e todos que você ama.</value>
+  </data>
+  <data name="SMS_Invite_Text" xml:space="preserve">
+    <value>Olá! Experimente o novo aplicativo VK Messenger, через него удобнее общаться. </value>
+  </data>
+  <data name="Yesterday" xml:space="preserve">
+    <value>ontem</value>
+  </data>
+  <data name="NoteworthyPages" xml:space="preserve">
+    <value>páginas interessantes</value>
+  </data>
+  <data name="ChatEdit_Title" xml:space="preserve">
+    <value>Título</value>
+  </data>
+  <data name="SignUp_Error_PhoneAlreadyRegistered" xml:space="preserve">
+    <value>Este número de telefone já está registrado.</value>
+  </data>
+  <data name="ChatPhotoUpdateMaleFrm" xml:space="preserve">
+    <value>{0} atualizou a foto de capa da conversa</value>
+  </data>
+  <data name="InTheAlbum" xml:space="preserve">
+    <value>no álbum</value>
+  </data>
+  <data name="Audio_Playlist" xml:space="preserve">
+    <value>Playlist</value>
+  </data>
+  <data name="Error_Connection" xml:space="preserve">
+    <value>Não foi possível conectar ao VK. \r\n \r\nVerifique se o "Modo Avião" está desativado, a rede móvel está disponível ou há Wi-Fi.</value>
+  </data>
+  <data name="FivePersonsFrm" xml:space="preserve">
+    <value>{0} pessoas</value>
+  </data>
+  <data name="AddEditVideo_Add" xml:space="preserve">
+    <value>NOVO VÍDEO</value>
+  </data>
+  <data name="PostCommentPage_TwoFourCommentsFrm" xml:space="preserve">
+    <value>{0} comentários</value>
+  </data>
+  <data name="Settings_NotifyMentions" xml:space="preserve">
+    <value>Notificar sobre menções</value>
+  </data>
+  <data name="SearchGroup_Contacts" xml:space="preserve">
+    <value>Contatos</value>
+  </data>
+  <data name="Subscriptions" xml:space="preserve">
+    <value>inscrições</value>
+  </data>
+  <data name="Conversation_AppBar_Refresh" xml:space="preserve">
+    <value>atualizar</value>
+  </data>
+  <data name="CommentItem_RepliedToMaleFrm" xml:space="preserve">
+    <value>{0} respondeu a {1}</value>
+  </data>
+  <data name="Settings_Contacts" xml:space="preserve">
+    <value>integração com celular</value>
+  </data>
+  <data name="TwoFourLinksFrm" xml:space="preserve">
+    <value>{0} links</value>
+  </data>
+  <data name="OneViewFrm" xml:space="preserve">
+    <value>{0} visualização</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>descrição</value>
+  </data>
+  <data name="NewTopicTextLbl" xml:space="preserve">
+    <value>Texto</value>
+  </data>
+  <data name="MainPage_News_AddNews" xml:space="preserve">
+    <value>adicionar uma notícia</value>
+  </data>
+  <data name="Conversation_IsTyping" xml:space="preserve">
+    <value>está digitando...</value>
+  </data>
+  <data name="PinToStart" xml:space="preserve">
+    <value>на рабочий стол</value>
+  </data>
+  <data name="Contacts_InviteAFriend" xml:space="preserve">
+    <value>Convidar um amigo</value>
+  </data>
+  <data name="AddEditVideo_WhoCanView" xml:space="preserve">
+    <value>Quem pode ver este vídeo?</value>
+  </data>
+  <data name="ChatInviteMaleFrm" xml:space="preserve">
+    <value>{0} convidou {1} </value>
+  </data>
+  <data name="Settings_NotifyReplies" xml:space="preserve">
+    <value>Notificar sobre respostas</value>
+  </data>
+  <data name="AlbumScreenshots" xml:space="preserve">
+    <value>Screenshots</value>
+  </data>
+  <data name="UsersSearch_Friends" xml:space="preserve">
+    <value>Amigos</value>
+  </data>
+  <data name="PostCommentsPage_NoComments" xml:space="preserve">
+    <value>Ainda não há comentários</value>
+  </data>
+  <data name="Notification_MentionInVideoComment" xml:space="preserve">
+    <value>nos comentários ao vídeo</value>
+  </data>
+  <data name="OneLinkFrm" xml:space="preserve">
+    <value>{0} link</value>
+  </data>
+  <data name="Profile_KeepAsFollower" xml:space="preserve">
+    <value>deixar como seguidor</value>
+  </data>
+  <data name="UsersSearch_GlobalSearch" xml:space="preserve">
+    <value>Busca</value>
+  </data>
+  <data name="AccessToLocation" xml:space="preserve">
+    <value>Acesso à localidade</value>
+  </data>
+  <data name="MainPage_Conversations" xml:space="preserve">
+    <value>mensagens</value>
+  </data>
+  <data name="ChatEdit_AppBar_Leave" xml:space="preserve">
+    <value>deixar a conversa</value>
+  </data>
+  <data name="SignUp_PhoneNr" xml:space="preserve">
+    <value>Seu número de telefone</value>
+  </data>
+  <data name="NoMoreThan30MayTakePartInConversation" xml:space="preserve">
+    <value>Infelizmente, não mais que 30 pessoas podem participar da conversa.</value>
+  </data>
+  <data name="AttachFivePhotosFrm" xml:space="preserve">
+    <value>anexar {0} fotos</value>
+  </data>
+  <data name="themes" xml:space="preserve">
+    <value>tópicos</value>
+  </data>
+  <data name="Bookmarks_UserIsAdded" xml:space="preserve">
+    <value>Usuário foi adicionado aos favoritos</value>
+  </data>
+  <data name="Settings_ScreenTips" xml:space="preserve">
+    <value>Notificações (banner)</value>
+  </data>
+  <data name="Conversations_FiveOrMoreVideosFrm" xml:space="preserve">
+    <value>{0} vídeos</value>
+  </data>
+  <data name="PostCommentsPage_AppBar_Send" xml:space="preserve">
+    <value>enviar</value>
+  </data>
+  <data name="PostCommentsPage_AppBar_Like" xml:space="preserve">
+    <value>curtir</value>
+  </data>
+  <data name="RemoveChatPhoto" xml:space="preserve">
+    <value>Remover a foto de capa da conversa</value>
+  </data>
+  <data name="FollowersPage_OwnFollowersTitle" xml:space="preserve">
+    <value>SEGUIDORES</value>
+  </data>
+  <data name="FriendsPage_AppBar_Search" xml:space="preserve">
+    <value>buscar</value>
+  </data>
+  <data name="OfJanuary" xml:space="preserve">
+    <value>janeiro</value>
+  </data>
+  <data name="SettingsWiFi" xml:space="preserve">
+    <value>Wi-Fi</value>
+  </data>
+  <data name="NewTopicTitleLbl" xml:space="preserve">
+    <value>Título</value>
+  </data>
+  <data name="ChooseRecipient" xml:space="preserve">
+    <value>ESCOLHE </value>
+  </data>
+  <data name="Login_Id" xml:space="preserve">
+    <value>Número de telefone ou e-mail</value>
+  </data>
+  <data name="PrivateGroup" xml:space="preserve">
+    <value>grupo privado</value>
+  </data>
+  <data name="NewsPage_WhatsNew" xml:space="preserve">
+    <value>O que há de novo?</value>
+  </data>
+  <data name="General_NoLikes" xml:space="preserve">
+    <value>Ninguém curtiu isso até agora</value>
+  </data>
+  <data name="TheVideoIsPublishedInCommunityFrm" xml:space="preserve">
+    <value>O vídeo está publicado na comunidade {0}</value>
+  </data>
+  <data name="OnePersonFrm" xml:space="preserve">
+    <value>{0} pessoa</value>
+  </data>
+  <data name="Conversation_LastSeenX1MinutesAgoFemaleFrm" xml:space="preserve">
+    <value>vista {0} minuto atrás</value>
+  </data>
+  <data name="ProgressMessage_LoadingUsers" xml:space="preserve">
+    <value>carregando usuários</value>
+  </data>
+  <data name="Comments_ReplyToFrm" xml:space="preserve">
+    <value>Responder a {0}:</value>
+  </data>
+  <data name="Profile_YouAreFriends" xml:space="preserve">
+    <value>na sua lista de amigos</value>
+  </data>
+  <data name="HiddenSources" xml:space="preserve">
+    <value>FONTES OCULTAS</value>
+  </data>
+  <data name="Notification_LikePostFemale" xml:space="preserve">
+    <value>curtiu seu recado</value>
+  </data>
+  <data name="Conversation_DeleteDialog" xml:space="preserve">
+    <value>Remover o diálogo</value>
+  </data>
+  <data name="DeletePhoto" xml:space="preserve">
+    <value>remover a foto</value>
+  </data>
+  <data name="Photo_WasTaggedFemale" xml:space="preserve">
+    <value>foi marcada</value>
+  </data>
+  <data name="OneFriendListFrm" xml:space="preserve">
+    <value>{0} lista de amigos</value>
+  </data>
+  <data name="Messages_Title" xml:space="preserve">
+    <value>MENSAGENS</value>
+  </data>
+  <data name="ChatPhotoIsUpdated" xml:space="preserve">
+    <value>A foto de capa da conversa foi atualizada</value>
+  </data>
+  <data name="EventDecline" xml:space="preserve">
+    <value>não poderei vir</value>
+  </data>
+  <data name="Settings_Disabled" xml:space="preserve">
+    <value>Отключен</value>
+  </data>
+  <data name="Notification_CommentPost" xml:space="preserve">
+    <value>ao seu recado</value>
+  </data>
+  <data name="GroupsListPage_All" xml:space="preserve">
+    <value>todos</value>
+  </data>
+  <data name="Poll_OneVoteFrm" xml:space="preserve">
+    <value>{0} voto</value>
+  </data>
+  <data name="YouCanSelectNoMoreOneFrm" xml:space="preserve">
+    <value>Você pode adicionar não mais que {0} membro a esta conversa.</value>
+  </data>
+  <data name="GroupsListPage_Events" xml:space="preserve">
+    <value>eventos</value>
+  </data>
+  <data name="Notification_LikePhotoMale" xml:space="preserve">
+    <value>curtiu sua foto</value>
+  </data>
+  <data name="ShowOnMap" xml:space="preserve">
+    <value>mostrar no mapa</value>
+  </data>
+  <data name="Access_AllUsers" xml:space="preserve">
+    <value>todos usuários</value>
+  </data>
+  <data name="NewPost_AppBar_AddPhoto" xml:space="preserve">
+    <value>adicionar uma foto</value>
+  </data>
+  <data name="SignUp_Error_Connectivity" xml:space="preserve">
+    <value>Erro ao conectar. Por favor verifique os dados da conexão e tente mais uma vez.</value>
+  </data>
+  <data name="Login_Error_InvalidCredential" xml:space="preserve">
+    <value>Falha no acesso. Por favor, verifique que o login e a senha estão corretos.</value>
+  </data>
+  <data name="OneVideoFrm" xml:space="preserve">
+    <value>{0} vídeo</value>
+  </data>
+  <data name="OneEventFrm" xml:space="preserve">
+    <value>{0} evento</value>
+  </data>
+  <data name="FiveFriendsListsFrm" xml:space="preserve">
+    <value>{0} listas de amigos</value>
+  </data>
+  <data name="ChatKickoutFemaleFrm" xml:space="preserve">
+    <value>{0} excluiu {1} </value>
+  </data>
+  <data name="PhotoPage_FriendsFeedTitle" xml:space="preserve">
+    <value>amigos</value>
+  </data>
+  <data name="Unhandeled_BodyInfo" xml:space="preserve">
+    <value>Ocorreu um erro desconhecido quando o aplicativo estava ligado. Deseja enviar um relatório de erros aos desenvolvedores?</value>
+  </data>
+  <data name="Settings_Error_FotoChange" xml:space="preserve">
+    <value>Ocorreu um erro desconhecido ao alterar a foto do perfil. Por favor tente mais uma vez.</value>
+  </data>
+  <data name="ChatCreateFemaleFrm" xml:space="preserve">
+    <value>{0} criou "{1}" </value>
+  </data>
+  <data name="SignUp_ProgressMessage" xml:space="preserve">
+    <value>Criando uma nova conta...</value>
+  </data>
+  <data name="Conversation_LastSeenXTwoFourMinutesAgoMaleFrm" xml:space="preserve">
+    <value>visto {0} minutos atrás</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>alterar</value>
+  </data>
+  <data name="Gift" xml:space="preserve">
+    <value>Presente</value>
+  </data>
+  <data name="NEWS" xml:space="preserve">
+    <value>NOTÍCIAS</value>
+  </data>
+  <data name="Note" xml:space="preserve">
+    <value>Anotação</value>
+  </data>
+  <data name="Link" xml:space="preserve">
+    <value>Link</value>
+  </data>
+  <data name="Poll" xml:space="preserve">
+    <value>Enquete</value>
+  </data>
+  <data name="SuggestedNews_Reject" xml:space="preserve">
+    <value>rejeitar</value>
+  </data>
+  <data name="Notification_CopyVideoMale" xml:space="preserve">
+    <value>compartilhou seu vídeo</value>
+  </data>
+  <data name="AddEditVideo_PostToMyWall" xml:space="preserve">
+    <value>Publicar em minha página</value>
+  </data>
+  <data name="SignUp_Error_InvalidConfirmationCode" xml:space="preserve">
+    <value>Código de confirmação inválido. Por favor tente novamente.</value>
+  </data>
+  <data name="ProgressMessage_LoadingRequests" xml:space="preserve">
+    <value>Carregando as solicitações de amizade</value>
+  </data>
+  <data name="Conversation_Sticker" xml:space="preserve">
+    <value>Adesivo</value>
+  </data>
+  <data name="Access_FriendsOnly" xml:space="preserve">
+    <value>amigos</value>
+  </data>
+  <data name="AddEditVideo_Description" xml:space="preserve">
+    <value>Descrição</value>
+  </data>
+  <data name="NewPost_FromGroup" xml:space="preserve">
+    <value>Em nome do grupo</value>
+  </data>
+  <data name="Settings_Enabled" xml:space="preserve">
+    <value>Включен</value>
+  </data>
+  <data name="AddEditVideo_Title" xml:space="preserve">
+    <value>Título</value>
+  </data>
+  <data name="FriendRequestsPage_Title" xml:space="preserve">
+    <value>SOLICITAÇÕES DE AMIZADE</value>
+  </data>
+  <data name="comments_pivotItem" xml:space="preserve">
+    <value>comentários</value>
+  </data>
+</root>

@@ -1,0 +1,44 @@
+﻿<UserControl
+    x:Class="VKClient.Common.UC.FriendRequestsUC"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:framework="clr-namespace:VKClient.Common.Framework"
+    mc:Ignorable="d">
+
+    <Grid Margin="0,16,0,10">
+        <Rectangle Fill="{StaticResource PhoneNewsDividerBrush}" 
+                   VerticalAlignment="Top"
+                   Margin="0,-16,0,0"
+                   Height="16"/>
+        
+        <TextBlock Name="TitleBlock"
+                   Foreground="{StaticResource PhoneProfileInfoLoadingForegroundBrush}"
+                   FontFamily="Segoe WP Semibold"
+                   Margin="16,17,0,0"
+                   FontSize="20"/>
+
+        <Border Name="ShowAllBlock"
+                Background="Transparent"
+                Tap="ShowAllBlock_OnTapped"
+                framework:MetroInMotion.Tilt="2.5"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top">
+            <TextBlock Text="{Binding Source={StaticResource LocalizedStrings}, Path=LocalizedResources.Communities_ShowAll}"
+                       Foreground="{StaticResource PhoneButtonTextForegroundBrush}"
+                       Margin="16,17,16,20"
+                       FontSize="20"/>
+        </Border>
+
+        <ContentControl Name="RequestView"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Margin="0,72,0,0"/>
+
+        <Rectangle Fill="{StaticResource PhoneNewsDividerBrush}" 
+                   VerticalAlignment="Bottom"
+                   Height="16"/>
+    </Grid>
+
+</UserControl>

@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="VKClient.Photos.UC.EditPhotoTextUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:localization="clr-namespace:VKClient.Common.Localization;assembly=VKClient.Common"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             d:DesignHeight="480"
+             d:DesignWidth="480"
+             VerticalAlignment="Top">
+
+    <UserControl.Resources>
+        <localization:CommonLocalizedStrings x:Key="LocStr" />
+    </UserControl.Resources>
+
+    <Grid x:Name="LayoutRoot"
+          
+          Background="{StaticResource PhoneMenuBackgroundBrush}">
+        <StackPanel>
+            <TextBlock Text="{Binding Path=LocalizedResources.EnterTheText, 
+                                               Source={StaticResource LocStr}}"
+                      
+                       FontSize="32"
+                          Foreground="{StaticResource PhoneMenuForegroundBrush}"
+                       Margin="20,40,0,0" />
+
+
+
+            <TextBlock Text="{Binding Path=LocalizedResources.EditCommentUC_Text, 
+                                               Source={StaticResource LocStr}}"
+                       Margin="22,26, 0, 0" Opacity="0"/>
+            <TextBox 
+                     MaxLength="150"
+                     InputScope="Text"
+                     Name="textBoxText"
+                     Margin="12,-6,12,0"
+                     />
+
+
+            <Button Name="buttonSave"
+                    Content="{Binding Path=LocalizedResources.EditCommentUC_Save, 
+                                               Source={StaticResource LocStr}}"
+                    Margin="12,24"
+                    Width="265"
+                    Style="{StaticResource VKButtonPrimaryStyle}"
+                    HorizontalAlignment="Left" />
+        </StackPanel>
+
+        <!--<Image Source="Messages_CreateChat.png" Opacity="0.5" />-->
+    </Grid>
+</UserControl>

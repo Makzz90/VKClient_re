@@ -1,0 +1,74 @@
+﻿<framework:PageBase
+    x:Class="VKClient.Audio.AddEditAudioPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:uc="clr-namespace:VKClient.Common.UC;assembly=VKClient.Common"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:framework="clr-namespace:VKClient.Common.Framework;assembly=VKClient.Common"
+    xmlns:emoji="clr-namespace:VKClient.Common.Emoji;assembly=VKClient.Common"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    shell:SystemTray.IsVisible="True"
+    mc:Ignorable="d"
+    
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}">
+
+    <Grid>        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <uc:GenericHeaderUC HideSandwitchButton="True"
+                            Title="{Binding PageTitle}"/>
+        <ProgressBar Value="{Binding Progress}" 
+                     Visibility="{Binding ProgressVisibility}" 
+                     VerticalAlignment="Top"
+                     Foreground="White"
+                     Background="Transparent"
+                     Margin="-12,0,-12,0"/>
+
+        <ScrollViewer Grid.Row="1"
+                      Name="Viewer">
+            <StackPanel Margin="0,0,0,84"
+                        Name="ViewerContent">
+                
+                <TextBlock Text="{Binding Path=LocalizedResources.Artist, Source={StaticResource LocalizedStrings}}"
+                           Foreground="{StaticResource PhoneCaptionGrayBrush}"
+                           Margin="16,24,0,0"/>
+                <TextBox Height="76"
+                         InputScope="Text"
+                         Margin="4,-4,4,0"
+                         KeyDown="TextBox_OnKeyDown"
+                         Text="{Binding Artist, Mode=TwoWay, UpdateSourceTrigger=Explicit}"
+                         TextChanged="TextBox_OnTextChanged"
+                         IsHitTestVisible="{Binding IsFormEnabled}"
+                         GotFocus="TextBox_OnGotFocus"
+                         LostFocus="TextBox_OnLostFocus"/>
+
+                <TextBlock Text="{Binding Path=LocalizedResources.AddEditVideo_Title, Source={StaticResource LocalizedStrings}}"
+                           Foreground="{StaticResource PhoneCaptionGrayBrush}"
+                           Margin="16,13,0,0"/>
+                <TextBox Height="76"
+                         InputScope="Text"
+                         Margin="4,-4,4,0"
+                         KeyDown="TextBox_OnKeyDown"
+                         Text="{Binding Title, Mode=TwoWay, UpdateSourceTrigger=Explicit}"
+                         TextChanged="TextBox_OnTextChanged"
+                         IsHitTestVisible="{Binding IsFormEnabled}"
+                         GotFocus="TextBox_OnGotFocus"
+                         LostFocus="TextBox_OnLostFocus"/>
+
+            </StackPanel>
+        </ScrollViewer>
+
+        <emoji:TextBoxPanelControl x:Name="TextBoxPanel"
+                                   Grid.Row="2"/>
+        
+    </Grid>
+
+</framework:PageBase>

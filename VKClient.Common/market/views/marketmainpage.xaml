@@ -1,0 +1,60 @@
+﻿<framework:PageBase x:Class="VKClient.Common.Market.Views.MarketMainPage"
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:framework="clr-namespace:VKClient.Common.Framework"
+                    xmlns:uc="clr-namespace:VKClient.Common.UC"
+                    xmlns:viewModels="clr-namespace:VKClient.Common.Market.ViewModels"
+                    xmlns:views="clr-namespace:VKClient.Common.Market.Views"
+                    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                    FontSize="{StaticResource PhoneFontSizeNormal}"
+                    Foreground="{StaticResource PhoneForegroundBrush}"
+                    SupportedOrientations="Portrait"
+                    Orientation="Portrait"
+                    mc:Ignorable="d"
+                    shell:SystemTray.IsVisible="True">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <uc:GenericHeaderUC x:Name="ucHeader" />
+        <uc:PullToRefreshUC x:Name="ucPullToRefresh" />
+
+        <framework:ExtendedLongListSelector x:Name="listBoxFeed"
+                                            Grid.Row="1"
+                                            DataContext="{Binding FeedVM}"
+                                            ItemsSource="{Binding Collection}"
+                                            Link="ListBoxFeed_OnLink"
+                                            ListFooter="{Binding}"
+                                            ListFooterTemplate="{StaticResource FooterTemplate}">
+            <framework:ExtendedLongListSelector.ItemTemplate>
+                <DataTemplate>
+                    <viewModels:MarketFeedItemTemplateSelector Content="{Binding}">
+                        <viewModels:MarketFeedItemTemplateSelector.AlbumsTemplate>
+                            <DataTemplate>
+                                <views:MarketFeedAlbumsItemUC Collections="{Binding Data}" />
+                            </DataTemplate>
+                        </viewModels:MarketFeedItemTemplateSelector.AlbumsTemplate>
+                        <viewModels:MarketFeedItemTemplateSelector.ProductsHeaderTemplate>
+                            <DataTemplate>
+                                <uc:GroupHeaderUC Title="{Binding LocalizedResources.Market_Products, Source={StaticResource LocalizedStrings}}"
+                                                  Counter="{Binding Data}" />
+                            </DataTemplate>
+                        </viewModels:MarketFeedItemTemplateSelector.ProductsHeaderTemplate>
+                        <viewModels:MarketFeedItemTemplateSelector.ProductTemplate>
+                            <DataTemplate>
+                                <views:ProductsTwoInARowUC DataContext="{Binding Data}" />
+                            </DataTemplate>
+                        </viewModels:MarketFeedItemTemplateSelector.ProductTemplate>
+                    </viewModels:MarketFeedItemTemplateSelector>
+                </DataTemplate>
+            </framework:ExtendedLongListSelector.ItemTemplate>
+        </framework:ExtendedLongListSelector>
+    </Grid>
+
+</framework:PageBase>

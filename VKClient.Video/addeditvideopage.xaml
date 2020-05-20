@@ -1,0 +1,117 @@
+﻿<framework:PageBase
+    x:Class="VKClient.Video.AddEditVideoPage"
+     xmlns:framework="clr-namespace:VKClient.Common.Framework;assembly=VKClient.Common"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+        xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+         xmlns:localization="clr-namespace:VKClient.Common.Localization;assembly=VKClient.Common"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:uc="clr-namespace:VKClient.Common.UC;assembly=VKClient.Common"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+     shell:SystemTray.IsVisible="True" shell:SystemTray.Opacity="0">
+
+    <framework:PageBase.Resources>
+        <localization:CommonLocalizedStrings x:Key="LocStr" />
+
+        <DataTemplate x:Key="AccessTypes">
+            <StackPanel Orientation="Horizontal"
+                        Margin="0 21 0 20">
+                <TextBlock Text="{Binding Name}"
+                           Margin="0 0 0 0"
+                           FontSize="43"
+                           FontFamily="{StaticResource PhoneFontFamilyLight}" />
+            </StackPanel>
+        </DataTemplate>
+    </framework:PageBase.Resources>
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <uc:GenericHeaderUC x:Name="ucHeader" />
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="4 0  4 0"  IsHitTestVisible="{Binding CanEdit}">
+
+            <ScrollViewer>
+                <StackPanel>
+
+                    <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12 16 0 0" Height="150"
+                           Width="225" >
+
+                        <Image x:Name="PreviewImage"  
+                           Stretch="UniformToFill" HorizontalAlignment="Left"
+                          framework:ImageLoader.UriSource="{Binding LocalThumbPath}"
+                           VerticalAlignment="Top"
+                           />
+
+                        <ProgressBar x:Name="ProgressUpload" Value="{Binding Progress}" Visibility="{Binding IsUploadingVisibility}"  VerticalAlignment="Bottom"  Margin="-12 0 -12 0"/>
+                    </Grid>
+                    <Grid Margin=" -12 -90 -12 0">
+
+                        <StackPanel>
+                            <TextBlock Text="{Binding Path=LocalizedResources.AddEditVideo_Title,
+            Source={StaticResource LocStr}, FallbackValue=Название}"
+                   Margin="22,109, 22, 0" />
+
+
+                            <TextBox Text="{Binding Path=Name, Mode=TwoWay}"
+                 Height="72"
+                  Name="textBoxName"
+                                     TextChanged="textBoxName_TextChanged"
+                 InputScope="Text"
+                 VerticalAlignment="Top"
+                 Margin="12,-6, 12, 0" />
+
+                            <TextBlock Text="{Binding Path=LocalizedResources.AddEditVideo_Description,
+            Source={StaticResource LocStr}, FallbackValue=Описание}"
+                   Margin="22,6, 22, 0"
+                   VerticalAlignment="Top"
+                   />
+
+                            <TextBox Text="{Binding Path=Description, Mode=TwoWay}"
+                 VerticalAlignment="Top"
+                 TextWrapping="Wrap"
+                 InputScope="Text"
+                 AcceptsReturn="True"
+                     Name="textBoxDescription"
+                 Margin="12,-7, 12,0"
+                 Height="126"
+                  />
+
+
+                            <Grid  Visibility="{Binding IsUserVideo}">
+                                <uc:PrivacyHeaderUC 
+                 Margin="24,6, 24, 0" 
+                               
+                x:Name="ucPrivacyHeaderView"
+                DataContext="{Binding ViewVideoPrivacyVM}"/>
+                            </Grid>
+
+                            <Grid Visibility="{Binding IsUserVideo}">
+                                <uc:PrivacyHeaderUC 
+                                  Margin="24,12, 24, 0"
+                                  
+                x:Name="ucPrivacyHeaderComment"
+                DataContext="{Binding CommentVideoPrivacyVM}"/>
+                            </Grid>
+                        </StackPanel>
+
+                    </Grid>
+                </StackPanel>
+
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+
+</framework:PageBase>

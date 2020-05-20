@@ -1,0 +1,121 @@
+﻿<UserControl x:Class="VKClient.Common.UC.AttachmentPickerUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:framework="clr-namespace:VKClient.Common.Framework"
+             mc:Ignorable="d"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             VerticalAlignment="Bottom">
+
+    <Grid Background="{StaticResource PhoneAttachmentPickerBackgroundBrush}">
+        <ScrollViewer x:Name="scrollViewer"
+                      VerticalScrollBarVisibility="Disabled">
+            <StackPanel Margin="0,6,0,0">
+                <Border VerticalAlignment="Top"
+                        HorizontalAlignment="Left">
+
+                    <framework:ExtendedLongListSelector x:Name="listBoxPhotos"
+                                                        Margin="184,-184,0,-184"
+                                                        Link="ExtendedLongListSelector_Link"
+                                                        ItemsSource="{Binding PhotosVM.AlbumPhotos}"
+                                                        Height="480"
+                                                        Width="128">
+                        <framework:ExtendedLongListSelector.Projection>
+                            <PlaneProjection RotationZ="90" />
+                        </framework:ExtendedLongListSelector.Projection>
+                        <framework:ExtendedLongListSelector.ListHeader>
+                            <StackPanel Width="128"
+                                        Margin="0,6,0,4">
+
+                                <Grid Background="Transparent"
+                                      Tap="Camera_tap"
+                                      Height="128"
+                                      Width="128">
+                                    <Grid.Projection>
+                                        <PlaneProjection RotationZ="-90" />
+                                    </Grid.Projection>
+                                    <Image framework:MultiResImageLoader.UriSource="/Resources/AttachmentPicker/Camera.png"
+                                           Height="128"
+                                           Width="128" />
+                                </Grid>
+
+                            </StackPanel>
+                        </framework:ExtendedLongListSelector.ListHeader>
+                        <framework:ExtendedLongListSelector.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Width="128"
+                                      Height="128"
+                                      Margin="0,3">
+                                    <Grid.Projection>
+                                        <PlaneProjection RotationZ="-90" />
+                                    </Grid.Projection>
+
+                                    <Image Tag="1"
+                                           framework:ImageLoader.StreamSource="{Binding ThumbnailStream}"
+                                           Stretch="UniformToFill"
+                                           Tap="Image_Tap_1" />
+
+                                    <Image Width="56"
+                                           Height="56"
+                                           IsHitTestVisible="False"
+                                           Margin="0"
+                                           Tag="1"
+                                           VerticalAlignment="Top"
+                                           HorizontalAlignment="Right"
+                                           framework:MultiResImageLoader.UriSource="{Binding SelectionStateIconUri}" />
+
+                                </Grid>
+                            </DataTemplate>
+                        </framework:ExtendedLongListSelector.ItemTemplate>
+                        <framework:ExtendedLongListSelector.ListFooter>
+                            <Rectangle Margin="0,3,0,0" />
+                        </framework:ExtendedLongListSelector.ListFooter>
+                    </framework:ExtendedLongListSelector>
+                </Border>
+
+                <ItemsControl ItemsSource="{Binding AttachmentTypes}"
+                              Margin="0,16,0,16">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Background="Transparent"
+                                        framework:MetroInMotion.Tilt="2.1"
+                                        Tap="Item_OnClicked"
+                                        Orientation="Horizontal"
+                                        Height="64">
+                                <Border Width="32"
+                                        Height="32"
+                                        Margin="16,0,0,0"
+                                        HorizontalAlignment="Left"
+                                        Background="{Binding IconBackground}">
+                                    <Border.OpacityMask>
+                                        <ImageBrush framework:ImageLoader.ImageBrushMultiResSource="{Binding Icon}" />
+                                    </Border.OpacityMask>
+                                </Border>
+                                <TextBlock Text="{Binding Title}"
+                                           Margin="24,13,0,0"
+                                           FontSize="25.333"
+                                           Foreground="{Binding TitleForeground}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
+            </StackPanel>
+        </ScrollViewer>
+
+        <Border x:Name="borderLoading"
+                Visibility="Collapsed">
+            <Border.Background>
+                <SolidColorBrush Color="{StaticResource PhoneBackgroundColor}"
+                                 Opacity="0.3" />
+            </Border.Background>
+
+            <ProgressBar Background="Transparent"
+                         IsIndeterminate="True"
+                         Foreground="{StaticResource PhoneBlue300_GrayBlue100Brush}" />
+        </Border>
+    </Grid>
+</UserControl>

@@ -1,0 +1,112 @@
+﻿<UserControl x:Class="VKClient.Common.Profiles.Shared.Views.FullInfoUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:uc="clr-namespace:VKClient.Common.UC"
+             xmlns:framework="clr-namespace:VKClient.Common.Framework"
+             xmlns:viewModels="clr-namespace:VKClient.Common.Profiles.Shared.ViewModels"
+             mc:Ignorable="d"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             d:DesignHeight="480"
+             d:DesignWidth="480">
+
+    <Grid Background="{StaticResource PhoneBackgroundBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <uc:GenericHeaderUC x:Name="ucHeader"
+                            Title="{Binding Name}" />
+
+        <ScrollViewer x:Name="scrollViewer"
+                      Grid.Row="1">
+            <ItemsControl ItemsSource="{Binding InfoSections}"
+                          Margin="16 26 16 0">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Margin="0 0 0 23"
+                                       Visibility="{Binding TitleVisibility}"
+                                       FontFamily="Segoe WP Semibold"
+                                       Foreground="{StaticResource PhoneVKSubtleBrush}"
+                                       Text="{Binding Title}" />
+                            <ItemsControl ItemsSource="{Binding Items}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border Background="Transparent"
+                                                Margin="0 0 0 26"
+                                                framework:MetroInMotion.Tilt="{Binding Tilt}"
+                                                Tap="InfoItem_OnTap"
+                                                Hold="InfoItem_OnHold">
+                                            <viewModels:ProfileInfoTemplateSelector Content="{Binding}">
+                                                <viewModels:ProfileInfoTemplateSelector.RichTextTemplate>
+                                                    <DataTemplate>
+                                                        <StackPanel>
+                                                            <TextBlock Text="{Binding Title}"
+                                                                       FontSize="25.33" />
+                                                            <framework:ScrollableTextBlock Text="{Binding Data}"
+                                                                                           Foreground="{StaticResource PhoneVKSubtleBrush}"
+                                                                                           Margin="0 -3 0 0" />
+                                                        </StackPanel>
+                                                    </DataTemplate>
+                                                </viewModels:ProfileInfoTemplateSelector.RichTextTemplate>
+                                                <viewModels:ProfileInfoTemplateSelector.PlainTextTemplate>
+                                                    <DataTemplate>
+                                                        <StackPanel>
+                                                            <TextBlock Text="{Binding Title}"
+                                                                       FontSize="25.33" />
+                                                            <TextBlock Text="{Binding Data}"
+                                                                       Foreground="{StaticResource PhoneVKSubtleBrush}"
+                                                                       Margin="0 -3 0 0" />
+                                                        </StackPanel>
+                                                    </DataTemplate>
+                                                </viewModels:ProfileInfoTemplateSelector.PlainTextTemplate>
+                                                <viewModels:ProfileInfoTemplateSelector.FullItemTemplate>
+                                                    <DataTemplate>
+                                                        <StackPanel>
+                                                            <TextBlock Text="{Binding Title}"
+                                                                       HorizontalAlignment="Left"
+                                                                       MaxWidth="{Binding TitleMaxWidth}"
+                                                                       FontSize="25.33" />
+                                                            <uc:CareerItemInfoUC Description="{Binding Data}"
+                                                                                 GroupImage="{Binding GroupImage}" />
+                                                        </StackPanel>
+                                                    </DataTemplate>
+                                                </viewModels:ProfileInfoTemplateSelector.FullItemTemplate>
+                                                <viewModels:ProfileInfoTemplateSelector.ContactTemplate>
+                                                    <DataTemplate>
+                                                        <StackPanel Orientation="Horizontal"
+                                                                    VerticalAlignment="Top">
+                                                            <Border Width="32"
+                                                                    Height="32"
+                                                                    Background="{StaticResource PhoneSettingsIconBrush}">
+                                                                <Border.OpacityMask>
+                                                                    <ImageBrush framework:ImageLoader.ImageBrushMultiResSource="{Binding Icon}" />
+                                                                </Border.OpacityMask>
+                                                            </Border>
+                                                            <TextBlock Text="{Binding Data}"
+                                                                       Foreground="{StaticResource PhoneAlmostBlackBrush}"
+                                                                       Margin="8 1 0 0" />
+                                                        </StackPanel>
+                                                    </DataTemplate>
+                                                </viewModels:ProfileInfoTemplateSelector.ContactTemplate>
+                                            </viewModels:ProfileInfoTemplateSelector>
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                            <Grid Background="{StaticResource PhoneGreyDividerBrush}"
+                                  Visibility="{Binding DividerVisibility}"
+                                  Height="2"
+                                  Margin="-16 0 -16 21" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

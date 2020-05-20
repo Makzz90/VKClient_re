@@ -1,0 +1,84 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VKClient", "VKClient.csproj", "{1C4BD564-5426-417B-A5A0-E141ABE6F858}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AudioPlaybackAgent", "..\AudioPlaybackAgent\AudioPlaybackAgent.csproj", "{CF72C193-7244-48EB-B56B-BA924CAADC9C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VKClient.Audio", "..\VKClient.Audio\VKClient.Audio.csproj", "{72C5DEE2-1DCF-467D-8525-27C8DA1F57CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VKClient.Audio.Base", "..\VKClient.Audio.Base\VKClient.Audio.Base.csproj", "{3F61632E-1F7A-42C4-BF38-AE07D3E9F383}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VKClient.Common", "..\VKClient.Common\VKClient.Common.csproj", "{E174760F-E91E-4BDC-BD36-4F9D54607104}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VKClient.Groups", "..\VKClient.Groups\VKClient.Groups.csproj", "{1DE8BF72-1732-4303-AC92-9AF84CD79334}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VKClient.Photos", "..\VKClient.Photos\VKClient.Photos.csproj", "{904EF96F-E4DB-4861-98B2-B94971740008}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VKClient.ScheduledUpdater", "..\VKClient.ScheduledUpdater\VKClient.ScheduledUpdater.csproj", "{87A8FEA6-5070-4972-B398-6CCE57753734}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VKClient.Video", "..\VKClient.Video\VKClient.Video.csproj", "{1C568A90-FE73-4F56-B910-5ECFC4268088}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VKMessenger", "..\VKMessenger\VKMessenger.csproj", "{85BDC29E-2E29-41E0-BAC5-6FF314644627}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XamlAnimatedGif.WP_SL", "..\XamlAnimatedGif.WP_SL\XamlAnimatedGif.WP_SL.csproj", "{13B99D87-AB88-4575-A6D7-63428C2E9460}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|ARM = Debug|ARM
+		Release|ARM = Release|ARM
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1C4BD564-5426-417B-A5A0-E141ABE6F858}.Debug|ARM.ActiveCfg = Debug|ARM
+		{1C4BD564-5426-417B-A5A0-E141ABE6F858}.Debug|ARM.Build.0 = Debug|ARM
+		{1C4BD564-5426-417B-A5A0-E141ABE6F858}.Debug|ARM.Deploy.0 = Debug|ARM
+		{1C4BD564-5426-417B-A5A0-E141ABE6F858}.Release|ARM.ActiveCfg = Release|ARM
+		{1C4BD564-5426-417B-A5A0-E141ABE6F858}.Release|ARM.Build.0 = Release|ARM
+		{1C4BD564-5426-417B-A5A0-E141ABE6F858}.Release|ARM.Deploy.0 = Release|ARM
+		{CF72C193-7244-48EB-B56B-BA924CAADC9C}.Debug|ARM.ActiveCfg = Debug|ARM
+		{CF72C193-7244-48EB-B56B-BA924CAADC9C}.Debug|ARM.Build.0 = Debug|ARM
+		{CF72C193-7244-48EB-B56B-BA924CAADC9C}.Release|ARM.ActiveCfg = Release|ARM
+		{CF72C193-7244-48EB-B56B-BA924CAADC9C}.Release|ARM.Build.0 = Release|ARM
+		{72C5DEE2-1DCF-467D-8525-27C8DA1F57CC}.Debug|ARM.ActiveCfg = Debug|ARM
+		{72C5DEE2-1DCF-467D-8525-27C8DA1F57CC}.Debug|ARM.Build.0 = Debug|ARM
+		{72C5DEE2-1DCF-467D-8525-27C8DA1F57CC}.Release|ARM.ActiveCfg = Release|ARM
+		{72C5DEE2-1DCF-467D-8525-27C8DA1F57CC}.Release|ARM.Build.0 = Release|ARM
+		{3F61632E-1F7A-42C4-BF38-AE07D3E9F383}.Debug|ARM.ActiveCfg = Debug|ARM
+		{3F61632E-1F7A-42C4-BF38-AE07D3E9F383}.Debug|ARM.Build.0 = Debug|ARM
+		{3F61632E-1F7A-42C4-BF38-AE07D3E9F383}.Release|ARM.ActiveCfg = Release|ARM
+		{3F61632E-1F7A-42C4-BF38-AE07D3E9F383}.Release|ARM.Build.0 = Release|ARM
+		{E174760F-E91E-4BDC-BD36-4F9D54607104}.Debug|ARM.ActiveCfg = Debug|ARM
+		{E174760F-E91E-4BDC-BD36-4F9D54607104}.Debug|ARM.Build.0 = Debug|ARM
+		{E174760F-E91E-4BDC-BD36-4F9D54607104}.Release|ARM.ActiveCfg = Release|ARM
+		{E174760F-E91E-4BDC-BD36-4F9D54607104}.Release|ARM.Build.0 = Release|ARM
+		{1DE8BF72-1732-4303-AC92-9AF84CD79334}.Debug|ARM.ActiveCfg = Debug|ARM
+		{1DE8BF72-1732-4303-AC92-9AF84CD79334}.Debug|ARM.Build.0 = Debug|ARM
+		{1DE8BF72-1732-4303-AC92-9AF84CD79334}.Release|ARM.ActiveCfg = Release|ARM
+		{1DE8BF72-1732-4303-AC92-9AF84CD79334}.Release|ARM.Build.0 = Release|ARM
+		{904EF96F-E4DB-4861-98B2-B94971740008}.Debug|ARM.ActiveCfg = Debug|ARM
+		{904EF96F-E4DB-4861-98B2-B94971740008}.Debug|ARM.Build.0 = Debug|ARM
+		{904EF96F-E4DB-4861-98B2-B94971740008}.Release|ARM.ActiveCfg = Release|ARM
+		{904EF96F-E4DB-4861-98B2-B94971740008}.Release|ARM.Build.0 = Release|ARM
+		{87A8FEA6-5070-4972-B398-6CCE57753734}.Debug|ARM.ActiveCfg = Debug|ARM
+		{87A8FEA6-5070-4972-B398-6CCE57753734}.Debug|ARM.Build.0 = Debug|ARM
+		{87A8FEA6-5070-4972-B398-6CCE57753734}.Release|ARM.ActiveCfg = Release|ARM
+		{87A8FEA6-5070-4972-B398-6CCE57753734}.Release|ARM.Build.0 = Release|ARM
+		{1C568A90-FE73-4F56-B910-5ECFC4268088}.Debug|ARM.ActiveCfg = Debug|ARM
+		{1C568A90-FE73-4F56-B910-5ECFC4268088}.Debug|ARM.Build.0 = Debug|ARM
+		{1C568A90-FE73-4F56-B910-5ECFC4268088}.Release|ARM.ActiveCfg = Release|ARM
+		{1C568A90-FE73-4F56-B910-5ECFC4268088}.Release|ARM.Build.0 = Release|ARM
+		{85BDC29E-2E29-41E0-BAC5-6FF314644627}.Debug|ARM.ActiveCfg = Debug|ARM
+		{85BDC29E-2E29-41E0-BAC5-6FF314644627}.Debug|ARM.Build.0 = Debug|ARM
+		{85BDC29E-2E29-41E0-BAC5-6FF314644627}.Release|ARM.ActiveCfg = Release|ARM
+		{85BDC29E-2E29-41E0-BAC5-6FF314644627}.Release|ARM.Build.0 = Release|ARM
+		{13B99D87-AB88-4575-A6D7-63428C2E9460}.Debug|ARM.ActiveCfg = Debug|ARM
+		{13B99D87-AB88-4575-A6D7-63428C2E9460}.Debug|ARM.Build.0 = Debug|ARM
+		{13B99D87-AB88-4575-A6D7-63428C2E9460}.Release|ARM.ActiveCfg = Release|ARM
+		{13B99D87-AB88-4575-A6D7-63428C2E9460}.Release|ARM.Build.0 = Release|ARM
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,150 @@
+﻿<framework:PageBase 
+    x:Class="VKClient.Common.SettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:framework="clr-namespace:VKClient.Common.Framework;assembly=VKClient.Common"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:uc="clr-namespace:VKClient.Common.UC"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    shell:SystemTray.IsVisible="True">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <uc:GenericHeaderUC Title="{Binding LocalizedResources.Settings, Source={StaticResource LocalizedStrings}}"/>
+
+        <ScrollViewer Grid.Row="1" 
+                      Background="{StaticResource PhoneNewsDividerBrush}">
+            <StackPanel>
+
+                <Grid Background="{StaticResource PhoneNewsBackgroundBrush}" 
+                      Margin="0,0,0,1"
+                      Height="128">
+                    <Ellipse Fill="{StaticResource PhonePlaceholderBackgroundBrush}"
+                             HorizontalAlignment="Left"
+                             VerticalAlignment="Center"
+                             Margin="16,0,0,0"
+                             Height="96"
+                             Width="96"/>
+                    <Image framework:ImageLoader.UriSource="{Binding UserPhoto}"
+                           HorizontalAlignment="Left"
+                           Margin="16,0,0,0"
+                           Height="96"
+                           Width="96">
+                        <Image.Clip>
+                            <!--<EllipseGeometry Center="48,48"
+                                             RadiusX="48"
+                                             RadiusY="48"/>-->
+                            <RectangleGeometry Rect="0 0 96 96" x:Name="rectangleGeometry"
+					            RadiusX="48"
+					            RadiusY="48"/>
+                        </Image.Clip>
+                    </Image>
+                    <TextBlock FontSize="25.333"
+                               Foreground="{StaticResource PhoneContrastTitleBrush}"
+                               Text="{Binding UserName}"
+                               Margin="128,33,16,0"/>
+                    <framework:ScrollableTextBlock FontSize="20"
+                                                   Foreground="{StaticResource PhoneVKSubtleBrush}"
+                                                   Text="{Binding UserStatus}"
+                                                   Margin="128,64,16,0"/>
+                </Grid>
+
+                <Grid Background="{StaticResource PhoneNewsBackgroundBrush}"
+                      Margin="0,0,0,16"
+                      Height="63">
+                    <Grid Background="Transparent"
+                          Tap="EditProfile_OnClicked"
+                          framework:MetroInMotion.Tilt="2.5">
+                        <TextBlock FontSize="25.333"
+                                   Foreground="{StaticResource PhoneListItemAccentForegroundBrush}"
+                                   Text="{Binding LocalizedResources.EditProfile, Source={StaticResource LocalizedStrings}}"
+                                   Margin="16,13,0,0"/>
+                    </Grid>
+                </Grid>
+
+                <StackPanel Background="{StaticResource PhoneNewsBackgroundBrush}"
+                            Margin="0,0,0,16">
+                    
+                    <TextBlock Margin="16,15,0,0"
+                               FontSize="20"
+                               FontFamily="Segoe WP SemiBold"
+                               Foreground="{StaticResource PhoneVKSubtleBrush}"
+                               Text="{Binding Path=LocalizedResources.MainMenu_Settings, Source={StaticResource LocalizedStrings}}" />
+
+                    <uc:SettingsSectionUC Icon="../Resources/MainMenu/Notifications32px.png" 
+                                          Title="{Binding Path=LocalizedResources.NewSettings_Notifications, Source={StaticResource LocalizedStrings}}"
+                                          Tap="Notifications_OnClicked"
+                                          Margin="0,21,0,0"/>
+                    <uc:SettingsSectionUC Icon="../Resources/MainMenu/Settings32px.png" 
+                                          Title="{Binding Path=LocalizedResources.NewSettings_General, Source={StaticResource LocalizedStrings}}"
+                                          Tap="General_OnClicked"/>
+                    <uc:SettingsSectionUC Icon="../Resources/Account32px.png" 
+                                          Title="{Binding Path=LocalizedResources.NewSettings_Account, Source={StaticResource LocalizedStrings}}"
+                                          Tap="Account_OnClicked"/>
+                    <uc:SettingsSectionUC Icon="../Resources/Privacy32px.png" 
+                                          Title="{Binding Path=LocalizedResources.NewSettings_Privacy, Source={StaticResource LocalizedStrings}}"
+                                          Tap="Privacy_OnClicked"/>
+                    <uc:SettingsSectionUC Icon="../Resources/MainMenu/Communities32px.png" 
+                                          Title="{Binding Path=LocalizedResources.NewSettings_BlackList, Source={StaticResource LocalizedStrings}}"
+                                          Tap="Blacklist_OnClicked"/>
+                    <uc:SettingsSectionUC Icon="../Resources/Balance32px.png" 
+                                          Title="{Binding Path=LocalizedResources.Balance, Source={StaticResource LocalizedStrings}}"
+                                          Tap="Balance_OnClicked"/>
+                    <uc:SettingsSectionUC Icon="/Resources/AttachmentPicker/Types/Money32px.png" 
+                                          Title="{Binding Path=LocalizedResources.MoneyTransfers, Source={StaticResource LocalizedStrings}}"
+                                          Tap="MoneyTransfers_OnClicked"
+                                          Visibility="{Binding MoneyTransfersVisibility}"/>
+                    <uc:SettingsSectionUC Icon="/Resources/AttachmentPicker/Types/Debug32px.png"
+                                          Title="{Binding Path=LocalizedResources.Diagnostics, Source={StaticResource LocalizedStrings}}"
+                                          Tap="Diagnostics_OnClicked"
+                                          Margin="0,0,0,16" />
+                </StackPanel>
+
+                <StackPanel Background="{StaticResource PhoneNewsBackgroundBrush}"
+                            Margin="0,0,0,16">
+
+                    <TextBlock Margin="16,15,0,0"
+                               FontSize="20"
+                               FontFamily="Segoe WP SemiBold"
+                               Foreground="{StaticResource PhoneVKSubtleBrush}"
+                               Text="{Binding Path=LocalizedResources.NewSettings_Help, Source={StaticResource LocalizedStrings}}" />
+
+                    <uc:SettingsSectionUC Icon="../Resources/Help32px.png" 
+                                          Title="{Binding Path=LocalizedResources.NewSettings_QuestionsAndAnswers, Source={StaticResource LocalizedStrings}}"
+                                          Tap="Support_OnClicked"
+                                          Margin="0,21,0,0"/>
+                    <uc:SettingsSectionUC Icon="/Resources/InfoOutline32px.png" 
+                                          Title="{Binding Path=LocalizedResources.Menu_About, Source={StaticResource LocalizedStrings}}"
+                                          Tap="About_OnClicked"
+                                          Margin="0,0,0,16"/>
+                </StackPanel>
+
+                <Grid Background="{StaticResource PhoneNewsBackgroundBrush}"
+                      Margin="0,0,0,16"
+                      Height="64">
+                    <Grid Background="Transparent"
+                          Tap="Logout_OnClicked"
+                          framework:MetroInMotion.Tilt="2.5">
+                        <TextBlock FontSize="25.333"
+                                   Foreground="#e64646"
+                                   Text="{Binding LocalizedResources.Settings_LogOut, Source={StaticResource LocalizedStrings}}"
+                                   Margin="16,13,0,0"/>
+                    </Grid>
+                </Grid>
+
+            </StackPanel>
+        </ScrollViewer>
+
+    </Grid>
+    
+</framework:PageBase>

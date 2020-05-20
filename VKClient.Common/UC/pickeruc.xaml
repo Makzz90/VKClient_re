@@ -1,0 +1,73 @@
+﻿<UserControl x:Class="VKClient.Common.UC.PickerUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:framework="clr-namespace:VKClient.Common.Framework;assembly=VKClient.Common"
+             mc:Ignorable="d"
+             xmlns:localization="clr-namespace:VKClient.Common.Localization"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             d:DesignHeight="480"
+             d:DesignWidth="480"
+             Margin="0 0 0 -73">
+
+    <UserControl.Resources>
+        <localization:CommonLocalizedStrings x:Key="LocStr" />
+
+        <DataTemplate x:Key="PickerListPickerItemTemplate">
+            <Grid Tap="StackPanel_Tap"
+                  Background="Transparent"
+                  framework:MetroInMotion.Tilt="1.5">
+                <Grid HorizontalAlignment="Stretch"
+                      Height="64">
+                    <TextBlock Text="{Binding Name}"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Top"
+                               Margin="16 13 0 0"
+                               FontSize="25.33" />
+                </Grid>
+            </Grid>
+        </DataTemplate>
+    </UserControl.Resources>
+    <Grid x:Name="LayoutRoot"
+          Background="{StaticResource PhoneChromeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <TextBlock x:Name="ApplicationTitle"
+                   Margin="16,48,0,157"
+                   Text="{Binding Title}"
+                   Style="{StaticResource AppTitleText}" />
+
+        <framework:ExtendedLongListSelector x:Name="listPicker"
+                                            Background="Transparent"
+                                            IsFlatList="True"
+                                            HorizontalContentAlignment="Stretch"
+                                            Margin="0 97 0 0"
+                                            ItemsSource="{Binding Items}"
+                                            ItemTemplate="{StaticResource PickerListPickerItemTemplate}" />
+        <Grid Grid.Row="1"
+              VerticalAlignment="Bottom"
+              Width="48"
+              Height="48"
+              Margin="0 12 0 85"
+              framework:MetroInMotion.Tilt="2.5"
+              Tap="MainToolButton_Tap"
+              Visibility="{Binding MainToolImageVisibility}">
+            <Border Background="{StaticResource PhoneForegroundBrush}">
+                <Border.OpacityMask>
+                    <ImageBrush ImageSource="/Resources/appbar.basecircle.rest.png" />
+                </Border.OpacityMask>
+            </Border>
+            <Border Background="{StaticResource PhoneForegroundBrush}">
+                <Border.OpacityMask>
+                    <ImageBrush ImageSource="/Resources/appbar.feature.settings.rest.png" />
+                </Border.OpacityMask>
+            </Border>
+
+        </Grid>
+    </Grid>
+</UserControl>

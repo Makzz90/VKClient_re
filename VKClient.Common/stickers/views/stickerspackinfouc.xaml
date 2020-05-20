@@ -1,0 +1,80 @@
+﻿<UserControl x:Class="VKClient.Common.Stickers.Views.StickersPackInfoUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:framework="clr-namespace:VKClient.Common.Framework"
+             mc:Ignorable="d"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             d:DesignHeight="480"
+             d:DesignWidth="480">
+
+    <Grid VerticalAlignment="Top">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel VerticalAlignment="Top"
+                    HorizontalAlignment="Left"
+                    Margin="0 0 12 0">
+            <StackPanel Orientation="Horizontal">
+
+                <Border x:Name="borderNewIndicator">
+                    <Ellipse Width="8"
+                             Height="8"
+                             VerticalAlignment="Top"
+                             Margin="0 14 8 0"
+                             Visibility="{Binding NewVisibility}"
+                             Fill="{StaticResource PhoneBlue200_GrayBlue100Brush}" />
+                </Border>
+
+                <TextBlock FontSize="25.33"
+                           LineStackingStrategy="BlockLineHeight"
+                           LineHeight="32"
+                           Foreground="{StaticResource PhoneGray800_Gray000Brush}"
+                           Text="{Binding Title, FallbackValue='Stickers pack title'}" />
+            </StackPanel>
+
+            <TextBlock LineStackingStrategy="BlockLineHeight"
+                       LineHeight="24"
+                       Foreground="{StaticResource PhoneGray400_Gray500Brush}"
+                       Text="{Binding Author, FallbackValue='Author name'}" />
+        </StackPanel>
+
+        <Button Grid.Column="1"
+                Visibility="{Binding PurchaseVisibility, FallbackValue=Visible}"
+                VerticalAlignment="Center"
+                Margin="-12"
+                Style="{StaticResource VKButtonGreenStyle}"
+                Content="{Binding PriceStr, FallbackValue='Price unknown'}"
+                Tap="ButtonBuy_OnTap" />
+
+        <Border Grid.Column="1"
+                Background="Transparent"
+                Visibility="{Binding ActivateVisibility, FallbackValue=Collapsed}"
+                framework:MetroInMotion.Tilt="1.5"
+                Tap="Add_OnTap">
+            <Border Width="32"
+                    Height="32"
+                    Background="{StaticResource PhoneBlue300_GrayBlue100Brush}">
+                <Border.OpacityMask>
+                    <ImageBrush framework:ImageLoader.ImageBrushMultiResSource="/Resources/Add32px.png" />
+                </Border.OpacityMask>
+            </Border>
+        </Border>
+
+        <Border Grid.Column="1"
+                Width="32"
+                Height="32"
+                Background="{StaticResource PhoneGray300_Gray500Brush}"
+                Visibility="{Binding PurchasedVisibility, FallbackValue=Collapsed}">
+            <Border.OpacityMask>
+                <ImageBrush framework:ImageLoader.ImageBrushMultiResSource="/Resources/Check32px.png" />
+            </Border.OpacityMask>
+        </Border>
+
+    </Grid>
+</UserControl>

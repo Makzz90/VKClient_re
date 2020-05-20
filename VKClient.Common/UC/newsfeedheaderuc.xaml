@@ -1,0 +1,92 @@
+﻿<UserControl x:Class="VKClient.Common.UC.NewsfeedHeaderUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:uc="clr-namespace:VKClient.Common.UC"
+             xmlns:framework="clr-namespace:VKClient.Common.Framework"
+             xmlns:library="clr-namespace:VKClient.Common.Library"
+             mc:Ignorable="d"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             d:DesignWidth="480"
+             d:DesignHeight="96"
+             Height="96">
+
+    <Grid>
+        <Border x:Name="borderFreshNews"
+                CacheMode="BitmapCache"
+                Background="{StaticResource PhoneFreshNewsPanelBackgroundBrush}"
+                Visibility="Visible"
+                Height="44"
+                CornerRadius="24"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Center"
+                Tap="BorderFreshNews_OnTap">
+            <Border.RenderTransform>
+                <TranslateTransform x:Name="translateFreshNews"
+                                    Y="104" />
+            </Border.RenderTransform>
+
+            <Grid>
+                <StackPanel Orientation="Horizontal"
+                            Margin="16 0 20 0"
+                            HorizontalAlignment="Center">
+                    <Grid Width="20"
+                          Height="20"
+                          Margin="0 11 8 0"
+                          VerticalAlignment="Top">
+
+                        <Image x:Name="imageArrowFreshNews"
+                               Width="16"
+                               Height="16"
+                               Margin="-2 0 0 0"
+                               Visibility="Visible"
+                               framework:MultiResImageLoader.UriSource="/Resources/FreshNewsArrow.png" />
+
+                        <uc:ProgressRing2 x:Name="progressRingFreshNews"
+                                          Width="16"
+                                          Height="16"
+                                          Margin="-2 0 0 0"
+                                          Foreground="White"
+                                          IsActive="True"
+                                          Visibility="Visible">
+                            <uc:ProgressRing2.TemplateSettings>
+                                <uc:TemplateSettingValues2 EllipseDiameter="4"
+                                                           EllipseOffset="-8"
+                                                           MaxSideLength="2" />
+                            </uc:ProgressRing2.TemplateSettings>
+                        </uc:ProgressRing2>
+                    </Grid>
+
+                    <TextBlock Margin="0 7 0 0"
+                               VerticalAlignment="Top"
+                               Text="{Binding LocalizedResources.FreshNews, Source={StaticResource LocalizedStrings}}"
+                               LineStackingStrategy="BlockLineHeight"
+                               LineHeight="26"
+                               Foreground="White"
+                               FontFamily="{StaticResource PhoneFontFamilySemiBold}"
+                               TextAlignment="Center" />
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!--<uc:NewsfeedNewPostUC x:Name="ucNewPost"
+                              CacheMode="BitmapCache"
+                              Height="80"
+                              VerticalAlignment="Top">
+            <uc:NewsfeedNewPostUC.RenderTransform>
+                <TranslateTransform Y="0" />
+            </uc:NewsfeedNewPostUC.RenderTransform>
+        </uc:NewsfeedNewPostUC>-->
+
+        <uc:GenericHeaderUC x:Name="ucHeader"
+                            OptionsMenuItemSelected="Header_OnOptionsMenuItemSelected">
+            <uc:GenericHeaderUC.OptionsMenu>
+                <library:OptionsMenuItem Type="Search" />
+            </uc:GenericHeaderUC.OptionsMenu>
+        </uc:GenericHeaderUC>
+
+    </Grid>
+</UserControl>

@@ -1,0 +1,55 @@
+﻿<UserControl x:Class="VKClient.Common.Market.Views.MarketAlbumListItemUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:framework="clr-namespace:VKClient.Common.Framework"
+             mc:Ignorable="d"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             d:DesignHeight="216"
+             d:DesignWidth="228"
+             Width="228">
+
+    <StackPanel framework:MetroInMotion.Tilt="1.5"
+                Background="Transparent"
+                Tap="Album_OnTap">
+        <Grid Height="152"
+              Background="{StaticResource PhoneGenericPlaceholderBackgroundBrush}">
+
+            <Border x:Name="borderPlaceholder"
+                    Width="112"
+                    Height="112"
+                    Background="{StaticResource PhoneGenericPlaceholderForegroundBrush}">
+                <Border.OpacityMask>
+                    <ImageBrush framework:ImageLoader.ImageBrushMultiResSource="/Resources/Market/MarketPlaceholder-112px.png" />
+                </Border.OpacityMask>
+            </Border>
+
+            <Canvas Width="228"
+                    Height="152">
+                <Image x:Name="image"
+                       Width="228"
+                       Height="152"
+                       Stretch="UniformToFill" />
+            </Canvas>
+
+            <Rectangle Fill="Black"
+                       Opacity="0.03" />
+        </Grid>
+
+        <TextBlock x:Name="textBlockTitle"
+                   Margin="0 4 0 0"
+                   Foreground="{StaticResource PhoneAlmostBlackBrush}"
+                   TextAlignment="Center"
+                   Text="Title" />
+
+        <TextBlock x:Name="textBlockSubtitle"
+                   FontSize="18"
+                   Foreground="{StaticResource PhoneCaptionGrayBrush}"
+                   TextAlignment="Center"
+                   Text="Subtitle" />
+
+    </StackPanel>
+</UserControl>

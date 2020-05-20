@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="VKClient.Common.UC.Registration.RegistrationStep4UC"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="480" d:DesignWidth="480">
+    
+    <Grid x:Name="LayoutRoot" >
+        <Image Stretch="None"
+               Width="480"
+               VerticalAlignment="Top"
+               Margin="0 -88 0 0"
+               Source="../Temp/wp-register-v2-step4.png"/>
+        
+        <PasswordBox VerticalAlignment="Top"
+                 Name="passwordBox"
+                 PasswordChanged="PasswordChanged"
+                     KeyDown="passwordBox_KeyDown"
+                 Password="{Binding PasswordStr, Mode=TwoWay, UpdateSourceTrigger=Explicit}"
+                 Margin="4 12 4 0"></PasswordBox>
+        
+        <TextBlock 
+            Name="textBlockWatermark"
+            Style="{StaticResource WatermarkStyle}"
+                   Text="{Binding LocalizedResources.Registration_EnterPassword, Source={StaticResource LocalizedStrings}}"
+                   Margin="29 32  0 0"/>
+
+
+        <TextBlock
+            Foreground="{StaticResource PhoneVKSubtleBrush}"
+            FontSize="22.67"
+            FontFamily="Segoe WP SemiLight"
+            TextWrapping="Wrap"
+            TextAlignment="Center"
+            Margin="24 93 24 0"
+            Text="{Binding LocalizedResources.Registration_ChoosePassword, Source={StaticResource LocalizedStrings}}"/>
+        
+    </Grid>
+</UserControl>

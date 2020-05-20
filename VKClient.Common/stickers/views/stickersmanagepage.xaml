@@ -1,0 +1,169 @@
+﻿<framework:PageBase x:Class="VKClient.Common.Stickers.Views.StickersManagePage"
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:uc="clr-namespace:VKClient.Common.UC"
+                    xmlns:framework="clr-namespace:VKClient.Common.Framework"
+                    xmlns:views="clr-namespace:VKClient.Common.Stickers.Views"
+                    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                    FontSize="{StaticResource PhoneFontSizeNormal}"
+                    Foreground="{StaticResource PhoneForegroundBrush}"
+                    SupportedOrientations="Portrait"
+                    Orientation="Portrait"
+                    mc:Ignorable="d"
+                    shell:SystemTray.ForegroundColor="White"
+                    shell:SystemTray.IsVisible="True">
+    <shell:SystemTray.ProgressIndicator>
+        <shell:ProgressIndicator x:Name="progressIndicator" />
+    </shell:SystemTray.ProgressIndicator>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <uc:GenericHeaderUC x:Name="ucHeader" />
+
+        <StackPanel Grid.Row="1"
+                    Background="{StaticResource PhoneGray000_Gray900Brush}">
+            <uc:ToggleControl Margin="16 29 16 0"
+                              IsChecked="{Binding StickersAutoSuggestEnabled, Mode=TwoWay}"
+                              Title="{Binding LocalizedResources.StickersHints, Source={StaticResource LocalizedStrings}}" />
+
+            <TextBlock Margin="16 20 16 36"
+                       LineStackingStrategy="BlockLineHeight"
+                       LineHeight="24"
+                       Foreground="{StaticResource PhoneGray400_Gray500Brush}"
+                       TextWrapping="Wrap"
+                       Text="{Binding LocalizedResources.StickersHintsDesc, Source={StaticResource LocalizedStrings}}" />
+
+            <Rectangle Height="16"
+                       Fill="{StaticResource PhoneNewsDividerBrush}" />
+
+            <views:StickersSettingsTabsUC />
+        </StackPanel>
+
+        <Grid Grid.Row="2">
+            <Grid Visibility="{Binding ActiveTabVisibility}">
+                <framework:MyListBox IsReorderEnabled="{Binding IsStickersReorderingEnabled}"
+                                     SupportsFooter="False"
+                                     MyItemsSource="{Binding ActiveStickers}"
+                                     Visibility="{Binding ActiveStickersVisibility}"
+                                     Style="{StaticResource StickersListBoxStyle}"
+                                     ItemContainerStyle="{StaticResource StickersListBoxItemStyle}">
+                    <framework:MyListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Height="80"
+                                  Background="{StaticResource PhoneGray000_Gray900Brush}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <Image Width="64"
+                                       Height="64"
+                                       framework:ImageLoader.UriSource="{Binding ImageUrl}" />
+
+                                <TextBlock Grid.Column="1"
+                                           VerticalAlignment="Top"
+                                           Margin="16 21 16 0"
+                                           FontSize="25.33"
+                                           LineStackingStrategy="BlockLineHeight"
+                                           LineHeight="32"
+                                           Foreground="{StaticResource PhoneGray800_Gray000Brush}"
+                                           Text="{Binding Title}" />
+
+                                <Border Grid.Column="2"
+                                        Width="64"
+                                        Background="Transparent"
+                                        framework:MetroInMotion.Tilt="2.1"
+                                        Tap="Deactivate_OnTap">
+                                    <Border Width="32"
+                                            Height="32"
+                                            Background="{StaticResource PhoneGray300_Gray500Brush}">
+                                        <Border.OpacityMask>
+                                            <ImageBrush framework:ImageLoader.ImageBrushMultiResSource="/Resources/Close32px.png" />
+                                        </Border.OpacityMask>
+                                    </Border>
+                                </Border>
+                            </Grid>
+                        </DataTemplate>
+                    </framework:MyListBox.ItemTemplate>
+                </framework:MyListBox>
+            </Grid>
+
+            <Grid Visibility="{Binding HiddenTabVisibility}">
+                <framework:ExtendedLongListSelector ItemsSource="{Binding HiddenStickers}"
+                                                    Visibility="{Binding HiddenStickersVisibility}">
+                    <framework:ExtendedLongListSelector.ListFooterTemplate>
+                        <DataTemplate>
+                            <Rectangle Height="16"
+                                       Margin="0 8 0 0"
+                                       Fill="{StaticResource PhoneGray000_Gray900Brush}" />
+                        </DataTemplate>
+                    </framework:ExtendedLongListSelector.ListFooterTemplate>
+                    <framework:ExtendedLongListSelector.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Height="80"
+                                  Margin="0 8 0 -8"
+                                  Background="{StaticResource PhoneGray000_Gray900Brush}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <Image Width="64"
+                                       Height="64"
+                                       Margin="16 0 0 0"
+                                       framework:ImageLoader.UriSource="{Binding ImageUrl}" />
+
+                                <TextBlock Grid.Column="1"
+                                           VerticalAlignment="Top"
+                                           Margin="16 21 16 0"
+                                           FontSize="25.33"
+                                           LineStackingStrategy="BlockLineHeight"
+                                           LineHeight="32"
+                                           Foreground="{StaticResource PhoneGray800_Gray000Brush}"
+                                           Text="{Binding Title}" />
+
+                                <Border Grid.Column="2"
+                                        Width="64"
+                                        Background="Transparent"
+                                        framework:MetroInMotion.Tilt="2.1"
+                                        Tap="Activate_OnTap">
+                                    <Border Width="32"
+                                            Height="32"
+                                            Background="{StaticResource PhoneBlue300_GrayBlue100Brush}">
+                                        <Border.OpacityMask>
+                                            <ImageBrush framework:ImageLoader.ImageBrushMultiResSource="/Resources/Add32px.png" />
+                                        </Border.OpacityMask>
+                                    </Border>
+                                </Border>
+                            </Grid>
+                        </DataTemplate>
+                    </framework:ExtendedLongListSelector.ItemTemplate>
+                </framework:ExtendedLongListSelector>
+            </Grid>
+
+        </Grid>
+
+        <Rectangle Grid.RowSpan="3"
+                   Fill="Transparent"
+                   Visibility="{Binding OverlayVisibility}"
+                   UseOptimizedManipulationRouting="False"
+                   ManipulationStarted="RectOverlay_OnManipulationStarted"
+                   ManipulationDelta="RectOverlay_OnManipulationDelta"
+                   ManipulationCompleted="RectOverlay_OnManipulationCompleted" />
+
+
+        <uc:GenericPageLoadInfoUC Grid.Row="1"
+                                  Grid.RowSpan="2" />
+    </Grid>
+
+</framework:PageBase>

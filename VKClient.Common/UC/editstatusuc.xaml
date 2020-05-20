@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="VKClient.Common.UC.EditStatusUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:framework="clr-namespace:VKClient.Common.Framework;assembly=VKClient.Common"
+             xmlns:localization="clr-namespace:VKClient.Common.Localization;assembly=VKClient.Common"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             d:DesignHeight="480"
+             d:DesignWidth="480"
+             VerticalAlignment="Top">
+
+    <UserControl.Resources>
+        <localization:CommonLocalizedStrings x:Key="LocStr" />
+    </UserControl.Resources>
+
+    <Grid Background="{StaticResource PhoneMenuBackgroundBrush}">
+        <StackPanel>
+            <TextBlock Text="{Binding Path=LocalizedResources.EditStatusUC_EditStatusHeader, Source={StaticResource LocStr}}"
+                       FontFamily="Segoe WP Semibold"
+                       Foreground="{StaticResource PhoneMenuForegroundBrush}"
+                       FontSize="32"
+                       Margin="20,40,0,0" />
+
+            <TextBlock Text="{Binding Path=LocalizedResources.EditCommentUC_Text, Source={StaticResource LocStr}}"
+                       Margin="22,26, 0, 0"
+                       Foreground="{StaticResource PhoneMenuForegroundBrush}" />
+            <TextBox MaxHeight="400"
+                     Name="textBoxText"
+                     Margin="12,-6,12,0"
+                     TextWrapping="Wrap"
+                     InputScope="Search"
+                     MaxLength="140"
+                     framework:AttachedProperties.AutoSelectText="True" />
+
+            <Button Name="buttonSave"
+                    Style="{StaticResource VKButtonPrimaryStyle}"
+                    Content="{Binding Path=LocalizedResources.EditCommentUC_Save, Source={StaticResource LocStr}}"
+                    Margin="12,24"
+                    Width="265"
+                    HorizontalAlignment="Left" />
+        </StackPanel>
+
+        <!--<Image Source="Messages_CreateChat.png" Opacity="0.5" />-->
+    </Grid>
+</UserControl>

@@ -1,0 +1,89 @@
+﻿<UserControl x:Class="VKClient.Common.UC.GamesFriendsActivityHeaderUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             d:DesignWidth="448"
+             d:DesignHeight="480">
+
+    <StackPanel Background="{StaticResource PhoneNewsBackgroundBrush}"
+                MinHeight="119">
+        <StackPanel MinHeight="117">
+            <Grid MinHeight="62"
+                  VerticalAlignment="Top"
+                  Margin="16 15 16 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="62" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="62" />
+                </Grid.ColumnDefinitions>
+
+                <Ellipse Style="{StaticResource PhotoPlaceholderEllipse}"
+                         VerticalAlignment="Top"
+                         Width="62"
+                         Height="62" />
+
+                <Image Name="imageUser"
+                       VerticalAlignment="Top"
+                       Width="62"
+                       Height="62"
+                       Tap="User_OnTap">
+                    <Image.Clip>
+                        <EllipseGeometry Center="31 31"
+                                         RadiusX="31"
+                                         RadiusY="31" />
+                    </Image.Clip>
+                </Image>
+
+                <TextBlock Name="textBlockDescription"
+                           Grid.Column="1"
+                           TextWrapping="Wrap"
+                           LineStackingStrategy="BlockLineHeight"
+                           LineHeight="30"
+                           FontSize="22.667"
+                           TextAlignment="Left"
+                           Tap="Description_OnTap"
+                           Foreground="{StaticResource PhoneNameBlueBrush}"
+                           Margin="13 -2 13 0">
+                    <!--<Run Text="Олег" />
+                    <Run Text=" достиг"
+                         FontFamily="Segoe WP SemiLight"
+                         Foreground="{StaticResource PhoneVKSubtleBrush}" />
+                    <Run Text=" 260"
+                         FontFamily="Segoe WP Semibold"
+                         Foreground="{StaticResource PhoneVKSubtleBrush}" />
+                    <Run Text=" уровня в игре"
+                         FontFamily="Segoe WP SemiLight"
+                         Foreground="{StaticResource PhoneVKSubtleBrush}" />
+                    <Run Text=" Ищу Героя: Три в Ряд!"
+                         FontFamily="Segoe WP Semilight"/>-->
+                </TextBlock>
+
+                <Border Grid.Column="2"
+                        VerticalAlignment="Top"
+                        Width="62"
+                        Height="62"
+                        Background="{StaticResource PhoneChromeBrush}">
+                    <Image x:Name="imageGame"
+                           Width="62"
+                           Height="62"
+                           Tap="Game_OnTap" />
+                </Border>
+            </Grid>
+
+            <TextBlock x:Name="textBlockDate"
+                       Margin="91 -2 0 16"
+                       Foreground="{StaticResource PhoneVKSubtleBrush}" />
+        </StackPanel>
+
+
+        <Rectangle x:Name="rectSeparator"
+                   Visibility="Visible"
+                   Height="2"
+                   Fill="{StaticResource PhoneTableSeparatorBrush}" />
+    </StackPanel>
+</UserControl>

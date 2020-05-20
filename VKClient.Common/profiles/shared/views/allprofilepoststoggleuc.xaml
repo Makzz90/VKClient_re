@@ -1,0 +1,89 @@
+﻿<UserControl x:Class="VKClient.Common.Profiles.Shared.Views.AllProfilePostsToggleUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:framework="clr-namespace:VKClient.Common.Framework"
+             mc:Ignorable="d"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             d:DesignHeight="66"
+             d:DesignWidth="480">
+
+    <Grid Height="66">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="64" />
+        </Grid.ColumnDefinitions>
+
+        <Rectangle Grid.ColumnSpan="2"
+                   Fill="{StaticResource PhoneTableSeparatorBrush}"
+                   VerticalAlignment="Bottom"
+                   Height="2" />
+
+        <Grid VerticalAlignment="Top"
+              Margin="8 0 0 0"
+              Visibility="{Binding PostsToggleVisibility, FallbackValue=Collapsed}">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Tap="AllPosts_OnTap">
+                    <Border Height="64"
+                            Background="Transparent"
+                            framework:MetroInMotion.Tilt="1.5">
+                        <TextBlock Text="{Binding AllPostsText, FallbackValue='Все записи'}"
+                                   FontFamily="{StaticResource PhoneFontFamilySemiBold}"
+                                   Foreground="{Binding AllPostsForeground, FallbackValue={StaticResource PhoneProfilePostsToggleActiveBrush}}"
+                                   VerticalAlignment="Top"
+                                   Margin="16 18 16 0" />
+                    </Border>
+
+                    <Rectangle VerticalAlignment="Bottom"
+                               Height="2"
+                               Visibility="{Binding AllPostsUnderlineVisibility}"
+                               Fill="{StaticResource PhoneProfilePostsToggleActiveBrush}" />
+                </StackPanel>
+                <StackPanel Tap="ProfilePosts_OnTap">
+                    <Border Height="64"
+                            Background="Transparent"
+                            framework:MetroInMotion.Tilt="1.5">
+                        <TextBlock Text="{Binding ProfilePostsText, FallbackValue='Записи пользователя'}"
+                                   FontFamily="{StaticResource PhoneFontFamilySemiBold}"
+                                   Foreground="{Binding ProfilePostsForeground, FallbackValue={StaticResource PhoneProfilePostsToggleInactiveBrush}}"
+                                   VerticalAlignment="Top"
+                                   Margin="16 18 16 0" />
+                    </Border>
+
+                    <Rectangle VerticalAlignment="Bottom"
+                               Height="2"
+                               Visibility="{Binding ProfilePostsUnderlineVisibility, FallbackValue=Collapsed}"
+                               Fill="{StaticResource PhoneProfilePostsToggleActiveBrush}" />
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+
+        <Border Height="64"
+                Margin="8 0 0 0"
+                VerticalAlignment="Top"
+                Background="Transparent"
+                Visibility="{Binding PostsCountVisibility}">
+            <TextBlock Text="{Binding AllPostsText, FallbackValue='1000 записей'}"
+                       FontFamily="{StaticResource PhoneFontFamilySemiBold}"
+                       Foreground="{StaticResource PhoneProfilePostsToggleInactiveBrush}"
+                       VerticalAlignment="Top"
+                       Margin="8 18 16 0" />
+        </Border>
+
+        <Border Grid.Column="1"
+                Background="Transparent"
+                framework:MetroInMotion.Tilt="1.5"
+                Tap="Search_OnTap">
+            <Border Width="32"
+                    Height="32"
+                    Background="{StaticResource PhoneProfilePostsToggleSearchBrush}">
+                <Border.OpacityMask>
+                    <ImageBrush framework:ImageLoader.ImageBrushMultiResSource="/Resources/Search32px.png" />
+                </Border.OpacityMask>
+            </Border>
+        </Border>
+    </Grid>
+</UserControl>

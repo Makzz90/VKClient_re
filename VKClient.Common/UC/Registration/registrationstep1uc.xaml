@@ -1,0 +1,179 @@
+﻿<UserControl x:Class="VKClient.Common.UC.Registration.RegistrationStep1UC"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:framework="clr-namespace:VKClient.Common.Framework;assembly=VKClient.Common"
+                    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+                    xmlns:library="clr-namespace:VKClient.Common.Library"
+                    xmlns:uc="clr-namespace:VKClient.Common.UC"
+                    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+                    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+                    xmlns:toolkitPrimitives="clr-namespace:Microsoft.Phone.Controls.Primitives;assembly=Microsoft.Phone.Controls.Toolkit"
+                    xmlns:myPicker="clr-namespace:VKClient.Common.Framework.DatePicker"
+                    xmlns:emoji="clr-namespace:VKClient.Common.Emoji"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="800" d:DesignWidth="480">
+
+    <Grid x:Name="LayoutRoot" >
+
+        <!--<Image Stretch="None"
+               VerticalAlignment="Top"
+               Margin="0 -88 0 0"
+               Source="../Temp/wp-register-v2-step1.png"/>-->
+
+        <StackPanel Margin="16 0 16 0">
+            <Grid Margin="0 32 0 0">
+                <Grid Width="120"
+                              Visibility="{Binding HavePhoto, Converter={StaticResource BoolToVisibilityInverterConverter}}"
+                              HorizontalAlignment="Left"
+                              VerticalAlignment="Top"
+                              Height="120"
+                              framework:MetroInMotion.Tilt="1.5"
+                              Tap="ChoosePhotoTap"
+                              Background="{StaticResource PhoneActiveAreaBackgroundBrush}">
+                    <Grid.Clip>
+                        <EllipseGeometry Center="60 60"
+                                                 RadiusX="60"
+                                                 RadiusY="60" />
+                    </Grid.Clip>
+
+                    <TextBlock IsHitTestVisible="False"
+                                       TextWrapping="Wrap"
+                                       TextAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       Foreground="{StaticResource PhoneNewsActionForegroundBrush}"
+                                       Text="{Binding LocalizedResources.Settings_EditProfile_ChoosePhoto, Source={StaticResource LocalizedStrings}}" />
+                </Grid>
+
+                <Grid Width="120"
+                              Visibility="{Binding HavePhoto, Converter={StaticResource BoolToVisibilityConverter}}"
+                              HorizontalAlignment="Left"
+                              VerticalAlignment="Top"
+                              Height="120"
+                              Tap="GridPhotoTap"
+                              Background="{StaticResource PhoneChromeBrush}">
+                    <Grid.Clip>
+                        <EllipseGeometry Center="60 60"
+                                                 RadiusX="60"
+                                                 RadiusY="60" />
+                    </Grid.Clip>
+
+                    <toolkit:ContextMenuService.ContextMenu>
+                        <toolkit:ContextMenu  Name="PhotoMenu"
+                                                      Background="{Binding InvertedOpaqueBG, Source={StaticResource ThemeHelper}}"
+                                                      Foreground="{Binding InvertedOpaqueFG, Source={StaticResource ThemeHelper}}"
+                                                      IsZoomEnabled="False">
+
+                            <toolkit:MenuItem Click="ChosePhotoMenuClick"
+                                                      Header="{Binding Path=LocalizedResources.Settings_EditProfile_ChoosePhoto, Source={StaticResource LocalizedStrings}, Converter={StaticResource StringToLowerConverter}}" />
+                            <toolkit:MenuItem Click="DeletePhotoMenuClick"
+                                                      Header="{Binding Path=LocalizedResources.Delete, 
+                                               Source={StaticResource LocalizedStrings}, Converter={StaticResource StringToLowerConverter}}" />
+                        </toolkit:ContextMenu>
+                    </toolkit:ContextMenuService.ContextMenu>
+
+                    <Image Width="120"
+                                   IsHitTestVisible="False"
+                                   Height="120"
+                                   framework:ImageLoader.UriSource="{Binding AvatarUri}">
+                        <Image.Clip>
+                            <EllipseGeometry Center="60 60"
+                                                     RadiusX="60"
+                                                     RadiusY="60" />
+                        </Image.Clip>
+                    </Image>
+
+                </Grid>
+                <TextBox VerticalAlignment="Top"
+                         MaxLength="32"
+                         Name="textBoxFirstName"
+                         KeyDown="textBoxFirstName_KeyDown"
+                                 InputScope="Text"
+                                 Text="{Binding FirstName, Mode=TwoWay, UpdateSourceTrigger=Explicit}"
+                                 Margin="124 -12 -12 0"
+                                 TextChanged="textBoxFirstNameChanged" />
+
+                <TextBlock
+                        Name="textBlockFirstNameWatermark"
+                    	FontSize="22.67"
+                    	FontFamily="Segoe WP SemiLight"
+                    	Foreground="{StaticResource PhoneWatermarkTextForegroundBrush}"
+                    IsHitTestVisible="False"
+                       Margin="151 8 -12 0"
+                    Text="{Binding LocalizedResources.Registration_YourName, Source={StaticResource LocalizedStrings}}"/>
+
+                <TextBox VerticalAlignment="Top"
+                                 InputScope="Text"
+                                 MaxLength="32"
+                                 Name="textBoxLastName"
+                         KeyDown="textBoxLastName_KeyDown"
+                                 Text="{Binding LastName, Mode=TwoWay, UpdateSourceTrigger=Explicit}"
+                                 Margin="124 60 -12 0"
+                                 TextChanged="textBoxLastNameChanged" />
+
+                <TextBlock
+                    Name="textBlockLastNameWatermark"
+                    	FontSize="22.67"
+                    	FontFamily="Segoe WP SemiLight"
+                    	Foreground="{StaticResource PhoneWatermarkTextForegroundBrush}"
+                    IsHitTestVisible="False"
+                       Margin="151 80 -12 0"
+                    Text="{Binding LocalizedResources.Registration_YourLastName, Source={StaticResource LocalizedStrings}}"/>
+
+            </Grid>
+
+            <Grid VerticalAlignment="Top">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <RadioButton IsChecked="{Binding IsMale, Mode=TwoWay}"
+                                     Content="{Binding LocalizedResources.Settings_EditProfile_Male, Source={StaticResource LocalizedStrings}}"
+                                     GroupName="MaleFemale"
+                                     Margin="-12 8 0 0" />
+                <RadioButton Grid.Column="1"
+                                     Content="{Binding LocalizedResources.Settings_EditProfile_Female, Source={StaticResource LocalizedStrings}}"
+                                     IsChecked="{Binding IsFemale, Mode=TwoWay}"
+                                     GroupName="MaleFemale"
+                                     Margin="-12 7 0 0" />
+
+            </Grid>
+
+            <RichTextBox HorizontalAlignment="Center"  
+                       TextAlignment="Center"
+                       Margin="0 22 0 0"
+                       TextWrapping="Wrap" FontFamily="Segoe WP SemiLight">
+                <Paragraph>
+                    <Run
+                    Foreground="{StaticResource PhoneVKSubtleBrush}"
+                    Text="{Binding LocalizedResources.Registration_AcceptText, Source={StaticResource LocalizedStrings}}"/>
+                    <Run Text=" "></Run>
+                    <Hyperlink 
+                        Click="TermsClick"
+                        MouseOverTextDecorations="None"
+                        MouseOverForeground="{StaticResource PhoneNameBlueBrush}"
+                        TextDecorations="None">
+                        <Run 
+                    Foreground="{StaticResource PhoneNameBlueBrush}"
+                    Text="{Binding LocalizedResources.Registration_AcceptingTermsOfUse, Source={StaticResource LocalizedStrings}}"/>
+                    </Hyperlink><Run Text=" "></Run><Run 
+                    Foreground="{StaticResource PhoneVKSubtleBrush}"
+                    Text="{Binding LocalizedResources.Registration_AcceptTextAnd, Source={StaticResource LocalizedStrings}}"/><Run Text=" "></Run><Hyperlink    
+                        Click="PrivacyClick"                        
+                     TextDecorations="None"
+                        MouseOverTextDecorations="None"
+                        MouseOverForeground="{StaticResource PhoneNameBlueBrush}"
+                    Foreground="{StaticResource PhoneNameBlueBrush}"><Run Text="{Binding LocalizedResources.Registration_AcceptingPrivacy, Source={StaticResource LocalizedStrings}}"></Run></Hyperlink><Run Text="." Foreground="{StaticResource PhoneVKSubtleBrush}"/>
+                </Paragraph>
+            </RichTextBox>
+
+        </StackPanel>
+    
+    </Grid>
+</UserControl>

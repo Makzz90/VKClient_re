@@ -1,0 +1,173 @@
+﻿<UserControl x:Class="VKClient.Photos.UC.CreateAlbumUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+             xmlns:framework="clr-namespace:VKClient.Common.Framework;assembly=VKClient.Common"
+             xmlns:uc="clr-namespace:VKClient.Common.UC;assembly=VKClient.Common"
+             mc:Ignorable="d"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:localization="clr-namespace:VKClient.Photos.Localization"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             d:DesignHeight="800"
+             d:DesignWidth="480">
+
+    <UserControl.Resources>
+        <localization:PhotoLocalizedStrings x:Key="LocStr" />
+
+        <DataTemplate x:Key="AccessTypes">
+            <StackPanel Orientation="Horizontal"
+                        Margin="0 21 0 20">
+                <TextBlock Text="{Binding Name}"
+                           Margin="0 0 0 0"
+                           FontSize="43"
+                           FontFamily="{StaticResource PhoneFontFamilyLight}" />
+            </StackPanel>
+        </DataTemplate>
+    </UserControl.Resources>
+    <Grid x:Name="LayoutRoot"
+          Margin="0 -32 0 0"
+          VerticalAlignment="Top"
+          Background="{StaticResource PhoneMenuBackgroundBrush}">
+
+        <Grid Margin="0 32 0 0">
+            <StackPanel>
+                <TextBlock Text="{Binding Caption}"
+                   FontFamily="Segoe WP"
+                   Foreground="{StaticResource PhoneMenuForegroundBrush}"
+                   FontSize="32"                  
+                   Margin="20,40 0 0" />
+
+                <TextBlock Text="{Binding Path=LocalizedResources.CreateAlbumUC_Title,
+            Source={StaticResource LocStr}, FallbackValue=Название}"
+                   Foreground="{StaticResource PhoneMenuForegroundBrush}"
+                   Margin="22,26, 22, 0" />
+
+                <TextBox Text="{Binding Path=Name, Mode=TwoWay}"
+                 Height="72"
+                 InputScope="Text"
+                 VerticalAlignment="Top"
+                 Margin="12,-6, 12, 0" />
+
+                <TextBlock Text="{Binding Path=LocalizedResources.CreateAlbumUC_Description,
+            Source={StaticResource LocStr}, FallbackValue=Название}"
+                   Margin="22,6, 22, 0"
+                   Foreground="{StaticResource PhoneMenuForegroundBrush}"
+                   VerticalAlignment="Top"
+                   />
+
+                <TextBox Text="{Binding Path=Description, Mode=TwoWay}"
+                 VerticalAlignment="Top"
+                 TextWrapping="Wrap"
+                 InputScope="Text"
+                 AcceptsReturn="True"
+                 Margin="12,-7, 12,0"
+                 Height="126" />
+
+
+                <Grid Visibility="{Binding IsUserAlbumVisibility}">
+                <uc:PrivacyHeaderUC 
+                 Margin="24,6, 24, 0"
+                x:Name="ucPrivacyHeaderAlbumView"
+                DataContext="{Binding PrivacyViewVM}"/>
+                </Grid>
+                <Button Margin="12,6, 12,40"
+                Width="265"
+                 Style="{StaticResource VKButtonPrimaryStyle}"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Content="{Binding ButtonText, FallbackValue=save}"                
+                Click="Button_Click"></Button>
+
+            </StackPanel>
+            
+            
+            
+       
+        <!--<toolkit:ListPicker VerticalAlignment="Top"
+                        
+                           Visibility="{Binding IsUserAlbumVisibility}"
+                            Header="{Binding Path=LocalizedResources.CreateAlbumUC_Access,
+            Source={StaticResource LocStr}, FallbackValue=Название}"
+                            FullModeItemTemplate="{StaticResource AccessTypes}"
+                            ItemsSource="{Binding AccessTypes}"
+                            SelectedItem="{Binding AccessType, Mode=TwoWay}"
+                            ExpansionMode="FullscreenOnly"
+                            Margin="24,358, 24, 0">
+
+
+        </toolkit:ListPicker>-->
+
+        
+            
+            
+        <!--<Rectangle Height="32"
+                   VerticalAlignment="Top"
+                   Margin="0 358 0 0"
+                   Fill="{StaticResource PhoneMenuBackgroundBrush}" />
+
+        <TextBlock Text="{Binding Path=LocalizedResources.CreateAlbumUC_Access,
+            Source={StaticResource LocStr}, FallbackValue=Название}"
+                      Visibility="{Binding IsUserAlbumVisibility}"
+                   Margin="22,358, 22, 0"
+                   Foreground="{StaticResource PhoneMenuForegroundBrush}"
+                   VerticalAlignment="Top" />
+
+
+       
+
+        <toolkit:ListPicker VerticalAlignment="Top"
+                               Visibility="Collapsed"
+                            Header="{Binding Path=LocalizedResources.CreateAlbumUC_Comments,
+            Source={StaticResource LocStr}, FallbackValue=Comments}"
+                            FullModeItemTemplate="{StaticResource AccessTypes}"
+                            ItemsSource="{Binding AccessTypes}"
+                            SelectedItem="{Binding AccessTypeComments, Mode=TwoWay}"
+                            ExpansionMode="FullscreenOnly"
+                            Margin="24,456, 24, 0" 
+                            BorderBrush="{StaticResource PhoneTextBoxBorderBrush}">
+
+            
+            
+
+        </toolkit:ListPicker>-->
+
+        <!--<Button Margin="12,354, 12,40"
+                Width="265"
+                 Style="{StaticResource VKButtonPrimaryStyle}"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Content="{Binding ButtonText, FallbackValue=save}"
+                Visibility="{Binding IsGroupAlbumVisibility}"
+                Click="Button_Click"></Button>
+
+
+        <Rectangle Height="32"
+                   VerticalAlignment="Top"
+                   
+                   Margin="0 456 0 0"
+                   Fill="{StaticResource PhoneMenuBackgroundBrush}" />
+        
+        <TextBlock Text="{Binding Path=LocalizedResources.CreateAlbumUC_Comments,
+            Source={StaticResource LocStr}, FallbackValue=Comments}"
+                   Margin="22,456, 22, 0"
+                   Foreground="{StaticResource PhoneMenuForegroundBrush}"
+                      Visibility="Collapsed"
+                   VerticalAlignment="Top" />
+
+        
+        <Button Margin="12,456, 12,40"
+                Style="{StaticResource VKButtonPrimaryStyle}"
+                
+                Width="265"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Content="{Binding ButtonText, FallbackValue=save}"
+                Visibility="{Binding IsUserAlbumVisibility}"
+                Click="Button_Click"></Button>-->
+        </Grid>
+    </Grid>
+</UserControl>

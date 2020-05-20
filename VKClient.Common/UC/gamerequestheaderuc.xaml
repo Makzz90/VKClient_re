@@ -1,0 +1,121 @@
+﻿<UserControl x:Class="VKClient.Common.UC.GameRequestHeaderUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:framework="clr-namespace:VKClient.Common.Framework"
+             mc:Ignorable="d"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}">
+
+    <Grid VerticalAlignment="Top"
+          Background="{StaticResource PhoneNewsBackgroundBrush}">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="Common">
+                <VisualState x:Name="ReadState">
+                    <Storyboard Completed="MarkAsReadAnimation_OnCompleted">
+                        <DoubleAnimation Storyboard.TargetName="borderUnread"
+                                         Storyboard.TargetProperty="Opacity"
+                                         Duration="0:0:0.5"
+                                         To="0" />
+                    </Storyboard>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <Border x:Name="borderUnread"
+                Visibility="{Binding DataProvider.IsRead, Converter={StaticResource BoolToVisibilityInverterConverter}}"
+                Opacity="1"
+                Background="{StaticResource PhoneDialogsUnreadBackgroundBrush}" />
+
+        <StackPanel Margin="16 15 16 0">
+            <Grid VerticalAlignment="Top"
+                  Margin="0 0 0 15">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="62" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Ellipse Style="{StaticResource PhotoPlaceholderEllipse}"
+                         VerticalAlignment="Top"
+                         Width="62"
+                         Height="62" />
+
+                <Image x:Name="imageUserIcon"
+                       VerticalAlignment="Top"
+                       framework:ImageLoader.UriSource="{Binding DataProvider.User.photo_max}"
+                       Tag="{Binding DataProvider.User}"
+                       Tap="User_OnTapped">
+                    <Image.Clip>
+                        <EllipseGeometry Center="31 31"
+                                         RadiusX="31"
+                                         RadiusY="31" />
+                    </Image.Clip>
+                </Image>
+
+                <StackPanel Grid.Column="1"
+                            Margin="13 -2 0 0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Tap="User_OnTapped"
+                                   FontSize="22.667"
+                                   VerticalAlignment="Bottom"
+                                   Foreground="{StaticResource PhoneNameBlueBrush}"
+                                   Text="{Binding DataProvider.User.Name, FallbackValue='User'}" />
+
+                        <TextBlock Grid.Column="1"
+                                   Margin="0 0 0 1"
+                                   Tap="User_OnTapped"
+                                   VerticalAlignment="Bottom"
+                                   Foreground="{StaticResource PhoneVKSubtleBrush}"
+                                   Text="{Binding DataProvider.RequestDate, FallbackValue='2 h'}" />
+                    </Grid>
+                    <TextBlock x:Name="textBlockDescription"
+                               Margin="0 2 0 0"
+                               Tap="TextBlockDescription_OnTapped"
+                               FontSize="22.667"
+                               FontFamily="Segoe WP SemiLight"
+                               Foreground="{StaticResource PhoneVKSubtleBrush}"
+                               TextWrapping="Wrap"
+                               Text="{Binding DataProvider.GameRequest.text, FallbackValue='Game request'}" />
+                    <StackPanel Orientation="Horizontal">
+                        <Button Style="{StaticResource VKButtonSecondaryStyle}"
+                                HorizontalAlignment="Left"
+                                Content="{Binding LocalizedResources.Games_Request_OpenGame, Source={StaticResource LocalizedStrings}}"
+                                Margin="-12 2 -12 -10"
+                                Click="OpenGame_OnClick" />
+                        <Border Margin="12 2 0 -10"
+                                Background="Transparent"
+                                framework:MetroInMotion.Tilt="1.5"
+                                Tap="HideButton_OnTap"
+                                Height="42">
+                            <TextBlock Text="{Binding LocalizedResources.Games_Invite_Hide, Source={StaticResource LocalizedStrings}}"
+                                       HorizontalAlignment="Center"
+                                       Margin="12 -3 12 0"
+                                       Foreground="{StaticResource PhoneButtonSecondaryForegroundBrush}"
+                                       FontFamily="{StaticResource PhoneFontFamilySemiBold}"
+                                       VerticalAlignment="Center" />
+                        </Border>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+
+        </StackPanel>
+
+        <Grid x:Name="separator"
+              Opacity="0">
+            <Rectangle Height="2"
+                       VerticalAlignment="Bottom"
+                       Fill="{StaticResource PhoneTableSeparatorBrush}" />
+            <Rectangle Visibility="{Binding DataProvider.IsRead, Converter={StaticResource BoolToVisibilityInverterConverter}}"
+                       Height="2"
+                       VerticalAlignment="Bottom"
+                       Fill="#E1E6EA" />
+        </Grid>
+    </Grid>
+</UserControl>

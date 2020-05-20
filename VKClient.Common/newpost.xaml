@@ -1,0 +1,149 @@
+﻿<framework:PageBase x:Class="VKClient.Common.NewPost"
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:framework="clr-namespace:VKClient.Common.Framework;assembly=VKClient.Common"
+                    xmlns:localization="clr-namespace:VKClient.Common.Localization"
+                    xmlns:uc="clr-namespace:VKClient.Common.UC"
+                    xmlns:emoji="clr-namespace:VKClient.Common.Emoji"
+                    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                    FontSize="{StaticResource PhoneFontSizeNormal}"
+                    Foreground="{StaticResource PhoneForegroundBrush}"
+                    SupportedOrientations="Portrait"
+                    Orientation="Portrait"
+                    mc:Ignorable="d"
+                    d:DesignHeight="768"
+                    d:DesignWidth="480"
+                    shell:SystemTray.IsVisible="True"
+                    shell:SystemTray.Opacity="0">
+
+    <framework:PageBase.Resources>
+
+        <ResourceDictionary>
+
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <localization:CommonLocalizedStrings x:Key="LocStr" />
+        </ResourceDictionary>
+
+    </framework:PageBase.Resources>
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot"
+          Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <uc:GenericHeaderUC x:Name="ucHeader" />
+
+        <Grid x:Name="ContentPanel"
+              Grid.Row="1"
+              Margin="4,0,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <ScrollViewer Name="scroll"
+                          HorizontalScrollBarVisibility="Disabled">
+                <StackPanel x:Name="stackPanel"
+                            Margin="0 16 0 90">
+
+                    <Grid>
+                        <TextBox x:Name="textBoxTopicTitle"
+                                 InputScope="Text"
+                                 Visibility="{Binding IsInNewTopicModeVisibility}"
+                                 Style="{StaticResource TextBoxFramelessStyle}"
+                                 CaretBrush="{StaticResource PhoneForeground2Brush}"
+                                 Margin="0 -8 0 4"
+                                 BorderThickness="0"
+                                 FontFamily="Segoe WP SemiLight"
+                                 FontSize="22.667"
+                                 Background="Transparent"
+                                 KeyUp="textBoxTitle_KeyUp"
+                                 GotFocus="TextBox_OnGotFocus"
+                                 LostFocus="TextBox_OnLostFocus"
+                                 TextChanged="textBoxTitle_TextChanged" />
+
+                        <TextBlock Text="{Binding LocalizedResources.NewTopicTitleLbl, Source={StaticResource LocStr}}"
+                                   Name="textBlockWatermarkTitle"
+                                   IsHitTestVisible="False"
+                                   FontSize="22.67"
+                                   FontFamily="Segoe WP SemiLight"
+                                   Foreground="{StaticResource PhoneWatermarkTextForegroundBrush}"
+                                   Margin="17,8, 0, 0"
+                                   Visibility="{Binding IsInNewTopicModeVisibility}" />
+                    </Grid>
+                    <Rectangle Height="2"
+                               Margin="12 0 0 12"
+                               Width="464"
+                               Visibility="{Binding IsInNewTopicModeVisibility}"
+                               Fill="{StaticResource PhoneActiveAreaBackgroundBrush}" />
+
+
+                    <uc:NewPostUC Margin="12 0 0 0"
+                                  x:Name="ucNewPost" />
+
+                    <Border x:Name="wallRepostContainer" />
+
+                    <Rectangle Height="2"
+                               Margin="12 10 0 0"
+                               Width="464"
+                               Fill="{StaticResource PhoneActiveAreaBackgroundBrush}" />
+
+
+                    <CheckBox IsChecked="{Binding FriendsOnly, Mode=TwoWay}"
+                              Visibility="{Binding OwnPostVisibility}"
+                              Margin="0 -4 0 -8"
+                              x:Name="checkBoxFriendsOnly"
+                              Content="{Binding LocalizedResources.NewPost_FriendsOnly, Source={StaticResource LocStr}}" />
+
+                    <!-- Social networks publishing -->
+                    <StackPanel Orientation="Horizontal">
+
+                        <uc:PublishSocialUC Type="Twitter"
+                                            Visibility="{Binding TwitterVisibility}"
+                                            IsChecked="{Binding PublishOnTwitter, Mode=TwoWay}" />
+
+                        <uc:PublishSocialUC Type="Facebook"
+                                            Visibility="{Binding FacebookVisibility}"
+                                            IsChecked="{Binding PublishOnFacebook, Mode=TwoWay}" />
+
+                    </StackPanel>
+
+                    <CheckBox IsChecked="{Binding FromGroup, Mode=TwoWay}"
+                              IsEnabled="{Binding FromGroupIsEnabled}"
+                              Visibility="{Binding FromGroupVisibility}"
+                              Margin="0 -8 0 -8"
+                              Content="{Binding LocalizedResources.NewPost_FromGroup, Source={StaticResource LocStr}}" />
+
+                    <CheckBox IsChecked="{Binding Signature, Mode=TwoWay}"
+                              Margin="0 -8 0 -8"
+                              Visibility="{Binding SignatureVisibility}"
+                              Content="{Binding LocalizedResources.NewPost_Signature, Source={StaticResource LocStr}}" />
+
+                </StackPanel>
+
+
+            </ScrollViewer>
+
+            <emoji:TextBoxPanelControl x:Name="textBoxPanel"
+                                       Grid.Row="1" />
+        </Grid>
+
+
+        <!--<Image Source="Temp/NewPost.png"
+               Grid.RowSpan="2"
+               Margin="0 -32  0 0"
+               Opacity="0.5" IsHitTestVisible="False" />-->
+
+    </Grid>
+
+
+</framework:PageBase>

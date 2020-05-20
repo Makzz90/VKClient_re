@@ -1,0 +1,87 @@
+﻿<UserControl x:Class="VKClient.Common.Stickers.AutoSuggest.StickersAutoSuggestUC"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:framework="clr-namespace:VKClient.Common.Framework;assembly=VKClient.Common"
+    xmlns:local="clr-namespace:VKClient.Common.Stickers.AutoSuggest"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:imagePreview="clr-namespace:VKClient.Common.Shared.ImagePreview"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="480" d:DesignWidth="480">
+
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="112"/>
+            <RowDefinition Height="12" />
+        </Grid.RowDefinitions>
+        
+        
+        <ScrollViewer Background="{StaticResource PhoneGray050_Gray800Brush}"
+                      HorizontalAlignment="Left"
+                      VerticalScrollBarVisibility="Disabled"
+                      HorizontalScrollBarVisibility="Hidden"
+                      Name="scrollViewer">
+            
+            <ItemsControl VerticalAlignment="Top"                        
+                          ItemsSource="{Binding AutoSuggestCollection}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel 
+                            Margin="6"
+                            Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="6"
+                          Width="88"
+                          Height="88"
+                          Background="Transparent" 
+                              Tap="Grid_Tap">
+                            <Image Height="88"
+                                   Opacity="{Binding Opacity}"
+                               Width="88"
+                               framework:ImageLoader.UriSource="{Binding PreviewUri, FallbackValue='https://new.vk.com/images/stickers/910/128.png'}" >
+                                <i:Interaction.Behaviors>
+                                    <imagePreview:PreviewBehavior PreviewUri="{Binding PreviewUriBig}"
+                                                                  TopOffset="10" />
+                                </i:Interaction.Behaviors>
+                            </Image>
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+
+            </ItemsControl>
+        </ScrollViewer>
+
+        <Path Grid.Row="1"
+              Width="24"
+              Height="13"
+              Margin="61 -1 0 0"
+              HorizontalAlignment="Left"
+             
+              Fill="{StaticResource PhoneGray050_Gray800Brush}">
+            <Path.Data>
+                <PathGeometry>
+                    <PathGeometry.Figures>
+                        <PathFigureCollection>
+                            <PathFigure IsClosed="True" StartPoint="0,0">
+                                <PathFigure.Segments>
+                                    <PathSegmentCollection>
+                                        <LineSegment Point="24,0" />
+                                        <LineSegment Point="12,13" />
+                                    </PathSegmentCollection>
+                                </PathFigure.Segments>
+                            </PathFigure>
+                        </PathFigureCollection>
+                    </PathGeometry.Figures>
+                </PathGeometry>
+            </Path.Data>
+        </Path>
+    </Grid>
+</UserControl>

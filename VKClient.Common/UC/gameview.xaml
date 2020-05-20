@@ -1,0 +1,245 @@
+﻿<UserControl x:Class="VKClient.Common.UC.GameView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:framework="clr-namespace:VKClient.Common.Framework"
+             xmlns:uc="clr-namespace:VKClient.Common.UC"
+             mc:Ignorable="d"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             d:DesignHeight="800"
+             d:DesignWidth="480">
+
+    <!--<Grid x:Name="gridRoot"
+          Background="Transparent">
+        <Grid.RenderTransform>
+            <TranslateTransform />
+        </Grid.RenderTransform>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="88" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Border Background="Transparent"
+                Tap="TransparentBorder_OnTapped" />
+
+        <Grid Grid.Row="1">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Border Background="{StaticResource PhoneHeaderBackgroundBrush}" />
+
+            <uc:GameViewHeaderUC x:Name="Header"
+                                 Grid.Row="0"
+                                 Tap="HeaderSticky_OnTapped">
+                <uc:GameViewHeaderUC.RenderTransform>
+                    <TranslateTransform />
+                </uc:GameViewHeaderUC.RenderTransform>
+            </uc:GameViewHeaderUC>
+
+            <Grid x:Name="Content"
+                  Grid.Row="1">
+                <Grid.RenderTransform>
+                    <TranslateTransform />
+                </Grid.RenderTransform>
+
+                <Border Background="{StaticResource PhoneBackgroundBrush}" />
+
+                <ViewportControl x:Name="ViewportCtrl"
+                                 VerticalContentAlignment="Stretch"
+                                 HorizontalContentAlignment="Stretch">
+
+                    <StackPanel x:Name="ContentPanel">
+
+                        <StackPanel x:Name="HeaderContentPanel"
+                                    SizeChanged="HeaderPanel_OnSizeChanged">
+
+
+                            <ProgressBar x:Name="loadingBar"
+                                         Visibility="{Binding IsIndeterminate, ElementName=loadingBar, Converter={StaticResource BoolToVisibilityConverter}}"
+                                         IsIndeterminate="False"
+                                         Margin="0 30 0 0"
+                                         Foreground="{StaticResource PhoneProgressBarForegroundBrush}" />
+
+                            <uc:GameRequestsSectionItemUC Name="ucGameRequests"
+                                                          ItemsSource="{Binding GameRequests}"
+                                                          Visibility="{Binding GameRequests.Count, Converter={StaticResource CountToVisibilityConverter}}"
+                                                          MaxDisplayedItemsCount="2" />
+
+                            <uc:GamesFriendsActivitySectionItemUC ItemsSource="{Binding GameActivity}"
+                                                                  Visibility="{Binding GameActivity.Count, Converter={StaticResource CountToVisibilityConverter}}"
+                                                                  GameId="{Binding GameHeader.Game.id}"
+                                                                  GameName="{Binding GameHeader.Game.title}"
+                                                                  ItemsDisplayType="Short"
+                                                                  MaxDisplayedItemsCount="2" />
+
+                            <uc:GameNewsHeaderUC Visibility="{Binding WallVM.Collection.Count, Converter={StaticResource CountToVisibilityConverter}}"
+                                                 IsSubscribed="{Binding IsSubscribedToGameNews}"
+                                                 GameGroupId="{Binding GameHeader.Game.author_group}" />
+
+                        </StackPanel>
+
+                        <framework:MyVirtualizingPanel2 Name="WallPanel"
+                                                        Visibility="{Binding IsLoadedVisibility}"
+                                                        DataContext="{Binding WallVM}"
+                                                        ItemsSource="{Binding Collection}"
+                                                        Margin="16 0 0 0" />
+
+
+                        <uc:FooterUC DataContext="{Binding WallVM}" />
+
+                    </StackPanel>
+                </ViewportControl>
+
+                <Grid Visibility="{Binding InstallGameButtonVisibility}"
+                      Background="Transparent"
+                      VerticalAlignment="Bottom">
+
+                    <Border Background="{StaticResource PhoneBackgroundBrush}"
+                            Opacity="0.9" />
+
+                    <Button Content="{Binding LocalizedResources.Games_Invite_Play, Source={StaticResource LocalizedStrings}}"
+                            Margin="4 0 0 0"
+                            Width="204"
+                            HorizontalAlignment="Left"                            
+                            Style="{StaticResource VKNoFillAppBarButton}"
+                            Click="PlayButton_OnClicked" />
+                </Grid>
+
+                <Border x:Name="panelOverlay"
+                        Background="{StaticResource PhoneBackgroundBrush}"
+                        Visibility="Collapsed"
+                        UseOptimizedManipulationRouting="False" />
+            </Grid>
+
+        </Grid>
+
+    </Grid>-->
+
+    <Grid x:Name="gridRoot"
+          Background="Transparent">
+        <Grid.RenderTransform>
+            <TranslateTransform />
+        </Grid.RenderTransform>
+
+        <Border Background="Transparent"
+                Tap="TransparentBorder_OnTapped" />
+
+        <Border x:Name="borderBackground"
+                Background="{StaticResource PhoneBackgroundBrush}"
+                Visibility="Collapsed" />
+
+        <ViewportControl x:Name="ViewportCtrl"
+                         framework:AttachedProperties.ExtraDeltaYCropWhenHidingImage="126"
+                         VerticalContentAlignment="Stretch"
+                         HorizontalContentAlignment="Stretch">
+
+            <Grid>
+
+                <Border x:Name="borderBackgroundMock"
+                        Margin="0 182 0 0"
+                        Background="{StaticResource PhoneBackgroundBrush}" />
+
+                <uc:MyVirtualizingStackPanel x:Name="ContentPanel">
+
+                    <StackPanel x:Name="HeaderContentPanel"
+                                SizeChanged="HeaderPanel_OnSizeChanged">
+
+                        <Border Height="88" />
+
+                        <uc:GameViewHeaderUC x:Name="Header"
+                                             Tap="HeaderSticky_OnTapped">
+                            <uc:GameViewHeaderUC.RenderTransform>
+                                <TranslateTransform />
+                            </uc:GameViewHeaderUC.RenderTransform>
+                        </uc:GameViewHeaderUC>
+
+                        <uc:FooterUC x:Name="ucFooter"
+                                     Visibility="Collapsed" />
+
+                        <ProgressBar x:Name="loadingBar"
+                                     Visibility="{Binding IsIndeterminate, ElementName=loadingBar, Converter={StaticResource BoolToVisibilityConverter}}"
+                                     IsIndeterminate="False"
+                                     Margin="0 30 0 0"
+                                     Foreground="{StaticResource PhoneProgressBarForegroundBrush}" />
+
+                        <uc:GameRequestsSectionItemUC Name="ucGameRequests"
+                                                      ItemsSource="{Binding GameRequests}"
+                                                      Visibility="{Binding GameRequests.Count, Converter={StaticResource CountToVisibilityConverter}}"
+                                                      MaxDisplayedItemsCount="2" />
+
+                        <uc:GameLeaderboardUC ItemsSource="{Binding GameLeaderboard}"
+                                              Visibility="{Binding GameLeaderboard.Count, Converter={StaticResource CountToVisibilityConverter}}" />
+
+                        <uc:GamesFriendsActivitySectionItemUC ItemsSource="{Binding GameActivity}"
+                                                              Visibility="{Binding GameActivity.Count, Converter={StaticResource CountToVisibilityConverter}}"
+                                                              GameId="{Binding GameHeader.Game.id}"
+                                                              ItemsDisplayType="Short"
+                                                              MaxDisplayedItemsCount="2" />
+
+                        <uc:GameNewsHeaderUC Visibility="{Binding WallVM.Collection.Count, Converter={StaticResource CountToVisibilityConverter}}"
+                                             IsSubscribed="{Binding IsSubscribedToGameNews}"
+                                             GameGroupId="{Binding GameHeader.Game.author_group}" />
+
+                    </StackPanel>
+
+                    <framework:MyVirtualizingPanel2 Name="WallPanel"
+                                                    Visibility="{Binding IsLoadedVisibility}"
+                                                    DataContext="{Binding WallVM}"
+                                                    ItemsSource="{Binding Collection}" />
+
+
+                    <uc:FooterUC DataContext="{Binding WallVM}" />
+
+                </uc:MyVirtualizingStackPanel>
+
+            </Grid>
+        </ViewportControl>
+
+        <uc:GameViewHeaderUC x:Name="HeaderSticky"
+                             CacheMode="BitmapCache"
+                             Tap="HeaderSticky_OnTapped"
+                             Visibility="Collapsed"
+                             VerticalAlignment="Top"
+                             MoreActionsVisibility="Collapsed"
+                             IsSystemTrayPlaceholderVisible="True"
+                             DataContext="{Binding GameHeader}" />
+
+        <Grid Visibility="{Binding InstallGameButtonVisibility}"
+              Background="Transparent"
+              VerticalAlignment="Bottom">
+
+            <Border Background="{StaticResource PhoneBackgroundBrush}"
+                    Opacity="0.9" />
+
+            <Button Content="{Binding LocalizedResources.Games_Invite_Play, Source={StaticResource LocalizedStrings}}"
+                    Margin="4 0 0 0"
+                    Width="204"
+                    HorizontalAlignment="Left"
+                    Style="{StaticResource VKNoFillAppBarButton}"
+                    Click="PlayButton_OnClicked" />
+        </Grid>
+
+        <Border x:Name="panelOverlay"
+                Background="Transparent"
+                Visibility="Collapsed"
+                UseOptimizedManipulationRouting="False">
+            <Border Background="{StaticResource PhoneBackgroundBrush}"
+                    Margin="0 182 0 0" />
+        </Border>
+    </Grid>
+
+    <!--<Image Width="480"
+               VerticalAlignment="Top"
+               Margin="0 -200 0 0"
+               Opacity=".5"
+               Stretch="None"
+               Grid.RowSpan="2"
+               Source="/Temp/wp-gameview-v2.png" />-->
+</UserControl>

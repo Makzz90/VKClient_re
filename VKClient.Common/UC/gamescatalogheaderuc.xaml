@@ -1,0 +1,76 @@
+﻿<UserControl x:Class="VKClient.Common.UC.GamesCatalogHeaderUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:framework="clr-namespace:VKClient.Common.Framework"
+             mc:Ignorable="d"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             d:DesignWidth="480"
+             d:DesignHeight="96">
+
+    <Grid Height="96"
+          framework:MetroInMotion.Tilt="1">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="96" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Border Background="{StaticResource PhoneChromeBrush}">
+            <Image framework:ImageLoader.UriSource="{Binding Icon}"
+                   Height="96"
+                   Width="96" />
+        </Border>
+
+        <StackPanel x:Name="panelContent"
+                    Grid.Column="1"
+                    Margin="12 0 0 0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock x:Name="textBlockTitle"
+                           Text="{Binding Title}"
+                           SizeChanged="BorderNew_OnSizeChanged"
+                           FontSize="26"
+                           TextWrapping="NoWrap"
+                           FontFamily="Segoe WP Semilight"
+                           Foreground="{StaticResource PhoneContrastTitleBrush}"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Left" />
+                <Border x:Name="borderNew"
+                        Visibility="{Binding IsNewVisibility}"
+                        Grid.Column="1"
+                        Margin="10 5 0 0"
+                        VerticalAlignment="Center"
+                        Background="{StaticResource PhoneNewsActionLikedForegroundBrush}">
+                    <TextBlock Text="{Binding LocalizedResources.Games_New, Source={StaticResource LocalizedStrings}}"
+                               FontSize="16"
+                               Foreground="White"
+                               Margin="5 0" />
+                </Border>
+            </Grid>
+
+            <TextBlock Text="{Binding Description}"
+                       TextWrapping="Wrap"
+                       FontFamily="Segoe WP"
+                       MaxHeight="54"
+                       Foreground="{StaticResource PhoneVKSubtleBrush}"
+                       Margin="0 -2 0 0" />
+        </StackPanel>
+
+        <!--<Image Width="480"
+               Grid.ColumnSpan="2"
+               VerticalAlignment="Top"
+               Margin="-32 -1465 0 0"
+               Opacity=".5"
+               Stretch="None"
+               Grid.RowSpan="2"
+               Source="/Temp/wp-games-v2.png" />-->
+    </Grid>
+</UserControl>

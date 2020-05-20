@@ -1,0 +1,37 @@
+﻿<UserControl
+    x:Class="VKClient.Groups.UC.ServiceOptionUC"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:framework="clr-namespace:VKClient.Common.Framework;assembly=VKClient.Common"
+    mc:Ignorable="d"
+    
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}">
+
+    <Grid Background="Transparent"
+          framework:MetroInMotion.Tilt="2.5"
+          Height="88">
+
+        <Border Width="32"
+                Height="32"
+                Margin="16"
+                HorizontalAlignment="Left"
+                Background="{StaticResource PhoneCommunityManagementSectionIconBrush}"
+                Name="IconBorder"/>
+
+        <TextBlock Margin="64,25,0,0"
+                   FontSize="25.333"
+                   Foreground="{StaticResource PhoneContrastTitleBrush}"
+                   Name="TitleBlock"/>
+        
+        <TextBlock Margin="64,56,0,0"
+                   FontSize="20"
+                   Foreground="{StaticResource PhoneCaptionGrayBrush}"
+                   Name="StateBlock"/>
+
+    </Grid>
+
+</UserControl>

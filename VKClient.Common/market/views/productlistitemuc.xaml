@@ -1,0 +1,52 @@
+﻿<UserControl x:Class="VKClient.Common.Market.Views.ProductListItemUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:framework="clr-namespace:VKClient.Common.Framework"
+             mc:Ignorable="d"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             d:DesignHeight="314"
+             d:DesignWidth="228"
+             Width="228">
+
+    <StackPanel framework:MetroInMotion.Tilt="1.5"
+                Background="Transparent"
+                Tap="Product_OnTap">
+        <Grid Height="228"
+              Background="{StaticResource PhoneChromeBrush}">
+
+            <Canvas Width="228"
+                    Height="228">
+                <Image x:Name="image"
+                       Width="228"
+                       Height="228"
+                       Stretch="UniformToFill" />
+            </Canvas>
+
+            <Rectangle Fill="Black"
+                       Opacity="0.03" />
+        </Grid>
+
+        <TextBlock x:Name="textBlockTitle"
+                   Margin="0 6 0 0"
+                   FontSize="18"
+                   Foreground="{StaticResource PhoneAlmostBlackBrush}"
+                   LineStackingStrategy="BlockLineHeight"
+                   LineHeight="22"
+                   MaxHeight="44"
+                   TextAlignment="Center"
+                   TextWrapping="Wrap"
+                   Text="Title" />
+
+        <TextBlock x:Name="textBlockSubtitle"
+                   Margin="0 1 0 8"
+                   Foreground="{StaticResource PhoneAlmostBlackBrush}"
+                   FontFamily="{StaticResource PhoneFontFamilySemiBold}"
+                   TextAlignment="Center"
+                   Text="Subtitle" />
+
+    </StackPanel>
+</UserControl>

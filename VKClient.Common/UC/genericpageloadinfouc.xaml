@@ -1,0 +1,55 @@
+﻿<UserControl x:Class="VKClient.Common.UC.GenericPageLoadInfoUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:uc="clr-namespace:VKClient.Common.UC"
+             mc:Ignorable="d"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             d:DesignHeight="800"
+             d:DesignWidth="480"
+             Visibility="{Binding PageLoadInfoViewModel.LoadingStatesVisibility, FallbackValue=Collapsed}">
+
+    <Grid x:Name="gridRoot"
+          Background="{StaticResource PhoneBackgroundBrush}">
+        <Grid Margin="0 -48 0 0"
+              VerticalAlignment="Center">
+            <StackPanel Visibility="{Binding PageLoadInfoViewModel.LoadingStateVisibility}">
+
+                <uc:ProgressRing Height="56"
+                                 Width="56"
+                                 IsActive="{Binding PageLoadInfoViewModel.IsLoadingState, FallbackValue=False}"
+                                 Foreground="{StaticResource PhoneProgressBarForegroundBrush}"
+                                 Margin="0 0 0 -8" />
+
+                <TextBlock Visibility="Visible"
+                           Foreground="{StaticResource PhoneProfileInfoLoadingForegroundBrush}"
+                           Margin="16 32 16 0"
+                           TextWrapping="Wrap"
+                           TextAlignment="Center"
+                           Text="{Binding LocalizedResources.Loading, Source={StaticResource LocalizedStrings}}"
+                           FontSize="22.67"
+                           FontFamily="{StaticResource PhoneFontFamilySemiLight}" />
+            </StackPanel>
+
+            <StackPanel Visibility="{Binding PageLoadInfoViewModel.ErrorStateVisibility}">
+                <TextBlock Foreground="{StaticResource PhoneProfileInfoLoadingForegroundBrush}"
+                           Margin="16 12 16 0"
+                           TextWrapping="Wrap"
+                           TextAlignment="Center"
+                           Text="{Binding PageLoadInfoViewModel.Error}"
+                           FontSize="22.67"
+                           FontFamily="{StaticResource PhoneFontFamilySemiLight}" />
+                <Button x:Name="buttonRetry"
+                        Content="{Binding LocalizedResources.Conversation_Retry, Source={StaticResource LocalizedStrings}}"
+                        HorizontalAlignment="Center"
+                        Style="{StaticResource VKButtonSecondaryStyle}"
+                        Margin="4 8 0 0"
+                        Click="ButtonRetry_OnClick" />
+            </StackPanel>
+
+        </Grid>
+    </Grid>
+</UserControl>

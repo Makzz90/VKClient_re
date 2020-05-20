@@ -1,0 +1,52 @@
+﻿<UserControl x:Class="VKClient.Common.UC.MentionPickerUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:framework="clr-namespace:VKClient.Common.Framework;assembly=VKClient.Common"
+             xmlns:uc="clr-namespace:VKClient.Common.UC"
+             mc:Ignorable="d"
+             
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             
+             d:DesignHeight="188"
+             d:DesignWidth="480"
+             
+             Visibility="Collapsed">
+
+    <Grid Name="mainPanel"
+          Background="{StaticResource PhoneBackgroundBrush}"
+          VerticalAlignment="Top">
+
+        <framework:ExtendedLongListSelector Name="listBox"
+                                            Tap="listBox_OnTapped">
+
+            <framework:ExtendedLongListSelector.ListHeader>
+                <Rectangle Height="8" 
+                           Width="480"/>
+            </framework:ExtendedLongListSelector.ListHeader>
+
+            <framework:ExtendedLongListSelector.ListFooter>
+                <Rectangle Height="8" 
+                           Width="480"/>
+            </framework:ExtendedLongListSelector.ListFooter>
+
+            <framework:ExtendedLongListSelector.ItemTemplate>
+                <DataTemplate>
+                    <uc:MentionPickerItemUC/>
+                </DataTemplate>
+            </framework:ExtendedLongListSelector.ItemTemplate>
+
+        </framework:ExtendedLongListSelector>
+
+        <Rectangle Height="1" 
+                   Width="480"
+                   Opacity="0.1"
+                   VerticalAlignment="Top"
+                   Fill="{StaticResource PhoneContrastTitleBrush}"/>
+
+    </Grid>
+    
+</UserControl>

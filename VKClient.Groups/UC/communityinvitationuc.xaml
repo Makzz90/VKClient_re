@@ -1,0 +1,81 @@
+﻿<UserControl
+    x:Class="VKClient.Groups.UC.CommunityInvitationUC"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:framework="clr-namespace:VKClient.Common.Framework;assembly=VKClient.Common"
+    mc:Ignorable="d">
+
+    <Grid framework:MetroInMotion.Tilt="2.5"
+          Background="{StaticResource PhoneRequestOrInvitationBackgroundBrush}"
+          Tap="Invitation_OnTapped">
+        <Ellipse Style="{StaticResource PhotoPlaceholderEllipse}"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Top"
+                 Margin="16,0,0,16"
+                 Height="96"
+                 Width="96"/>
+        <Image Name="InvitationPhoto"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Top"
+               Stretch="Uniform"
+               Margin="16,0,0,16"
+               Height="96"
+               Width="96">
+            <Image.Clip>
+                <EllipseGeometry Center="48,48" RadiusX="48" RadiusY="48"/>
+            </Image.Clip>
+        </Image>
+
+        <StackPanel Margin="124,4,16,16">
+            <TextBlock Name="InvitationName" 
+                       Foreground="{StaticResource PhoneContrastTitleBrush}" 
+                       FontSize="25.3"/>
+            <TextBlock Name="InvitationMembersCount" 
+                       Foreground="{StaticResource PhoneVKSubtleBrush}" 
+                       Margin="0,-3,0,-1"/>
+                
+            <Grid HorizontalAlignment="Left">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Name="InvitationInviterSex" 
+                           Foreground="{StaticResource PhoneVKSubtleBrush}" 
+                           Grid.Column="0"/>
+                <TextBlock Name="InvitationInviterName" 
+                           Foreground="{StaticResource PhoneButtonTextForegroundBrush}"
+                           MouseLeftButtonDown="InviterName_OnMouseLeftButtonDown" 
+                           Tap="InvitationInviterName_OnTapped"
+                           Grid.Column="1"/>
+            </Grid>
+        </StackPanel>
+            
+        <StackPanel Orientation="Horizontal" 
+                    VerticalAlignment="Top" 
+                    Margin="112,92,0,20">
+            <Button Name="JoinButton"
+                    Content="{Binding Source={StaticResource LocalizedStrings}, Path=LocalizedResources.Group_Join}" 
+                    Style="{StaticResource VKButtonPrimaryStyle}" 
+                    Click="Button_OnClicked"
+                    Tap="Button_OnTapped"
+                    Margin="0,0,-12,0"/>
+            <Button Name="HideButton"
+                    Content="{Binding Source={StaticResource LocalizedStrings}, Path=LocalizedResources.Communities_Hide}" 
+                    Style="{StaticResource VKButtonSecondaryStyle}"
+                    Click="Button_OnClicked"
+                    Tap="Button_OnTapped"/>
+        </StackPanel>
+
+        <Rectangle Name="BottomSeparatorRectangle"
+                   MouseLeftButtonDown="InviterName_OnMouseLeftButtonDown"
+                   Fill="{StaticResource PhoneGreyDividerBrush}"
+                   HorizontalAlignment="Stretch"
+                   VerticalAlignment="Bottom"
+                   Visibility="Collapsed"
+                   Margin="0,114,0,16"
+                   Height="2"/>
+    </Grid>
+
+</UserControl>

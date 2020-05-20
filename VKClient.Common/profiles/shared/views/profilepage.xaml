@@ -1,0 +1,303 @@
+﻿<framework:PageBase x:Class="VKClient.Common.Profiles.Shared.Views.ProfilePage"
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:framework="clr-namespace:VKClient.Common.Framework"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib"
+                    xmlns:userViews="clr-namespace:VKClient.Common.Profiles.Users.Views"
+                    xmlns:groupViews="clr-namespace:VKClient.Common.Profiles.Groups.Views"
+                    xmlns:sharedViews="clr-namespace:VKClient.Common.Profiles.Shared.Views"
+                    xmlns:uc="clr-namespace:VKClient.Common.UC"
+                    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+                    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                    FontSize="{StaticResource PhoneFontSizeNormal}"
+                    Foreground="{StaticResource PhoneForegroundBrush}"
+                    SupportedOrientations="Portrait"
+                    Orientation="Portrait"
+                    mc:Ignorable="d"
+                    shell:SystemTray.IsVisible="True">
+
+    <Grid>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="Common">
+                <VisualState x:Name="Loading" />
+                <VisualState x:Name="Reloading">
+                    <Storyboard>
+                        <Storyboard>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="stackPanelNotLoaded"
+                                                           Storyboard.TargetProperty="Visibility">
+                                <DiscreteObjectKeyFrame KeyTime="0"
+                                                        Value="Collapsed" />
+                            </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="Blocked">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="progressRing"
+                                                       Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                    Value="Collapsed" />
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="progressRing"
+                                                       Storyboard.TargetProperty="IsActive">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <system:Boolean>False</system:Boolean>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="textBlockLoadingStatus"
+                                                       Storyboard.TargetProperty="TextAlignment">
+                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                    Value="Left" />
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="Private">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="progressRing"
+                                                       Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                    Value="Collapsed" />
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="progressRing"
+                                                       Storyboard.TargetProperty="IsActive">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <system:Boolean>False</system:Boolean>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="textBlockLoadingStatus"
+                                                       Storyboard.TargetProperty="TextAlignment">
+                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                    Value="Left" />
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="gridHeader"
+                                                       Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                    Value="Collapsed" />
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="borderHeaderPlaceholder"
+                                                       Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                    Value="Visible" />
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="LoadingFailed">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="progressRing"
+                                                       Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                    Value="Collapsed" />
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="progressRing"
+                                                       Storyboard.TargetProperty="IsActive">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <system:Boolean>False</system:Boolean>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="textBlockLoadingStatus"
+                                                       Storyboard.TargetProperty="TextAlignment">
+                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                    Value="Left" />
+                        </ObjectAnimationUsingKeyFrames>
+
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="buttonTryAgain"
+                                                       Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                    Value="Visible" />
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="Loaded">
+                    <Storyboard>
+                        <Storyboard>
+                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="stackPanelNotLoaded"
+                                                           Storyboard.TargetProperty="Visibility">
+                                <DiscreteObjectKeyFrame KeyTime="0"
+                                                        Value="Collapsed" />
+                            </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </Storyboard>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+
+        <ViewportControl x:Name="viewportControl"
+                         framework:AttachedProperties.ExtraDeltaYCropWhenHidingImage="96"
+                         VerticalContentAlignment="Stretch"
+                         HorizontalContentAlignment="Stretch">
+
+            <Grid>
+                <uc:MyVirtualizingStackPanel x:Name="stackPanelRoot"
+                                             Width="480">
+
+                    <Rectangle Fill="{StaticResource PhoneNewsDividerBrush}"
+                               Visibility="{Binding StretchingRectVisibility}"
+                               Height="400"
+                               Margin="0 -400 0 0" />
+
+                    <Grid>
+                        <Canvas x:Name="canvasBackground"
+                                VerticalAlignment="Top" />
+
+                        <StackPanel SizeChanged="StackPanelMainInfo_OnSizeChanged"
+                                    VerticalAlignment="Top">
+                            <Grid x:Name="gridHeader">
+                                <Border Visibility="{Binding UserHeaderVisibility}">
+                                    <userViews:ProfileInfoHeaderUC x:Name="ucUserProfileInfoHeader"
+                                                                   RootTap="UcProfileInfoHeader_OnTap"
+                                                                   Hold="UcProfileInfoHeader_OnHold"
+                                                                   AddPhotoTap="AddPhoto_OnTap"
+                                                                   DataContext="{Binding UserHeaderViewModel}"
+                                                                   CacheMode="BitmapCache" />
+
+                                </Border>
+
+                                <Border Visibility="{Binding GroupHeaderVisibility, FallbackValue=Collapsed}">
+                                    <groupViews:ProfileInfoHeaderUC x:Name="ucGroupProfileInfoHeader"
+                                                                    Margin="0 0 0 4"
+                                                                    PhotoTapped="UcProfileInfoHeader_OnTap"
+                                                                    Hold="UcProfileInfoHeader_OnHold"
+                                                                    DataContext="{Binding GroupHeaderViewModel}" />
+                                </Border>
+
+                                <toolkit:ContextMenuService.ContextMenu>
+                                    <toolkit:ContextMenu x:Name="PhotoMenu"
+                                                         Background="{Binding InvertedOpaqueBG, Source={StaticResource ThemeHelper}}"
+                                                         Foreground="{Binding InvertedOpaqueFG, Source={StaticResource ThemeHelper}}"
+                                                         IsZoomEnabled="False">
+
+                                        <toolkit:MenuItem Click="ChoosePhotoMenuClick"
+                                                          Visibility="{Binding ChoosePhotoMenuItemVisibility}"
+                                                          Header="{Binding Path=LocalizedResources.Settings_EditProfile_ChoosePhoto, Source={StaticResource LocalizedStrings}, Converter={StaticResource StringToLowerConverter}}" />
+                                        <toolkit:MenuItem Click="OpenPhotoMenuClick"
+                                                          Header="{Binding Path=LocalizedResources.ContextMenu_Profile_OpenPhoto, Source={StaticResource LocalizedStrings}, Converter={StaticResource StringToLowerConverter}}" />
+                                        <toolkit:MenuItem Click="DeletePhotoMenuClick"
+                                                          Header="{Binding Path=LocalizedResources.Delete, Source={StaticResource LocalizedStrings}, Converter={StaticResource StringToLowerConverter}}" />
+                                    </toolkit:ContextMenu>
+                                </toolkit:ContextMenuService.ContextMenu>
+                            </Grid>
+                            <Border x:Name="borderHeaderPlaceholder"
+                                    Height="{Binding ActualHeight, ElementName=ucHeader}"
+                                    Visibility="Collapsed" />
+
+                            <StackPanel>
+
+                                <Border Visibility="{Binding MembershipVisibility}">
+                                    <sharedViews:MembershipButtonsUC DataContext="{Binding MembershipViewModel}" />
+                                </Border>
+
+                                <Border Visibility="{Binding InfoVisibility}">
+                                    <sharedViews:InfoUC DataContext="{Binding InfoViewModel}"
+                                                        Margin="0 8 0 0" />
+                                </Border>
+
+                                <Border Visibility="{Binding AppVisibility}">
+                                    <sharedViews:AppButtonUC DataContext="{Binding AppViewModel}" />
+                                </Border>
+
+                                <Border Visibility="{Binding MediaVisibility}">
+                                    <sharedViews:MediaItemsHorizontalUC x:Name="ucMedia"
+                                                                        DataContext="{Binding MediaViewModel}" />
+                                </Border>
+
+                                <StackPanel x:Name="stackPanelNotLoaded">
+                                    <uc:ProgressRing x:Name="progressRing"
+                                                     Height="56"
+                                                     Width="56"
+                                                     IsActive="True"
+                                                     Foreground="{StaticResource PhoneProgressBarForegroundBrush}"
+                                                     Margin="0 56 0 -8" />
+
+                                    <TextBlock x:Name="textBlockLoadingStatus"
+                                               Visibility="{Binding LoadingStatusVisibility, FallbackValue='Visible'}"
+                                               Foreground="{StaticResource PhoneProfileInfoLoadingForegroundBrush}"
+                                               Margin="16 32 16 24"
+                                               TextWrapping="Wrap"
+                                               TextAlignment="Center"
+                                               Text="{Binding LoadingStatusText, FallbackValue='Loading...'}"
+                                               FontSize="22.67"
+                                               FontFamily="{StaticResource PhoneFontFamilySemiLight}" />
+
+                                    <RichTextBox Foreground="{StaticResource PhoneProfileInfoLoadingForegroundBrush}"
+                                                 FontFamily="{StaticResource PhoneFontFamilySemiLight}"
+                                                 Visibility="{Binding User100DescriptionVisibility, FallbackValue='Collapsed'}"
+                                                 TextWrapping="Wrap"
+                                                 Margin="4,32,4,0"
+                                                 FontSize="22.67">
+                                        <RichTextBox.Blocks>
+                                            <Paragraph>
+                                                <Run Text="{Binding LocalizedResources.User100_DescriptionFirstPart, Source={StaticResource LocalizedStrings}}" />
+                                                <Hyperlink Click="SupportHyperlink_OnClicked"
+                                                           Foreground="{StaticResource PhoneNameBlueBrush}"
+                                                           MouseOverForeground="{StaticResource PhoneNameBlueBrush}"
+                                                           MouseOverTextDecorations="None"
+                                                           TextDecorations="None">
+                                                    <Run Text="{Binding LocalizedResources.User100_DescriptionSecondPart, Source={StaticResource LocalizedStrings}}" />
+                                                </Hyperlink>
+                                                <Run Text="." />
+                                            </Paragraph>
+                                        </RichTextBox.Blocks>
+                                    </RichTextBox>
+
+                                    <Button x:Name="buttonTryAgain"
+                                            Visibility="Collapsed"
+                                            Style="{StaticResource VKButtonSecondaryStyle}"
+                                            HorizontalAlignment="Left"
+                                            Width="200"
+                                            Margin="4 -12 4 4"
+                                            Content="{Binding LocalizedResources.TryAgain, Source={StaticResource LocalizedStrings}}"
+                                            Click="TryAgainButton_OnClick" />
+
+                                    <Rectangle Height="16"
+                                               Margin="0 8 0 0"
+                                               Fill="{StaticResource PhoneNewsDividerBrush}"
+                                               Visibility="{Binding PostsVisibility}" />
+                                </StackPanel>
+
+                                <Border Visibility="{Binding SuggestedPostponedVisibility}">
+                                    <sharedViews:SuggestedPostponedPostsUC DataContext="{Binding SuggestedPostponedViewModel}" />
+                                </Border>
+
+                                <Border Visibility="{Binding PostsNotLoadingVisibility}">
+                                    <Border Visibility="{Binding PostsVisibility}">
+                                        <sharedViews:AllProfilePostsToggleUC DataContext="{Binding PostsToggleViewModel}" />
+                                    </Border>
+                                </Border>
+
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+<!--Панель с новостями-->
+                    <StackPanel Visibility="{Binding PostsVisibility}">
+                        <framework:MyVirtualizingPanel2 x:Name="wallPanel"
+                                                        DataContext="{Binding WallVM}"
+                                                        ItemsSource="{Binding Collection}" />
+
+                        <uc:FooterUC DataContext="{Binding WallVM}"
+                                     Margin="0,0,0,6" />
+                    </StackPanel>
+
+                </uc:MyVirtualizingStackPanel>
+            </Grid>
+        </ViewportControl>
+
+        <uc:GenericHeaderUC x:Name="ucHeader"
+                            CacheMode="BitmapCache"
+                            Title="{Binding NameHeader}"
+                            VerticalAlignment="Top" />
+
+        <uc:PullToRefreshUC x:Name="ucPullToRefresh"
+                            Visibility="Collapsed" />
+    </Grid>
+
+</framework:PageBase>

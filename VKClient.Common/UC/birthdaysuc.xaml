@@ -1,0 +1,75 @@
+﻿<UserControl x:Class="VKClient.Common.UC.BirthdaysUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:framework="clr-namespace:VKClient.Common.Framework"
+             xmlns:uc="clr-namespace:VKClient.Common.UC"
+             mc:Ignorable="d"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}">
+
+    <Grid Background="Transparent"
+          Visibility="{Binding BlockVisibility}">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Rectangle Fill="White"
+                   HorizontalAlignment="Stretch"
+                   VerticalAlignment="Top"
+                   Opacity="0.1"
+                   Height="1" />
+
+        <Grid Background="Transparent"
+              Height="64">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Border Background="Transparent"
+                    framework:MetroInMotion.Tilt="1.5"
+                    Tap="Header_OnClicked"
+                    Hold="Header_OnHolding">
+
+                <TextBlock Margin="16 16 0 0"
+                           FontFamily="Segoe WP SemiBold"
+                           Foreground="{StaticResource PhoneMainMenuStatusForegroundBrush}"
+                           Text="{Binding Path=LocalizedResources.MainMenu_Birthdays, Source={StaticResource LocalizedStrings}}"
+                           FontSize="20" />
+            </Border>
+
+            <Border Grid.Column="1"
+                    Background="Transparent"
+                    framework:MetroInMotion.Tilt="1.5"
+                    Tap="Header_OnClicked"
+                    Hold="Header_OnHolding">
+                <TextBlock Margin="16 16 16 0"
+                           VerticalAlignment="Top"
+                           HorizontalAlignment="Right"
+                           Foreground="{StaticResource PhoneMainMenuStatusForegroundBrush}"
+                           Text="{Binding Path=LocalizedResources.ShowAll, Source={StaticResource LocalizedStrings}}" />
+            </Border>
+        </Grid>
+
+        <ItemsControl Grid.Row="1"
+                      ItemsSource="{Binding Birthdays}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <uc:BirthdayListItemUC UserName="{Binding UserName}"
+                                           Description="{Binding Description}"
+                                           GiftVisibility="{Binding GiftVisibility}"
+                                           ItemTap="Birthday_OnClicked"
+                                           ItemHold="Birthday_OnHolding"
+                                           GiftTap="SendGift_OnTap"
+                                           GiftHold="SendGift_OnHold" />
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </Grid>
+
+</UserControl>

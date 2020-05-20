@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="VKClient.Common.Shared.ImagePreview.PreviewImageUC"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:framework="clr-namespace:VKClient.Common.Framework"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="480" d:DesignWidth="480">
+    
+    <Grid x:Name="LayoutRoot" IsHitTestVisible="False">
+
+        <Rectangle Fill="Black"
+                   Name="rect"
+                   Grid.RowSpan="2"
+                   Opacity="0"
+                   CacheMode="BitmapCache"/>
+
+
+        <Image
+            Width="256"
+            Height="256"
+            Name="imagePreview" 
+            VerticalAlignment="Top"
+            CacheMode="BitmapCache"
+            
+            framework:VeryLowProfileImageLoader.UseBackgroundCreation="False"
+            framework:VeryLowProfileImageLoader.CleanupSourceWhenNewUriPending="False"
+            >
+
+            <Image.RenderTransform>
+                <ScaleTransform ScaleX="0.8"
+                                CenterX="128"
+                                CenterY="128"
+                                ScaleY="0.8"/>
+            </Image.RenderTransform>
+
+        </Image>
+
+
+    </Grid>
+</UserControl>

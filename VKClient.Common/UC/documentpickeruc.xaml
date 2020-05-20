@@ -1,0 +1,56 @@
+﻿<UserControl x:Class="VKClient.Common.UC.DocumentsPickerUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:framework="clr-namespace:VKClient.Common.Framework"
+             mc:Ignorable="d"
+             
+             VerticalAlignment="Bottom">
+
+    <StackPanel Background="{StaticResource PhoneBackgroundBrush}"
+                Height="144">
+        
+        <Grid Tap="FirstButton_OnClicked"
+              framework:MetroInMotion.Tilt="2.5"
+              Background="Transparent"
+              Margin="0,8,0,0"
+              Height="64">
+                        <Border Background="{StaticResource PhoneAccentBlueBrush}"
+                                HorizontalAlignment="Left"
+                                Margin="16"
+                                Height="32"
+                                Width="32">
+                            <Border.OpacityMask>
+                                <ImageBrush framework:ImageLoader.ImageBrushMultiResSource="../Resources/New/Gallery32px.png" />
+                            </Border.OpacityMask>
+                        </Border>
+                        <TextBlock Text="{Binding LocalizedResources.Documents_ChooseFromGallery, Source={StaticResource LocalizedStrings}}"
+                                   Foreground="{StaticResource PhoneAccentBlueBrush}"
+                                   Margin="64 14 0 0"
+                                   FontSize="25.33" />
+        </Grid>
+
+        <Grid Tap="SecondButton_OnClicked"
+              framework:MetroInMotion.Tilt="2.5"
+              Background="Transparent"
+              Margin="0,0,0,8"
+              Height="64">
+            <Border Background="{StaticResource PhoneAccentBlueBrush}"
+                    HorizontalAlignment="Left"
+                    Margin="16"
+                    Height="32"
+                    Width="32">
+                <Border.OpacityMask>
+                    <ImageBrush framework:ImageLoader.ImageBrushMultiResSource="../Resources/New/Upload32px.png" />
+                </Border.OpacityMask>
+            </Border>
+            <TextBlock Text="{Binding LocalizedResources.UploadFile, Source={StaticResource LocalizedStrings}}"
+                       Foreground="{StaticResource PhoneAccentBlueBrush}"
+                       Margin="64 14 0 0"
+                       FontSize="25.33" />
+        </Grid>
+        
+    </StackPanel>
+
+</UserControl>

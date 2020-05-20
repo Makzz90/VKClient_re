@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest" xmlns:m3="http://schemas.microsoft.com/appx/2014/manifest" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:build="http://schemas.microsoft.com/developer/appx/2012/build" IgnorableNamespaces="build">
+  <Identity Name="5af5154f-1a19-4562-b64b-080166d73a5c" Publisher="CN=Lol" Version="4.12.0.0" ProcessorArchitecture="arm" />
+  <Properties>
+    <DisplayName>VKClient</DisplayName>
+    <PublisherDisplayName>Lol</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+  </Properties>
+  <Prerequisites>
+    <OSMinVersion>6.3.1</OSMinVersion>
+    <OSMaxVersionTested>6.3.1</OSMaxVersionTested>
+  </Prerequisites>
+  <Resources>
+    <Resource Language="EN-US" />
+  </Resources>
+  <Applications>
+    <Application Id="App" Executable="AGHost.exe" EntryPoint="VKClient.Common;component/NewsPage.xaml">
+      <m3:VisualElements DisplayName="VKClient" Square150x150Logo="Assets\SquareTile150x150.png" Square44x44Logo="Assets\Logo.png" Description="VKClient" ForegroundText="light" BackgroundColor="#464646">
+        <m3:DefaultTile Square71x71Logo="Assets\SquareTile71x71.png">
+        </m3:DefaultTile>
+        <!--<m3:SplashScreen Image="Assets\Splashscreen.png" />-->
+        <m3:ApplicationView MinWidth="width320" />
+        <!--Used in XAML Designer. DO NOT REMOVE-->
+      </m3:VisualElements>
+      <Extensions>
+        <Extension Category="windows.backgroundTasks" EntryPoint="AgHost.BackgroundTask">
+          <BackgroundTasks>
+            <Task Type="systemEvent" />
+          </BackgroundTasks>
+        </Extension>
+        <Extension Category="windows.backgroundTasks" EntryPoint="AgHost.BackgroundAudioTask">
+          <BackgroundTasks ServerName="MyServerHost">
+            <Task Type="pushNotification" />
+          </BackgroundTasks>
+        </Extension>
+        <Extension Category="windows.shareTarget">
+          <ShareTarget>
+            <DataFormat>StorageItems</DataFormat>
+            <DataFormat>Text</DataFormat>
+            <DataFormat>WebLink</DataFormat>
+          </ShareTarget>
+        </Extension>
+      </Extensions>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="picturesLibrary" />
+    <Capability Name="videosLibrary" />
+  </Capabilities>
+  <Extensions>
+    <Extension Category="windows.activatableClass.inProcessServer">
+      <InProcessServer>
+        <Path>AgHostSvcs.dll</Path>
+        <ActivatableClass ActivatableClassId="AgHost.BackgroundTask" ThreadingModel="both" />
+      </InProcessServer>
+    </Extension>
+    <Extension Category="windows.activatableClass.inProcessServer">
+      <InProcessServer>
+        <Path>AgHostSvcs.dll</Path>
+        <ActivatableClass ActivatableClassId="AgHost.BackgroundAudioTask" ThreadingModel="both" />
+      </InProcessServer>
+    </Extension>
+    <Extension Category="windows.activatableClass.outOfProcessServer">
+      <OutOfProcessServer ServerName="MyServerHost">
+        <Path>ServerHost-ARM-Release.exe</Path>
+        <Instancing>singleInstance</Instancing>
+        <ActivatableClass ActivatableClassId="Unused" />
+      </OutOfProcessServer>
+    </Extension>
+    <Extension Category="windows.activatableClass.inProcessServer">
+      <InProcessServer>
+        <Path>WindowsPhoneRuntimeComponent2.dll</Path>
+        <ActivatableClass ActivatableClassId="WindowsPhoneRuntimeComponent2.Class1" ThreadingModel="both" />
+      </InProcessServer>
+    </Extension>
+    <Extension Category="windows.activatableClass.inProcessServer">
+      <InProcessServer>
+        <Path>VKClient.Opus.dll</Path>
+        <ActivatableClass ActivatableClassId="VKClient_Opus.OpusRuntimeComponent" ThreadingModel="both" />
+      </InProcessServer>
+    </Extension>
+    <Extension Category="windows.activatableClass.inProcessServer">
+      <InProcessServer>
+        <Path>VKClient.FFmpeg.dll</Path>
+        <ActivatableClass ActivatableClassId="FFmpegInterop.FFmpegGifDecoder" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="FFmpegInterop.FFmpegInteropMSS" ThreadingModel="both" />
+      </InProcessServer>
+    </Extension>
+    <Extension Category="windows.activatableClass.inProcessServer">
+      <InProcessServer>
+        <Path>ClrCompression.dll</Path>
+        <ActivatableClass ActivatableClassId="ClrCompression.ZLibInterop" ThreadingModel="both" />
+      </InProcessServer>
+    </Extension>
+    <Extension Category="windows.activatableClass.inProcessServer">
+      <InProcessServer>
+        <Path>SharpDX.WP8.dll</Path>
+        <ActivatableClass ActivatableClassId="SharpDX.WP8.Interop" ThreadingModel="both" />
+      </InProcessServer>
+    </Extension>
+  </Extensions>
+  <Dependencies>
+    <PackageDependency Name="Microsoft.VCLibs.120.00.Phone" MinVersion="12.0.30113.0" />
+  </Dependencies>
+  <build:Metadata>
+    <build:Item Name="TargetFrameworkMoniker" Value="WindowsPhone,Version=v8.1" />
+    <build:Item Name="VisualStudio" Version="14.0" />
+    <build:Item Name="VisualStudioEdition" Value="Microsoft Visual Studio Professional 2015" />
+    <build:Item Name="OperatingSystem" Version="10.0.14385.0 (rs1_release.160706-1700)" />
+    <build:Item Name="Microsoft.Build.AppxPackage.dll" Version="14.0.25123.0" />
+    <build:Item Name="ProjectGUID" Value="{A68AF064-CF57-41A7-AC3B-F8A3A38961A1}" />
+    <build:Item Name="MakePri.exe" Version="6.3.9600.17336 (winblue.150226-1500)" />
+  </build:Metadata>
+  <mp:PhoneIdentity PhoneProductId="1c4bd564-5426-417b-a5a0-e141abe6f858" PhonePublisherId="3bd70d61-ecbc-4a0d-b609-c375858f71c4" />
+</Package>

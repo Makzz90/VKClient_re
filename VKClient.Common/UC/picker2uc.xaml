@@ -1,0 +1,79 @@
+﻿<UserControl x:Class="VKClient.Common.UC.Picker2UC"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:framework="clr-namespace:VKClient.Common.Framework;assembly=VKClient.Common"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+     VerticalAlignment="Top">
+    <UserControl.Resources>
+        <DataTemplate x:Key="HeaderTemplate">
+            <Grid Height="24"/>
+        </DataTemplate>
+        <DataTemplate x:Key="PickerListPickerItemTemplate">
+            <Grid Height="64" Background="Transparent">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid  framework:MetroInMotion.Tilt="2.1" Tap="Grid_Tap">
+                <TextBlock FontFamily="Segoe WP SemiLight"
+                     VerticalAlignment="Top"
+                       Margin="25 8 0 0"
+                       Foreground="{StaticResource PhoneContrastTitleBrush}"
+                       FontSize="{StaticResource PhoneFontSizeLarge}"
+                       Text="{Binding Name}"/>
+                </Grid>
+                <Border HorizontalAlignment="Right" 
+                        Grid.Column="1"
+                        framework:MetroInMotion.Tilt="2.1"
+                        Tap="Border_Tap"         
+                        Padding="10 0 10 0"
+                        Visibility="{Binding ToolImageVisibility}"
+                        Margin="0 0 24 0" Width="29" Height="29" Background="{StaticResource PhoneGrayIconForegroundBrush}">
+                    <Border.OpacityMask>
+                        <ImageBrush framework:ImageLoader.ImageBrushMultiResSource="../Resources/MenuSettings.png"/>
+                    </Border.OpacityMask>
+                </Border>                                       
+            </Grid>
+        </DataTemplate>
+    </UserControl.Resources>
+    
+    <Grid x:Name="LayoutRoot" Background="{StaticResource PhoneMenuBackgroundBrush}">
+
+        <!--<Grid Height="64" Background="Transparent" framework:MetroInMotion.Tilt="2.1" Tap="Grid_Tap">
+            <TextBlock FontFamily="Segoe WP SemiLight"
+                     VerticalAlignment="Top"
+                       Margin="25 8 0 0"
+                       Foreground="{StaticResource PhoneContrastTitleBrush}"
+                       FontSize="{StaticResource PhoneFontSizeLarge}"
+                       Text="Test"/>
+        </Grid>-->
+
+        <!--<framework:ExtendedLongListSelector
+            
+            Background="Blue"
+            IsFlatList="True"
+            HorizontalContentAlignment="Stretch"
+         VerticalAlignment="Top"
+            Name="listPicker"
+           
+            ItemsSource="{Binding}"
+            ItemTemplate="{StaticResource PickerListPickerItemTemplate}"
+            />-->
+        
+        <phone:LongListSelector
+            IsGroupingEnabled="False"            
+            VerticalAlignment="Top"
+            Name="listPicker"
+              ItemsSource="{Binding}"
+            ItemTemplate="{StaticResource PickerListPickerItemTemplate}"
+            ListHeaderTemplate="{StaticResource HeaderTemplate}"
+            ListFooterTemplate="{StaticResource HeaderTemplate}"/>
+            
+    </Grid>
+</UserControl>

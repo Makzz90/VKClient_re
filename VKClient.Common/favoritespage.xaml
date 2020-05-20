@@ -1,0 +1,360 @@
+﻿<framework:PageBase x:Class="VKClient.Common.FavoritesPage"
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:framework="clr-namespace:VKClient.Common.Framework"
+                    xmlns:commonUC="clr-namespace:VKClient.Common.UC;assembly=VKClient.Common"
+                    xmlns:localization="clr-namespace:VKClient.Common.Localization"
+                    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+                    xmlns:views="clr-namespace:VKClient.Common.Market.Views"
+                    xmlns:vidCat="clr-namespace:VKClient.Common.VideoCatalog;assembly=VKClient.Common"
+                    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                    FontSize="{StaticResource PhoneFontSizeNormal}"
+                    Foreground="{StaticResource PhoneForegroundBrush}"
+                    SupportedOrientations="Portrait"
+                    Orientation="Portrait"
+                    mc:Ignorable="d"
+                    shell:SystemTray.IsVisible="True"
+                    shell:SystemTray.Opacity="0">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <framework:PageBase.Resources>
+
+        <localization:CommonLocalizedStrings x:Key="LocStr" />
+
+        <DataTemplate x:Key="HeaderTemplate">
+            <Grid Height="10" />
+        </DataTemplate>
+        
+        <DataTemplate x:Key="PhotosRowTemplate">
+
+            <StackPanel Orientation="Horizontal">
+                <Canvas Width="117" 
+                      Height="117"
+                        VerticalAlignment="Center"
+                      Margin="0 2 2 2"
+                      Visibility="{Binding Photo1IsSet}"
+                        framework:MetroInMotion.Tilt="1">
+                    <Rectangle Width="117"
+                                   HorizontalAlignment="Left"
+                                   Height="117"
+                                   Style="{StaticResource PhotoPlaceholderRectangle}"
+                                   Visibility="{Binding Photo1IsSet}" />
+
+                    <Image Width="117"
+                               Height="117"
+                               HorizontalAlignment="Stretch"
+                               VerticalAlignment="Stretch"
+                               Tag="1"
+                               framework:ImageLoader.UriSource="{Binding Photo1.Src}"
+                               Stretch="UniformToFill"
+                               Tap="Image_Tap_1">
+
+                    </Image>
+                </Canvas>
+
+                <Canvas Width="117" 
+                      Height="117"
+                      Margin="2 2 2 2"
+                        VerticalAlignment="Center"
+                      Visibility="{Binding Photo2IsSet}"
+                        framework:MetroInMotion.Tilt="1">
+                    <Rectangle Width="117"
+                                   HorizontalAlignment="Left"
+                                   Height="117"
+                               Style="{StaticResource PhotoPlaceholderRectangle}" />
+                                   
+                    <Image Width="117"
+                               Height="117"
+                               HorizontalAlignment="Stretch"
+                               VerticalAlignment="Stretch"
+                               Tag="2"
+                               framework:ImageLoader.UriSource="{Binding Photo2.Src}"
+                               Stretch="UniformToFill"
+                               Tap="Image_Tap_1">
+
+                      
+                    </Image>
+                </Canvas>
+
+
+                <Canvas Width="117" 
+                      Height="117"
+                      Margin="2 2 2 2"
+                        VerticalAlignment="Center"
+                      Visibility="{Binding Photo3IsSet}"
+                        framework:MetroInMotion.Tilt="1">
+                    <Rectangle Width="117"
+                                   HorizontalAlignment="Left"
+                                   Height="117"
+                               Style="{StaticResource PhotoPlaceholderRectangle}" />
+                                   
+                    <Image Width="117"
+                               Height="117"
+                               HorizontalAlignment="Stretch"
+                               VerticalAlignment="Stretch"
+                               Tag="3"
+                               framework:ImageLoader.UriSource="{Binding Photo3.Src}"
+                               Stretch="UniformToFill"
+                               Tap="Image_Tap_1">
+
+                    
+                    </Image>
+                </Canvas>
+
+
+                <Canvas Width="117" 
+                      Height="117"
+                        VerticalAlignment="Center"
+                      Margin="2 2 0 2"
+                      Visibility="{Binding Photo4IsSet}"
+                        framework:MetroInMotion.Tilt="1">
+                    <Rectangle Width="117"
+                                   HorizontalAlignment="Left"
+                                   Height="117"
+                               Style="{StaticResource PhotoPlaceholderRectangle}" />
+                                   
+                    <Image Width="117"
+                               Height="117"
+                               HorizontalAlignment="Stretch"
+                               VerticalAlignment="Stretch"
+                               Tag="4"
+                               framework:ImageLoader.UriSource="{Binding Photo4.Src}"
+                               Stretch="UniformToFill"
+                               Tap="Image_Tap_1">
+
+                      
+                    </Image>
+                </Canvas>
+
+
+
+            </StackPanel>
+
+
+
+        </DataTemplate>
+
+        <DataTemplate x:Key="PhotosHeaderTemplate">
+            <Grid Height="2" />
+        </DataTemplate>
+        <DataTemplate x:Key="VideosHeaderTemplate">
+            <Grid Height="8" />
+        </DataTemplate>
+        <DataTemplate x:Key="LinkRowTemplate">
+            <Grid  Height="62"
+                  Background="Transparent"
+                  framework:MetroInMotion.Tilt="2.5"
+                  Margin="16,6,16,6">
+                <Grid HorizontalAlignment="Left">
+                    <Ellipse Style="{StaticResource PhotoPlaceholderEllipse}"
+                             HorizontalAlignment="Left"
+                             Width="62"
+                             Height="62" />
+
+                    <Image Width="62"
+                           Height="62"
+                           Stretch="UniformToFill"
+                           framework:ImageLoader.UriSource="{Binding photo_100}">
+                        <Image.Clip>
+                            <!--<EllipseGeometry Center="31 31"
+                                             RadiusX="31"
+                                             RadiusY="31" />-->
+                            <RectangleGeometry Rect="0 0 62 62"
+							RadiusX="{Binding UserAvatarRadius}"
+							RadiusY="{Binding UserAvatarRadius}"/>
+                        </Image.Clip>
+                    </Image>
+                </Grid>
+
+                <StackPanel Margin="72,-5,0,0"
+                            Orientation="Vertical">
+                    <TextBlock Text="{Binding title}"
+                               Margin="0 0 0 0"
+                                 Style="{StaticResource PhoneTextLargeStyle}"
+                               Foreground="{StaticResource PhoneContrastTitleBrush}" />
+                    <TextBlock Text="{Binding url}"
+                               Margin="1, -6, 0, 0"
+                               Foreground="{StaticResource PhoneVKSubtleBrush}" />
+                </StackPanel>
+        
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="VideoTemplate2">
+            <vidCat:CatalogItemUC />
+        </DataTemplate>
+
+
+    </framework:PageBase.Resources>
+
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot"
+          Background="Transparent">
+
+
+        <commonUC:GenericHeaderUC Height="138"
+                                  Name="ucHeader" />
+
+
+        <controls:Pivot Grid.Row="1"
+                        Foreground="White"
+                        Margin="0 67 0 0 "
+                        Style="{StaticResource PivotStyleNoHeader}"   
+                        Name="pivot"
+                        LoadedPivotItem="pivot_LoadedPivotItem_1">
+
+            <controls:PivotItem Name="pivotItemPhotos">
+
+                <controls:PivotItem.Header>
+                    <TextBlock FontSize="46"
+                               FontFamily="Segoe WP SemiLight"
+                               Text="{Binding LocalizedResources.FavoritesPage_Photos, Source={StaticResource LocStr}}" />
+                </controls:PivotItem.Header>
+
+
+                <framework:ExtendedLongListSelector Name="photosListBox"
+                                                    framework:TiltEffect.IsTiltEnabled="False"                                                    
+                                                    ListFooter="{Binding}"                                                    
+                                                    ListFooterTemplate="{StaticResource FooterTemplate}"
+                                                    ListHeaderTemplate="{StaticResource PhotosHeaderTemplate}"
+                                                    IsFlatList="True"
+                                                    DataContext="{Binding PhotosVM}"
+                                                    ItemsSource="{Binding Collection}"
+                                                    Link="photos_Link_1"
+                                                    ItemTemplate="{StaticResource PhotosRowTemplate}">
+
+                </framework:ExtendedLongListSelector>
+            </controls:PivotItem>
+
+            <controls:PivotItem Name="pivotItemVideos">
+
+                <controls:PivotItem.Header>
+                    <TextBlock FontSize="46"
+                               FontFamily="Segoe WP SemiLight"
+                               Text="{Binding LocalizedResources.FavoritesPage_Videos, Source={StaticResource LocStr}}" />
+                </controls:PivotItem.Header>
+                <framework:ExtendedLongListSelector Name="videosListBox"                                                  
+                                                    ListFooter="{Binding}"
+                                                    ListFooterTemplate="{StaticResource FooterTemplate}"
+                                                    ListHeaderTemplate="{StaticResource VideosHeaderTemplate}"
+                                                    IsFlatList="True"
+                                                    DataContext="{Binding VideosVM}"
+                                                    ItemsSource="{Binding Collection}"
+                                                    Link="Videos_Link_1"
+                                                    ItemTemplate="{StaticResource VideoTemplate2}"
+                                                    SelectionChanged="Video_SelectionChanged">
+
+                </framework:ExtendedLongListSelector>
+
+            </controls:PivotItem>
+
+            <controls:PivotItem Name="pivotItemPosts">
+
+                <controls:PivotItem.Header>
+                    <TextBlock FontSize="46"
+                               FontFamily="Segoe WP SemiLight"
+                               Text="{Binding LocalizedResources.FavoritesPage_Posts, Source={StaticResource LocStr}}" />
+                </controls:PivotItem.Header>
+
+                <ViewportControl Name="scrollPosts"
+                                 VerticalContentAlignment="Stretch"
+                                 HorizontalContentAlignment="Stretch">
+                    <commonUC:MyVirtualizingStackPanel Name="stackPanelPosts">
+
+                        <framework:MyVirtualizingPanel2 VerticalAlignment="Top"
+                                                       x:Name="panelPosts"
+                                                       DataContext="{Binding PostsVM}"
+                                                        ItemsSource="{Binding Collection}">
+
+                        </framework:MyVirtualizingPanel2>
+
+                        <commonUC:FooterUC DataContext="{Binding PostsVM}" />
+
+                    </commonUC:MyVirtualizingStackPanel>
+
+                </ViewportControl>
+            </controls:PivotItem>
+
+            <controls:PivotItem Name="pivotItemPersons">
+
+                <controls:PivotItem.Header>
+                    <TextBlock FontSize="46"
+                               FontFamily="Segoe WP SemiLight"
+                               Text="{Binding LocalizedResources.FavoritesPage_Persons, Source={StaticResource LocStr}}" />
+                </controls:PivotItem.Header>
+
+                <framework:ExtendedLongListSelector Name="usersListBox"
+                                                    ListFooter="{Binding}"
+                                                    ListFooterTemplate="{StaticResource FooterTemplate}"
+                                                    IsFlatList="True"
+                                                    DataContext="{Binding UsersVM}"
+                                                    ItemsSource="{Binding Collection}"
+                                                    Link="Users_Link_1"
+                                                    ListHeaderTemplate="{StaticResource HeaderTemplate}"
+                                                    ItemTemplate="{StaticResource FriendItemTemplate}"
+                                                    SelectionChanged="Users_SelectionChanged">
+
+                </framework:ExtendedLongListSelector>
+
+            </controls:PivotItem>
+
+            <controls:PivotItem Name="pivotItemLinks">
+
+                <controls:PivotItem.Header>
+                    <TextBlock FontSize="46"
+                               FontFamily="Segoe WP SemiLight"
+                               Text="{Binding LocalizedResources.FavoritesPage_Links, Source={StaticResource LocStr}}" />
+                </controls:PivotItem.Header>
+
+                <framework:ExtendedLongListSelector Name="linksListBox"
+                                                   ListHeaderTemplate="{StaticResource HeaderTemplate}"
+                                                    ListFooter="{Binding}"
+                                                    ListFooterTemplate="{StaticResource FooterTemplate}"
+                                                    IsFlatList="True"
+                                                    DataContext="{Binding LinksVM}"
+                                                    ItemsSource="{Binding Collection}"
+                                                    Link="Links_Link_1"
+                                                    ItemTemplate="{StaticResource LinkRowTemplate}"
+                                                    SelectionChanged="Links_SelectionChanged">
+
+                </framework:ExtendedLongListSelector>
+
+            </controls:PivotItem>
+
+            <controls:PivotItem Name="pivotItemProducts">
+
+                <controls:PivotItem.Header>
+                    <TextBlock FontSize="46"
+                               FontFamily="Segoe WP SemiLight"
+                               Text="{Binding LocalizedResources.FavoritesPage_Products, Source={StaticResource LocStr}}" />
+                </controls:PivotItem.Header>
+
+                <framework:ExtendedLongListSelector Name="productsListBox"
+                                                    ListHeaderTemplate="{StaticResource HeaderTemplate}"
+                                                    ListFooter="{Binding}"
+                                                    ListFooterTemplate="{StaticResource FooterTemplate}"
+                                                    DataContext="{Binding ProductsVM}"
+                                                    ItemsSource="{Binding Collection}"
+                                                    Link="Products_Link_1">
+                    <framework:ExtendedLongListSelector.ItemTemplate>
+                        <DataTemplate>
+                            <views:ProductsTwoInARowUC />
+                        </DataTemplate>
+                    </framework:ExtendedLongListSelector.ItemTemplate>
+
+                </framework:ExtendedLongListSelector>
+
+            </controls:PivotItem>
+
+
+
+        </controls:Pivot>
+        
+        <commonUC:PullToRefreshUC x:Name="ucPullToRefresh" />
+      
+    </Grid>
+</framework:PageBase>

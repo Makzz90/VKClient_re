@@ -1,0 +1,75 @@
+﻿<UserControl x:Class="VKClient.Common.UC.NewsfeedNewPostUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:framework="clr-namespace:VKClient.Common.Framework"
+             mc:Ignorable="d"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             d:DesignWidth="480"
+             d:DesignHeight="96"
+             Height="80">
+
+    <Grid Background="{StaticResource PhoneNewsBackgroundBrush}"
+          Height="80">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Grid Background="Transparent"
+                  framework:MetroInMotion.Tilt="1.5"
+                  Tap="NewPost_OnTap">
+                <Rectangle Width="56"
+                         Height="56"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Top"
+                         Fill="{StaticResource PhoneChromeBrush}"
+                         Margin="16 12 0 0"
+                           RadiusX="5" RadiusY="5" Name="rectangle"/>
+
+                <Image framework:ImageLoader.UriSource="{Binding UserPhoto}"
+                       Width="56"
+                       Height="56"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Top"
+                       Margin="16 12 0 0">
+                    <Image.Clip>
+                        <RectangleGeometry Rect="0 0 56 56" x:Name="RectangleGeometry1"
+                                         RadiusX="5"
+                                         RadiusY="5" />
+                    </Image.Clip>
+                </Image>
+
+                <TextBlock Margin="84 25 0 0"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Top"
+                           FontSize="21.33"
+                           Foreground="{StaticResource PhoneCaptionGrayBrush}"
+                           Text="{Binding LocalizedResources.NewsPage_WhatsNew, Source={StaticResource LocalizedStrings}}" />
+            </Grid>
+
+            <Border Grid.Column="1"
+                    Background="Transparent"
+                    framework:MetroInMotion.Tilt="1.5"
+                    Tap="Photo_OnTap">
+                <Border Background="#c0c5cc"
+                        Width="32"
+                        Height="32"
+                        Margin="16 0"
+                        HorizontalAlignment="Right">
+                    <Border.OpacityMask>
+                        <ImageBrush framework:ImageLoader.ImageBrushMultiResSource="/Resources/Camera32px.png" />
+                    </Border.OpacityMask>
+                </Border>
+            </Border>
+        </Grid>
+
+        <Rectangle Fill="{StaticResource PhoneNewsDividerBrush}"
+                   VerticalAlignment="Bottom"
+                   Height="1" />
+    </Grid>
+</UserControl>

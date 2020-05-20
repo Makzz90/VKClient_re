@@ -1,0 +1,836 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:vsm="clr-namespace:System.Windows;assembly=System.Windows"
+                    xmlns:framework="clr-namespace:VKClient.Common.Framework"
+                    xmlns:uc="clr-namespace:VKClient.Common.UC">
+
+    <Style TargetType="framework:MyListBox">
+        <Setter Property="Background"
+                Value="Transparent" />
+        <Setter Property="Foreground"
+                Value="{StaticResource PhoneForegroundBrush}" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility"
+                Value="Disabled" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility"
+                Value="Auto" />
+        <Setter Property="BorderThickness"
+                Value="0" />
+        <Setter Property="BorderBrush"
+                Value="Transparent" />
+        <Setter Property="Padding"
+                Value="0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="framework:MyListBox">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <!-- ScrollViewer ManipulationMode=Conrtrol is only required for compatibility with PullDownToRefreshPanel. -->
+                        <!-- Otherwise, the default ManipulationMode=System will provide better scrolling performance. -->
+                        <ScrollViewer x:Name="ScrollViewer"
+                                      Grid.ColumnSpan="2"
+                                      ManipulationMode="System"
+                                      Foreground="{TemplateBinding Foreground}"
+                                      Background="{TemplateBinding Background}"
+                                      BorderBrush="Transparent"
+                                      BorderThickness="0"
+                                      Padding="{TemplateBinding Padding}">
+
+                            <ItemsPresenter Margin="0 8 0 0" />
+
+                        </ScrollViewer>
+                        <!-- The DragInterceptor sits on top of the item DragHandles and intercepts drag events
+                             so that the capture is not lost when the item container is removed from the panel.
+                             Its width must be equal to the width of the item DragHandles. -->
+                        <Canvas x:Name="DragInterceptor"
+                                Grid.Column="1"
+                                Margin="{TemplateBinding Padding}"
+                                Background="Transparent"
+                                VerticalAlignment="Stretch"
+                                Width="52">
+                            <Image x:Name="DragIndicator"
+                                   Visibility="Collapsed">
+                                <Image.RenderTransform>
+                                    <TranslateTransform />
+                                </Image.RenderTransform>
+                            </Image>
+                        </Canvas>
+                        <Canvas x:Name="RearrangeCanvas"
+                                Grid.ColumnSpan="2"
+                                Margin="{TemplateBinding Padding}"
+                                Background="Transparent"
+                                Visibility="Collapsed" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="framework:MyListBoxItem">
+        <Setter Property="Background"
+                Value="{StaticResource PhoneBackgroundBrush}" />
+        <Setter Property="BorderThickness"
+                Value="0" />
+        <Setter Property="BorderBrush"
+                Value="Transparent" />
+        <Setter Property="Padding"
+                Value="0" />
+        <Setter Property="HorizontalContentAlignment"
+                Value="Stretch" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Center" />
+        <Setter Property="DragHandleTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <!--<Canvas
+                        Width="52"
+                        Height="48"
+                        Background="Transparent">
+                        <Polygon
+                            Fill="Gray"
+                            Points="16,20 4,20 22,4 22,44 16,44" />
+                        <Polygon
+                            Fill="Gray"
+                            Points="32,28 44,28 26,44 26,4 32,4" />
+                    </Canvas>-->
+
+                    <Grid Background="Transparent"
+                          Width="52"
+                          Height="52">
+                        <Image Width="28"
+                               Height="22"
+                               Source="/VKClient.Common;component/Resources/RearrangeIndicator-WXGA.png" />
+                    </Grid>
+
+
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="framework:MyListBoxItem">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid x:Name="DropBeforeSpace"
+                              Grid.Row="0"
+                              Height="0">
+                        </Grid>
+                        <Grid x:Name="DropAfterSpace"
+                              Grid.Row="2"
+                              Height="0">
+                        </Grid>
+                        <Border x:Name="LayoutRoot"
+                                Grid.Row="1"
+                                Background="{TemplateBinding Background}"
+                                HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}">
+                            <Grid Background="Transparent"
+                                  Margin="{TemplateBinding Padding}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <CheckBox  Name="selectBox"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Left"
+                                           IsChecked="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsChecked, Mode=TwoWay}">
+
+                                    <CheckBox.RenderTransform>
+                                        <CompositeTransform TranslateX="-68" />
+                                    </CheckBox.RenderTransform>
+
+                                </CheckBox>
+
+                                <ContentControl x:Name="ContentContainer"
+                                                Grid.Column="0"
+                                                HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                Content="{TemplateBinding Content}"
+                                                ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                Foreground="{TemplateBinding Foreground}">
+
+                                    <ContentControl.RenderTransform>
+                                        <CompositeTransform />
+                                    </ContentControl.RenderTransform>
+
+                                </ContentControl>
+                                <Grid Grid.Column="1"
+                                      x:Name="HandleContainer"
+                                      VerticalAlignment="Stretch">
+                                    <ContentPresenter x:Name="DragHandle"
+                                                      Width="52"
+                                                      VerticalAlignment="Center"
+                                                      ContentTemplate="{TemplateBinding DragHandleTemplate}">
+
+
+                                    </ContentPresenter>
+
+                                    <Grid.RenderTransform>
+                                        <CompositeTransform />
+                                    </Grid.RenderTransform>
+                                </Grid>
+                            </Grid>
+                        </Border>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="MouseOver" />
+                                <VisualState x:Name="Disabled">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="LayoutRoot"
+                                                                       Storyboard.TargetProperty="Background">
+                                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                                    Value="{StaticResource TransparentBrush}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <DoubleAnimation Storyboard.TargetName="ContentContainer"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         Duration="0"
+                                                         To=".5" />
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="SelectionStates">
+                                <VisualState x:Name="Unselected" />
+                                <VisualState x:Name="Selected">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentContainer"
+                                                                       Storyboard.TargetProperty="Foreground">
+                                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                                    Value="{StaticResource PhoneAccentBrush}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="ReorderEnabledStates">
+                                <VisualState x:Name="ReorderDisabled">
+
+                                    <Storyboard>
+
+                                        <!--<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)" Storyboard.TargetName="HandleContainer">
+
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.0" Value="52"/>
+                                        </DoubleAnimationUsingKeyFrames>-->
+
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility"
+                                                                       Storyboard.TargetName="HandleContainer">
+                                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                                    Value="Collapsed" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="ReorderEnabled" />
+
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="DraggingStates">
+                                <VisualState x:Name="NotDragging" />
+                                <VisualState x:Name="Dragging">
+                                    <!--<Storyboard>
+                                        <ColorAnimation Storyboard.TargetName="LayoutRoot"
+                                                        Storyboard.TargetProperty="(Control.Background).(SolidColorBrush.Color)"
+                                                        To="#60808080"
+                                                        Duration="0" />
+                                        <DoubleAnimation Storyboard.TargetName="LayoutRoot"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="0.7"
+                                                         Duration="0" />
+                                    </Storyboard>-->
+                                </VisualState>
+                                <VisualStateGroup.Transitions>
+                                    <VisualTransition To="NotDragging">
+                                        <!--<Storyboard>
+                                            <ColorAnimation Storyboard.TargetName="LayoutRoot"
+                                                            Storyboard.TargetProperty="(Control.Background).(SolidColorBrush.Color)"
+                                                            From="#60808080"
+                                                            Duration="0:0:0.2" />
+                                            <DoubleAnimation Storyboard.TargetName="LayoutRoot"
+                                                             Storyboard.TargetProperty="Opacity"
+                                                             From="0.7"
+                                                             Duration="0:0:0.2" />
+                                        </Storyboard>-->
+                                    </VisualTransition>
+                                    <VisualTransition To="Dragging">
+                                        <!--<Storyboard>
+                                            <ColorAnimation Storyboard.TargetName="LayoutRoot"
+                                                            Storyboard.TargetProperty="(Control.Background).(SolidColorBrush.Color)"
+                                                            To="#60808080"
+                                                            Duration="0:0:0.2" />
+                                            <DoubleAnimation Storyboard.TargetName="LayoutRoot"
+                                                             Storyboard.TargetProperty="Opacity"
+                                                             To="0.7"
+                                                             Duration="0:0:0.2" />
+                                        </Storyboard>-->
+                                    </VisualTransition>
+                                </VisualStateGroup.Transitions>
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="DropIndicatorStates">
+                                <VisualState x:Name="NoDropIndicator">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="DropBeforeSpace"
+                                                         Storyboard.TargetProperty="Height"
+                                                         To="0"
+                                                         Duration="0" />
+                                        <DoubleAnimation Storyboard.TargetName="DropAfterSpace"
+                                                         Storyboard.TargetProperty="Height"
+                                                         To="0"
+                                                         Duration="0" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="DropBeforeIndicator">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="DropBeforeSpace"
+                                                         Storyboard.TargetProperty="Height"
+                                                         To="1"
+                                                         Duration="0" />
+                                        <DoubleAnimation Storyboard.TargetName="DropAfterSpace"
+                                                         Storyboard.TargetProperty="Height"
+                                                         To="0"
+                                                         Duration="0" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="DropAfterIndicator">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="DropBeforeSpace"
+                                                         Storyboard.TargetProperty="Height"
+                                                         To="0"
+                                                         Duration="0" />
+                                        <DoubleAnimation Storyboard.TargetName="DropAfterSpace"
+                                                         Storyboard.TargetProperty="Height"
+                                                         To="1"
+                                                         Duration="0" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualStateGroup.Transitions>
+                                    <VisualTransition From="NoDropIndicator"
+                                                      To="DropBeforeIndicator">
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="DropBeforeSpace"
+                                                             Storyboard.TargetProperty="Height"
+                                                             To="1"
+                                                             Duration="0:0:0.2" />
+                                        </Storyboard>
+                                    </VisualTransition>
+                                    <VisualTransition From="NoDropIndicator"
+                                                      To="DropAfterIndicator">
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="DropAfterSpace"
+                                                             Storyboard.TargetProperty="Height"
+                                                             To="1"
+                                                             Duration="0:0:0.2" />
+                                        </Storyboard>
+                                    </VisualTransition>
+                                    <VisualTransition From="DropBeforeIndicator"
+                                                      To="NoDropIndicator">
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="DropBeforeSpace"
+                                                             Storyboard.TargetProperty="Height"
+                                                             To="0"
+                                                             Duration="0:0:0.2" />
+                                        </Storyboard>
+                                    </VisualTransition>
+                                    <VisualTransition From="DropAfterIndicator"
+                                                      To="NoDropIndicator">
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="DropAfterSpace"
+                                                             Storyboard.TargetProperty="Height"
+                                                             To="0"
+                                                             Duration="0:0:0.2" />
+                                        </Storyboard>
+                                    </VisualTransition>
+                                    <VisualTransition From="DropBeforeIndicator"
+                                                      To="DropAfterIndicator">
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="DropBeforeSpace"
+                                                             Storyboard.TargetProperty="Height"
+                                                             To="0"
+                                                             Duration="0:0:0.2" />
+                                            <DoubleAnimation Storyboard.TargetName="DropAfterSpace"
+                                                             Storyboard.TargetProperty="Height"
+                                                             To="1"
+                                                             Duration="0:0:0.2" />
+                                        </Storyboard>
+                                    </VisualTransition>
+                                    <VisualTransition From="DropAfterIndicator"
+                                                      To="DropBeforeIndicator">
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="DropBeforeSpace"
+                                                             Storyboard.TargetProperty="Height"
+                                                             To="1"
+                                                             Duration="0:0:0.2" />
+                                            <DoubleAnimation Storyboard.TargetName="DropAfterSpace"
+                                                             Storyboard.TargetProperty="Height"
+                                                             To="0"
+                                                             Duration="0:0:0.2" />
+                                        </Storyboard>
+                                    </VisualTransition>
+                                </VisualStateGroup.Transitions>
+                            </VisualStateGroup>
+
+                            <VisualStateGroup x:Name="SelectionEnabledStates">
+                                <VisualStateGroup.Transitions>
+                                    <VisualTransition From="Closed"
+                                                      GeneratedDuration="0:0:0.2"
+                                                      To="Opened">
+                                        <VisualTransition.GeneratedEasingFunction>
+                                            <QuadraticEase EasingMode="EaseOut" />
+                                        </VisualTransition.GeneratedEasingFunction>
+                                    </VisualTransition>
+                                    <VisualTransition From="Opened"
+                                                      GeneratedDuration="0:0:0.2"
+                                                      To="Closed">
+                                        <VisualTransition.GeneratedEasingFunction>
+                                            <QuadraticEase EasingMode="EaseOut" />
+                                        </VisualTransition.GeneratedEasingFunction>
+                                    </VisualTransition>
+                                </VisualStateGroup.Transitions>
+
+                                <VisualStateGroup.States>
+                                    <VisualState x:Name="Closed" />
+
+                                    <VisualState x:Name="Opened">
+                                        <Storyboard>
+
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)"
+                                                                           Storyboard.TargetName="selectBox">
+
+                                                <EasingDoubleKeyFrame KeyTime="0:0:0.0"
+                                                                      Value="0" />
+                                            </DoubleAnimationUsingKeyFrames>
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateX)"
+                                                                           Storyboard.TargetName="ContentContainer">
+
+                                                <EasingDoubleKeyFrame KeyTime="0:0:0.0"
+                                                                      Value="68" />
+                                            </DoubleAnimationUsingKeyFrames>
+
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup.States>
+
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+
+    <Style TargetType="framework:ExtendedReorderListBox">
+        <Setter Property="Background"
+                Value="Transparent" />
+        <Setter Property="Foreground"
+                Value="{StaticResource PhoneForegroundBrush}" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility"
+                Value="Disabled" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility"
+                Value="Auto" />
+        <Setter Property="BorderThickness"
+                Value="0" />
+        <Setter Property="BorderBrush"
+                Value="Transparent" />
+        <Setter Property="Padding"
+                Value="0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="framework:ExtendedReorderListBox">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        
+                        <!-- The DragInterceptor sits on top of the item DragHandles and intercepts drag events
+                             so that the capture is not lost when the item container is removed from the panel.
+                             Its width must be equal to the width of the item DragHandles. -->
+                        <Canvas x:Name="DragInterceptor"
+                                Grid.Column="0"
+                                Background="Transparent"
+                                VerticalAlignment="Stretch"
+                                Width="56">
+
+                            <Image x:Name="DragIndicator"
+                                   Visibility="Collapsed">
+                                <Image.RenderTransform>
+                                    <TranslateTransform />
+                                </Image.RenderTransform>
+                            </Image>
+                        </Canvas>
+                        
+                        <Canvas x:Name="RearrangeCanvas"
+                                Grid.ColumnSpan="2"
+                                Margin="{TemplateBinding Padding}"
+                                Background="Transparent"
+                                Visibility="Collapsed" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="framework:ReorderListBoxItem">
+        <Setter Property="Background"
+                Value="{StaticResource PhoneBackgroundBrush}" />
+        <Setter Property="BorderThickness"
+                Value="0" />
+        <Setter Property="BorderBrush"
+                Value="Transparent" />
+        <Setter Property="Padding"
+                Value="0" />
+        <Setter Property="HorizontalContentAlignment"
+                Value="Stretch" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Center" />
+        <Setter Property="DragHandleTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <Border Background="LightBlue">
+                        <Image Width="28"
+                               Height="22"
+                               Source="/VKClient.Common;component/Resources/RearrangeIndicator-WXGA.png" />
+                    </Border>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="framework:ReorderListBoxItem">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <Grid x:Name="DropBeforeSpace"
+                              Grid.Row="0"
+                              Height="0">
+                        </Grid>
+
+                        <Grid x:Name="DropAfterSpace"
+                              Grid.Row="2"
+                              Height="0">
+                        </Grid>
+
+                        <Border x:Name="LayoutRoot"
+                                Grid.Row="1"
+                                Background="{TemplateBinding Background}"
+                                HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}">
+
+                            <Grid Background="Transparent"
+                                  Margin="{TemplateBinding Padding}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                
+                                <Grid Grid.Column="0"
+                                      x:Name="HandleContainer"
+                                      VerticalAlignment="Stretch">
+                                    <Grid.RenderTransform>
+                                        <CompositeTransform />
+                                    </Grid.RenderTransform>
+                                    
+                                    <ContentPresenter x:Name="DragHandle"
+                                                      Width="52"
+                                                      VerticalAlignment="Center"
+                                                      ContentTemplate="{TemplateBinding DragHandleTemplate}" />
+                                </Grid>
+
+                                <ContentControl x:Name="ContentContainer"
+                                                Grid.Column="1"
+                                                HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                Content="{TemplateBinding Content}"
+                                                ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                Foreground="{TemplateBinding Foreground}">
+                                    <ContentControl.RenderTransform>
+                                        <CompositeTransform />
+                                    </ContentControl.RenderTransform>
+                                </ContentControl>
+                            </Grid>
+                        </Border>
+                        
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="MouseOver" />
+                                <VisualState x:Name="Disabled" />
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="SelectionStates">
+                                <VisualState x:Name="Unselected" />
+                                <VisualState x:Name="Selected" />
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="ReorderEnabledStates">
+                                <VisualState x:Name="ReorderDisabled">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility"
+                                                                       Storyboard.TargetName="HandleContainer">
+                                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                                    Value="Collapsed" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="ReorderEnabled" />
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="DraggingStates">
+                                <VisualState x:Name="NotDragging" />
+                                <VisualState x:Name="Dragging" />
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="DropIndicatorStates">
+                                <VisualState x:Name="NoDropIndicator">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="DropBeforeSpace"
+                                                         Storyboard.TargetProperty="Height"
+                                                         To="0"
+                                                         Duration="0" />
+                                        <DoubleAnimation Storyboard.TargetName="DropAfterSpace"
+                                                         Storyboard.TargetProperty="Height"
+                                                         To="0"
+                                                         Duration="0" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="DropBeforeIndicator">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="DropBeforeSpace"
+                                                         Storyboard.TargetProperty="Height"
+                                                         To="1"
+                                                         Duration="0" />
+                                        <DoubleAnimation Storyboard.TargetName="DropAfterSpace"
+                                                         Storyboard.TargetProperty="Height"
+                                                         To="0"
+                                                         Duration="0" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="DropAfterIndicator">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="DropBeforeSpace"
+                                                         Storyboard.TargetProperty="Height"
+                                                         To="0"
+                                                         Duration="0" />
+                                        <DoubleAnimation Storyboard.TargetName="DropAfterSpace"
+                                                         Storyboard.TargetProperty="Height"
+                                                         To="1"
+                                                         Duration="0" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualStateGroup.Transitions>
+                                    <VisualTransition From="NoDropIndicator"
+                                                      To="DropBeforeIndicator">
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="DropBeforeSpace"
+                                                             Storyboard.TargetProperty="Height"
+                                                             To="1"
+                                                             Duration="0:0:0.2" />
+                                        </Storyboard>
+                                    </VisualTransition>
+                                    <VisualTransition From="NoDropIndicator"
+                                                      To="DropAfterIndicator">
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="DropAfterSpace"
+                                                             Storyboard.TargetProperty="Height"
+                                                             To="1"
+                                                             Duration="0:0:0.2" />
+                                        </Storyboard>
+                                    </VisualTransition>
+                                    <VisualTransition From="DropBeforeIndicator"
+                                                      To="NoDropIndicator">
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="DropBeforeSpace"
+                                                             Storyboard.TargetProperty="Height"
+                                                             To="0"
+                                                             Duration="0:0:0.2" />
+                                        </Storyboard>
+                                    </VisualTransition>
+                                    <VisualTransition From="DropAfterIndicator"
+                                                      To="NoDropIndicator">
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="DropAfterSpace"
+                                                             Storyboard.TargetProperty="Height"
+                                                             To="0"
+                                                             Duration="0:0:0.2" />
+                                        </Storyboard>
+                                    </VisualTransition>
+                                    <VisualTransition From="DropBeforeIndicator"
+                                                      To="DropAfterIndicator">
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="DropBeforeSpace"
+                                                             Storyboard.TargetProperty="Height"
+                                                             To="0"
+                                                             Duration="0:0:0.2" />
+                                            <DoubleAnimation Storyboard.TargetName="DropAfterSpace"
+                                                             Storyboard.TargetProperty="Height"
+                                                             To="1"
+                                                             Duration="0:0:0.2" />
+                                        </Storyboard>
+                                    </VisualTransition>
+                                    <VisualTransition From="DropAfterIndicator"
+                                                      To="DropBeforeIndicator">
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="DropBeforeSpace"
+                                                             Storyboard.TargetProperty="Height"
+                                                             To="1"
+                                                             Duration="0:0:0.2" />
+                                            <DoubleAnimation Storyboard.TargetName="DropAfterSpace"
+                                                             Storyboard.TargetProperty="Height"
+                                                             To="0"
+                                                             Duration="0:0:0.2" />
+                                        </Storyboard>
+                                    </VisualTransition>
+                                </VisualStateGroup.Transitions>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+
+
+
+    <Style TargetType="framework:ScrollableTextBlock">
+        <Setter Property="Foreground"
+                Value="{StaticResource PhoneForegroundBrush}" />
+        <Setter Property="Background"
+                Value="Transparent" />
+        <Setter Property="FontSize"
+                Value="20" />
+        <Setter Property="FontFamily"
+                Value="Segoe WP" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="framework:ScrollableTextBlock">
+                    <StackPanel Orientation="Vertical"
+                                x:Name="StackPanel" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <ControlTemplate x:Key="PhoneDisabledTextBoxTemplate"
+                     TargetType="TextBox">
+        <ContentControl x:Name="ContentElement"
+                        BorderThickness="0"
+                        HorizontalContentAlignment="Stretch"
+                        Margin="{StaticResource PhoneTextBoxInnerMargin}"
+                        Padding="{TemplateBinding Padding}"
+                        VerticalContentAlignment="Stretch" />
+    </ControlTemplate>
+
+
+    <Style TargetType="uc:ToggleSwitchControl">
+        <Setter Property="SwitchBackground"
+                Value="{StaticResource PhoneToggleControlInactiveBackgroundBrush}" />
+        <Setter Property="SwitchForeground"
+                Value="{StaticResource PhoneToggleControlActiveBackgroundBrush}" />
+        <Setter Property="Fill"
+                Value="{StaticResource PhoneGray000_Gray900Brush}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="uc:ToggleSwitchControl">
+                    <Border x:Name="Root"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CacheMode="BitmapCache"
+                            Opacity="{TemplateBinding Opacity}"
+                            Padding="{TemplateBinding Padding}">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="Disabled">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="Root"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         Duration="0"
+                                                         To="0.3" />
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="CheckStates">
+                                <VisualStateGroup.Transitions>
+                                    <VisualTransition GeneratedDuration="0:0:0.1"
+                                                      To="Unchecked" />
+                                    <VisualTransition GeneratedDuration="0:0:0.1"
+                                                      To="Checked" />
+                                </VisualStateGroup.Transitions>
+                                <VisualState x:Name="Checked">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="ThumbTranslation"
+                                                         Storyboard.TargetProperty="(TranslateTransform.X)"
+                                                         Duration="0"
+                                                         To="24">
+                                            <DoubleAnimation.EasingFunction>
+                                                <ExponentialEase Exponent="15"
+                                                                 EasingMode="EaseOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetName="BorderSwitchForeground"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         Duration="0"
+                                                         To="1" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Dragging" />
+                                <VisualState x:Name="Unchecked">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="ThumbTranslation"
+                                                         Storyboard.TargetProperty="(TranslateTransform.X)"
+                                                         Duration="0"
+                                                         To="0" />
+                                        <DoubleAnimation Storyboard.TargetName="BorderSwitchForeground"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         Duration="0"
+                                                         To="0" />
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Grid x:Name="SwitchRoot"
+                              Background="Transparent"
+                              Width="56"
+                              Height="32">
+                            <Grid x:Name="SwitchTrack">
+                                <Border x:Name="BorderSwitchBackground"
+                                        Background="{TemplateBinding SwitchBackground}"
+                                        CornerRadius="16" />
+
+                                <Border x:Name="BorderSwitchForeground"
+                                        Background="{TemplateBinding SwitchForeground}"
+                                        CornerRadius="16"
+                                        Opacity="0" />
+
+                                <Ellipse x:Name="SwitchThumb"
+                                         Width="24"
+                                         Height="24"
+                                         Margin="4 0"
+                                         HorizontalAlignment="Left"
+                                         Fill="{TemplateBinding Fill}">
+                                    <Ellipse.RenderTransform>
+                                        <TranslateTransform x:Name="ThumbTranslation" />
+                                    </Ellipse.RenderTransform>
+                                </Ellipse>
+                            </Grid>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+
+</ResourceDictionary>

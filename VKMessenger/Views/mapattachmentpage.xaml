@@ -1,0 +1,30 @@
+﻿<client:PageBase x:Class="VKMessenger.Views.MapAttachmentPage"
+                xmlns:client="clr-namespace:VKClient.Common.Framework;assembly=VKClient.Common"
+                            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                            xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+                            xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+                            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                            xmlns:local="clr-namespace:VKMessenger"
+                xmlns:Maps="clr-namespace:Microsoft.Phone.Controls.Maps;assembly=Microsoft.Phone.Controls.Maps"
+                            FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                            FontSize="{StaticResource PhoneFontSizeNormal}"
+                            Foreground="{StaticResource PhoneForegroundBrush}"
+                            SupportedOrientations="PortraitOrLandscape"
+                            Orientation="Portrait"
+                            mc:Ignorable="d"
+                            d:DesignHeight="768"
+                            d:DesignWidth="480"
+                            shell:SystemTray.IsVisible="True" shell:SystemTray.Opacity="0">
+
+    <shell:SystemTray.ProgressIndicator>
+        <shell:ProgressIndicator x:Name="progressIndicator"/>
+    </shell:SystemTray.ProgressIndicator>
+    
+    <Maps:Map Name="map"
+              Tap="pushpinLayer_Tap">
+        <Maps:MapLayer Name="pushpinLayer"/>
+    </Maps:Map>
+
+</client:PageBase>

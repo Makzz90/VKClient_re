@@ -1,0 +1,139 @@
+﻿<framework:PageBase x:Class="VKClient.Common.Market.Views.ProductsSearchParamsPage"
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:framework="clr-namespace:VKClient.Common.Framework"
+                    xmlns:uc="clr-namespace:VKClient.Common.UC"
+                    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+                    xmlns:behaviors="clr-namespace:VKClient.Common.Behaviors"
+                    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                    FontSize="{StaticResource PhoneFontSizeNormal}"
+                    Foreground="{StaticResource PhoneForegroundBrush}"
+                    SupportedOrientations="Portrait"
+                    Orientation="Portrait"
+                    mc:Ignorable="d"
+                    shell:SystemTray.IsVisible="True">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <uc:GenericHeaderUC x:Name="ucHeader" />
+
+        <Grid Grid.Row="1">
+            <ScrollViewer>
+                <StackPanel>
+                    <Border Height="64"
+                            Margin="0 16 0 0">
+                        <TextBlock VerticalAlignment="Top"
+                                   Margin="16 17 0 0"
+                                   FontFamily="{StaticResource PhoneFontFamilySemiBold}"
+                                   Foreground="{StaticResource PhoneCaptionGrayBrush}"
+                                   Text="{Binding TitleSort, FallbackValue='SORT'}" />
+                    </Border>
+
+                    <ItemsControl ItemsSource="{Binding SortTypes}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Height="64"
+                                      Background="Transparent"
+                                      framework:MetroInMotion.Tilt="1.5"
+                                      Tap="SortItem_OnTap">
+                                    <TextBlock VerticalAlignment="Top"
+                                               Margin="16 16 0 0"
+                                               FontSize="21.33"
+                                               Foreground="{Binding TextForeground}"
+                                               Text="{Binding Text}" />
+                                </Grid>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+
+                    <Grid Height="64"
+                          Margin="0 16 0 0">
+                        <Rectangle Height="1"
+                                   Fill="{StaticResource PhoneSeparatorBrush}"
+                                   VerticalAlignment="Top" />
+
+                        <TextBlock VerticalAlignment="Top"
+                                   Margin="16 17 0 0"
+                                   FontFamily="{StaticResource PhoneFontFamilySemiBold}"
+                                   Foreground="{StaticResource PhoneCaptionGrayBrush}"
+                                   Text="{Binding TitlePrice, FallbackValue='PRICE'}" />
+                    </Grid>
+
+                    <Grid Height="64">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid>
+                            <TextBox Margin="4 -2 -12 -2"
+                                     Height="68"
+                                     InputScope="Number"
+                                     FontSize="21.33"
+                                     Text="{Binding SelectedPriceMinStr, Mode=TwoWay}">
+                                <i:Interaction.Behaviors>
+                                    <behaviors:TextBoxSelectAllOnFocusBehavior />
+                                    <behaviors:TextBoxTextChangedUpdateBehavior />
+                                    <behaviors:TextBoxCursotToEndOnTextChangedBehavior />
+                                </i:Interaction.Behaviors>
+                            </TextBox>
+                            <TextBlock Visibility="{Binding PriceMinWatermarkVisibility}"
+                                       VerticalAlignment="Top"
+                                       IsHitTestVisible="False"
+                                       Margin="29 17 0 0"
+                                       FontSize="21.33"
+                                       Foreground="{StaticResource PhoneCaptionGrayBrush}"
+                                       Text="{Binding PriceMinWatermark, FallbackValue='450'}" />
+                        </Grid>
+
+                        <TextBlock Grid.Column="1"
+                                   FontSize="21.33"
+                                   Foreground="{StaticResource PhoneCaptionGrayBrush}"
+                                   VerticalAlignment="Top"
+                                   Margin="9 17 9 0"
+                                   Text="—" />
+
+                        <Grid Grid.Column="2">
+                            <TextBox Margin="-12 -2"
+                                     Height="68"
+                                     InputScope="Number"
+                                     FontSize="21.33"
+                                     Text="{Binding SelectedPriceMaxStr, Mode=TwoWay}">
+                                <i:Interaction.Behaviors>
+                                    <behaviors:TextBoxSelectAllOnFocusBehavior />
+                                    <behaviors:TextBoxTextChangedUpdateBehavior />
+                                    <behaviors:TextBoxCursotToEndOnTextChangedBehavior />
+                                </i:Interaction.Behaviors>
+                            </TextBox>
+                            <TextBlock Visibility="{Binding PriceMaxWatermarkVisibility}"
+                                       VerticalAlignment="Top"
+                                       IsHitTestVisible="False"
+                                       Margin="13 17 0 0"
+                                       FontSize="21.33"
+                                       Foreground="{StaticResource PhoneCaptionGrayBrush}"
+                                       Text="{Binding PriceMaxWatermark, FallbackValue='2 490'}" />
+                        </Grid>
+
+                        <TextBlock Grid.Column="3"
+                                   VerticalAlignment="Top"
+                                   IsHitTestVisible="False"
+                                   Margin="16 16 16 0"
+                                   FontSize="21.33"
+                                   Foreground="{StaticResource PhoneCaptionGrayBrush}"
+                                   Text="{Binding CurrencyDesc, FallbackValue='руб.'}" />
+                    </Grid>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+
+</framework:PageBase>

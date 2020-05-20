@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="VKClient.Common.UC.NewsfeedTopToggleUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:uc="clr-namespace:VKClient.Common.UC"
+             mc:Ignorable="d"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             d:DesignHeight="480"
+             d:DesignWidth="480">
+    
+    <UserControl.Resources>
+        <Style TargetType="uc:ToggleSwitchControl">
+            <Setter Property="Fill"
+                    Value="{StaticResource PhoneToggleControlThumbFillBrush}" />
+        </Style>
+    </UserControl.Resources>
+
+    <StackPanel>
+        <uc:NewsSourceListItemUC />
+
+        <StackPanel Tap="ToggleTopNewsContainer_OnTap"
+                    Background="Transparent">
+            <Grid>
+                <Border x:Name="borderFadeOut"
+                        Background="{StaticResource PhoneNewsfeedPromoToggleFadeOutBrush}"
+                        Opacity="1" />
+
+                <uc:ToggleControl Margin="64 -4 16 -4"
+                                  Title="{Binding LocalizedResources.OnlyInterestingNews, Source={StaticResource LocalizedStrings}}"
+                                  IsChecked="{Binding IsTopNewsToggleChecked, Mode=TwoWay}" />
+            </Grid>
+
+            <Rectangle Fill="{StaticResource PhoneForegroundBrush}"
+                       Opacity="0.1"
+                       Height="1"
+                       Margin="0 7 0 8" />
+        </StackPanel>
+    </StackPanel>
+</UserControl>

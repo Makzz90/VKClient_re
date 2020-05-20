@@ -1,0 +1,139 @@
+﻿<uc:NewsLinkUCBase x:Class="VKClient.Common.UC.NewsLinkMediumUC"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                   xmlns:framework="clr-namespace:VKClient.Common.Framework"
+                   xmlns:uc="clr-namespace:VKClient.Common.UC"
+                   xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+                   mc:Ignorable="d"
+                   FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                   FontSize="{StaticResource PhoneFontSizeNormal}"
+                   Foreground="{StaticResource PhoneForegroundBrush}"
+                   d:DesignHeight="100"
+                   d:DesignWidth="464">
+
+    <Grid Tap="LayoutRoot_Tap"
+          framework:MetroInMotion.Tilt="1.2"
+          Background="Transparent"
+          VerticalAlignment="Top"
+          MinHeight="100">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Rectangle Style="{StaticResource PhotoPlaceholderRectangle}" />
+
+        <Grid x:Name="canvasImageContainer"
+              Grid.Column="0"
+              Width="150">
+            <Image x:Name="imagePreview"
+                   Stretch="UniformToFill"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center" />
+        </Grid>
+
+        <Grid x:Name="gridContent"
+              Grid.Column="1"
+              Margin="16 9">
+            <StackPanel VerticalAlignment="Center">
+                <TextBlock x:Name="titleBlock"
+                           Foreground="{StaticResource PhoneAlmostBlackBrush}"
+                           LineStackingStrategy="BlockLineHeight"
+                           FontFamily="Segoe WP SemiBold"
+                           TextWrapping="Wrap"
+                           LineHeight="25"
+                           MaxHeight="75"
+                           Width="282"/>
+                <TextBlock x:Name="priceBlock"
+                           Foreground="{StaticResource PhoneAlmostBlackBrush}"
+                           LineStackingStrategy="BlockLineHeight"
+                           Visibility="Collapsed"
+                           LineHeight="25"
+                           Width="282"/>
+                <TextBlock x:Name="descriptionBlock"
+                           Foreground="{StaticResource PhoneAlmostBlackBrush}"
+                           LineStackingStrategy="BlockLineHeight"
+                           Visibility="Collapsed"
+                           TextWrapping="Wrap"
+                           LineHeight="25"
+                           MaxHeight="50"
+                           Width="282"/>
+                <StackPanel x:Name="panelProductRating"
+                            Visibility="Visible"
+                            Orientation="Horizontal"
+                            Margin="0 -1 0 0"
+                            Height="26">
+                    <TextBlock x:Name="textBlockPrice"
+                               Visibility="Visible"
+                               Margin="0 0 8 0"
+                               Foreground="{StaticResource PhoneAlmostBlackBrush}"
+                               LineStackingStrategy="BlockLineHeight"
+                               LineHeight="25"
+                               Text="1 000 rub." />
+                    <toolkit:Rating x:Name="ucRating"
+                                    Visibility="Visible"
+                                    Height="16"
+                                    Width="90"
+                                    Margin="0 2 0 0"
+                                    Background="Transparent"
+                                    ReadOnly="True"
+                                    AllowHalfItemIncrement="True"
+                                    Value="0">
+                        <toolkit:Rating.FilledItemStyle>
+                            <Style TargetType="toolkit:RatingItem">
+                                <Setter Property="Background"
+                                        Value="{StaticResource PhoneRatingFilledBackgroundBrush}" />
+                                <Setter Property="Margin"
+                                        Value="1 0" />
+                            </Style>
+                        </toolkit:Rating.FilledItemStyle>
+                        <toolkit:Rating.UnfilledItemStyle>
+                            <Style TargetType="toolkit:RatingItem">
+                                <Setter Property="Background"
+                                        Value="{StaticResource PhoneRatingUnfilledBackgroundBrush}" />
+                                <Setter Property="Margin"
+                                        Value="1 0" />
+                            </Style>
+                        </toolkit:Rating.UnfilledItemStyle>
+                    </toolkit:Rating>
+                    <TextBlock x:Name="textBlockVotesCount"
+                               Visibility="Visible"
+                               Margin="8 2 0 0"
+                               FontSize="18"
+                               Text="(173)"
+                               Foreground="{StaticResource PhoneCaptionGrayBrush}" />
+                </StackPanel>
+                <TextBlock x:Name="textBlockCaption"
+                           Text="domain.xyz"
+                           LineStackingStrategy="BlockLineHeight"
+                           LineHeight="24"
+                           Height="24"
+                           Foreground="{StaticResource PhoneCaptionGrayBrush}" />
+
+                <Button x:Name="buttonAction"
+                        Visibility="Collapsed"
+                        Content="Open"
+                        Tap="ActionButton_OnTap"
+                        Margin="-12 -3 -12 -9"
+                        Height="64"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Bottom"
+                        Style="{StaticResource VKButtonSecondaryStyle}" />
+            </StackPanel>
+        </Grid>
+
+        <Rectangle Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   StrokeThickness="1"
+                   Stroke="{StaticResource PhoneAttachmentBorderBrush}" />
+
+        <Border Grid.Column="0"
+                Width="1"
+                Background="{StaticResource PhoneAttachmentBorderBrush}"
+                Margin="0 1"
+                HorizontalAlignment="Right" />
+    </Grid>
+</uc:NewsLinkUCBase>

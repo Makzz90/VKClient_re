@@ -1,0 +1,177 @@
+﻿<framework:PageBase x:Class="VKClient.Common.MoneyTransfers.TransfersListPage"
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    mc:Ignorable="d"
+                    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                    Foreground="{StaticResource PhoneForegroundBrush}"
+                    FontSize="{StaticResource PhoneFontSizeNormal}"
+                    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+                    xmlns:framework="clr-namespace:VKClient.Common.Framework;assembly=VKClient.Common"
+                    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+                    xmlns:uc="clr-namespace:VKClient.Common.UC"
+                    SupportedOrientations="Portrait"
+                    Orientation="Portrait"
+                    shell:SystemTray.IsVisible="True"
+                    shell:SystemTray.Opacity="0">
+
+    <framework:PageBase.Resources>
+        <DataTemplate x:Key="ItemTemplate">
+            <Grid Tap="Transfer_OnClicked"
+                  Background="Transparent">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Ellipse Margin="16"
+                         Fill="{StaticResource PhoneChromeBrush}"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Top"
+                         Tap="Photo_OnClicked"
+                         Height="56"
+                         Width="56"
+                         Grid.Row="0"
+                         Grid.RowSpan="5" />
+                <Image Margin="16"
+                       Height="56"
+                       Width="56"
+                       Stretch="UniformToFill"
+                       framework:ImageLoader.UriSource="{Binding Photo}"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Top"
+                       Tap="Photo_OnClicked"
+                       Grid.Row="0"
+                       Grid.RowSpan="5">
+                    <Image.Clip>
+                        <EllipseGeometry Center="28,28"
+                                         RadiusX="28"
+                                         RadiusY="28" />
+                    </Image.Clip>
+                </Image>
+
+                <Grid Grid.Row="0"
+                      Margin="84,13,16,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="{Binding Title}"
+                               Foreground="{StaticResource PhoneContrastTitleBrush}"
+                               TextTrimming="WordEllipsis"
+                               FontSize="22.777"
+                               Grid.Column="0" />
+                    <TextBlock Text="{Binding AmountDelta}"
+                               Foreground="{Binding AmountForeground}"
+                               Margin="16,0,0,0"
+                               FontSize="22.777"
+                               Grid.Column="1" />
+                </Grid>
+
+                <TextBlock Text="{Binding Comment}"
+                           Foreground="{StaticResource PhoneContrastTitleBrush}"
+                           Visibility="{Binding CommentVisibility}"
+                           TextWrapping="Wrap"
+                           Margin="84,-2,16,0"
+                           LineHeight="26"
+                           FontSize="20"
+                           Grid.Row="1" />
+
+                <TextBlock Margin="84,-1,16,0"
+                           Grid.Row="2"
+                           Text="{Binding Date}"
+                           Foreground="{StaticResource PhoneCaptionGrayBrush}"
+                           FontSize="20" />
+
+                <Grid Grid.Row="3"
+                      Margin="72,3,0,-15"
+                      HorizontalAlignment="Left"
+                      Visibility="{Binding ButtonsVisibility}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Button Content="{Binding Source={StaticResource LocalizedStrings}, Path=LocalizedResources.Get}"
+                            Visibility="{Binding AcceptButtonVisibility}"
+                            Style="{StaticResource VKButtonPrimaryStyle}"
+                            Click="Button_OnClicked"
+                            Tap="Button_OnTapped"
+                            Margin="0,0,-12,0"
+                            Grid.Column="0"
+                            Tag="1" />
+                    <Button Content="{Binding DeclineButtonTitle}"
+                            Style="{StaticResource VKButtonSecondaryStyle}"
+                            Click="Button_OnClicked"
+                            Tap="Button_OnTapped"
+                            Grid.Column="1"
+                            Tag="2" />
+                </Grid>
+
+                <Rectangle Fill="{StaticResource PhoneForegroundBrush}"
+                           HorizontalAlignment="Stretch"
+                           Margin="0,18,0,0"
+                           Opacity="0.1"
+                           Height="1"
+                           Grid.Row="4" />
+
+            </Grid>
+        </DataTemplate>
+    </framework:PageBase.Resources>
+
+    <Grid>
+        <uc:GenericHeaderUC Title="{Binding Path=LocalizedResources.MoneyTransfers, Source={StaticResource LocalizedStrings}, Converter={StaticResource StringToUpper}}"
+                            x:Name="header"
+                            Height="138" />
+
+        <controls:Pivot Name="pivot"
+                        SelectionChanged="Pivot_OnSelectionChanged"
+                        Style="{StaticResource PivotStyleNoHeader}"
+                        Foreground="White"
+                        Margin="0,67,0,0">
+            <controls:Pivot.HeaderTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding}"
+                               FontFamily="Segoe WP SemiLight"
+                               FontSize="46" />
+                </DataTemplate>
+            </controls:Pivot.HeaderTemplate>
+
+            <controls:PivotItem Header="{Binding Path=LocalizedResources.Inbox, Source={StaticResource LocalizedStrings}, Converter={StaticResource StringToLowerConverter}}">
+                <framework:ExtendedLongListSelector x:Name="inboxList"
+                                                    Link="List_OnLinked"
+                                                    DataContext="{Binding Inbox}"
+                                                    ItemsSource="{Binding Collection}"
+                                                    ItemTemplate="{StaticResource ItemTemplate}"
+                                                    ListFooterTemplate="{StaticResource FooterTemplate}"
+                                                    ListFooter="{Binding}">
+                    <framework:ExtendedLongListSelector.ListHeader>
+                        <Rectangle Height="8" />
+                    </framework:ExtendedLongListSelector.ListHeader>
+                </framework:ExtendedLongListSelector>
+            </controls:PivotItem>
+
+            <controls:PivotItem Header="{Binding Path=LocalizedResources.Outbox, Source={StaticResource LocalizedStrings}, Converter={StaticResource StringToLowerConverter}}">
+                <framework:ExtendedLongListSelector x:Name="outboxList"
+                                                    Link="List_OnLinked"
+                                                    DataContext="{Binding Outbox}"
+                                                    ItemsSource="{Binding Collection}"
+                                                    ItemTemplate="{StaticResource ItemTemplate}"
+                                                    ListFooterTemplate="{StaticResource FooterTemplate}"
+                                                    ListFooter="{Binding}">
+                    <framework:ExtendedLongListSelector.ListHeader>
+                        <Rectangle Height="8" />
+                    </framework:ExtendedLongListSelector.ListHeader>
+                </framework:ExtendedLongListSelector>
+            </controls:PivotItem>
+
+        </controls:Pivot>
+
+        <uc:PullToRefreshUC x:Name="pullToRefresh" />
+    </Grid>
+
+</framework:PageBase>

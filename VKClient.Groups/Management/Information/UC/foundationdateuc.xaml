@@ -1,0 +1,50 @@
+﻿<UserControl
+    x:Class="VKClient.Groups.Management.Information.UC.FoundationDateUC"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:uc="clr-namespace:VKClient.Common.UC;assembly=VKClient.Common"
+    mc:Ignorable="d"
+    
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}">
+
+    <Grid Visibility="{Binding Visibility}">
+        <TextBlock Text="{Binding Title}"
+                   Foreground="{StaticResource PhoneCaptionGrayBrush}"
+                   Margin="16,13,0,0"/>
+        
+        <uc:CustomListPicker Margin="16,13,16,11"
+                             ItemsSource="{Binding AvailableDays}"
+                             SelectedItem="{Binding Day, Mode=TwoWay}"
+                             Placeholder="{Binding Path=LocalizedResources.Day, Source={StaticResource LocalizedStrings}}"
+                             SelectionTitle="{Binding Path=LocalizedResources.Day, Source={StaticResource LocalizedStrings}, Converter={StaticResource StringToUpper}}"
+                             HorizontalAlignment="Left"
+                             IsArrowVisible="True"
+                             IsPopupSelection="True"
+                             PopupSelectionWidth="160"
+                             Width="126"/>
+        <uc:CustomListPicker Margin="158,13,16,11"
+                             ItemsSource="{Binding AvailableMonths}"
+                             SelectedItem="{Binding Month, Mode=TwoWay}"
+                             Placeholder="{Binding Path=LocalizedResources.Month, Source={StaticResource LocalizedStrings}}"
+                             SelectionTitle="{Binding Path=LocalizedResources.Month, Source={StaticResource LocalizedStrings}, Converter={StaticResource StringToUpper}}"
+                             HorizontalAlignment="Left"
+                             IsArrowVisible="True"
+                             IsPopupSelection="True"
+                             Width="175"/>
+        <uc:CustomListPicker Margin="349,13,16,11"
+                             ItemsSource="{Binding AvailableYears}"
+                             SelectedItem="{Binding Year, Mode=TwoWay}"
+                             Placeholder="{Binding Path=LocalizedResources.Year, Source={StaticResource LocalizedStrings}}"
+                             SelectionTitle="{Binding Path=LocalizedResources.Year, Source={StaticResource LocalizedStrings}, Converter={StaticResource StringToUpper}}"
+                             HorizontalAlignment="Left"
+                             IsArrowVisible="True"
+                             IsPopupSelection="True"
+                             PopupSelectionWidth="160"
+                             Width="115"/>
+    </Grid>
+
+</UserControl>

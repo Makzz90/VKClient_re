@@ -1,0 +1,88 @@
+﻿<virtItems:UserControlVirtualizable x:Class="VKClient.Common.VideoCatalog.CatalogHorizontalItemExtUC"
+                                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                                    mc:Ignorable="d"
+                                    xmlns:virtItems="clr-namespace:VKClient.Common.Library.VirtItems;assembly=VKClient.Common"
+                                    xmlns:framework="clr-namespace:VKClient.Common.Framework;assembly=VKClient.Common"
+                                    xmlns:vidCatCommon="clr-namespace:VKClient.Common.VideoCatalog;assembly=VKClient.Common"
+                                    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                                    FontSize="{StaticResource PhoneFontSizeNormal}"
+                                    Foreground="{StaticResource PhoneForegroundBrush}"
+                                    d:DesignHeight="480"
+                                    d:DesignWidth="480">
+
+    <Canvas Width="234"
+            Height="272"
+            framework:MetroInMotion.Tilt="1.5">
+
+        <Grid x:Name="LayoutRoot"
+              Width="256"
+              Height="218"
+              Background="Transparent"
+              Tap="LayoutRoot_Tap"
+              Margin="8">
+
+            <Grid.Projection>
+                <PlaneProjection RotationZ="-90"
+                                 LocalOffsetX="19"
+                                 LocalOffsetY="19" />
+            </Grid.Projection>
+
+            <Grid VerticalAlignment="Top"
+                  HorizontalAlignment="Left">
+
+                <Canvas VerticalAlignment="Center" Width="256" Height="144">
+                    <Rectangle VerticalAlignment="Top"
+                               Width="256"
+                               Height="144"
+                               HorizontalAlignment="Left"
+                               Style="{StaticResource PhotoPlaceholderRectangle}" />
+
+
+                    <Image framework:ImageLoader.UriSource="{Binding ImageUri}"
+                           Width="256"
+                           VerticalAlignment="Top"
+                           Stretch="UniformToFill"
+                           Height="144" />
+
+                    <Image framework:MultiResImageLoader.UriSource="/Resources/Profile/Placeholders/ProfilePlaceholderVideos.png"
+                           Width="48"
+                           Margin="104 48 0 0"
+                           Height="48"
+                           IsHitTestVisible="False"
+                           Visibility="{Binding NoVideosVisibility}" />
+
+                </Canvas>
+                
+                
+                
+            </Grid>
+
+
+            <vidCatCommon:VideoDurationUC VerticalAlignment="Top"
+                                          HorizontalAlignment="Right"
+                                          Margin=" 0 108 8 8"
+                                          Height="28"
+                                          Visibility="{Binding IsVideoVisibility}" />
+
+            <TextBlock Text="{Binding Title, FallbackValue='Как японцы печатают иероглифы'}"
+                       FontSize="22.67"
+                       Foreground="{StaticResource PhoneContrastTitleBrush}"
+                       Grid.Column="1"
+                       LineHeight="26"
+                       LineStackingStrategy="BlockLineHeight"
+                       Margin="0 152 0 0" />
+
+
+            <TextBlock Text="{Binding Subtitle1, FallbackValue='Павел Дуров'}"
+                       Margin="0 180 0 0"
+                       LineHeight="24"
+                       LineStackingStrategy="BlockLineHeight"
+                       Foreground="{StaticResource PhoneVKSubtleBrush}" />
+
+
+        </Grid>
+    </Canvas>
+</virtItems:UserControlVirtualizable>

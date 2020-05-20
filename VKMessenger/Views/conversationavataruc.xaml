@@ -1,0 +1,118 @@
+﻿<UserControl x:Class="VKMessenger.Views.ConversationAvatarUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:commonFramework="clr-namespace:VKClient.Common.Framework;assembly=VKClient.Common"
+             mc:Ignorable="d"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             Width="56"
+             Height="56">
+
+
+    <Border Name="gridConversationHeader"
+          commonFramework:MetroInMotion.Tilt="1.2"
+          Background="{StaticResource PhoneChromeBrush}" CornerRadius="5"
+         >
+        <Grid>
+            <Canvas HorizontalAlignment="Left"
+                Width="56"
+                Height="56"
+                VerticalAlignment="Bottom"
+                Visibility="{Binding IsNotChatVisibility, FallbackValue=Visible}">
+
+
+                <Image commonFramework:ImageLoader.UriSource="{Binding Path=UIImageUrl, Mode=OneWay}"
+                   Width="56"
+                   Height="56"
+                   VerticalAlignment="Center">
+                    <Image.Clip>
+                        <RectangleGeometry Rect="0 0 56 56" RadiusX="5" RadiusY="5" x:Name="RectangleGeometry1"/>
+                    </Image.Clip>
+                </Image>
+            </Canvas>
+
+
+            <Canvas Visibility="{Binding IsChatVisibility, FallbackValue=Visible}"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Width="56"
+                Height="56">
+
+
+                <Image Width="27"
+                   Height="27"
+                   commonFramework:ImageLoader.UriSource="{Binding Path=UIChatImage1Url, Mode=OneWay}"  >
+                    <Image.Clip>
+                        <RectangleGeometry Rect="0 0 54 54" RadiusX="5" RadiusY="5" x:Name="RectangleGeometry2"/>
+                    </Image.Clip>
+                </Image>
+
+
+                <Image Width="27"
+                   Height="27"
+                   Margin="29 0 0 0"
+                   commonFramework:ImageLoader.UriSource="{Binding Path=UIChatImage2Url, Mode=OneWay}">
+                    <Image.Clip>
+                        <RectangleGeometry Rect="-27 0 54 54" RadiusX="5" RadiusY="5" x:Name="RectangleGeometry3"/>
+                    </Image.Clip>
+                </Image>
+
+
+                <Image Width="27"
+                   Height="27"
+                   Margin="0 29 0 0"
+                   commonFramework:ImageLoader.UriSource="{Binding Path=UIChatImage3Url, Mode=OneWay}">
+                    <Image.Clip>
+                        <RectangleGeometry Rect="0 -27 54 54" RadiusX="5" RadiusY="5" x:Name="RectangleGeometry4"/>
+                    </Image.Clip>
+                </Image>
+
+
+
+                <Image Width="27"
+                   Height="27"
+                   Margin="29 29 0 0"
+                   commonFramework:ImageLoader.UriSource="{Binding Path=UIChatImage4Url, Mode=OneWay}">
+                    <Image.Clip>
+                        <RectangleGeometry Rect="-27 -27 54 54" RadiusX="5" RadiusY="5" x:Name="RectangleGeometry5"/>
+                    </Image.Clip>
+                </Image>
+
+                <Canvas Visibility="{Binding ChatLeftImageVisibility}">
+
+
+                    <Image commonFramework:ImageLoader.UriSource="{Binding Path=ChatLeftImageUrl, Mode=OneWay}"
+                       Width="27"
+                       Height="56"
+                       Stretch="UniformToFill"
+                       VerticalAlignment="Center">
+                        <Image.Clip>
+                            <RectangleGeometry Rect="0 0 56 56" RadiusX="5" RadiusY="5" x:Name="RectangleGeometry6"/>
+                        </Image.Clip>
+                    </Image>
+
+                </Canvas>
+
+                <Canvas Visibility="{Binding ChatRightImageVisibility}"
+                    Margin="29 0 0 0">
+
+
+                    <Image commonFramework:ImageLoader.UriSource="{Binding Path=ChatRightImageUrl, Mode=OneWay}"
+                       Width="27"
+                       Height="56"
+                       Stretch="UniformToFill"
+                       VerticalAlignment="Center">
+                        <Image.Clip>
+                            <RectangleGeometry Rect="-29 0 56 56" RadiusX="5" RadiusY="5" x:Name="RectangleGeometry7"/>
+                        </Image.Clip>
+                    </Image>
+
+                </Canvas>
+
+            </Canvas>
+        </Grid>
+    </Border>
+</UserControl>

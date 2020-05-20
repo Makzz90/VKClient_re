@@ -1,0 +1,47 @@
+﻿<framework:PageBase x:Class="VKClient.Common.Market.Views.MarketAlbumProductsPage"
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:framework="clr-namespace:VKClient.Common.Framework"
+                    xmlns:uc="clr-namespace:VKClient.Common.UC"
+                    xmlns:views="clr-namespace:VKClient.Common.Market.Views"
+                    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                    FontSize="{StaticResource PhoneFontSizeNormal}"
+                    Foreground="{StaticResource PhoneForegroundBrush}"
+                    SupportedOrientations="Portrait"
+                    Orientation="Portrait"
+                    mc:Ignorable="d"
+                    shell:SystemTray.IsVisible="True">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <uc:GenericHeaderUC x:Name="ucHeader" Title="{Binding Header}"/>
+        <uc:PullToRefreshUC x:Name="ucPullToRefresh" />
+
+        <framework:ExtendedLongListSelector x:Name="listBoxProducts"
+                                            Grid.Row="1"
+                                            DataContext="{Binding ProductsVM}"
+                                            ItemsSource="{Binding Collection}"
+                                            Link="ListBoxProducts_OnLink"
+                                            ListFooter="{Binding}"
+                                            ListFooterTemplate="{StaticResource FooterTemplate}">
+            <framework:ExtendedLongListSelector.ListHeaderTemplate>
+                <DataTemplate>
+                    <Rectangle Height="8" />
+                </DataTemplate>
+            </framework:ExtendedLongListSelector.ListHeaderTemplate>
+            <framework:ExtendedLongListSelector.ItemTemplate>
+                <DataTemplate>
+                    <views:ProductsTwoInARowUC />
+                </DataTemplate>
+            </framework:ExtendedLongListSelector.ItemTemplate>
+        </framework:ExtendedLongListSelector>
+    </Grid>
+
+</framework:PageBase>

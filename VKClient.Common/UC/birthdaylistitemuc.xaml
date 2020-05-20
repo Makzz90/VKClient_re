@@ -1,0 +1,84 @@
+﻿<UserControl x:Class="VKClient.Common.UC.BirthdayListItemUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:framework="clr-namespace:VKClient.Common.Framework"
+             mc:Ignorable="d"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             Width="416"
+             d:DesignWidth="416"
+             d:DesignHeight="60">
+
+    <Grid Height="60">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <Grid framework:MetroInMotion.Tilt="1.5"
+              Tap="Birthday_OnClicked"
+              Hold="Birthday_OnHolding">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Orientation="Horizontal">
+
+                <Grid Margin="16 6 0 0">
+                    <Ellipse Fill="{StaticResource PhoneMenuImagePlaceholderBackgroundBrush}"
+                             Height="48"
+                             Width="48" />
+
+                    <Image framework:ImageLoader.UriSource="{Binding UserPhoto}"
+                           Height="48"
+                           Width="48">
+                        <Image.Clip>
+                            <EllipseGeometry Center="24 24"
+                                             RadiusX="24"
+                                             RadiusY="24" />
+                        </Image.Clip>
+                    </Image>
+                </Grid>
+
+                <TextBlock x:Name="textBlockUserName"
+                           Margin="16 12 16 0"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Top"
+                           FontSize="25.3"
+                           Foreground="White" />
+            </StackPanel>
+
+            <TextBlock x:Name="textBlockDescription"
+                       Grid.Column="1"
+                       VerticalAlignment="Top"
+                       Margin="0 17 16 0"
+                       FontSize="20"
+                       Foreground="{StaticResource PhoneMainMenuStatusForegroundBrush}"
+                       Text="{Binding Description}" />
+        </Grid>
+
+        <Border x:Name="borderSendGift"
+                Grid.Column="1"
+                Width="60"
+                Height="60"
+                Margin="0 0 10 0"
+                framework:MetroInMotion.Tilt="1.5"
+                Tap="SendGift_OnTap"
+                Hold="SendGift_OnHold">
+            <Rectangle Width="32"
+                       Height="32"
+                       Fill="{StaticResource PhoneMainMenuStatusForegroundBrush}">
+                <Rectangle.OpacityMask>
+                    <ImageBrush framework:ImageLoader.ImageBrushMultiResSource="/Resources/Gift32px.png" />
+                </Rectangle.OpacityMask>
+            </Rectangle>
+        </Border>
+    </Grid>
+</UserControl>

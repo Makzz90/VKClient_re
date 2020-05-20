@@ -1,0 +1,53 @@
+﻿<framework:PageBase
+    x:Class="VKClient.Groups.Management.Information.InformationPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:uc="clr-namespace:VKClient.Common.UC;assembly=VKClient.Common"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:framework="clr-namespace:VKClient.Common.Framework;assembly=VKClient.Common"
+    xmlns:informationUC="clr-namespace:VKClient.Groups.Management.Information.UC"
+    xmlns:emoji="clr-namespace:VKClient.Common.Emoji;assembly=VKClient.Common"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    shell:SystemTray.IsVisible="True"
+    mc:Ignorable="d"
+    
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <uc:GenericHeaderUC x:Name="Header" 
+                            Title="{Binding Path=LocalizedResources.Management_Information, Source={StaticResource LocalizedStrings}, Converter={StaticResource StringToUpper}}"/>
+
+        <ScrollViewer Grid.Row="1"
+                      Name="Viewer">
+            <StackPanel Margin="0,0,0,84"
+                        Name="ViewerContent">
+
+                <informationUC:CommonFieldsUC DataContext="{Binding CommonFieldsViewModel}"/>
+                <informationUC:FoundationDateUC DataContext="{Binding FoundationDateViewModel}"/>
+                <informationUC:AgeLimitsUC DataContext="{Binding AgeLimitsViewModel}"/>
+                <informationUC:CommunityTypeSelectionUC DataContext="{Binding CommunityTypeSelectionViewModel}"/>
+                <informationUC:EventOrganizerUC DataContext="{Binding EventOrganizerViewModel}"/>
+                <informationUC:EventDatesUC DataContext="{Binding EventDatesViewModel}"/>
+                <informationUC:CommunityPlacementUC DataContext="{Binding CommunityPlacementViewModel}"/>
+
+            </StackPanel>
+        </ScrollViewer>
+
+        <uc:GenericPageLoadInfoUC Grid.Row="1"/>
+
+        <emoji:TextBoxPanelControl x:Name="TextBoxPanel"
+                                   Grid.Row="2"/>
+
+    </Grid>
+
+</framework:PageBase>

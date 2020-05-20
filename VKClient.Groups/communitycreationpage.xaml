@@ -1,0 +1,257 @@
+﻿<framework:PageBase
+    x:Class="VKClient.Groups.CommunityCreationPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:uc="clr-namespace:VKClient.Common.UC;assembly=VKClient.Common"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:emoji="clr-namespace:VKClient.Common.Emoji;assembly=VKClient.Common"
+    xmlns:framework="clr-namespace:VKClient.Common.Framework;assembly=VKClient.Common"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    shell:SystemTray.IsVisible="True"
+    mc:Ignorable="d"
+    
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <uc:GenericHeaderUC x:Name="Header" 
+                            HideSandwitchButton="True"
+                            Title="{Binding Path=LocalizedResources.CommunityCreation, Source={StaticResource LocalizedStrings}, Converter={StaticResource StringToUpper}}"/>
+        
+        <ScrollViewer Grid.Row="1"
+                      Name="Viewer">
+            <StackPanel Margin="0,0,0,84"
+                        Name="ViewerContent">
+                
+                <TextBlock Text="{Binding Path=LocalizedResources.ChatEdit_Title, Source={StaticResource LocalizedStrings}}"
+                           Foreground="{StaticResource PhoneCaptionGrayBrush}"
+                           Margin="16,24,0,0"/>
+                <TextBox Height="76"
+                         Name="NameBox"
+                         InputScope="Text"
+                         Margin="4,-4,4,0"
+                         KeyDown="NameBox_OnKeyDown"
+                         Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=Explicit}"
+                         TextChanged="NameBox_OnTextChanged"
+                         IsHitTestVisible="{Binding IsFormEnabled}"
+                         GotFocus="NameBox_OnGotFocus"
+                         LostFocus="NameBox_OnLostFocus"/>
+
+                <Rectangle Fill="{StaticResource PhoneAttachmentBorderBrush}"
+                           Margin="0,21,0,0"
+                           Height="1"/>
+                <TextBlock Text="{Binding Path=LocalizedResources.CommunityType, Source={StaticResource LocalizedStrings}, Converter={StaticResource StringToUpper}}"
+                           Foreground="{StaticResource PhoneCaptionGrayBrush}"
+                           FontFamily="Segoe WP SemiBold"
+                           Margin="16,17,0,0"/>
+
+                <RadioButton Margin="4,11,4,-12"
+                             IsChecked="{Binding IsGroupSelected, Mode=TwoWay}"
+                             IsHitTestVisible="{Binding IsFormEnabled}"
+                             GroupName="CommunityType">
+                    <RadioButton.Content>
+                        <Grid Margin="4,-4,4,0">
+                            <TextBlock Text="{Binding Path=LocalizedResources.CommunityType_Group, Source={StaticResource LocalizedStrings}}"
+                                       Foreground="{StaticResource PhoneContrastTitleBrush}"
+                                       TextWrapping="Wrap"
+                                       FontSize="25.333"
+                                       LineHeight="32"/>
+                            <TextBlock Text="{Binding Path=LocalizedResources.CommunityType_Group_Description, Source={StaticResource LocalizedStrings}}"
+                                       Foreground="{StaticResource PhoneCaptionGrayBrush}"
+                                       TextWrapping="Wrap"
+                                       Margin="0,31,0,0"
+                                       LineHeight="24"
+                                       FontSize="20"/>
+                        </Grid>
+                    </RadioButton.Content>
+                </RadioButton>
+
+                <RadioButton Margin="4,4,4,-12"
+                             IsChecked="{Binding IsPublicPageSelected, Mode=TwoWay}"
+                             IsHitTestVisible="{Binding IsFormEnabled}" 
+                             GroupName="CommunityType">
+                    <RadioButton.Content>
+                        <Grid Margin="4,-4,4,0">
+                            <TextBlock Text="{Binding Path=LocalizedResources.CommunityType_PublicPage, Source={StaticResource LocalizedStrings}}"
+                                       Foreground="{StaticResource PhoneContrastTitleBrush}"
+                                       TextWrapping="Wrap"
+                                       FontSize="25.333"
+                                       LineHeight="32"/>
+                            <TextBlock Text="{Binding Path=LocalizedResources.CommunityType_PublicPage_Description, Source={StaticResource LocalizedStrings}}"
+                                       Foreground="{StaticResource PhoneCaptionGrayBrush}"
+                                       TextWrapping="Wrap"
+                                       Margin="0,31,0,0"
+                                       LineHeight="24"
+                                       FontSize="20"/>
+                        </Grid>
+                    </RadioButton.Content>
+                </RadioButton>
+
+                <RadioButton Margin="4,4,4,-18"
+                             IsChecked="{Binding IsEventSelected, Mode=TwoWay}"
+                             IsHitTestVisible="{Binding IsFormEnabled}"
+                             GroupName="CommunityType">
+                    <RadioButton.Content>
+                        <Grid Margin="4,-4,4,0">
+                            <TextBlock Text="{Binding Path=LocalizedResources.CommunityType_Event, Source={StaticResource LocalizedStrings}}"
+                                       Foreground="{StaticResource PhoneContrastTitleBrush}"
+                                       TextWrapping="Wrap"
+                                       FontSize="25.333"
+                                       LineHeight="32"/>
+                            <TextBlock Text="{Binding Path=LocalizedResources.CommunityType_Event_Description, Source={StaticResource LocalizedStrings}}"
+                                       Foreground="{StaticResource PhoneCaptionGrayBrush}"
+                                       TextWrapping="Wrap"
+                                       Margin="0,31,0,0"
+                                       LineHeight="24"
+                                       FontSize="20"/>
+                        </Grid>
+                    </RadioButton.Content>
+                </RadioButton>
+
+                <StackPanel Visibility="{Binding PublicPageTypeFormPartVisibility}">
+                    
+                    <Rectangle Fill="{StaticResource PhoneAttachmentBorderBrush}"
+                               Margin="0,30,0,0"
+                               Height="1"/>
+                    <TextBlock Text="{Binding Path=LocalizedResources.PublicPageType, Source={StaticResource LocalizedStrings}, Converter={StaticResource StringToUpper}}"
+                               Foreground="{StaticResource PhoneCaptionGrayBrush}"
+                               FontFamily="Segoe WP SemiBold"
+                               Margin="16,17,0,0"/>
+
+                    <RadioButton Margin="4,11,4,-14"
+                                 IsChecked="{Binding IsPlaceSelected, Mode=TwoWay}"
+                                 IsHitTestVisible="{Binding IsFormEnabled}"
+                                 GroupName="PublicPageType">
+                        <RadioButton.Content>
+                            <StackPanel Margin="4,-4,4,0">
+                                <TextBlock Text="{Binding Path=LocalizedResources.PublicPageType_Place, Source={StaticResource LocalizedStrings}}"
+                                           Foreground="{StaticResource PhoneContrastTitleBrush}"
+                                           TextWrapping="Wrap"
+                                           FontSize="25.333"
+                                           LineHeight="32"/>
+                                <TextBlock Text="{Binding Path=LocalizedResources.PublicPageType_Place_Description, Source={StaticResource LocalizedStrings}}"
+                                           Foreground="{StaticResource PhoneCaptionGrayBrush}"
+                                           TextWrapping="Wrap"
+                                           Margin="0,-3,0,0"
+                                           LineHeight="24"
+                                           FontSize="20"/>
+                            </StackPanel>
+                        </RadioButton.Content>
+                    </RadioButton>
+
+                    <RadioButton Margin="4,7,4,-12"
+                                 IsChecked="{Binding IsCompanySelected, Mode=TwoWay}"
+                                 IsHitTestVisible="{Binding IsFormEnabled}"
+                                 GroupName="PublicPageType">
+                        <RadioButton.Content>
+                            <StackPanel Margin="4,-4,4,0">
+                                <TextBlock Text="{Binding Path=LocalizedResources.PublicPageType_Company, Source={StaticResource LocalizedStrings}}"
+                                           Foreground="{StaticResource PhoneContrastTitleBrush}"
+                                           TextWrapping="Wrap"
+                                           FontSize="25.333"
+                                           LineHeight="32"/>
+                                <TextBlock Text="{Binding Path=LocalizedResources.PublicPageType_Company_Description, Source={StaticResource LocalizedStrings}}"
+                                           Foreground="{StaticResource PhoneCaptionGrayBrush}"
+                                           TextWrapping="Wrap"
+                                           Margin="0,-3,0,0"
+                                           LineHeight="24"
+                                           FontSize="20"/>
+                            </StackPanel>
+                        </RadioButton.Content>
+                    </RadioButton>
+
+                    <RadioButton Margin="4,4,4,-11"
+                                 IsChecked="{Binding IsPersonSelected, Mode=TwoWay}"
+                                 IsHitTestVisible="{Binding IsFormEnabled}"
+                                 GroupName="PublicPageType">
+                        <RadioButton.Content>
+                            <StackPanel Margin="4,-4,4,0">
+                                <TextBlock Text="{Binding Path=LocalizedResources.PublicPageType_Person, Source={StaticResource LocalizedStrings}}"
+                                           Foreground="{StaticResource PhoneContrastTitleBrush}"
+                                           TextWrapping="Wrap"
+                                           FontSize="25.333"
+                                           LineHeight="32"/>
+                                <TextBlock Text="{Binding Path=LocalizedResources.PublicPageType_Person_Description, Source={StaticResource LocalizedStrings}}"
+                                           Foreground="{StaticResource PhoneCaptionGrayBrush}"
+                                           TextWrapping="Wrap"
+                                           Margin="0,-3,0,0"
+                                           LineHeight="24"
+                                           FontSize="20"/>
+                            </StackPanel>
+                        </RadioButton.Content>
+                    </RadioButton>
+
+                    <RadioButton Margin="4,4,4,-18"
+                                 IsChecked="{Binding IsProductionSelected, Mode=TwoWay}"
+                                 IsHitTestVisible="{Binding IsFormEnabled}"
+                                 GroupName="PublicPageType">
+                        <RadioButton.Content>
+                            <StackPanel Margin="4,-4,4,0">
+                                <TextBlock Text="{Binding Path=LocalizedResources.PublicPageType_Production, Source={StaticResource LocalizedStrings}}"
+                                           Foreground="{StaticResource PhoneContrastTitleBrush}"
+                                           TextWrapping="Wrap"
+                                           FontSize="25.333"
+                                           LineHeight="32"/>
+                                <TextBlock Text="{Binding Path=LocalizedResources.PublicPageType_Production_Description, Source={StaticResource LocalizedStrings}}"
+                                           Foreground="{StaticResource PhoneCaptionGrayBrush}"
+                                           TextWrapping="Wrap"
+                                           Margin="0,-3,0,0"
+                                           LineHeight="24"
+                                           FontSize="20"/>
+                            </StackPanel>
+                        </RadioButton.Content>
+                    </RadioButton>
+
+                    <Rectangle Fill="{StaticResource PhoneAttachmentBorderBrush}"
+                           Margin="0,38,0,0"
+                           Height="1"/>
+
+                    <CheckBox Margin="4,11,4,16"
+                              IsChecked="{Binding AreTermsAccepted, Mode=TwoWay}"
+                              IsHitTestVisible="{Binding IsFormEnabled}">
+                        <CheckBox.Content>
+                            <RichTextBox Foreground="{StaticResource PhoneContrastTitleBrush}"
+                                         Margin="-8,0,-8,0"
+                                         TextWrapping="Wrap"
+                                         FontSize="22.777"
+                                         LineHeight="28">
+                                <RichTextBox.Blocks>
+                                    <Paragraph>
+                                        <Paragraph.Inlines>
+                                            <Run Text="{Binding Path=LocalizedResources.TermsAcceptionFirstPart, Source={StaticResource LocalizedStrings}}"/>
+                                            <Hyperlink Click="TermsLink_OnClicked"
+                                                       Foreground="{StaticResource PhoneNameBlueBrush}"
+                                                       MouseOverForeground="{StaticResource PhoneNameBlueBrush}"
+                                                       MouseOverTextDecorations="None"
+                                                       TextDecorations="None">
+                                                <Hyperlink.Inlines>
+                                                    <Run Text="{Binding Path=LocalizedResources.TermsAcceptionSecondPart, Source={StaticResource LocalizedStrings}}"/>
+                                                </Hyperlink.Inlines>
+                                            </Hyperlink>
+                                        </Paragraph.Inlines>
+                                    </Paragraph>
+                                </RichTextBox.Blocks>
+                            </RichTextBox>
+                        </CheckBox.Content>
+                    </CheckBox>
+                    
+                </StackPanel>
+
+            </StackPanel>
+        </ScrollViewer>
+        
+        <emoji:TextBoxPanelControl x:Name="TextBoxPanel"
+                                   Grid.Row="2"/>
+
+    </Grid>
+
+</framework:PageBase>

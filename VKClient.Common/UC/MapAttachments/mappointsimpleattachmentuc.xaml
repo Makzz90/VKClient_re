@@ -1,0 +1,38 @@
+﻿<mapAttachments:MapAttachmentUCBase x:Class="VKClient.Common.UC.MapAttachments.MapPointSimpleAttachmentUC"
+                                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                                    xmlns:mapAttachments="clr-namespace:VKClient.Common.UC.MapAttachments"
+                                    xmlns:framework="clr-namespace:VKClient.Common.Framework"
+                                    mc:Ignorable="d"
+                                    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                                    FontSize="{StaticResource PhoneFontSizeNormal}"
+                                    Foreground="{StaticResource PhoneForegroundBrush}"
+                                    d:DesignWidth="464"
+                                    d:DesignHeight="261">
+
+    <Canvas x:Name="canvas"
+            Background="Transparent"
+            framework:MetroInMotion.Tilt="1.5"
+            Width="464"
+            Height="261">
+
+        <Rectangle x:Name="rectanglePlaceholder"
+                   Width="464"
+                   Height="261"
+                   Fill="{StaticResource PhoneChromeBrush}" />
+        
+        <Image x:Name="imageMap"
+               Width="464"
+               Height="261" />
+        
+        <Image x:Name="imageMapIcon"
+               framework:MultiResImageLoader.UriSource="/Resources/MapPin.png"
+               Width="28"
+               Height="44"
+               Canvas.Left="218"
+               Canvas.Top="86.5" />
+
+    </Canvas>
+</mapAttachments:MapAttachmentUCBase>

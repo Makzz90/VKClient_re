@@ -1,0 +1,64 @@
+﻿<virtItems:UserControlVirtualizable x:Class="VKClient.Common.Gifts.Views.GiftsCatalogCategoryItemUC"
+                                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                                    xmlns:virtItems="clr-namespace:VKClient.Common.Library.VirtItems"
+                                    xmlns:framework="clr-namespace:VKClient.Common.Framework"
+                                    mc:Ignorable="d"
+                                    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                                    FontSize="{StaticResource PhoneFontSizeNormal}"
+                                    Foreground="{StaticResource PhoneForegroundBrush}"
+                                    d:DesignWidth="200"
+                                    d:DesignHeight="168">
+
+    <Canvas Width="200"
+            Height="168"
+            framework:MetroInMotion.Tilt="1.5"
+            Tap="Item_OnTap">
+
+        <Grid Width="152"
+              Height="200"
+              Margin="8 0"
+              Background="Transparent">
+
+            <Grid.Projection>
+                <PlaneProjection RotationZ="-90"
+                                 LocalOffsetX="-16"
+                                 LocalOffsetY="-16" />
+            </Grid.Projection>
+
+            <Grid VerticalAlignment="Top"
+                  HorizontalAlignment="Left">
+
+                <Canvas VerticalAlignment="Center"
+                        Width="152"
+                        Height="152">
+
+                    <Rectangle VerticalAlignment="Top"
+                               Width="152"
+                               Height="152"
+                               HorizontalAlignment="Left"
+                               RadiusX="20"
+                               RadiusY="20"
+                               Fill="{StaticResource PhoneGray000Brush}" />
+
+
+                    <Image framework:ImageLoader.UriSource="{Binding ImageUrl}"
+                           Width="128"
+                           Height="128"
+                           VerticalAlignment="Top"
+                           Canvas.Left="12"
+                           Canvas.Top="12" />
+
+                </Canvas>
+            </Grid>
+
+            <TextBlock Text="{Binding PriceStr, FallbackValue='N голосов'}"
+                       Foreground="{Binding PriceForeground}"
+                       TextAlignment="Center"
+                       LineStackingStrategy="BlockLineHeight"
+                       Margin="0 159 0 0" />
+        </Grid>
+    </Canvas>
+</virtItems:UserControlVirtualizable>

@@ -1,0 +1,74 @@
+﻿<virtItems:UserControlVirtualizable x:Class="VKClient.Common.Library.VirtItems.VideoNewsItemDescUC"
+                                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                                    mc:Ignorable="d"
+                                    xmlns:virtItems="clr-namespace:VKClient.Common.Library.VirtItems;assembly=VKClient.Common"
+                                    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                                    xmlns:framework="clr-namespace:VKClient.Common.Framework;assembly=VKClient.Common"
+                                    xmlns:vidCatCommon="clr-namespace:VKClient.Common.VideoCatalog;assembly=VKClient.Common"
+                                    FontSize="{StaticResource PhoneFontSizeNormal}"
+                                    Foreground="{StaticResource PhoneForegroundBrush}"
+                                    d:DesignHeight="280"
+                                    d:DesignWidth="480">
+
+    <Grid IsHitTestVisible="False">
+
+        <Grid Visibility="{Binding BigPreviewVisibility}">
+
+            <Image Stretch="Fill"
+                   Height="144"
+                   VerticalAlignment="Bottom"
+                   framework:MultiResImageLoader.UriSource="/Resources/Profile/Scrim.png">
+                <Image.Projection>
+                    <PlaneProjection RotationZ="180" />
+                </Image.Projection>
+            </Image>
+            
+            <Image framework:MultiResImageLoader.UriSource="/Resources/VideoCatalog/AttachVideoPlay.png"
+                   Width="56"
+                   IsHitTestVisible="False"
+                   Height="56" />
+
+            <TextBlock FontFamily="Segoe WP Semibold"
+                       FontSize="22.7"
+                       Foreground="White"
+                       VerticalAlignment="Bottom"
+                       Text="{Binding Title, FallbackValue='BMW M4 GTS'}"
+                       Margin="16 0 16 40" />
+
+            <TextBlock Foreground="White"
+                       VerticalAlignment="Bottom"
+                       Text="{Binding Subtitle, FallbackValue='2 просмотра'}"
+                       Opacity="0.8"
+                       Margin="16 0 0 18" />
+
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom"
+                        Margin="0 0 16 18">
+                <Ellipse Width="8"
+                         Height="8"
+                         Fill="#FF80BBFF"
+                         HorizontalAlignment="Left"
+                         Margin="8 0 0 0"
+                         Visibility="{Binding IsLiveVisibility}" />
+
+                <TextBlock Foreground="White"
+                           Margin="6 -2 0 0"
+                           Text="{Binding UIDuration, FallbackValue='1:59'}"
+                           Opacity="0.8" />
+            </StackPanel>
+
+        </Grid>
+
+        <vidCatCommon:VideoDurationUC VerticalAlignment="Bottom"
+                                      HorizontalAlignment="Right"
+                                      Margin=" 0 0 8 8"
+                                      Height="28"
+                                      Visibility="{Binding SmallPreviewVisibility}" />
+        
+
+    </Grid>
+</virtItems:UserControlVirtualizable>

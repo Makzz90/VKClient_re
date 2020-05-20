@@ -1,0 +1,55 @@
+﻿<UserControl x:Class="VKClient.Common.UC.GroupHeaderUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             d:DesignHeight="80">
+
+    <StackPanel>
+        <Rectangle x:Name="rectTopSeparator"
+                   Height="16"
+                   Fill="{StaticResource PhoneNewsDividerBrush}" />
+
+        <Border Height="64"
+                Background="{StaticResource PhoneNewsBackgroundBrush}">
+
+            <Border Name="gridContainer"
+                    Background="Transparent"
+                    Tap="ShowAll_OnTapped">
+
+                <Grid VerticalAlignment="Top"
+                      Margin="0 17 0 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock x:Name="textBlockTitle"
+                                   Margin="16 0 8 0"
+                                   FontFamily="{StaticResource PhoneFontFamilySemiBold}"
+                                   Foreground="{StaticResource PhoneAlmostBlackBrush}"
+                                   Text="Title" />
+
+                        <TextBlock x:Name="textBlockCounter"
+                                   FontFamily="{StaticResource PhoneFontFamilySemiBold}"
+                                   Foreground="{StaticResource PhoneCaptionGrayBrush}"
+                                   Text="5" />
+
+                    </StackPanel>
+
+                    <TextBlock x:Name="textBlockShowAll"
+                               Grid.Column="1"
+                               Margin="0 1 16 0"
+                               Visibility="Visible"
+                               Text="{Binding LocalizedResources.ShowAll, Source={StaticResource LocalizedStrings}}"
+                               Foreground="{StaticResource PhoneListItemAccentForegroundBrush}" />
+                </Grid>
+            </Border>
+        </Border>
+    </StackPanel>
+</UserControl>

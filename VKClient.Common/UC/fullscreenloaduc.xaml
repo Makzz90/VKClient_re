@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="VKClient.Common.UC.FullscreenLoadUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:uc="clr-namespace:VKClient.Common.UC"
+             mc:Ignorable="d"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             d:DesignHeight="800"
+             d:DesignWidth="480">
+
+    <Border>
+        <Border.Background>
+            <SolidColorBrush Color="Black"
+                             Opacity="0.2" />
+        </Border.Background>
+
+        <Grid Width="224"
+              Height="164"
+              Background="{StaticResource PhoneGray000_Gray800Brush}">
+
+            <uc:ProgressRing Height="64"
+                             Width="64"
+                             Margin="0 31 0 0"
+                             VerticalAlignment="Top"
+                             IsActive="True"
+                             Foreground="{StaticResource PhoneProgressBarForegroundBrush}" />
+
+
+            <TextBlock Width="192"
+                       Margin="0 109 0 0"
+                       VerticalAlignment="Top"
+                       LineStackingStrategy="BlockLineHeight"
+                       LineHeight="26"
+                       Foreground="{StaticResource PhoneGray400_Gray500Brush}"
+                       TextAlignment="Center"
+                       Text="{Binding LocalizedResources.Loading, Source={StaticResource LocalizedStrings}}" />
+        </Grid>
+
+    </Border>
+</UserControl>

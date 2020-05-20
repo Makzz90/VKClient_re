@@ -1,0 +1,79 @@
+﻿<UserControl x:Class="VKClient.Common.UC.ToggleControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:uc="clr-namespace:VKClient.Common.UC"
+             mc:Ignorable="d"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             d:DesignHeight="88"
+             d:DesignWidth="300"
+             xmlns:uc_w10m="clr-namespace:VKClient.Common.UC.w10m">
+
+    <UserControl.Resources>
+        <QuadraticEase x:Name="EasingFunc"
+                       EasingMode="EaseOut" />
+
+        <Storyboard x:Name="AnimateChecked">
+            <DoubleAnimation Storyboard.TargetName="borderActive"
+                             Storyboard.TargetProperty="(UIElement.Opacity)"
+                             To="1"
+                             Duration="0:0:0.1"
+                             EasingFunction="{StaticResource EasingFunc}" />
+
+            <DoubleAnimation Storyboard.TargetName="transformEllipseThum"
+                             Storyboard.TargetProperty="X"
+                             To="24"
+                             Duration="0:0:0.1"
+                             EasingFunction="{StaticResource EasingFunc}" />
+        </Storyboard>
+
+        <Storyboard x:Name="AnimateUnchecked">
+            <DoubleAnimation Storyboard.TargetName="borderActive"
+                             Storyboard.TargetProperty="(UIElement.Opacity)"
+                             To="0"
+                             Duration="0:0:0.1"
+                             EasingFunction="{StaticResource EasingFunc}" />
+
+            <DoubleAnimation Storyboard.TargetName="transformEllipseThum"
+                             Storyboard.TargetProperty="X"
+                             To="0"
+                             Duration="0:0:0.1"
+                             EasingFunction="{StaticResource EasingFunc}" />
+        </Storyboard>
+    </UserControl.Resources>
+
+    <Grid Background="Transparent"
+          Margin="0 16">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <Border Tap="BorderToggleTitle_OnTap">
+            <TextBlock x:Name="textBlockTitle"
+                       Text="Very long description"
+                       Margin="0 -6 12 0"
+                       FontSize="25.33"
+                       Foreground="{StaticResource PhoneAlmostBlackBrush}"
+                       VerticalAlignment="Center"
+                       TextWrapping="Wrap"/>
+        </Border>
+
+        <!--<uc:ToggleSwitchControl x:Name="controlToggleSwitch"
+                                Grid.Column="1"
+                                Width="56"
+                                Checked="ControlToggleSwitch_OnCheckedUnchecked"
+                                Unchecked="ControlToggleSwitch_OnCheckedUnchecked" />-->
+        <uc_w10m:ToggleSwitch
+            x:Name="controlToggleSwitch"
+            Grid.Column="1"
+            Width="56"
+            IsStateTextVisible="False" VerticalAlignment="Center"
+                              Checked="ControlToggleSwitch_OnCheckedUnchecked"
+           />
+
+    </Grid>
+</UserControl>

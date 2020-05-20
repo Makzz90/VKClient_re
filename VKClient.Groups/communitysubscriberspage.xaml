@@ -1,0 +1,114 @@
+﻿<framework:PageBase    
+    x:Class="VKClient.Groups.CommunitySubscribersPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:framework="clr-namespace:VKClient.Common.Framework;assembly=VKClient.Common"      
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:uc="clr-namespace:VKClient.Common.UC;assembly=VKClient.Common"
+    xmlns:groupsUC="clr-namespace:VKClient.Groups.UC"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    shell:SystemTray.IsVisible="True" shell:SystemTray.Opacity="0"
+    mc:Ignorable="d"   
+    
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}">
+
+    <framework:PageBase.Resources>
+        <DataTemplate x:Key="ItemTemplate">
+            <groupsUC:LinkUC>
+                <toolkit:ContextMenuService.ContextMenu>
+                    <toolkit:ContextMenu Background="{Binding InvertedOpaqueBG, Source={StaticResource ThemeHelper}}" 
+                                         Foreground="{Binding InvertedOpaqueFG, Source={StaticResource ThemeHelper}}"
+                                         IsEnabled="{Binding IsMoreActionsEnabled}"
+                                         IsZoomEnabled="False">
+                        <toolkit:MenuItem Header="{Binding Path=LocalizedResources.AddToManagers, Source={StaticResource LocalizedStrings}}"
+                                          Visibility="{Binding AddToManagersVisibility}"
+                                          Click="AddToManagers_OnClicked"/>
+                        <toolkit:MenuItem Header="{Binding Path=LocalizedResources.Edit, Source={StaticResource LocalizedStrings}}"
+                                          Visibility="{Binding EditVisibility}"
+                                          Click="Edit_OnClicked"/>
+                        <toolkit:MenuItem Header="{Binding Path=LocalizedResources.RemoveFromCommunity, Source={StaticResource LocalizedStrings}}"
+                                          Visibility="{Binding RemoveFromCommunityVisibility}"
+                                          Click="RemoveFromCommunity_OnClicked"/>
+                        <toolkit:MenuItem Header="{Binding Path=LocalizedResources.BannedUsers_BanUser, Source={StaticResource LocalizedStrings}}"
+                                          Visibility="{Binding BlockVisibility}"
+                                          Click="Block_OnClicked"/>
+                    </toolkit:ContextMenu>
+                </toolkit:ContextMenuService.ContextMenu>
+            </groupsUC:LinkUC>
+        </DataTemplate>
+    </framework:PageBase.Resources>
+    
+    <Grid>
+        <uc:GenericHeaderUC x:Name="Header"
+                            Title="{Binding Title}"
+                            VerticalAlignment="Top"
+                            Height="138"/>
+        
+        <controls:Pivot Margin="0,67,0,0"
+                        x:Name="Pivot"
+                        SelectionChanged="Pivot_OnSelectionChanged"
+                        Style="{StaticResource PivotStyleNoHeader}"
+                        Foreground="White">
+            <controls:PivotItem x:Name="PivotItemAll">
+                <controls:PivotItem.Header>
+                    <TextBlock Text="{Binding LocalizedResources.FriendsPage_Pivot_All, Source={StaticResource LocalizedStrings}}"
+                               FontFamily="Segoe WP SemiLight"
+                               FontSize="46"/>
+                </controls:PivotItem.Header>
+                <framework:ExtendedLongListSelector x:Name="AllList"
+                                                    DataContext="{Binding All}"
+                                                    ItemsSource="{Binding Collection}"
+                                                    ItemTemplate="{StaticResource ItemTemplate}"
+                                                    ListFooterTemplate="{StaticResource FooterTemplate}"
+                                                    SelectionChanged="List_OnSelectionChanged"
+                                                    ListFooter="{Binding}"
+                                                    Link="List_OnLinked"
+                                                    IsFlatList="True"/>
+            </controls:PivotItem>
+            
+            <controls:PivotItem x:Name="PivotItemUnsure">
+                <controls:PivotItem.Header>
+                    <TextBlock Text="{Binding LocalizedResources.Unsure, Source={StaticResource LocalizedStrings}, Converter={StaticResource StringToLowerConverter}}"
+                               FontFamily="Segoe WP SemiLight"
+                               FontSize="46"/>
+                </controls:PivotItem.Header>
+                <framework:ExtendedLongListSelector x:Name="UnsureList"
+                                                    DataContext="{Binding Unsure}"
+                                                    ItemsSource="{Binding Collection}"
+                                                    ItemTemplate="{StaticResource ItemTemplate}"
+                                                    ListFooterTemplate="{StaticResource FooterTemplate}"
+                                                    SelectionChanged="List_OnSelectionChanged"
+                                                    ListFooter="{Binding}"
+                                                    Link="List_OnLinked"
+                                                    IsFlatList="True"/>
+            </controls:PivotItem>
+            
+            <controls:PivotItem x:Name="PivotItemFriends">
+                <controls:PivotItem.Header>
+                    <TextBlock Text="{Binding LocalizedResources.Pivot_Friends, Source={StaticResource LocalizedStrings}}"
+                               FontFamily="Segoe WP SemiLight"
+                               FontSize="46"/>
+                </controls:PivotItem.Header>
+                <framework:ExtendedLongListSelector x:Name="FriendsList"
+                                                    DataContext="{Binding Friends}"
+                                                    ItemsSource="{Binding Collection}"
+                                                    ItemTemplate="{StaticResource ItemTemplate}"
+                                                    ListFooterTemplate="{StaticResource FooterTemplate}"
+                                                    SelectionChanged="List_OnSelectionChanged"
+                                                    ListFooter="{Binding}"
+                                                    Link="List_OnLinked"
+                                                    IsFlatList="True"/>
+            </controls:PivotItem>
+        </controls:Pivot>
+
+        <uc:PullToRefreshUC x:Name="PullToRefresh"/>
+        
+    </Grid>
+
+</framework:PageBase>

@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="VKClient.Common.Market.Views.MarketFeedAlbumsItemUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:uc="clr-namespace:VKClient.Common.UC"
+             xmlns:views="clr-namespace:VKClient.Common.Market.Views"
+             xmlns:framework="clr-namespace:VKClient.Common.Framework"
+             mc:Ignorable="d"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             d:DesignHeight="480"
+             d:DesignWidth="480">
+
+    <StackPanel>
+        <uc:GroupHeaderUC x:Name="ucGroupHeader"
+                          Title="{Binding LocalizedResources.Market_Collections, Source={StaticResource LocalizedStrings}}" />
+
+        <ItemsControl x:Name="itemsControl">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <views:MarketAlbumsTwoInARowUC />
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+        <Grid x:Name="gridFooter"
+              Tap="GridFooter_OnTap"
+              Background="{StaticResource PhoneNewsBackgroundBrush}"
+              Height="64">
+            <Rectangle Margin="7 0"
+                       Height="1"
+                       VerticalAlignment="Top"
+                       Fill="{StaticResource PhoneSeparatorBrush}" />
+            <Border framework:MetroInMotion.Tilt="1.5">
+                <TextBlock VerticalAlignment="Top"
+                           Margin="0 16 0 0"
+                           TextAlignment="Center"
+                           FontFamily="{StaticResource PhoneFontFamilySemiBold}"
+                           Foreground="{StaticResource PhoneAccentBlueBrush}"
+                           Text="{Binding LocalizedResources.ShowAll, Source={StaticResource LocalizedStrings}}" />
+            </Border>
+        </Grid>
+    </StackPanel>
+</UserControl>

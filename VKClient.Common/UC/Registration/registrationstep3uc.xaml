@@ -1,0 +1,117 @@
+﻿<UserControl x:Class="VKClient.Common.UC.Registration.RegistrationStep3UC"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:framework="clr-namespace:VKClient.Common.Framework;assembly=VKClient.Common"         
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="480" d:DesignWidth="480">
+
+    <Grid x:Name="LayoutRoot" >
+        <!--<Image Stretch="None"
+               Width="480"
+               VerticalAlignment="Top"
+               Margin="0 -88 0 0"
+               Source="../Temp/wp-register-v2-step3-1.png"/>-->
+
+        <StackPanel>
+            <TextBlock 
+                
+                FontSize="25.33"
+                HorizontalAlignment="Center"
+                Margin="0 25 0 0"
+                Text="{Binding PhoneNumberFormatted, FallbackValue='+7 999 212 11 76'}"/>
+
+
+            <Grid Margin="4 13 4 0" >
+                <TextBox Text="{Binding ConfirmationCode, Mode=TwoWay, UpdateSourceTrigger=Explicit}"
+                         TextChanged="TextBox_TextChanged"  
+                         KeyDown="textBoxConfirmationCode_KeyDown"
+                         Name="textBoxConfirmationCode"></TextBox>
+
+                <TextBlock 
+                    Name="textBlockConfirmationCodeWatermark"
+                    Margin="25 21  0 0"
+                    Style="{StaticResource WatermarkStyle}"
+                    Text="{Binding LocalizedResources.Registration_ConfirmationCode, Source={StaticResource LocalizedStrings}}" ></TextBlock>
+
+
+            </Grid>
+
+            <StackPanel Visibility="{Binding FirstAttemptVisibility, FallbackValue=Visible}">
+                <TextBlock
+                Margin="0 18 0 0"
+                    TextWrapping="Wrap"
+                    
+                    Foreground="{StaticResource PhoneVKSubtleBrush}"
+                    TextAlignment="Center"
+                 FontSize="22.67"
+                FontFamily="Segoe WP SemiLight"
+                    Text="{Binding LocalizedResources.Registration_WeHaveSentConfirmationMessage, Source={StaticResource LocalizedStrings}}"/>
+
+
+                <StackPanel Orientation="Horizontal" Margin="0 17 0 0"
+                            HorizontalAlignment="Center">
+                    <TextBlock Foreground="{StaticResource PhoneVKSubtleBrush}"                      
+                           TextAlignment="Center"
+                           FontSize="22.67"
+                           FontFamily="Segoe WP SemiLight"
+                           Text="{Binding LocalizedResources.Registration_SendCodeOneMoreTime, Source={StaticResource LocalizedStrings}}">
+                
+                    </TextBlock>
+                    
+                    <TextBlock Foreground="{StaticResource PhoneVKSubtleBrush}"
+                               FontSize="22.67"
+                               FontFamily="Segoe WP SemiLight"
+                               Margin="12 0 0 0"
+                               Width="60"
+                               Text="{Binding CountdownStr, FallbackValue='00:59'}"/>
+                </StackPanel>
+
+            </StackPanel>
+
+            <StackPanel Visibility="{Binding SecondAttemptVisibility}">
+                <TextBlock
+                Margin="24 18 24 0"
+                    TextWrapping="Wrap"
+                    
+                    Foreground="{StaticResource PhoneVKSubtleBrush}"
+                    TextAlignment="Center"
+                 FontSize="22.67"
+                FontFamily="Segoe WP SemiLight"
+                    Text="{Binding LocalizedResources.Registration_WeHaveSentConfirmationMessageAgain, Source={StaticResource LocalizedStrings}}"/>
+
+                <Grid HorizontalAlignment="Center" Margin="0 5 0 0" 
+                      Background="Transparent"                  
+                  Tap="GridCallTap"
+                  framework:MetroInMotion.Tilt="1.2">
+
+                    <TextBlock Foreground="{StaticResource PhoneNameBlueBrush}"
+                          TextAlignment="Center"
+                       Margin="12"
+                 FontSize="22.67"
+                FontFamily="Segoe WP SemiLight"
+                       Text="{Binding LocalizedResources.Registration_RequestCallback, Source={StaticResource LocalizedStrings}}"/>
+
+                </Grid>
+
+            </StackPanel>
+
+            <TextBlock
+                Visibility="{Binding ThirdAttemptVisibility}"
+                Margin="24 18 24 0"
+                    TextWrapping="Wrap"                    
+                    Foreground="{StaticResource PhoneVKSubtleBrush}"
+                    TextAlignment="Center"
+                 FontSize="22.67"
+                FontFamily="Segoe WP SemiLight"
+                    Text="{Binding LocalizedResources.Registration_WaitForCall, Source={StaticResource LocalizedStrings}}"/>
+
+
+        </StackPanel>
+
+    </Grid>
+</UserControl>

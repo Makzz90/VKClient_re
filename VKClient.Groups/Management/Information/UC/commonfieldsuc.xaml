@@ -1,0 +1,82 @@
+﻿<UserControl
+    x:Class="VKClient.Groups.Management.Information.UC.CommonFieldsUC"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    
+    xmlns:groupsUC="clr-namespace:VKClient.Groups.UC;assembly=VKClient.Groups"
+    xmlns:uc="clr-namespace:VKClient.Common.UC;assembly=VKClient.Common">
+
+    <StackPanel>
+        <TextBlock Text="{Binding Path=LocalizedResources.ChatEdit_Title, Source={StaticResource LocalizedStrings}}"
+                   Foreground="{StaticResource PhoneCaptionGrayBrush}"
+                   Margin="16,24,0,0"/>
+        <TextBox Height="76"
+                 InputScope="Text"
+                 Margin="4,-4,4,0"
+                 KeyDown="TextBox_OnKeyDown"
+                 Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=Explicit}"
+                 TextChanged="TextBox_OnTextChanged"
+                 IsHitTestVisible="{Binding ParentViewModel.IsFormEnabled}"
+                 GotFocus="TextBox_OnGotFocus"
+                 LostFocus="TextBox_OnLostFocus"/>
+
+        <TextBlock Text="{Binding Path=LocalizedResources.AddEditVideo_Description, Source={StaticResource LocalizedStrings}}"
+                   Foreground="{StaticResource PhoneCaptionGrayBrush}"
+                   Margin="16,13,0,0"/>
+        <TextBox Height="140"
+                 InputScope="Text"
+                 Margin="4,-4,4,0"
+                 TextWrapping="Wrap"
+                 Text="{Binding Description, Mode=TwoWay, UpdateSourceTrigger=Explicit}"
+                 AcceptsReturn="True"
+                 TextChanged="TextBox_OnTextChanged"
+                 IsHitTestVisible="{Binding ParentViewModel.IsFormEnabled}"
+                 GotFocus="TextBox_OnGotFocus"
+                 LostFocus="TextBox_OnLostFocus"/>
+
+        <TextBlock Text="{Binding Path=LocalizedResources.PageUri, Source={StaticResource LocalizedStrings}}"
+                   Foreground="{StaticResource PhoneCaptionGrayBrush}"
+                   Margin="16,13,0,0"/>
+        <groupsUC:CommunityDomainTextBox Margin="4,-4,4,0"
+                                         IsHitTestVisible="{Binding ParentViewModel.IsFormEnabled}"
+                                         Text="{Binding Domain, Mode=TwoWay, UpdateSourceTrigger=Explicit}"
+                                         TextChanged="DomainTextBox_OnTextChanged"
+                                         GotFocus="TextBox_OnGotFocus"
+                                         LostFocus="TextBox_OnLostFocus"/>
+
+        <uc:CustomListPicker Title="{Binding CategoryTitle}"
+                             SelectionTitle="{Binding CategoryTitle}"
+                             ItemsSource="{Binding AvailableCategories}"
+                             SelectedItem="{Binding Category, Mode=TwoWay}"
+                             Placeholder="{Binding CategoryPlaceholder}"
+                             IsHitTestVisible="{Binding ParentViewModel.IsFormEnabled}"
+                             Margin="16,13,16,12"/>
+
+        <uc:CustomListPicker Title="{Binding Path=LocalizedResources.PublicPageSubcategory, Source={StaticResource LocalizedStrings}}"
+                             SelectionTitle="{Binding Path=LocalizedResources.PublicPageSubcategory, Source={StaticResource LocalizedStrings}}"
+                             ItemsSource="{Binding AvailableSubcategories}"
+                             SelectedItem="{Binding Subcategory, Mode=TwoWay}"
+                             Placeholder="{Binding Path=LocalizedResources.SelectSubcategory, Source={StaticResource LocalizedStrings}}"
+                             IsHitTestVisible="{Binding ParentViewModel.IsFormEnabled}"
+                             Visibility="{Binding SubcategoryVisibility}"
+                             Margin="16,13,16,12"/>
+
+        <TextBlock Text="{Binding Path=LocalizedResources.Site, Source={StaticResource LocalizedStrings}}"
+                   Foreground="{StaticResource PhoneCaptionGrayBrush}"
+                   Margin="16,13,0,0"/>
+        <TextBox Height="76"
+                 InputScope="Url"
+                 Margin="4,-4,4,0"
+                 KeyDown="TextBox_OnKeyDown"
+                 Text="{Binding Site, Mode=TwoWay, UpdateSourceTrigger=Explicit}"
+                 IsHitTestVisible="{Binding ParentViewModel.IsFormEnabled}"
+                 TextChanged="TextBox_OnTextChanged"
+                 GotFocus="TextBox_OnGotFocus"
+                 LostFocus="TextBox_OnLostFocus"/>
+
+    </StackPanel>
+
+</UserControl>

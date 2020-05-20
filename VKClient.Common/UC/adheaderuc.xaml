@@ -1,0 +1,34 @@
+﻿<virtItems:UserControlVirtualizable x:Class="VKClient.Common.UC.AdHeaderUC"
+                                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                                    xmlns:virtItems="clr-namespace:VKClient.Common.Library.VirtItems;assembly=VKClient.Common"
+                                    mc:Ignorable="d"
+                                    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                                    FontSize="{StaticResource PhoneFontSizeNormal}"
+                                    Foreground="{StaticResource PhoneForegroundBrush}"
+                                    d:DesignHeight="66"
+                                    d:DesignWidth="480">
+
+    <Grid Height="66"
+          Background="{StaticResource PhoneNewsBackgroundBrush}">
+        <Rectangle Height="2"
+                   VerticalAlignment="Bottom"
+                   Fill="{StaticResource PhoneTableSeparatorBrush}" />
+
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Name="textBlock1"
+                       Margin="15 18 0 0"
+                       Foreground="{StaticResource PhoneVKSubtleBrush}"
+                       FontFamily="Segoe WP Semibold"
+                       Text="Рекламная запись" />
+
+            <TextBlock Name="textBlock2"
+                       Margin="6 18 0 0"
+                       Foreground="{StaticResource PhoneVKSubtleBrush}"
+                       Text="12+" />
+        </StackPanel>
+
+    </Grid>
+</virtItems:UserControlVirtualizable>

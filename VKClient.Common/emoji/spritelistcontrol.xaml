@@ -1,0 +1,64 @@
+﻿<UserControl x:Class="VKClient.Common.Emoji.SpriteListControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:framework="clr-namespace:VKClient.Common.Framework"
+             xmlns:views="clr-namespace:VKClient.Common.Stickers.Views"
+             mc:Ignorable="d"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             d:DesignHeight="480"
+             d:DesignWidth="480">
+
+    <Grid Background="Transparent"
+          Tap="GridRoot_OnTap">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Border x:Name="borderExtraTop"
+                Visibility="{Binding StickersPackVisibility}">
+            <Rectangle Height="92"
+                       Visibility="{Binding StickerStockItemHeader.PurchaseVisibility, FallbackValue='Collapsed'}" />
+        </Border>
+
+        <Image x:Name="ImageBackground"
+               Grid.RowSpan="2"
+               Stretch="UniformToFill" />
+
+        <ProgressBar Grid.RowSpan="2"
+                     IsIndeterminate="False"
+                     x:Name="ProgressBar"
+                     Visibility="Collapsed"
+                     Margin="40 40 40 122" />
+
+        <ScrollViewer x:Name="scrollViewer"
+                      Grid.Row="1"
+                      Margin="0 0 0 64">
+            <framework:MyVirtualizingPanel x:Name="myPanel"
+                                           Margin="0 0 0 12"
+                                           VerticalAlignment="Top" />
+        </ScrollViewer>
+
+        <Border x:Name="borderStickersPurchase"
+                VerticalAlignment="Top"
+                Visibility="{Binding StickersPackVisibility}">
+            <views:StickersPurchaseUC DataContext="{Binding StickerStockItemHeader}"
+                                      Visibility="{Binding PurchaseVisibility, FallbackValue='Collapsed'}" />
+        </Border>
+
+        <TextBlock x:Name="textBlockNoStickers"
+                   Grid.Row="1"
+                   Margin="32 -64 32 0"
+                   Visibility="{Binding NoStickersVisibility, FallbackValue=Collapsed}"
+                   Foreground="{StaticResource PhoneGray400Brush}"
+                   VerticalAlignment="Center"
+                   TextAlignment="Center"
+                   TextWrapping="Wrap"
+                   Text="{Binding LocalizedResources.RecentStickersDesc, Source={StaticResource LocalizedStrings}}" />
+
+    </Grid>
+</UserControl>

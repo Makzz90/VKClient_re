@@ -1,0 +1,802 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3F61632E-1F7A-42C4-BF38-AE07D3E9F383}</ProjectGuid>
+    <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VKClient.Audio.Base</RootNamespace>
+    <AssemblyName>VKClient.Audio.Base</AssemblyName>
+    <TargetFrameworkIdentifier>WindowsPhone</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v8.1</TargetFrameworkVersion>
+    <SilverlightVersion>
+    </SilverlightVersion>
+    <SilverlightApplication>false</SilverlightApplication>
+    <ValidateXaml>true</ValidateXaml>
+    <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <TargetFrameworkProfile />
+    <DefaultLanguage>ru-RU</DefaultLanguage>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\x86\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\x86\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|ARM' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\ARM\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|ARM' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\ARM\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget />
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="ABCDStruct.cs" />
+    <None Include="AssemblyInfo.cs" />
+    <Compile Include="MD5Core.cs" />
+    <Compile Include="MediaParsers\BitTools.cs" />
+    <Compile Include="MediaParsers\Channel.cs" />
+    <Compile Include="MediaParsers\MpegFrame.cs" />
+    <Compile Include="MediaParsers\MpegLayer3WaveFormat.cs" />
+    <Compile Include="MediaParsers\WaveFormatExtensible.cs" />
+    <Compile Include="Media\Mp3MediaStreamSourceX.cs" />
+    <Compile Include="Mp3MediaStreamSource\Phone\DownloadedFilesInfo.cs" />
+    <Compile Include="Mp3MediaStreamSource\Phone\FileDescription.cs" />
+    <Compile Include="Mp3MediaStreamSource\Phone\FileDownloader.cs" />
+    <Compile Include="Mp3MediaStreamSource\Phone\IReportFileChunkDownloaded.cs" />
+    <Compile Include="Mp3MediaStreamSource\Phone\MyMusicStream.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="System\Linq\AnonymousComparer.cs" />
+    <Compile Include="VKClient\Audio\Base\AppInfo.cs" />
+    <Compile Include="VKClient\Audio\Base\AudioCache\AudioCacheManager.cs" />
+    <Compile Include="VKClient\Audio\Base\AudioCache\DownloadResult.cs" />
+    <Compile Include="VKClient\Audio\Base\AudioCache\FileDownloadRequest.cs" />
+    <Compile Include="VKClient\Audio\Base\AudioCache\InProgressDownloadInfo.cs" />
+    <Compile Include="VKClient\Audio\Base\AudioCache\MediaLRUCache.cs" />
+    <Compile Include="VKClient\Audio\Base\AudioCache\PlayedFilesInfo.cs" />
+    <Compile Include="VKClient\Audio\Base\AudioCache\RemoteFileInfo.cs" />
+    <Compile Include="VKClient\Audio\Base\BackendServices\AdsIntService.cs" />
+    <Compile Include="VKClient\Audio\Base\BackendServices\AppsService.cs" />
+    <Compile Include="VKClient\Audio\Base\BackendServices\DatabaseService.cs" />
+    <Compile Include="VKClient\Audio\Base\BackendServices\DocumentsService.cs" />
+    <Compile Include="VKClient\Audio\Base\BackendServices\GiftsService.cs" />
+    <Compile Include="VKClient\Audio\Base\BackendServices\InternalService.cs" />
+    <Compile Include="VKClient\Audio\Base\BackendServices\MarketSearchParameters.cs" />
+    <Compile Include="VKClient\Audio\Base\BackendServices\MarketService.cs" />
+    <Compile Include="VKClient\Audio\Base\BackendServices\MarketSortType.cs" />
+    <Compile Include="VKClient\Audio\Base\BackendServices\MoneyTransfersService.cs" />
+    <Compile Include="VKClient\Audio\Base\BackendServices\NewsFeedNotificationHideReason.cs" />
+    <Compile Include="VKClient\Audio\Base\BackendServices\ProfilesService.cs" />
+    <Compile Include="VKClient\Audio\Base\BackendServices\SearchService.cs" />
+    <Compile Include="VKClient\Audio\Base\BackendServices\StoreService.cs" />
+    <Compile Include="VKClient\Audio\Base\BGAudioPlayerWrapper.cs" />
+    <Compile Include="VKClient\Audio\Base\BLExtensions\AudioTrackExtensions.cs" />
+    <Compile Include="VKClient\Audio\Base\BLExtensions\BirthDateExtensions.cs" />
+    <Compile Include="VKClient\Audio\Base\BLExtensions\UserExtensions.cs" />
+    <Compile Include="VKClient\Audio\Base\BLExtensions\WallPostExtensions.cs" />
+    <Compile Include="VKClient\Audio\Base\ChatInfoWithMessageId.cs" />
+    <Compile Include="VKClient\Audio\Base\Core\GzipExtensions.cs" />
+    <Compile Include="VKClient\Audio\Base\Core\IGZipEncoder.cs" />
+    <Compile Include="VKClient\Audio\Base\Core\LRUCacheItem`2.cs" />
+    <Compile Include="VKClient\Audio\Base\Core\LRUCache`2.cs" />
+    <Compile Include="VKClient\Audio\Base\CountersService.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\AccountInfo.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\AccountPaymentType.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\Ad.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\AdStatistics.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\AllFriendsList.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\Amount.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\BalanceData.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\BalanceDataResponse.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\BlockedUsers.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\BlockInformation.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\Category.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\Chat.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\ChatBase.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\ChatExtended.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\CommunityInvitationsList.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\CommunityManagers.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\CommunitySettings.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\CommunitySubscribers.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\ConversationMaterial.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\ConversationsUCBase.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\CountriesResponse.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\CropPhoto.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\CropRect.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\DocPreview.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\DocPreviewGraffiti.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\DocPreviewPhoto.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\DocPreviewPhotoSize.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\DocPreviewVideo.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\DocPreviewVoiceMessage.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\DocumentsInfo.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\EmbeddedUrlResponse.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\FriendRequests.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\FriendsRecommendationsList.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\Game.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\GameActivity.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\GameDashboardResponse.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\GameDisconnectedEvent.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\GameLeaderboardItem.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\GameLeaderboardResponse.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\GameRequest.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\GameRequestFrom.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\GamesDashboardResponse.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\GamesFriendsActivityResponse.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\GamesRequestsResponse.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\Gift.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\GiftInfoFromStoreResponse.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\GiftItemData.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\GiftPrivacy.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\GiftResponse.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\GiftsCatalogResponse.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\GiftSentResponse.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\GiftsResponse.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\GiftsSection.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\GiftsSectionItem.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\GroupCatalogCategoryPreview.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\GroupCatalogInfo.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\GroupCatalogInfoExtended.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\GroupContact.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\GroupData.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\GroupLink.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\GroupsListWithInvitations.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\IConversationsUCFactory.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\IProfile.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\IProfileData.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\IVoiceMessage.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\LookupContactsResponse.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\Maps\GoogleAddressComponent.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\Maps\GoogleGeocode.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\Maps\GoogleGeocodeResponse.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\Maps\GoogleGeocodeResult.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\MarketAlbum.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\MarketFeedResponse.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\MediaSectionsSettings.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\MoneyTransfer.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\MoneyTransferActionType.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\MoneyTransferResponse.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\MoneyTransferSendResponse.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\NewsFeedSection.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\NewsFeedSectionsAndLists.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\PaymentType.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\PlacementEditingResult.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\PollVotersResponse.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\PostSource.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\PostSourcePlatform.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\PrivacyInfo.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\PrivacySection.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\PrivacySetting.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\PrivacySettingsInfo.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\PrivacyType.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\Product.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\ProductData.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\ProductLikesCommentsData.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\ProductsWithStockItems.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\ProfileMainSectionType.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\ReportAdReason.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\ReportAppReason.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\ReportReason.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\Section.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\Sticker.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\StickerKeywordItem.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\StickersKeywordsData.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\StockItem.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\StoreBanner.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\StoreBuyProductParams.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\StoreBuyProductResult.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\StoreCatalog.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\StoreProduct.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\StoreProductFilter.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\StoreProductPrivacy.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\StoreProductType.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\StorePurchaseParams.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\StorePurchaseReferrer.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\StorePurchaseResult.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\StoreSection.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\StoreStickers.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\SubscriptionObj.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\Trend.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\UserData.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\VideoSearchResponse.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\VKList`1.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\VotesPack.cs" />
+    <Compile Include="VKClient\Audio\Base\DataObjects\WallDataResponse.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\AdImpressionEvent.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\AdPixelEvent.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\AdReportedEvent.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\AppActivatedEvent.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\AppActivationReason.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\AudioMessagePlayEvent.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\AudioPlayEvent.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\BalanceTopupAction.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\BalanceTopupEvent.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\BalanceTopupSource.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\CommunityBlockChanged.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\CommunityInformationChanged.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\CommunityLinkAddedOrEdited.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\CommunityLinkDeleted.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\CommunityManagerChanged.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\CommunityOpenSource.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\CommunityPhotoChanged.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\CommunityPlacementEdited.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\CommunityServicesChanged.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\ContactsSyncEnabled.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\DiscoverActionEvent.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\DiscoverActionType.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\DocUploaded.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\EditingMode.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\FriendRecommendationShowedEvent.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\GamesActionEvent.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\GamesActionType.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\GamesClickSource.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\GamesVisitSource.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\GifPlayEvent.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\GifPlayStartType.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\GiftPurchaseStepsAction.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\GiftPurchaseStepsSource.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\GiftsPurchaseStepsEvent.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\HyperlinkClickedEvent.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\MarketContactAction.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\MarketContactEvent.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\MarketItemActionEvent.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\MarketItemSource.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\MenuClickEvent.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\MessagesFromGroupAllowedDeniedEvent.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\MoneyTransferAcceptedEvent.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\MoneyTransferDeclinedEvent.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\MoneyTransferSentEvent.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\NotificationSettingsChangedEvent.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\ObjectLikedUnlikedEvent.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\OpenGamesEvent.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\OpenGroupEvent.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\OpenPostEvent.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\OpenUserEvent.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\OpenVideoEvent.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\PhotoAlbumCreated.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\PhotoAlbumDeleted.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\PhotoDeletedFromAlbum.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\PhotoSetAsAlbumCover.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\PhotosMovedToAlbum.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\PhotoUploadedToAlbum.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\PostActionEvent.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\PostActionType.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\PostInteractionAction.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\PostInteractionEvent.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\ProfileBlockClickEvent.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\ProfileBlockType.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\SearchParamsUpdated.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\StatEventBase.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\StatisticsActionSource.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\StatisticsVideoPosition.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\StickersPurchaseFunnelAction.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\StickersPurchaseFunnelEvent.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\StickersPurchaseFunnelSource.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\SubscriptionFromPostEvent.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\TransitionFromPostEvent.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\UserIsLoggedOutEvent.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\VideoAlbumAddedDeletedEvent.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\VideoAlbumEditedEvent.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\VideoCommentIsAddedDeleted.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\VideoCommentsLikesUpdated.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\VideoPlayEvent.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\VideoUploaded.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\ViewBlockEvent.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\ViewPostEvent.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\ViewPostSource.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\VoiceMessageSentEvent.cs" />
+    <Compile Include="VKClient\Audio\Base\Events\VoiceMessageUploaded.cs" />
+    <Compile Include="VKClient\Audio\Base\Extensions\PhotoExtensions.cs" />
+    <Compile Include="VKClient\Audio\Base\Extensions\StringExtensions.cs" />
+    <Compile Include="VKClient\Audio\Base\Extensions\TextBlockExtensions.cs" />
+    <Compile Include="VKClient\Audio\Base\Files.cs" />
+    <Compile Include="VKClient\Audio\Base\GetDialogsRequest.cs" />
+    <Compile Include="VKClient\Audio\Base\GifAutoplayMode.cs" />
+    <Compile Include="VKClient\Audio\Base\IAppStateInfo.cs" />
+    <Compile Include="VKClient\Audio\Base\IBackendConfirmationHandler.cs" />
+    <Compile Include="VKClient\Audio\Base\IBackendNotEnoughMoneyHandler.cs" />
+    <Compile Include="VKClient\Audio\Base\ICountersService.cs" />
+    <Compile Include="VKClient\Audio\Base\IHaveUniqueKey.cs" />
+    <Compile Include="VKClient\Audio\Base\IMediaPlayerWrapper.cs" />
+    <Compile Include="VKClient\Audio\Base\Library\BatchDownloadManager.cs" />
+    <Compile Include="VKClient\Audio\Base\Library\CurrentCommunitySource.cs" />
+    <Compile Include="VKClient\Audio\Base\Library\CurrentMarketItemSource.cs" />
+    <Compile Include="VKClient\Audio\Base\Library\CurrentMediaSource.cs" />
+    <Compile Include="VKClient\Audio\Base\Library\CurrentNewsFeedSource.cs" />
+    <Compile Include="VKClient\Audio\Base\Library\CurrentStickersPurchaseFunnelSource.cs" />
+    <Compile Include="VKClient\Audio\Base\Library\DownloadFailedEvent.cs" />
+    <Compile Include="VKClient\Audio\Base\Library\DownloadProgressedEvent.cs" />
+    <Compile Include="VKClient\Audio\Base\Library\DownloadSucceededEvent.cs" />
+    <Compile Include="VKClient\Audio\Base\Library\FriendsCache.cs" />
+    <Compile Include="VKClient\Audio\Base\Library\FriendsCacheUpdated.cs" />
+    <Compile Include="VKClient\Audio\Base\Library\InAppProductPurchaseResult.cs" />
+    <Compile Include="VKClient\Audio\Base\Library\InAppProductPurchaseStatus.cs" />
+    <Compile Include="VKClient\Audio\Base\Library\InAppPurchaseService.cs" />
+    <Compile Include="VKClient\Audio\Base\Library\InAppUnfulfilledProduct.cs" />
+    <Compile Include="VKClient\Audio\Base\Library\ISearchParams.cs" />
+    <Compile Include="VKClient\Audio\Base\Library\LangHelper.cs" />
+    <Compile Include="VKClient\Audio\Base\Library\ProductsSearchParams.cs" />
+    <Compile Include="VKClient\Audio\Base\Library\RegexHelper.cs" />
+    <Compile Include="VKClient\Audio\Base\Library\RemoteLocalMapping.cs" />
+    <Compile Include="VKClient\Audio\Base\Library\SavedContacts.cs" />
+    <Compile Include="VKClient\Audio\Base\Library\SearchHint.cs" />
+    <Compile Include="VKClient\Audio\Base\Library\SearchParams.cs" />
+    <Compile Include="VKClient\Audio\Base\Library\ServiceLocator.cs" />
+    <Compile Include="VKClient\Audio\Base\Library\StatsEventsTracker.cs" />
+    <Compile Include="VKClient\Audio\Base\Library\SubscriptionFromPostManager.cs" />
+    <Compile Include="VKClient\Audio\Base\Library\UsersSearchParams.cs" />
+    <Compile Include="VKClient\Audio\Base\Library\VotesPacksGenerator.cs" />
+    <Compile Include="VKClient\Audio\Base\Localization\BaseResources.cs" />
+    <Compile Include="VKClient\Audio\Base\MediaStream\ChunkDownloader.cs" />
+    <Compile Include="VKClient\Audio\Base\MediaStream\ChunkDownloder.cs" />
+    <Compile Include="VKClient\Audio\Base\MemoryInfo.cs" />
+    <Compile Include="VKClient\Audio\Base\MessageHeaderFormatterHelper.cs" />
+    <Compile Include="VKClient\Audio\Base\MessageListResponse.cs" />
+    <Compile Include="VKClient\Audio\Base\MessagesService.cs" />
+    <Compile Include="VKClient\Audio\Base\PhotoViewerOrientationLockedModeChanged.cs" />
+    <Compile Include="VKClient\Audio\Base\ResponseWithId.cs" />
+    <Compile Include="VKClient\Audio\Base\SavePhotoResponse.cs" />
+    <Compile Include="VKClient\Audio\Base\SecondaryTileManager.cs" />
+    <Compile Include="VKClient\Audio\Base\SendMessageRequest.cs" />
+    <Compile Include="VKClient\Audio\Base\Social\PhotosList.cs" />
+    <Compile Include="VKClient\Audio\Base\Social\RemoteIdHelper.cs" />
+    <Compile Include="VKClient\Audio\Base\Social\SocialDataManager.cs" />
+    <Compile Include="VKClient\Audio\Base\Social\TextPreprocessor.cs" />
+    <Compile Include="VKClient\Audio\Base\StartState.cs" />
+    <Compile Include="VKClient\Audio\Base\StringUtils.cs" />
+    <Compile Include="VKClient\Audio\Base\UploadResponseData.cs" />
+    <Compile Include="VKClient\Audio\Base\UploadServerAddress.cs" />
+    <Compile Include="VKClient\Audio\Base\Utils\BaseFormatterHelper.cs" />
+    <Compile Include="VKClient\Audio\Base\Utils\CultureHelper.cs" />
+    <Compile Include="VKClient\Audio\Base\Utils\CultureName.cs" />
+    <Compile Include="VKClient\Audio\Base\Utils\DateTimeDiff.cs" />
+    <Compile Include="VKClient\Audio\Base\Utils\DateTimeDiffType.cs" />
+    <Compile Include="VKClient\Audio\Base\Utils\DelayedExecutorWithQueue.cs" />
+    <Compile Include="VKClient\Audio\Base\Utils\ExtensionsBase.cs" />
+    <Compile Include="VKClient\Audio\Base\Utils\HttpExtensions.cs" />
+    <Compile Include="VKClient\Audio\Base\Utils\HttpMethod.cs" />
+    <Compile Include="VKClient\Audio\Base\Utils\HttpUtils.cs" />
+    <Compile Include="VKClient\Audio\Base\Utils\IsoStorageHelper.cs" />
+    <Compile Include="VKClient\Audio\Base\Utils\ListUtils.cs" />
+    <Compile Include="VKClient\Audio\Base\Utils\QueryStringHelper.cs" />
+    <Compile Include="VKClient\Audio\Base\Utils\StreamUtils.cs" />
+    <Compile Include="VKClient\Audio\Base\VideoData.cs" />
+    <Compile Include="VKClient\Common\AudioManager\Metadata.cs" />
+    <Compile Include="VKClient\Common\AudioManager\PlaybackSettings.cs" />
+    <Compile Include="VKClient\Common\AudioManager\Playlist.cs" />
+    <Compile Include="VKClient\Common\AudioManager\PlaylistManager.cs" />
+    <Compile Include="VKClient\Common\Backend\AccountService.cs" />
+    <Compile Include="VKClient\Common\Backend\AdvertisingDeviceInfo.cs" />
+    <Compile Include="VKClient\Common\Backend\AlbumArtwork.cs" />
+    <Compile Include="VKClient\Common\Backend\AppEventAdImpression.cs" />
+    <Compile Include="VKClient\Common\Backend\AppEventAppActivated.cs" />
+    <Compile Include="VKClient\Common\Backend\AppEventAudioMessagePlay.cs" />
+    <Compile Include="VKClient\Common\Backend\AppEventAudioPlay.cs" />
+    <Compile Include="VKClient\Common\Backend\AppEventBalanceTopup.cs" />
+    <Compile Include="VKClient\Common\Backend\AppEventBase.cs" />
+    <Compile Include="VKClient\Common\Backend\AppEventDiscoverAction.cs" />
+    <Compile Include="VKClient\Common\Backend\AppEventFriendRecommendationShowed.cs" />
+    <Compile Include="VKClient\Common\Backend\AppEventGamesAction.cs" />
+    <Compile Include="VKClient\Common\Backend\AppEventGamesVisit.cs" />
+    <Compile Include="VKClient\Common\Backend\AppEventGifPlay.cs" />
+    <Compile Include="VKClient\Common\Backend\AppEventGiftsPurchaseSteps.cs" />
+    <Compile Include="VKClient\Common\Backend\AppEventMarketContact.cs" />
+    <Compile Include="VKClient\Common\Backend\AppEventMarketItemAction.cs" />
+    <Compile Include="VKClient\Common\Backend\AppEventMenuClick.cs" />
+    <Compile Include="VKClient\Common\Backend\AppEventOpenGroup.cs" />
+    <Compile Include="VKClient\Common\Backend\AppEventOpenPost.cs" />
+    <Compile Include="VKClient\Common\Backend\AppEventOpenUser.cs" />
+    <Compile Include="VKClient\Common\Backend\AppEventOpenVideo.cs" />
+    <Compile Include="VKClient\Common\Backend\AppEventPostAction.cs" />
+    <Compile Include="VKClient\Common\Backend\AppEventPostInteraction.cs" />
+    <Compile Include="VKClient\Common\Backend\AppEventPostLinkClick.cs" />
+    <Compile Include="VKClient\Common\Backend\AppEventProfileBlockClick.cs" />
+    <Compile Include="VKClient\Common\Backend\AppEventStickersPurchaseFunnel.cs" />
+    <Compile Include="VKClient\Common\Backend\AppEventSubscriptionFromPost.cs" />
+    <Compile Include="VKClient\Common\Backend\AppEventTransitionFromPost.cs" />
+    <Compile Include="VKClient\Common\Backend\AppEventVideoPlay.cs" />
+    <Compile Include="VKClient\Common\Backend\AppEventViewBlock.cs" />
+    <Compile Include="VKClient\Common\Backend\AppEventViewPost.cs" />
+    <Compile Include="VKClient\Common\Backend\AudioService.cs" />
+    <Compile Include="VKClient\Common\Backend\BackendResult`2.cs" />
+    <Compile Include="VKClient\Common\Backend\Cancellation.cs" />
+    <Compile Include="VKClient\Common\Backend\CaptchaUserRequest.cs" />
+    <Compile Include="VKClient\Common\Backend\CaptchaUserRequestHandler.cs" />
+    <Compile Include="VKClient\Common\Backend\CaptchaUserResponse.cs" />
+    <Compile Include="VKClient\Common\Backend\ChangePasswordResponse.cs" />
+    <Compile Include="VKClient\Common\Backend\CheckNameResponse.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\AccountBaseData.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\AccountBaseInfo.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\AccountBaseInfoSettingsEntry.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\AccountIntermediateData.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\Album.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\AlbumsData.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\Answer.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\AppButton.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\Attachment.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\AudioAlbum.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\AudioData.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\AudioDataRoot.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\AudioObj.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\AutorizationData.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\BanInfo.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\BirthDate.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\CaptchaError.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\Career.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\CareerData.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\City.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\Comment.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\Comments.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\CommentsInfo.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\CommentsInfoContainer.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\CommentsResponse.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\CommunityInvitation.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\CommunityInvitations.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\CommunityManagementRole.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\CommunityService.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\CommunityServiceState.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\Counters.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\CountersDeserializerHelper.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\CountersWithMessageInfo.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\Country.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\Cover.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\CoverImage.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\Currency.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\Doc.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\Exports.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\FeedbackCopyInfo.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\FeedbackUser.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\FriendsAndLists.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\FriendsAndMutualFriends.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\FriendshipStatus.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\FriendsList.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\FriendStatus.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\Geo.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\GetTopicsResponse.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\GetWallPostResponseData.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\Group.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\GroupMembership.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\GroupMembershipType.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\GroupPrivacy.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\GroupsLists.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\GroupsListWithCount.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\GroupType.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\IAccountStickersData.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\Likes.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\LikesInfo.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\LikesList.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\Link.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\LinkApplication.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\LinkButton.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\LinkButtonAction.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\LinkButtonActionType.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\LinkProduct.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\LinkRating.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\LinkStore.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\LongPollResultCode.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\Market.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\Military.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\MilitaryData.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\MoneyTransfersSettings.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\NameCases.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\NameChangeRequest.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\NewsActivity.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\NewsActivityComment.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\NewsActivityLikes.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\NewsActivityType.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\NewsCaption.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\NewsCaptionType.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\NewsFeedConsts.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\NewsFeedData.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\NewsFeedGetParams.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\NewsFeedItemType.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\NewsFeedList.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\NewsFeedType.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\NewsItem.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\NewsItemType.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\NewsSourcesPredefined.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\Note.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\Notification.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\NotificationData.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\NotificationType.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\Occupation.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\OccupationType.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\OwnCounters.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\Photo.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\PhotosListWithCount.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\PhotoVideoTag.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\PhotoWithFullInfo.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\Place.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\Poll.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\Price.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\Privacy.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\ProfileInfo.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\ProfilePhoto.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\ProfilesAndGroups.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\ProfilesAndGroupsIds.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\PushNotificationSettings.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\PushSettings.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\RelationshipStatus.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\Relative.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\RelativeType.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\Reposts.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\ResolvedData.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\ResolvedObject.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\ResponseWithId.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\ResultCode.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\ResultCodeExtensions.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\School.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\Sex.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\Status.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\StrUtil.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\Topic.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\TopicsInfo.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\University.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\UploadDocResponseData.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\UploadPhotoResponseData.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\UploadServerAddress.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\User.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\UserLike.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\UserLikedInfo.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\UserNotification.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\UserNotificationAlert.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\UserNotificationBubbleNewsfeed.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\UserNotificationButton.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\UserNotificationButtonAction.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\UserNotificationButtonActionType.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\UserNotificationButtonStyle.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\UserNotificationImage.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\UserNotificationNewsfeed.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\UserNotificationNewsfeedLayout.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\UserNotificationType.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\UserPersonal.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\UsersListWithCount.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\UserStatus.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\Video.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\VideoAlbum.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\VideoAlbumListWithCount.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\VideoData.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\VideoDataRoot.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\VideoFiles.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\VideoLikesCommentsData.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\VideoListWithCount.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\WallData.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\WallPost.cs" />
+    <Compile Include="VKClient\Common\Backend\DataObjects\Wiki.cs" />
+    <Compile Include="VKClient\Common\Backend\ExecuteError.cs" />
+    <Compile Include="VKClient\Common\Backend\FavoritesService.cs" />
+    <Compile Include="VKClient\Common\Backend\FriendRequest.cs" />
+    <Compile Include="VKClient\Common\Backend\FriendRequestData.cs" />
+    <Compile Include="VKClient\Common\Backend\GenericRootList`1.cs" />
+    <Compile Include="VKClient\Common\Backend\GenericRoot`1.cs" />
+    <Compile Include="VKClient\Common\Backend\GetAddToAlbumInfoResponse.cs" />
+    <Compile Include="VKClient\Common\Backend\GetCatalogResponse.cs" />
+    <Compile Include="VKClient\Common\Backend\GetCatalogSectionResponse.cs" />
+    <Compile Include="VKClient\Common\Backend\GetProfileInfoResponse.cs" />
+    <Compile Include="VKClient\Common\Backend\GetVideosDataExtResponse.cs" />
+    <Compile Include="VKClient\Common\Backend\GetVideosResponse.cs" />
+    <Compile Include="VKClient\Common\Backend\GroupsService.cs" />
+    <Compile Include="VKClient\Common\Backend\IAccountService.cs" />
+    <Compile Include="VKClient\Common\Backend\IGroupsService.cs" />
+    <Compile Include="VKClient\Common\Backend\ILoginService.cs" />
+    <Compile Include="VKClient\Common\Backend\IPageDataRequesteeInfo.cs" />
+    <Compile Include="VKClient\Common\Backend\IPhotosService.cs" />
+    <Compile Include="VKClient\Common\Backend\JsonResponseData.cs" />
+    <Compile Include="VKClient\Common\Backend\JsonWebRequest.cs" />
+    <Compile Include="VKClient\Common\Backend\LikeListFilter.cs" />
+    <Compile Include="VKClient\Common\Backend\LikeObjectType.cs" />
+    <Compile Include="VKClient\Common\Backend\LikesService.cs" />
+    <Compile Include="VKClient\Common\Backend\ListResponse`1.cs" />
+    <Compile Include="VKClient\Common\Backend\LoginService.cs" />
+    <Compile Include="VKClient\Common\Backend\LogoutRequestHandler.cs" />
+    <Compile Include="VKClient\Common\Backend\Lyrics.cs" />
+    <Compile Include="VKClient\Common\Backend\MapsService.cs" />
+    <Compile Include="VKClient\Common\Backend\MoneyTransferAcceptedResponse.cs" />
+    <Compile Include="VKClient\Common\Backend\MoneyTransferSentResponse.cs" />
+    <Compile Include="VKClient\Common\Backend\NewsFeedService.cs" />
+    <Compile Include="VKClient\Common\Backend\PhoneAppInfo.cs" />
+    <Compile Include="VKClient\Common\Backend\PhotosService.cs" />
+    <Compile Include="VKClient\Common\Backend\PollService.cs" />
+    <Compile Include="VKClient\Common\Backend\ProfileBlocksClickData.cs" />
+    <Compile Include="VKClient\Common\Backend\RepostedObjectEvent.cs" />
+    <Compile Include="VKClient\Common\Backend\RepostObject.cs" />
+    <Compile Include="VKClient\Common\Backend\RepostResult.cs" />
+    <Compile Include="VKClient\Common\Backend\RequestExecutionRule.cs" />
+    <Compile Include="VKClient\Common\Backend\SaveProfileInfoResult.cs" />
+    <Compile Include="VKClient\Common\Backend\SaveProfileResponse.cs" />
+    <Compile Include="VKClient\Common\Backend\SaveVideoResponse.cs" />
+    <Compile Include="VKClient\Common\Backend\SettingsAccountInfo.cs" />
+    <Compile Include="VKClient\Common\Backend\SignupConfirmation.cs" />
+    <Compile Include="VKClient\Common\Backend\SignUpService.cs" />
+    <Compile Include="VKClient\Common\Backend\UserOrGroup.cs" />
+    <Compile Include="VKClient\Common\Backend\UserOrGroupSource.cs" />
+    <Compile Include="VKClient\Common\Backend\UsersAndGroups.cs" />
+    <Compile Include="VKClient\Common\Backend\UsersService.cs" />
+    <Compile Include="VKClient\Common\Backend\Validation2FAUserRequest.cs" />
+    <Compile Include="VKClient\Common\Backend\ValidationUserRequest.cs" />
+    <Compile Include="VKClient\Common\Backend\ValidationUserResponse.cs" />
+    <Compile Include="VKClient\Common\Backend\VideoCatalogCategory.cs" />
+    <Compile Include="VKClient\Common\Backend\VideoCatalogItem.cs" />
+    <Compile Include="VKClient\Common\Backend\VideosData.cs" />
+    <Compile Include="VKClient\Common\Backend\VideoService.cs" />
+    <Compile Include="VKClient\Common\Backend\VKRequestsDispatcher.cs" />
+    <Compile Include="VKClient\Common\Backend\WallPostRequestData.cs" />
+    <Compile Include="VKClient\Common\Backend\WallService.cs" />
+    <Compile Include="VKClient\Common\Framework\BinarySerializerExtensions.cs" />
+    <Compile Include="VKClient\Common\Framework\CacheManager.cs" />
+    <Compile Include="VKClient\Common\Framework\EventAggregator.cs" />
+    <Compile Include="VKClient\Common\Framework\Execute.cs" />
+    <Compile Include="VKClient\Common\Framework\IAppInfo.cs" />
+    <Compile Include="VKClient\Common\Framework\IBinarySerializable.cs" />
+    <Compile Include="VKClient\Common\Framework\IBinarySerializableWithTrimSupport.cs" />
+    <Compile Include="VKClient\Common\Framework\IEventAggregator.cs" />
+    <Compile Include="VKClient\Common\Framework\IHandle.cs" />
+    <Compile Include="VKClient\Common\Framework\IHandle`1.cs" />
+    <Compile Include="VKClient\Common\Framework\ImageCache.cs" />
+    <Compile Include="VKClient\Common\Library\AppGlobalStateData.cs" />
+    <Compile Include="VKClient\Common\Library\AppGlobalStateManager.cs" />
+    <Compile Include="VKClient\Common\Library\AudioTrackHelper.cs" />
+    <Compile Include="VKClient\Common\Library\ConnectionType.cs" />
+    <Compile Include="VKClient\Common\Library\EventsConverter.cs" />
+    <Compile Include="VKClient\Common\Library\Events\AudioAlbumCreatedEditedDeleted.cs" />
+    <Compile Include="VKClient\Common\Library\Events\AudioEventTranslator.cs" />
+    <Compile Include="VKClient\Common\Library\Events\AudioPlayerClosedEvent.cs" />
+    <Compile Include="VKClient\Common\Library\Events\AudioPlayerStateChanged.cs" />
+    <Compile Include="VKClient\Common\Library\Events\AudioTrackAddedRemoved.cs" />
+    <Compile Include="VKClient\Common\Library\Events\AudioTrackDownloadProgress.cs" />
+    <Compile Include="VKClient\Common\Library\Events\AudioTrackEdited.cs" />
+    <Compile Include="VKClient\Common\Library\Events\BaseDataChangedEvent.cs" />
+    <Compile Include="VKClient\Common\Library\Events\CommentEdited.cs" />
+    <Compile Include="VKClient\Common\Library\Events\CountersChanged.cs" />
+    <Compile Include="VKClient\Common\Library\Events\FriendRemoved.cs" />
+    <Compile Include="VKClient\Common\Library\Events\FriendRequestAcceptedDeclined.cs" />
+    <Compile Include="VKClient\Common\Library\Events\FriendRequestSent.cs" />
+    <Compile Include="VKClient\Common\Library\Events\GroupFavedUnfavedEvent.cs" />
+    <Compile Include="VKClient\Common\Library\Events\GroupMembershipStatusUpdated.cs" />
+    <Compile Include="VKClient\Common\Library\Events\GroupSubscribedUnsubscribedEvent.cs" />
+    <Compile Include="VKClient\Common\Library\Events\HiddenNewsSourcesCountUpdated.cs" />
+    <Compile Include="VKClient\Common\Library\Events\MediaPlayerStateChangedEvent.cs" />
+    <Compile Include="VKClient\Common\Library\Events\NotificationTurnOnOff.cs" />
+    <Compile Include="VKClient\Common\Library\Events\PhotoIsRepostedInGroup.cs" />
+    <Compile Include="VKClient\Common\Library\Events\ProductFavedUnfavedEvent.cs" />
+    <Compile Include="VKClient\Common\Library\Events\ProfileIsSubscribedUnsubscribedToEvent.cs" />
+    <Compile Include="VKClient\Common\Library\Events\ProfileStatusChangedEvent.cs" />
+    <Compile Include="VKClient\Common\Library\Events\ShortNameChangedEvent.cs" />
+    <Compile Include="VKClient\Common\Library\Events\SubscriptionCancelled.cs" />
+    <Compile Include="VKClient\Common\Library\Events\TopicCommentAddedDeletedOrEdited.cs" />
+    <Compile Include="VKClient\Common\Library\Events\TopicCreated.cs" />
+    <Compile Include="VKClient\Common\Library\Events\UserIsBannedOrUnbannedEvent.cs" />
+    <Compile Include="VKClient\Common\Library\Events\UserIsFavedOrUnfavedEvent.cs" />
+    <Compile Include="VKClient\Common\Library\Events\UserIsSubcribedUnsubscribedToEvent.cs" />
+    <Compile Include="VKClient\Common\Library\Events\VideoAddedDeleted.cs" />
+    <Compile Include="VKClient\Common\Library\Events\VideoEdited.cs" />
+    <Compile Include="VKClient\Common\Library\Events\WallCommentIsAddedDeleted.cs" />
+    <Compile Include="VKClient\Common\Library\Events\WallCommentsLikesUpdated.cs" />
+    <Compile Include="VKClient\Common\Library\Events\WallItemLikedUnliked.cs" />
+    <Compile Include="VKClient\Common\Library\Events\WallPostAddedOrEdited.cs" />
+    <Compile Include="VKClient\Common\Library\Events\WallPostDeleted.cs" />
+    <Compile Include="VKClient\Common\Library\Events\WallPostPinnedUnpinned.cs" />
+    <Compile Include="VKClient\Common\Library\Events\WallPostPostponed.cs" />
+    <Compile Include="VKClient\Common\Library\Events\WallPostPostponedPublished.cs" />
+    <Compile Include="VKClient\Common\Library\Events\WallPostPublished.cs" />
+    <Compile Include="VKClient\Common\Library\Events\WallPostSuggested.cs" />
+    <Compile Include="VKClient\Common\Library\NetworkStatus.cs" />
+    <Compile Include="VKClient\Common\Library\NetworkStatusChanged.cs" />
+    <Compile Include="VKClient\Common\Library\NetworkStatusInfo.cs" />
+    <Compile Include="VKClient\Common\Library\NewsItemDataWithUsersAndGroupsInfo.cs" />
+    <Compile Include="VKClient\Common\Library\PendingStatisticsEvent.cs" />
+    <Compile Include="VKClient\Common\Library\ThemeSettings.cs" />
+    <Compile Include="VKClient\Common\Library\ThemeSettingsManager.cs" />
+    <Compile Include="VKClient\Common\Library\TileManager.cs" />
+    <Compile Include="VKClient\Common\UC\PickableItem.cs" />
+    <Compile Include="VKClient\Common\Utils\DelayedExecutor.cs" />
+    <Compile Include="VKClient\Common\Utils\DeviceStatusExtensions.cs" />
+    <Compile Include="VKClient\Common\Utils\KeyboardHelper.cs" />
+    <Compile Include="VKClient\Common\Utils\ListExtensions.cs" />
+    <Compile Include="VKClient\Common\Utils\Logger.cs" />
+    <Compile Include="VKClient\Common\Utils\MultiResolutionHelper.cs" />
+    <Compile Include="VKClient\Common\Utils\ScaleFactor.cs" />
+    <Compile Include="VKClient\Common\Utils\UriExtensions.cs" />
+    <Compile Include="VKClient\Common\VKConstants.cs" />
+    <Compile Include="VKMessenger\Backend\BackendServices.cs" />
+    <Compile Include="VKMessenger\Backend\ChatInfo.cs" />
+    <Compile Include="VKMessenger\Backend\ChatService.cs" />
+    <Compile Include="VKMessenger\Backend\ChatUser.cs" />
+    <Compile Include="VKMessenger\Backend\DialogHeaderInfo.cs" />
+    <Compile Include="VKMessenger\Backend\DialogWrapper.cs" />
+    <Compile Include="VKMessenger\Backend\IChatService.cs" />
+    <Compile Include="VKMessenger\Backend\ILongPollServerService.cs" />
+    <Compile Include="VKMessenger\Backend\LongPollServerResponse.cs" />
+    <Compile Include="VKMessenger\Backend\LongPollServerService.cs" />
+    <Compile Include="VKMessenger\Backend\LongPollServerUpdateData.cs" />
+    <Compile Include="VKMessenger\Backend\LongPollServerUpdateType.cs" />
+    <Compile Include="VKMessenger\Backend\Message.cs" />
+    <Compile Include="VKMessenger\Backend\MessageHistoryWrapper.cs" />
+    <Compile Include="VKMessenger\Backend\PushSettings.cs" />
+    <Compile Include="VKMessenger\Backend\UpdatesResponse.cs" />
+    <Compile Include="VKMessenger\Library\InstantUpdatesManager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\VKClient\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="VKClient\Audio\Base\Localization\BaseResources.resx">
+      <DependentUpon>BaseResources.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
+  <ProjectExtensions />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,125 @@
+﻿<framework:PageBase x:Class="VKClient.Common.PickUserForNewMessagePage"
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+                    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                    xmlns:framework="clr-namespace:VKClient.Common.Framework"
+                    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+                    xmlns:uc="clr-namespace:VKClient.Common.UC"
+                    xmlns:localization="clr-namespace:VKClient.Common.Localization"
+                    FontSize="{StaticResource PhoneFontSizeNormal}"
+                    Foreground="{StaticResource PhoneForegroundBrush}"
+                    SupportedOrientations="Portrait"
+                    Orientation="Portrait"
+                    mc:Ignorable="d"
+                    shell:SystemTray.IsVisible="True"
+                    shell:SystemTray.Opacity="0">
+
+
+
+    <framework:PageBase.Resources>
+        <localization:CommonLocalizedStrings x:Key="LocStr" />
+
+
+        <DataTemplate x:Key="HeaderTemplate">
+            <Grid Height="10" />
+        </DataTemplate>
+
+
+    </framework:PageBase.Resources>
+
+
+    <shell:SystemTray.ProgressIndicator>
+        <shell:ProgressIndicator x:Name="progressIndicator"
+                                 IsIndeterminate="False"
+                                 IsVisible="False"
+                                 Text="" />
+    </shell:SystemTray.ProgressIndicator>
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot"
+          Background="Transparent">
+
+
+        <uc:GenericHeaderUC VerticalAlignment="Top"
+                            Height="138"
+                            x:Name="Header" />
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <!--
+        <StackPanel Grid.Row="0"
+                    Margin="12,16,0,37">
+            <TextBlock Text="{Binding Title, FallbackValue=СHOOSE}"
+                       Margin="12 0 0 0"
+                       Style="{StaticResource AppTitleText}" />
+            <TextBlock Text="{Binding Path=LocalizedResources.FriendsLowCase, Source={StaticResource LocStr}}"
+                       Margin="9,-10,0,0"
+                       Style="{StaticResource PhoneTextTitle1Style}" />
+        </StackPanel>-->
+
+        <!--ContentPanel - place additional content here-->
+        <controls:Pivot Margin="0 67 0 0 "
+                        Style="{StaticResource PivotStyleNoHeader}"
+                        Name="pivot"
+                        Foreground="White">
+            <controls:PivotItem Name="pivotItemAll">
+                <controls:PivotItem.Header>
+                    <TextBlock FontSize="46"
+                               FontFamily="Segoe WP SemiLight"
+                               Text="{Binding Path=LocalizedResources.FriendsLowCase, Source={StaticResource LocStr}}" />
+                </controls:PivotItem.Header>
+
+                <Grid x:Name="ContentPanel">
+                    <framework:ExtendedLongListSelector x:Name="allFriendsListBox"
+                                                        Background="Transparent"
+                                                        IsFlatList="False"
+                                                        ListFooter="{Binding}"
+                                                        DataContext="{Binding Friends}"
+                                                        ListFooterTemplate="{StaticResource FooterTemplate}"
+                                                        ListHeaderTemplate="{StaticResource HeaderTemplate}"
+                                                        SelectionChanged="FriendsListBox_SelectionChanged"
+                                                        ItemsSource="{Binding Collection}"
+                                                        ItemTemplate="{StaticResource FriendItemTemplate}"
+                                                        GroupHeaderTemplate="{StaticResource GroupHeaderTemplate}"
+                                                        JumpListStyle="{StaticResource LongListSelectorJumpListStyle}">
+                        <framework:ExtendedLongListSelector.GroupItemsPanel>
+                            <ItemsPanelTemplate>
+                                <toolkit:WrapPanel />
+                            </ItemsPanelTemplate>
+                        </framework:ExtendedLongListSelector.GroupItemsPanel>
+
+                    </framework:ExtendedLongListSelector>
+
+                </Grid>
+            </controls:PivotItem>
+            <controls:PivotItem Name="pivotItemLists">
+
+                <controls:PivotItem.Header>
+                    <TextBlock FontSize="46"
+                               FontFamily="Segoe WP SemiLight"
+                               Text="{Binding LocalizedResources.FriendsPage_Pivot_Lists, Source={StaticResource LocalizedStrings}}" />
+                </controls:PivotItem.Header>
+
+                <Grid>
+                    <framework:ExtendedLongListSelector x:Name="friendListsListBox"
+                                                        Background="Transparent"
+                                                        IsFlatList="True"
+                                                        SelectionChanged="FriendsListBox_SelectionChanged"
+                                                        ListHeaderTemplate="{StaticResource HeaderTemplate}"
+                                                        DataContext="{Binding Lists}"
+                                                        ListFooter="{Binding}"
+                                                        ListFooterTemplate="{StaticResource FooterTemplate}"
+                                                        ItemsSource="{Binding Collection}"
+                                                        ItemTemplate="{StaticResource FriendItemTemplate}">
+
+                    </framework:ExtendedLongListSelector>
+                </Grid>
+            </controls:PivotItem>
+        </controls:Pivot>
+    </Grid>
+
+</framework:PageBase>

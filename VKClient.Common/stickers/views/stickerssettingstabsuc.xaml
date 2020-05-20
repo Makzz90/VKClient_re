@@ -1,0 +1,53 @@
+﻿<UserControl x:Class="VKClient.Common.Stickers.Views.StickersSettingsTabsUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:framework="clr-namespace:VKClient.Common.Framework"
+             mc:Ignorable="d"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             d:DesignHeight="480"
+             d:DesignWidth="480">
+
+    <Grid>
+        <Grid Width="240"
+              Height="64"
+              VerticalAlignment="Top"
+              HorizontalAlignment="Left"
+              Background="Transparent"
+              framework:MetroInMotion.Tilt="1.5"
+              Tap="TabActive_OnTap">
+
+            <TextBlock Margin="0 17 0 0"
+                       VerticalAlignment="Top"
+                       TextAlignment="Center"
+                       Foreground="{Binding ActiveTabForeground}"
+                       FontFamily="Segoe WP Semibold"
+                       Text="{Binding LocalizedResources.Stickers_ActiveTab, Source={StaticResource LocalizedStrings}}" />
+        </Grid>
+
+        <Grid Width="240"
+              Height="64"
+              Margin="240 0 0 0"
+              VerticalAlignment="Top"
+              HorizontalAlignment="Left"
+              Background="Transparent"
+              framework:MetroInMotion.Tilt="1.5"
+              Tap="TabHidden_OnTap">
+
+            <TextBlock Margin="0 17 0 0"
+                       VerticalAlignment="Top"
+                       TextAlignment="Center"
+                       Foreground="{Binding HiddenTabForeground}"
+                       FontFamily="Segoe WP Semibold"
+                       Text="{Binding LocalizedResources.Stickers_HiddenTab, Source={StaticResource LocalizedStrings}}" />
+        </Grid>
+
+        <Rectangle Height="1"
+                   VerticalAlignment="Bottom"
+                   Fill="{StaticResource PhoneForegroundBrush}"
+                   Opacity="0.1" />
+    </Grid>
+</UserControl>

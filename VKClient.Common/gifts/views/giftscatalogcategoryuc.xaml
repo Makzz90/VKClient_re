@@ -1,0 +1,82 @@
+﻿<virtItems:UserControlVirtualizable x:Class="VKClient.Common.Gifts.Views.GiftsCatalogCategoryUC"
+                                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                                    xmlns:virtItems="clr-namespace:VKClient.Common.Library.VirtItems"
+                                    xmlns:framework="clr-namespace:VKClient.Common.Framework"
+                                    xmlns:views="clr-namespace:VKClient.Common.Gifts.Views"
+                                    mc:Ignorable="d"
+                                    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                                    FontSize="{StaticResource PhoneFontSizeNormal}"
+                                    Foreground="{StaticResource PhoneForegroundBrush}"
+                                    d:DesignHeight="480"
+                                    d:DesignWidth="480">
+
+    <StackPanel>
+        <Grid Height="72"
+              Background="Transparent"
+              framework:MetroInMotion.Tilt="1.5"
+              Tap="Header_OnTap">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock VerticalAlignment="Top"
+                       Margin="16 18 16 0"
+                       FontSize="25.33"
+                       Foreground="{StaticResource PhoneAlmostBlackBrush}"
+                       Text="{Binding Title, FallbackValue='Category name'}" />
+
+            <TextBlock Grid.Column="1"
+                       VerticalAlignment="Top"
+                       Margin="0 21 16 0"
+                       Foreground="{StaticResource PhoneBlue300_GrayBlue100Brush}"
+                       Text="{Binding LocalizedResources.ShowAll, Source={StaticResource LocalizedStrings}}" />
+        </Grid>
+
+        <Grid Width="480"
+              Height="208">
+
+            <StackPanel VerticalAlignment="Top"
+                        HorizontalAlignment="Left">
+                <framework:ExtendedLongListSelector ManipulationStarted="ListBox_ManipulationStarted"
+                                                    ManipulationDelta="ListBox_ManipulationDelta"
+                                                    ManipulationCompleted="ListBox_ManipulationCompleted"
+                                                    Style="{StaticResource PhotosListStyle}"
+                                                    ItemsSource="{Binding Gifts}"
+                                                    IsFlatList="True"
+                                                    Height="480"
+                                                    Width="200"
+                                                    Margin="140 -140 0 0">
+
+                    <framework:ExtendedLongListSelector.Projection>
+                        <PlaneProjection RotationZ="90" />
+                    </framework:ExtendedLongListSelector.Projection>
+
+                    <framework:ExtendedLongListSelector.ItemTemplate>
+                        <DataTemplate>
+                            <views:GiftsCatalogCategoryItemUC />
+                        </DataTemplate>
+                    </framework:ExtendedLongListSelector.ItemTemplate>
+                    <framework:ExtendedLongListSelector.ListHeaderTemplate>
+                        <DataTemplate>
+                            <Grid Height="8" />
+                        </DataTemplate>
+                    </framework:ExtendedLongListSelector.ListHeaderTemplate>
+                    <framework:ExtendedLongListSelector.ListFooterTemplate>
+                        <DataTemplate>
+                            <Grid Height="8" />
+                        </DataTemplate>
+                    </framework:ExtendedLongListSelector.ListFooterTemplate>
+                </framework:ExtendedLongListSelector>
+            </StackPanel>
+        </Grid>
+
+        <Rectangle Height="1"
+                   Margin="16 8 0 0"
+                   Opacity="0.1"
+                   Fill="{StaticResource PhoneForegroundBrush}" />
+    </StackPanel>
+</virtItems:UserControlVirtualizable>

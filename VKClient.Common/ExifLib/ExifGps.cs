@@ -1,0 +1,37 @@
+namespace ExifLib
+{
+  public enum ExifGps
+  {
+    Version,
+    LatitudeRef,
+    Latitude,
+    LongitudeRef,
+    Longitude,
+    AltitudeRef,
+    Altitude,
+    TimeStamp,
+    Satellites,
+    Status,
+    MeasureMode,
+    DOP,
+    SpeedRef,
+    Speed,
+    TrackRef,
+    Track,
+    ImgDirectionRef,
+    ImgDirection,
+    MapDatum,
+    DestLatitudeRef,
+    DestLatitude,
+    DestLongitudeRef,
+    DestLongitude,
+    DestBearingRef,
+    DestBearing,
+    DestDistanceRef,
+    DestDistance,
+    ProcessingMethod,
+    AreaInformation,
+    DateStamp,
+    Differential,
+  }
+}

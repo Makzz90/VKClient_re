@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="VKClient.Common.UC.GameNotificationsSettingsUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:framework="clr-namespace:VKClient.Common.Framework"
+             mc:Ignorable="d"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             d:DesignHeight="108">
+
+        <StackPanel>
+            <Border Height="16"
+                    Background="{StaticResource PhoneNewsDividerBrush}" />
+
+            <Border Height="92"
+                    Background="Transparent"
+                    framework:MetroInMotion.Tilt="2.5"
+                    Tap="GameNotificationsSettings_OnTapped">
+                <TextBlock Margin="16 0 0 0"
+                           VerticalAlignment="Center"
+                           FontSize="25.33"
+                           Text="{Binding LocalizedResources.Games_NotificationsSettings, Source={StaticResource LocalizedStrings}}" />
+            </Border>
+        </StackPanel>
+</UserControl>

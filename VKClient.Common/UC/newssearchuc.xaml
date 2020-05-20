@@ -1,0 +1,118 @@
+﻿<UserControl x:Class="VKClient.Common.UC.NewsSearchUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:framework="clr-namespace:VKClient.Common.Framework;assembly=VKClient.Common"
+             xmlns:uc="clr-namespace:VKClient.Common.UC"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             d:DesignHeight="480"
+             d:DesignWidth="480"
+             VerticalAlignment="Top">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Rectangle Fill="{StaticResource PhoneHeaderBackgroundBrush}"
+                   Height="96" />
+
+        <TextBox x:Name="textBoxSearch"
+                 Margin="4 0"
+                 InputScope="Search"
+                 Style="{StaticResource TextBoxSearchStyle}"
+                 VerticalAlignment="Bottom"
+                 KeyDown="TextBoxSearch_KeyDown"
+                 GotFocus="TextBoxSearch_OnGotFocus" />
+        <TextBlock x:Name="textBlockWatermarkText"
+                   IsHitTestVisible="False"
+                   Margin="27 42 27 0"
+                   VerticalAlignment="Top"
+                   FontSize="25.33"
+                   Foreground="{StaticResource PhoneTextBoxSearchWatermarkForegroundBrush}" />
+        <Rectangle Fill="{StaticResource PhoneBackgroundBrush}"
+                   Grid.Row="1" />
+        <ViewportControl Name="scrollNews"
+                         Grid.Row="1"
+                         VerticalContentAlignment="Stretch"
+                         HorizontalContentAlignment="Stretch"
+                         ManipulationStarted="scrollNews_ManipulationStarted_1">
+
+            <uc:MyVirtualizingStackPanel x:Name="stackPanel"
+                                         Visibility="{Binding NewsVisibility}">
+
+                <framework:MyVirtualizingPanel2 x:Name="panelNews"
+                                                VerticalAlignment="Top"
+                                                DataContext="{Binding SearchVM}"
+                                                ItemsSource="{Binding Collection}" />
+
+                <uc:FooterUC DataContext="{Binding SearchVM}" />
+            </uc:MyVirtualizingStackPanel>
+
+
+        </ViewportControl>
+
+        <Grid Grid.Row="1"
+              Visibility="{Binding TrendsVisibility}">
+            <StackPanel DataContext="{Binding TrendsViewModel}"
+                        Visibility="{Binding TrendsVisibility}">
+
+                <Border Height="56"
+                        Margin="16 24 16 0">
+                    <TextBlock Margin="0 2 0 0"
+                               FontSize="32"
+                               FontFamily="{StaticResource PhoneFontFamilySemiLight}"
+                               Foreground="{StaticResource PhoneAlmostBlackBrush}"
+                               TextAlignment="Center"
+                               Text="{Binding LocalizedResources.TrendingTopics, Source={StaticResource LocalizedStrings}}" />
+                </Border>
+
+                <ItemsControl ItemsSource="{Binding Trends}"
+                              Margin="0 8 0 0">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border Height="56"
+                                    Background="Transparent"
+                                    framework:MetroInMotion.Tilt="1.5"
+                                    Tap="Trend_OnTap">
+                                <TextBlock VerticalAlignment="Top"
+                                           Margin="16 9 16 0"
+                                           FontSize="25.33"
+                                           Foreground="{StaticResource PhoneAccentBlueBrush}"
+                                           TextAlignment="Center"
+                                           Text="{Binding name}" />
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+
+            <StackPanel Margin="0 88 0 0"
+                        DataContext="{Binding TrendsViewModel}"
+                        Visibility="{Binding IsLoadingVisibility, FallbackValue=Visible}">
+
+                <uc:ProgressRing Height="56"
+                                 Width="56"
+                                 IsActive="{Binding IsLoading, FallbackValue=True}"
+                                 Foreground="{StaticResource PhoneProgressBarForegroundBrush}"
+                                 Margin="0 0 0 -8" />
+
+                <TextBlock Visibility="Visible"
+                           Foreground="{StaticResource PhoneProfileInfoLoadingForegroundBrush}"
+                           Margin="16 32 16 0"
+                           TextWrapping="Wrap"
+                           TextAlignment="Center"
+                           Text="{Binding LocalizedResources.Loading, Source={StaticResource LocalizedStrings}}"
+                           FontSize="22.67"
+                           FontFamily="{StaticResource PhoneFontFamilySemiLight}" />
+            </StackPanel>
+        </Grid>
+
+        <uc:PullToRefreshUC x:Name="ucPullToRefresh" />
+    </Grid>
+</UserControl>

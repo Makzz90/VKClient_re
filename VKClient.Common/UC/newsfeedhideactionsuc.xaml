@@ -1,0 +1,74 @@
+﻿<virtItems:UserControlVirtualizable x:Class="VKClient.Common.UC.NewsFeedHideActionsUC"
+                                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                                    xmlns:virtItems="clr-namespace:VKClient.Common.Library.VirtItems"
+                                    xmlns:framework="clr-namespace:VKClient.Common.Framework"
+                                    mc:Ignorable="d"
+                                    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                                    FontSize="{StaticResource PhoneFontSizeNormal}"
+                                    Foreground="{StaticResource PhoneForegroundBrush}"
+                                    d:DesignHeight="480"
+                                    d:DesignWidth="480">
+
+    <StackPanel Background="{StaticResource PhoneHideWallPostBackgroundBrush}">
+        <Rectangle Height="1"
+                   VerticalAlignment="Top"
+                   Fill="{StaticResource PhoneForegroundBrush}"
+                   Opacity="0.1" />
+
+        <Border Background="Transparent"
+                Margin="16 20 16 0"
+                Tap="Cancel_OnClick">
+            
+            <TextBlock FontSize="21.33"
+                       TextWrapping="Wrap">
+            <Run Foreground="{StaticResource PhoneHideWallPostForegroundBrush}"
+                 Text="Эта запись не будет показываться в ленте. " />
+            <Run Foreground="{StaticResource PhoneHideWallPostAccentForegroundBrush}"
+                 Text="Отмена" />
+            </TextBlock>
+        </Border>
+
+        <Rectangle Height="1"
+                   Margin="16 20 16 0"
+                   VerticalAlignment="Top"
+                   Fill="{StaticResource PhoneForegroundBrush}"
+                   Opacity="0.1" />
+
+        <ItemsControl ItemsSource="{Binding Sources}"
+                      Margin="0 7">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+        <Border Background="Transparent"
+                framework:MetroInMotion.Tilt="1.5">
+            <StackPanel Orientation="Horizontal"
+                        Margin="16 14 16 18">
+                <Border Width="24"
+                        Height="24"
+                        VerticalAlignment="Top"
+                        Background="{StaticResource PhoneHideWallPostAccentForegroundBrush}" />
+                <TextBlock Margin="12 -2 0 0"
+                           VerticalAlignment="Top"
+                           Foreground="{StaticResource PhoneHideWallPostAccentForegroundBrush}"
+                           FontSize="21.33"
+                           LineStackingStrategy="BlockLineHeight"
+                           LineHeight="24"
+                           TextWrapping="Wrap"
+                           Width="412"
+                           Text="Не показывать новости сообщества The Question" />
+            </StackPanel>
+        </Border>
+
+        <Rectangle Height="1"
+                   VerticalAlignment="Bottom"
+                   Fill="{StaticResource PhoneForegroundBrush}"
+                   Opacity="0.1" />
+    </StackPanel>
+</virtItems:UserControlVirtualizable>

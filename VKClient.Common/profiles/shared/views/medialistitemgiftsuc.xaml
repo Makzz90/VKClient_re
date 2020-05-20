@@ -1,0 +1,52 @@
+﻿<UserControl x:Class="VKClient.Common.Profiles.Shared.Views.MediaListItemGiftsUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:framework="clr-namespace:VKClient.Common.Framework"
+             mc:Ignorable="d"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             d:DesignHeight="120"
+             d:DesignWidth="182">
+
+    <Grid Width="{Binding ContainerWidth, FallbackValue=182}"
+          Height="{Binding ContainerHeight, FallbackValue=120}"
+          Background="Transparent">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="122" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="58" />
+            <RowDefinition Height="62" />
+        </Grid.RowDefinitions>
+
+        <Rectangle Width="118"
+                   Height="120"
+                   HorizontalAlignment="Left"
+                   Grid.RowSpan="2"
+                   Fill="{StaticResource PhoneGray000Brush}" />
+
+        <Image Width="118"
+               Height="118"
+               HorizontalAlignment="Left"
+               Grid.RowSpan="2"
+               framework:ImageLoader.UriSource="{Binding ImageUrl1}" />
+
+        <Image Width="58"
+               Height="58"
+               HorizontalAlignment="Left"
+               Grid.Column="1"
+               framework:ImageLoader.UriSource="{Binding ImageUrl2}" />
+
+        <Image Width="58"
+               Height="58"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Bottom"
+               Grid.Row="1"
+               Grid.Column="1"
+               framework:ImageLoader.UriSource="{Binding ImageUrl3}" />
+    </Grid>
+</UserControl>

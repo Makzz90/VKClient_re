@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="VKClient.Audio.UserControls.LyricsUC"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                  xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    mc:Ignorable="d"
+             xmlns:framework="clr-namespace:VKClient.Common.Framework;assembly=VKClient.Common"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="480" d:DesignWidth="480" VerticalAlignment="Stretch">
+
+    <Grid x:Name="LayoutRoot" Background="{StaticResource PhoneMenuBackgroundBrush}">
+        <TextBlock 
+                    Name="textBlockNowPlayingTitle"
+                Margin="25 45 0 0"
+                Text="Title" FontSize="22.677"
+            VerticalAlignment="Top"
+                Foreground="{StaticResource PhoneAudioPlayerForeground1Brush}"
+                FontFamily="Segoe WP Semibold"/>
+
+        <ScrollViewer Margin="0 100 0 0">
+            <Grid>              
+                <framework:ScrollableTextBlock Name="textBlockLyrics" Margin="25 0 25 25"
+                   FontSize="22.677"
+                   FontFamily="Segoe WP SemiLight"
+                   TextWrapping="Wrap"/>
+            </Grid>
+        </ScrollViewer>
+
+    </Grid>
+</UserControl>

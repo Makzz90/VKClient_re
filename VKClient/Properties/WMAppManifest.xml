@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Deployment xmlns="http://schemas.microsoft.com/windowsphone/2014/deployment" AppPlatformVersion="8.1">
+  <DefaultLanguage xmlns="" code="en-US" />
+  <Languages xmlns="">
+    <Language code="ru-RU" />
+    <Language code="uk-UA" />
+    <Language code="be-BY" />
+    <Language code="pt-BR" />
+    <Language code="kk-KZ" />
+  </Languages>
+  <App xmlns="" ProductID="{1c4bd564-5426-417b-a5a0-e141abe6f858}" Title="@AppResLib.dll,-100" RuntimeType="Silverlight" Version="4.12" Genre="apps.normal" Author="VKClient author" Description="Sample description" Publisher="VKClient" PublisherID="{3bd70d61-ecbc-4a0d-b609-c375858f71c4}" NotificationService="MPN">
+    <IconPath IsRelative="true" IsResource="false">AppIcon.png</IconPath>
+    <Capabilities>
+      <Capability Name="ID_CAP_IDENTITY_DEVICE" />
+      <Capability Name="ID_CAP_IDENTITY_USER" />
+      <Capability Name="ID_CAP_LOCATION" />
+      <Capability Name="ID_CAP_MICROPHONE" />
+      <Capability Name="ID_CAP_NETWORKING" />
+      <Capability Name="ID_CAP_PHONEDIALER" />
+      <Capability Name="ID_CAP_PUSH_NOTIFICATION" />
+      <Capability Name="ID_CAP_SENSORS" />
+      <Capability Name="ID_CAP_WEBBROWSERCOMPONENT" />
+      <Capability Name="ID_CAP_ISV_CAMERA" />
+      <Capability Name="ID_CAP_CONTACTS" />
+      <Capability Name="ID_CAP_APPOINTMENTS" />
+      <Capability Name="ID_CAP_MEDIALIB_AUDIO" />
+      <Capability Name="ID_CAP_MEDIALIB_PHOTO" />
+      <Capability Name="ID_CAP_MEDIALIB_PLAYBACK" />
+      <!--<Capability Name="ID_CAP_OEM_DEPLOYMENT" />-->
+    </Capabilities>
+    <Tasks>
+      <DefaultTask Name="_default" NavigationPage="VKClient.Common;component/NewsPage.xaml" ActivationPolicy="Resume" />
+      <ExtendedTask Name="BackgroundTask">
+        <BackgroundServiceAgent Specifier="AudioPlayerAgent" Name="AudioPlaybackAgent" Source="AudioPlaybackAgent" Type="AudioPlaybackAgent.AudioPlayer" />
+        <BackgroundServiceAgent Specifier="ScheduledTaskAgent" Name="LiveTileScheduledTaskAgent" Source="VKClient.ScheduledUpdater" Type="VKClient.ScheduledUpdater.ScheduledAgent" />
+      </ExtendedTask>
+    </Tasks>
+    <Tokens>
+      <PrimaryToken TokenID="VKClientToken" TaskName="_default">
+        <TemplateIconic>
+          <SmallImageURI IsRelative="true" IsResource="false">TileSmall.png</SmallImageURI>
+          <Count>0</Count>
+          <IconImageURI IsRelative="true" IsResource="false">TileBig.png</IconImageURI>
+          <Title>@AppResLib.dll,-101</Title>
+          <Message>
+          </Message>
+          <BackgroundColor>
+          </BackgroundColor>
+          <HasLarge>true</HasLarge>
+          <LargeContent1>
+          </LargeContent1>
+          <LargeContent2>
+          </LargeContent2>
+          <LargeContent3>
+          </LargeContent3>
+          <DeviceLockImageURI IsRelative="true" IsResource="false">Resources\VKLockScreenLogo3.png</DeviceLockImageURI>
+        </TemplateIconic>
+      </PrimaryToken>
+    </Tokens>
+    <Extensions>
+      <Extension ExtensionName="LockScreen_Notification_IconCount" ConsumerID="{111DFF24-AA15-4A96-8006-2BFF8122084F}" TaskID="_default" />
+      <Extension ExtensionName="LockScreen_Notification_TextField" ConsumerID="{111DFF24-AA15-4A96-8006-2BFF8122084F}" TaskID="_default" />
+      <!--<Extension ExtensionName="Photos_Extra_Share" ConsumerID="{5B04B775-356B-4AA0-AAF8-6491FFEA5632}" TaskID="_default" />-->
+      <Extension ExtensionName="People_Dashboard" ConsumerID="{bedab396-3404-490c-822e-13309c687e97}" TaskID="_default" />
+      <Extension ExtensionName="People_Feeds" ConsumerID="{bedab396-3404-490c-822e-13309c687e97}" TaskID="_default" />
+      <Extension ExtensionName="People_Connect" ConsumerID="{bedab396-3404-490c-822e-13309c687e97}" TaskID="_default" />
+      <!--<Extension ExtensionName="People_Me_CheckIn" ConsumerID="{bedab396-3404-490c-822e-13309c687e97}" TaskID="_default" />-->
+      <Extension ExtensionName="People_Me_Publish" ConsumerID="{bedab396-3404-490c-822e-13309c687e97}" TaskID="_default" />
+      <Extension ExtensionName="People_Post" ConsumerID="{bedab396-3404-490c-822e-13309c687e97}" TaskID="_default" />
+      <!--<Extension ExtensionName="Photos" ConsumerID="{bedab396-3404-490c-822e-13309c687e97}" TaskID="_default" />-->
+      <Protocol Name="vkappconnect" NavUriFragment="encodedLaunchUri=%s" TaskID="_default" />
+      <Protocol Name="fb128749580520227" NavUriFragment="encodedLaunchUri=%s" TaskID="_default" />
+      <Protocol Name="com.vk.vkclient" NavUriFragment="encodedLaunchUri=%s" TaskID="_default" />
+      <Protocol Name="vk" NavUriFragment="encodedLaunchUri=%s" TaskID="_default" />
+    </Extensions>
+    <ActivatableClasses>
+      <InProcessServer>
+        <Path>WindowsPhoneRuntimeComponent2.dll</Path>
+        <ActivatableClass ActivatableClassId="WindowsPhoneRuntimeComponent2.Class1" ThreadingModel="both" />
+      </InProcessServer>
+      <!--4.12-->
+      <InProcessServer>
+        <Path>VKClient.Opus.dll</Path>
+        <ActivatableClass ActivatableClassId="VKClient_Opus.OpusRuntimeComponent" ThreadingModel="both" />
+      </InProcessServer>
+      <InProcessServer>
+        <Path>VKClient.FFmpeg.dll</Path>
+        <ActivatableClass ActivatableClassId="FFmpegInterop.FFmpegGifDecoder" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="FFmpegInterop.FFmpegInteropMSS" ThreadingModel="both" />
+      </InProcessServer>
+      <InProcessServer>
+        <Path>ClrCompression.dll</Path>
+        <ActivatableClass ActivatableClassId="ClrCompression.ZLibInterop" ThreadingModel="both" />
+      </InProcessServer>
+      <!--4.12-->
+      <InProcessServer>
+        <Path>SharpDX.WP8.dll</Path>
+        <ActivatableClass ActivatableClassId="SharpDX.WP8.Interop" ThreadingModel="both" />
+      </InProcessServer>
+    </ActivatableClasses>
+    <ScreenResolutions>
+      <ScreenResolution Name="ID_RESOLUTION_WVGA" />
+      <ScreenResolution Name="ID_RESOLUTION_WXGA" />
+      <ScreenResolution Name="ID_RESOLUTION_HD720P" />
+    </ScreenResolutions>
+    <FunctionalCapabilities>
+      <FunctionalCapability Name="ID_FUNCCAP_EXTEND_MEM" />
+    </FunctionalCapabilities>
+  </App>
+</Deployment>

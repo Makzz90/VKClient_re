@@ -1,0 +1,133 @@
+﻿<UserControl x:Class="VKClient.Common.Gifts.Views.GiftsThreeInARowUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:framework="clr-namespace:VKClient.Common.Framework"
+             mc:Ignorable="d"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             d:DesignWidth="480"
+             d:DesignHeight="186">
+
+    <UserControl.Resources>
+        <Style x:Key="CanvasItemContainerStyle"
+               TargetType="Canvas">
+            <Setter Property="Width"
+                    Value="154" />
+            <Setter Property="Height"
+                    Value="186" />
+        </Style>
+
+        <Style x:Key="CanvasItemStyle"
+               TargetType="Canvas"
+               BasedOn="{StaticResource CanvasItemContainerStyle}">
+            <Setter Property="Background"
+                    Value="Transparent" />
+            <Setter Property="framework:MetroInMotion.Tilt"
+                    Value="1.5" />
+        </Style>
+
+        <Style x:Key="RectanglePlaceholderStyle"
+               TargetType="Rectangle">
+            <Setter Property="Width"
+                    Value="138" />
+            <Setter Property="Height"
+                    Value="138" />
+            <Setter Property="Canvas.Left"
+                    Value="8" />
+            <Setter Property="RadiusX"
+                    Value="20" />
+            <Setter Property="RadiusY"
+                    Value="20" />
+            <Setter Property="Fill"
+                    Value="White" />
+        </Style>
+
+        <Style x:Key="ImageGiftStyle"
+               TargetType="Image">
+            <Setter Property="Width"
+                    Value="114" />
+            <Setter Property="Height"
+                    Value="114" />
+            <Setter Property="Canvas.Left"
+                    Value="20" />
+            <Setter Property="Canvas.Top"
+                    Value="12" />
+        </Style>
+
+        <Style x:Key="TextBlockPriceStyle"
+               TargetType="TextBlock">
+            <Setter Property="Width"
+                    Value="138" />
+            <Setter Property="Height"
+                    Value="27" />
+            <Setter Property="Canvas.Left"
+                    Value="8" />
+            <Setter Property="Canvas.Top"
+                    Value="144" />
+            <Setter Property="TextAlignment"
+                    Value="Center" />
+        </Style>
+    </UserControl.Resources>
+
+    <Canvas Width="480"
+            Height="186">
+        <Canvas Style="{StaticResource CanvasItemContainerStyle}"
+                Canvas.Left="8"
+                Visibility="{Binding Item1Visibility}">
+
+            <Canvas Style="{StaticResource CanvasItemStyle}"
+                    DataContext="{Binding Item1}"
+                    Tap="Item_OnTap">
+                <Rectangle Style="{StaticResource RectanglePlaceholderStyle}" />
+
+                <Image Style="{StaticResource ImageGiftStyle}"
+                       framework:ImageLoader.UriSource="{Binding ImageUrl}" />
+
+                <TextBlock Style="{StaticResource TextBlockPriceStyle}"
+                           Foreground="{Binding PriceForeground}"
+                           Text="{Binding PriceStr, FallbackValue='N votes'}" />
+            </Canvas>
+        </Canvas>
+
+        <Canvas Style="{StaticResource CanvasItemContainerStyle}"
+                Canvas.Left="163"
+                Visibility="{Binding Item2Visibility}">
+
+            <Canvas Style="{StaticResource CanvasItemStyle}"
+                    DataContext="{Binding Item2}"
+                    Tap="Item_OnTap">
+
+                <Rectangle Style="{StaticResource RectanglePlaceholderStyle}" />
+
+                <Image Style="{StaticResource ImageGiftStyle}"
+                       framework:ImageLoader.UriSource="{Binding ImageUrl}" />
+
+                <TextBlock Style="{StaticResource TextBlockPriceStyle}"
+                           Foreground="{Binding PriceForeground}"
+                           Text="{Binding PriceStr, FallbackValue='N votes'}" />
+            </Canvas>
+        </Canvas>
+
+        <Canvas Style="{StaticResource CanvasItemContainerStyle}"
+                Canvas.Left="318"
+                Visibility="{Binding Item3Visibility}">
+
+            <Canvas Style="{StaticResource CanvasItemStyle}"
+                    DataContext="{Binding Item3}"
+                    Tap="Item_OnTap">
+
+                <Rectangle Style="{StaticResource RectanglePlaceholderStyle}" />
+
+                <Image Style="{StaticResource ImageGiftStyle}"
+                       framework:ImageLoader.UriSource="{Binding ImageUrl}" />
+
+                <TextBlock Style="{StaticResource TextBlockPriceStyle}"
+                           Foreground="{Binding PriceForeground}"
+                           Text="{Binding PriceStr, FallbackValue='N votes'}" />
+            </Canvas>
+        </Canvas>
+    </Canvas>
+</UserControl>

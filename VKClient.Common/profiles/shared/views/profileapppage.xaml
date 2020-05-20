@@ -1,0 +1,89 @@
+﻿<framework:PageBase x:Class="VKClient.Common.Profiles.Shared.Views.ProfileAppPage"
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:framework="clr-namespace:VKClient.Common.Framework"
+                    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+                    xmlns:uc="clr-namespace:VKClient.Common.UC"
+                    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                    FontSize="{StaticResource PhoneFontSizeNormal}"
+                    Foreground="{StaticResource PhoneForegroundBrush}"
+                    SupportedOrientations="Portrait"
+                    Orientation="Portrait"
+                    mc:Ignorable="d"
+                    shell:SystemTray.IsVisible="True">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid x:Name="gridHeader"
+              Height="96"
+              Background="{StaticResource PhonePageBackgroundBrush}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Border Width="64"
+                    Height="64"
+                    VerticalAlignment="Bottom"
+                    Background="Transparent"
+                    framework:MetroInMotion.Tilt="1.5"
+                    Tap="Close_OnTap">
+                <Rectangle Width="32"
+                           Height="32"
+                           Fill="{StaticResource PhoneGray500_Gray000Brush}">
+                    <Rectangle.OpacityMask>
+                        <ImageBrush framework:ImageLoader.ImageBrushMultiResSource="/Resources/Close32px.png" />
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Border>
+
+            <TextBlock x:Name="textBlockTitle"
+                       Grid.Column="1"
+                       Margin="8 0 0 19"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Bottom"
+                       FontSize="21.33"
+                       FontFamily="{StaticResource PhoneFontFamilySemiBold}"
+                       Foreground="{StaticResource PhoneGray500_Gray000Brush}"
+                       Text="HEADER" />
+
+            <Border x:Name="borderMoreOptions"
+                    Grid.Column="2"
+                    Width="64"
+                    Height="64"
+                    VerticalAlignment="Bottom"
+                    Background="Transparent"
+                    framework:MetroInMotion.Tilt="1.5"
+                    Tap="MoreOptions_OnTap">
+                <Rectangle Width="32"
+                           Height="32"
+                           Fill="{StaticResource PhoneGray500_Gray000Brush}">
+                    <Rectangle.OpacityMask>
+                        <ImageBrush framework:ImageLoader.ImageBrushMultiResSource="/Resources/MoreHorizontal32px.png" />
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Border>
+        </Grid>
+
+        <ProgressBar Grid.Row="1"
+                     IsIndeterminate="True" />
+
+        <phone:WebBrowser x:Name="WebView"
+                          Grid.Row="1"
+                          Navigating="WebView_OnNavigating"
+                          LoadCompleted="WebView_OnLoadCompleted"
+                          IsScriptEnabled="True"
+                          Visibility="Collapsed" />
+
+        <uc:GenericPageLoadInfoUC Grid.Row="1" />
+    </Grid>
+
+</framework:PageBase>

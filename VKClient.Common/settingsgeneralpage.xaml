@@ -1,0 +1,288 @@
+﻿<framework:PageBase
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:framework="clr-namespace:VKClient.Common.Framework;assembly=VKClient.Common"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:library="clr-namespace:VKClient.Common.Library"
+    xmlns:uc="clr-namespace:VKClient.Common.UC"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:toolkitPrimitives="clr-namespace:Microsoft.Phone.Controls.Primitives;assembly=Microsoft.Phone.Controls.Toolkit"
+     x:Class="VKClient.Common.SettingsGeneralPage"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+     d:DesignWidth="480" d:DesignHeight="2201"
+    shell:SystemTray.IsVisible="True"
+    xmlns:uc_w10m="clr-namespace:VKClient.Common.UC.w10m">
+
+
+ 
+
+    <framework:PageBase.FontFamily>
+        <StaticResource ResourceKey="PhoneFontFamilyNormal"/>
+    </framework:PageBase.FontFamily>
+    <framework:PageBase.FontSize>
+        <StaticResource ResourceKey="PhoneFontSizeNormal"/>
+    </framework:PageBase.FontSize>
+    <framework:PageBase.Foreground>
+        <StaticResource ResourceKey="PhoneForegroundBrush"/>
+    </framework:PageBase.Foreground>
+    
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <uc:GenericHeaderUC x:Name="Header"/>
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" >
+            <ScrollViewer>
+                <StackPanel Margin="16  0 16 0 ">
+                    <TextBlock Margin="0 20 0 12" FontFamily="Segoe WP Semibold"
+						Foreground="{StaticResource PhoneVKSubtleBrush}"
+						Text="{Binding LocalizedResources.Privacy_General_Application, Source={StaticResource LocalizedStrings}}"/>
+
+
+                    <toolkit:ListPicker VerticalAlignment="Top"
+						Header="{Binding LocalizedResources.Background, FallbackValue=Фон, Source={StaticResource LocalizedStrings}}"                            
+						ItemsSource="{Binding BackgroundTypes}"
+						SelectedItem="{Binding BackgroundType, Mode=TwoWay}"
+						FullModeItemTemplate="{StaticResource PickableItemTemplate}"
+						Margin="0, 12, 0, 0"/>
+
+
+                    <TextBlock Text="{Binding LocalizedResources.AppRestartNeeded, FallbackValue=Restart, Source={StaticResource LocalizedStrings}}"
+						Visibility="{Binding BGSettingsChangedVisibility}"
+						Style="{StaticResource PhoneTextAccentStyle}"
+						Margin="0 0 0 0"/>
+
+
+
+                    <toolkit:ListPicker VerticalAlignment="Top"
+						Header="{Binding LocalizedResources.Settings_TileColor, FallbackValue=Фон, Source={StaticResource LocalizedStrings}}"                            
+						ItemsSource="{Binding AccentTypes}"
+						SelectedItem="{Binding TileColor, Mode=TwoWay}"
+						FullModeItemTemplate="{StaticResource PickableItemTemplate}"
+						Margin="0,12, 0, 0"/>
+
+
+
+
+                    <toolkit:ListPicker VerticalAlignment="Top"
+
+						Header="{Binding LocalizedResources.Language, FallbackValue=Язык, Source={StaticResource LocalizedStrings}}"                                     
+						ItemsSource="{Binding Languages}"
+						SelectedItem="{Binding Language, Mode=TwoWay}"
+						FullModeItemTemplate="{StaticResource PickableItemTemplate}"
+						Margin="0,12, 0, 0"/>
+
+                    <TextBlock Text="{Binding LocalizedResources.AppRestartNeeded, FallbackValue=Restart, Source={StaticResource LocalizedStrings}}"
+						Visibility="{Binding LanguageSettingsChangedVisibility}"
+						Style="{StaticResource PhoneTextAccentStyle}"
+                               Margin="0"
+                     />
+
+
+                    <toolkit:ListPicker VerticalAlignment="Top"
+						Header="{Binding LocalizedResources.Privacy_General_FriendListOrder, FallbackValue=Язык, Source={StaticResource LocalizedStrings}}"                                     
+						ItemsSource="{Binding FriendListOrders}"
+						SelectedItem="{Binding FriendListOrder, Mode=TwoWay}"
+						FullModeItemTemplate="{StaticResource PickableItemTemplate}"
+						Margin="0,12, 0, 0"/>
+
+
+
+
+
+
+                
+                    
+                    <toolkit:ListPicker VerticalAlignment="Top"
+                                        Visibility="{Binding GifAutoplayFeatureAvailableVisibility}"
+						Header="{Binding LocalizedResources.Settings_General_AutoplayGif, FallbackValue=АвтопроигрываниеGIF, Source={StaticResource LocalizedStrings}}"                            
+						ItemsSource="{Binding GifAutoplayTypes}"
+						SelectedItem="{Binding GifAutoplayType, Mode=TwoWay}"
+						FullModeItemTemplate="{StaticResource PickableItemTemplate}"
+						Margin="0, 12, 0, 0"/>
+
+                    <TextBlock Margin="0 0 0 16"
+                               TextWrapping="Wrap"                               
+                               Visibility="{Binding GifAutoplayFeatureAvailableVisibility}"
+                               Foreground="{StaticResource PhoneVKSubtleBrush}"
+                               Text="{Binding GifAutoplayDesc}" />
+
+
+                    <CheckBox Content="Скрывать строку состояния в новостях" IsChecked="{Binding HideSystemTray, Mode=TwoWay}"/>
+                    <CheckBox Content="Скрывать рекламу" IsChecked="{Binding HideADs, Mode=TwoWay}"/>
+                    <CheckBox Content="Скрывать возможных друзей" IsChecked="{Binding HideFriendsRecommended, Mode=TwoWay}"/>
+                    
+                    <TextBlock Text="Скругление аватарок пользователей"/>
+                    <Slider ValueChanged="Slider_ValueChanged" Value="{Binding UserAvatarRadius, Mode=TwoWay}" SmallChange="1" />
+
+                    <TextBlock Text="Скругление иконок уведомлений в меню"/>
+                    <Slider ValueChanged="Slider_ValueChangedNotify" Value="{Binding NotifyRadius, Mode=TwoWay}" SmallChange="1"/>
+
+                    
+
+
+
+
+
+
+
+
+                    <Grid Background="{StaticResource PhoneGreyDividerBrush}" Height="2" Margin="-16 23 -16 0"/>
+
+
+                    <!-- INTEGRATE WITH PHONE-->
+
+                    <TextBlock Margin="0 20 0 12" FontFamily="Segoe WP Semibold"
+						Foreground="{StaticResource PhoneVKSubtleBrush}"
+						Text="{Binding LocalizedResources.Privacy_General_PhoneIntegration, Source={StaticResource LocalizedStrings}}"/>
+
+                    <!--<toolkit:ToggleSwitch IsChecked="{Binding IsPhoneIntegrationEnabled, Mode=TwoWay}"
+						Margin="-12 12 -12 0"
+						HeaderTemplate="{StaticResource ToggleSwitchHeaderTemplate}"
+						Header="{Binding LocalizedResources.Privacy_General_SyncNewsFeedAndContacts, Source={StaticResource LocalizedStrings}}" />
+
+                    <toolkit:ToggleSwitch IsChecked="{Binding IsAllowUseLocation, Mode=TwoWay}"
+                                          Margin="-12 0 -12 0"
+                                          HeaderTemplate="{StaticResource ToggleSwitchHeaderTemplate}"
+                                          Header="{Binding LocalizedResources.Settings_AllowAccessToLocation, Source={StaticResource LocalizedStrings}}" />-->
+                    <uc_w10m:ToggleSwitch IsChecked="{Binding IsPhoneIntegrationEnabled, Mode=TwoWay}"
+                                              Margin="0 12 0 0"
+                                              Title="{Binding LocalizedResources.Privacy_General_SyncNewsFeedAndContacts, Source={StaticResource LocalizedStrings}}"
+                                           />
+                    <uc_w10m:ToggleSwitch IsChecked="{Binding IsAllowUseLocation, Mode=TwoWay}"
+                                              Margin="0 0 0 0"
+                                              Title="{Binding LocalizedResources.Settings_AllowAccessToLocation, Source={StaticResource LocalizedStrings}}"
+                                          />
+                    <Grid Background="Transparent"
+                          framework:MetroInMotion.Tilt="1.5"
+                          Tap="ConfigureLockScreenTap" Margin="0 0 0 11">
+                        <TextBlock 
+                        FontSize="{StaticResource PhoneFontSizeMedium}"
+                        Text="{Binding LocalizedResources.Privacy_General_ConfigureLockScreen, Source={StaticResource LocalizedStrings}}" FontWeight="Bold"
+                               />
+                    </Grid>
+
+                    <Grid Background="{StaticResource PhoneGreyDividerBrush}"
+                          Height="2"
+                          Margin="-16 12 -16 0" />
+                    
+                    <!-- CONTACTS SYNCHRONIZATION -->
+                    <TextBlock Margin="0 20 0 12"
+                               FontFamily="Segoe WP Semibold"
+                               Foreground="{StaticResource PhoneVKSubtleBrush}"
+                               Text="{Binding LocalizedResources.Privacy_General_ContactsSynchronization, Source={StaticResource LocalizedStrings}}" />
+
+                    <!--<toolkit:ToggleSwitch IsChecked="{Binding IsAllowSendContacts, Mode=TwoWay}"
+                                          Margin="-12 12 -12 -3"
+                                          HeaderTemplate="{StaticResource ToggleSwitchHeaderTemplate}"
+                                          Header="{Binding LocalizedResources.Privacy_General_PhoneBookImport, Source={StaticResource LocalizedStrings}}" />-->
+                    <uc_w10m:ToggleSwitch IsChecked="{Binding IsAllowSendContacts, Mode=TwoWay}"
+                                              Margin="0 12 0 0"
+                                              Title="{Binding LocalizedResources.Privacy_General_PhoneBookImport, Source={StaticResource LocalizedStrings}}"
+                                          Description="{Binding LocalizedResources.Settings_ContactsSynchronization_Description, Source={StaticResource LocalizedStrings}}"
+                                         />
+                    <!--<TextBlock Margin="0 -14 0 0"
+                               TextWrapping="Wrap"                            
+                               Foreground="{StaticResource PhoneVKSubtleBrush}"
+                               Text="{Binding LocalizedResources.Settings_ContactsSynchronization_Description, Source={StaticResource LocalizedStrings}}" />-->
+
+                    <Grid Background="{StaticResource PhoneGreyDividerBrush}" Height="2" Margin="-16 23 -16 0"/>
+
+                    <!-- PHOTOS -->
+
+                    <TextBlock Margin="0 20 0 12" FontFamily="Segoe WP Semibold"
+						Foreground="{StaticResource PhoneVKSubtleBrush}"
+						Text="{Binding LocalizedResources.Privacy_Photos, Source={StaticResource LocalizedStrings}}"/>
+
+                    <!--<toolkit:ToggleSwitch IsChecked="{Binding CompressPhotosOnUpload, Mode=TwoWay}"
+						Margin="-12 12 -12 0"
+						HeaderTemplate="{StaticResource ToggleSwitchHeaderTemplate}"
+						Header="{Binding LocalizedResources.Privacy_Photos_CompressOnUpload, Source={StaticResource LocalizedStrings}}" />
+
+                    <toolkit:ToggleSwitch IsChecked="{Binding SaveLocationOnUpload, Mode=TwoWay}"
+						Margin="-12 0 -12 0"
+						HeaderTemplate="{StaticResource ToggleSwitchHeaderTemplate}"
+						Header="{Binding LocalizedResources.Settings_General_PhotosSaveLocationInfo, Source={StaticResource LocalizedStrings}}" />
+
+
+                    <toolkit:ToggleSwitch IsChecked="{Binding SaveEditedPhotos, Mode=TwoWay}"
+						Margin="-12 0 -12 0"
+						HeaderTemplate="{StaticResource ToggleSwitchHeaderTemplate}"
+						Header="{Binding LocalizedResources.Privacy_SaveFilteredPhotos, Source={StaticResource LocalizedStrings}}" />
+
+
+                    <toolkit:ToggleSwitch IsChecked="{Binding LoadBigPhotosOverMobile, Mode=TwoWay}"
+                                          Margin="-12 0 -12 0"
+                                          HeaderTemplate="{StaticResource ToggleSwitchHeaderTemplate}"
+                                          Header="{Binding LocalizedResources.Privacy_LoadBigPhotosOverMobileNetwork, Source={StaticResource LocalizedStrings}}" />-->
+                    <uc_w10m:ToggleSwitch IsChecked="{Binding CompressPhotosOnUpload, Mode=TwoWay}"
+                                              Margin="0 12 0 0"
+                                              Title="{Binding LocalizedResources.Privacy_Photos_CompressOnUpload, Source={StaticResource LocalizedStrings}}"
+                                               />
+                    <uc_w10m:ToggleSwitch IsChecked="{Binding SaveLocationOnUpload, Mode=TwoWay}"
+                                              Margin="0 0 0 0"
+                                              Title="{Binding LocalizedResources.Settings_General_PhotosSaveLocationInfo, Source={StaticResource LocalizedStrings}}"
+                                               />
+                    <uc_w10m:ToggleSwitch IsChecked="{Binding SaveEditedPhotos, Mode=TwoWay}"
+                                              Margin="0 0 0 0"
+                                              Title="{Binding LocalizedResources.Privacy_SaveFilteredPhotos, Source={StaticResource LocalizedStrings}}"
+                                              />
+                    <uc_w10m:ToggleSwitch IsChecked="{Binding LoadBigPhotosOverMobile, Mode=TwoWay}"
+                                              Margin="0 0 0 0"
+                                              Title="{Binding LocalizedResources.Privacy_LoadBigPhotosOverMobileNetwork, Source={StaticResource LocalizedStrings}}"
+                                            />
+
+
+
+
+
+                    <!-- MUSIC CACHE -->
+                    <!-- MOD -->
+                    <TextBlock Margin="0 20 0 12" FontFamily="Segoe WP Semibold"
+						Foreground="{StaticResource PhoneVKSubtleBrush}"
+						Text="{Binding LocalizedResources.Privacy_Caching, Source={StaticResource LocalizedStrings}}"/>
+
+                    <!--<toolkit:ToggleSwitch IsChecked="{Binding IsMusicCachingEnabled, Mode=TwoWay}"
+						Margin="-12 12 -12 0"
+						HeaderTemplate="{StaticResource ToggleSwitchHeaderTemplate}"
+						Header="{Binding LocalizedResources.Privacy_CacheMusic, Source={StaticResource LocalizedStrings}}" />-->
+                    <uc_w10m:ToggleSwitch IsChecked="{Binding IsMusicCachingEnabled, Mode=TwoWay}"
+                                              Margin="0 12 0 0"
+                                              Title="{Binding LocalizedResources.Privacy_CacheMusic, Source={StaticResource LocalizedStrings}}"
+                                              
+                                             />
+
+                    <Grid Background="Transparent"
+                          framework:MetroInMotion.Tilt="1.5"
+                           Margin="0 -12 0 11"
+                          Tap="ClearMusicCacheTap">
+                        <TextBlock 
+                        FontSize="25.33"
+                        Text="{Binding LocalizedResources.Privacy_ClearMucicCache, Source={StaticResource LocalizedStrings}}"
+                               />
+                    </Grid>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <Grid Height="48"></Grid>
+
+                </StackPanel>
+          
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+
+</framework:PageBase>

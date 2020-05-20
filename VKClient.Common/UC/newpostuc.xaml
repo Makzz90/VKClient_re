@@ -1,0 +1,432 @@
+﻿<UserControl x:Class="VKClient.Common.UC.NewPostUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:framework="clr-namespace:VKClient.Common.Framework;assembly=VKClient.Common"
+             xmlns:localization="clr-namespace:VKClient.Common.Localization"
+             xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+             xmlns:posts="clr-namespace:VKClient.Common.Library.Posts"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             d:DesignHeight="480"
+             d:DesignWidth="480">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Resources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid x:Name="LayoutRoot">
+        <StackPanel>
+
+            <Grid>
+                <TextBox x:Name="textBoxPost"
+                         Style="{StaticResource TextBoxFramelessStyle}"
+                         CaretBrush="{StaticResource PhoneForeground2Brush}"
+                         BorderThickness="0"
+                         Background="Transparent"
+                         MaxHeight="2048"
+                         InputScope="Text"
+                         TextWrapping="Wrap"
+                         VerticalAlignment="Top"
+                         AcceptsReturn="True"
+                         Margin="-12 -5 0 0"
+                         FontFamily="Segoe WP SemiLight"
+                         FontSize="22.667"
+                         TextChanged="textBoxPost_TextChanged_1" />
+                <TextBlock Text="{Binding TextWatermarkText}"
+                           IsHitTestVisible="False"
+                           Margin="1 10 0 0"
+                           VerticalAlignment="Top"
+                           Name="textBlockWatermarkText"
+                           FontSize="22.67"
+                           FontFamily="Segoe WP SemiLight"
+                           Foreground="{StaticResource PhoneGray300_Gray500Brush}" />
+            </Grid>
+
+
+            <ItemsControl ItemsSource="{Binding Attachments}"
+                          SizeChanged="itemsControlAttachments_SizeChanged"
+                          x:Name="itemsControlAttachments"
+                          Margin="-6, 0,-6,6">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <toolkit:WrapPanel />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <posts:OutboundAttachmentTemplateSelector Content="{Binding}">
+                            <posts:OutboundAttachmentTemplateSelector.PhotoTemplate>
+
+                                <DataTemplate>
+                                    <Grid Width="{Binding Width}"
+                                          Height="{Binding Height}"
+                                          Background="{StaticResource PhoneActiveAreaBackgroundBrush}"
+                                          Margin="6">
+                                        <Canvas Width="{Binding Width}"
+                                                Height="{Binding Height}"
+                                                VerticalAlignment="Center"
+                                                HorizontalAlignment="Center">
+                                            <Image framework:ImageLoader.UriSource="{Binding LocalUrl}"
+                                                   Width="{Binding Width}"
+                                                   Height="{Binding Height}"
+                                                   Stretch="UniformToFill"
+                                                   Tap="Image_Tap" />
+                                        </Canvas>
+
+                                        <Image framework:MultiResImageLoader.UriSource="/Resources/AttachError.png"
+                                               IsHitTestVisible="False"
+                                               Visibility="{Binding IsFailedUploadVisibility}"
+                                               Width="38"
+                                               Height="38" />
+
+                                        <Rectangle Width="30"
+                                                   Height="30"
+                                                   Fill="Black"
+                                                   VerticalAlignment="Top"
+                                                   HorizontalAlignment="Right"
+                                                   Opacity="0.2"
+                                                   ManipulationStarted="Rectangle_ManipulationStarted"
+                                                   ManipulationCompleted="Rectangle_ManipulationCompleted"
+                                                   Tap="Image_Delete_Tap" />
+
+                                        <Border Width="10"
+                                                Margin="10"
+                                                IsHitTestVisible="False"
+                                                Height="10"
+                                                VerticalAlignment="Top"
+                                                HorizontalAlignment="Right"
+                                                Background="White">
+                                            <Border.OpacityMask>
+                                                <ImageBrush ImageSource="/Resources/NewPost/Deattach-WXGA.png" />
+                                            </Border.OpacityMask>
+                                        </Border>
+
+
+                                        <ProgressBar Margin="-12 0 -12 0"
+                                                     VerticalAlignment="Bottom"
+                                                     Foreground="{StaticResource PhoneProgressBarProgressBrush}"
+                                                     Background="{StaticResource PhoneProgressBarBackgroundBrush}"
+                                                     HorizontalAlignment="Stretch"
+                                                     Value="{Binding UploadProgress}"
+                                                     Visibility="{Binding IsUploadingVisibility}" />
+                                    </Grid>
+                                </DataTemplate>
+                            </posts:OutboundAttachmentTemplateSelector.PhotoTemplate>
+
+                            <posts:OutboundAttachmentTemplateSelector.AddAttachmentTemplate>
+                                <DataTemplate>
+                                    <Grid Width="{Binding Width}"
+                                          framework:MetroInMotion.Tilt="2.1"
+                                          Tap="AddAttachmentTap"
+                                          Height="{Binding Height}"
+                                          Background="{StaticResource PhoneActiveAreaBackgroundBrush}"
+                                          Margin="6"
+                                          HorizontalAlignment="Center"
+                                          VerticalAlignment="Center">
+
+                                        <Rectangle Width="4"
+                                                   Height="26"
+                                                   VerticalAlignment="Top"
+                                                   Fill="{StaticResource PhoneButtonTextForegroundBrush}"
+                                                   Margin="0 25  0 0"
+                                                   IsHitTestVisible="False" />
+
+                                        <Rectangle Width="26"
+                                                   Height="4"
+                                                   Fill="{StaticResource PhoneButtonTextForegroundBrush}"
+                                                   VerticalAlignment="Top"
+                                                   HorizontalAlignment="Left"
+                                                   Margin="57 36  0 0"
+                                                   IsHitTestVisible="False" />
+
+                                        <TextBlock FontSize="14.67"
+                                                   FontFamily="Segoe WP Semibold"
+                                                   Foreground="{StaticResource PhoneButtonTextForegroundBrush}"
+                                                   HorizontalAlignment="Center"
+                                                   VerticalAlignment="Top"
+                                                   Margin="0 63 0 0"
+                                                   IsHitTestVisible="False"
+                                                   Text="{Binding LocalizedResources.Post_Attach, Source={StaticResource LocalizedStrings}}" />
+
+
+
+                                    </Grid>
+                                </DataTemplate>
+
+                            </posts:OutboundAttachmentTemplateSelector.AddAttachmentTemplate>
+
+                            <posts:OutboundAttachmentTemplateSelector.GenericIconTemplate>
+                                <DataTemplate>
+
+                                    <Grid Width="{Binding Width}"
+                                          Tap="Grid_Tap"
+                                          Height="{Binding Height}"
+                                          Background="{StaticResource PhoneActiveAreaBackgroundBrush}"
+                                          Margin="6"
+                                          HorizontalAlignment="Center"
+                                          VerticalAlignment="Center">
+                                        <Grid>
+                                            <Border VerticalAlignment="Top"
+                                                    Background="{StaticResource PhoneGrayIconForegroundBrush}"
+                                                    Width="50"
+                                                    Height="50"
+                                                    Margin="0 3 0 0">
+                                                <Border.OpacityMask>
+                                                    <ImageBrush framework:ImageLoader.ImageBrushMultiResSource="{Binding IconSource}" />
+
+                                                </Border.OpacityMask>
+                                            </Border>
+
+                                            <Image framework:MultiResImageLoader.UriSource="/Resources/AttachError.png"
+                                                   IsHitTestVisible="False"
+                                                   Visibility="{Binding IsFailedUploadVisibility}"
+                                                   Margin="0 3 0 0"
+                                                   Width="38"
+                                                   Height="38" />
+
+
+                                            <Rectangle Width="30"
+                                                       Height="30"
+                                                       Fill="Black"
+                                                       VerticalAlignment="Top"
+                                                       HorizontalAlignment="Right"
+                                                       Opacity="0"
+                                                       ManipulationStarted="Rectangle_ManipulationStarted2"
+                                                       ManipulationCompleted="Rectangle_ManipulationCompleted2"
+                                                       Tap="Image_Delete_Tap" />
+
+
+                                            <TextBlock FontSize="14.67"
+                                                       TextAlignment="Center"
+                                                       Foreground="{StaticResource PhoneGrayTextOverlayForegroundBrush}"
+                                                       Text="{Binding Title}"
+                                                       Margin="5 49 5 0"
+                                                       VerticalAlignment="Top" />
+
+
+                                            <TextBlock Foreground="{StaticResource PhoneGrayTextOverlayForegroundBrush}"
+                                                       Margin="12 69 12 0"
+                                                       FontSize="14.67"
+                                                       VerticalAlignment="Top"
+                                                       TextAlignment="Center"
+                                                       Text="{Binding Subtitle}" />
+
+                                            <Border Width="10"
+                                                    Margin="10"
+                                                    IsHitTestVisible="False"
+                                                    Height="10"
+                                                    VerticalAlignment="Top"
+                                                    HorizontalAlignment="Right"
+                                                    Background="{StaticResource PhoneGrayIconForegroundBrush}">
+                                                <Border.OpacityMask>
+                                                    <ImageBrush ImageSource="/Resources/NewPost/Deattach-WXGA.png" />
+                                                </Border.OpacityMask>
+                                            </Border>
+
+
+                                            <Image framework:MultiResImageLoader.UriSource="/Resources/AttachError.png"
+                                                   IsHitTestVisible="False"
+                                                   Visibility="{Binding IsFailedUploadVisibility}"
+                                                   Width="38"
+                                                   Height="38" />
+
+                                            <ProgressBar Margin="-12 0 -12 0"
+                                                         VerticalAlignment="Bottom"
+                                                         Foreground="{StaticResource PhoneProgressBarProgressBrush}"
+                                                         Background="{StaticResource PhoneProgressBarBackgroundBrush}"
+                                                         HorizontalAlignment="Stretch"
+                                                         Value="{Binding UploadProgress}"
+                                                         Visibility="{Binding IsUploadingVisibility}" />
+                                        </Grid>
+
+
+
+                                    </Grid>
+                                </DataTemplate>
+
+                            </posts:OutboundAttachmentTemplateSelector.GenericIconTemplate>
+
+                            <posts:OutboundAttachmentTemplateSelector.ForwardedMessageTemplate>
+                                <DataTemplate>
+
+                                    <Grid Width="{Binding Width}"
+                                          Height="{Binding Height}"
+                                          Background="{StaticResource PhoneActiveAreaBackgroundBrush}"
+                                          Margin="6"
+                                          HorizontalAlignment="Center"
+                                          VerticalAlignment="Center">
+
+
+                                        <Rectangle Width="30"
+                                                   Height="30"
+                                                   Fill="Black"
+                                                   VerticalAlignment="Top"
+                                                   HorizontalAlignment="Right"
+                                                   Opacity="0"
+                                                   ManipulationStarted="Rectangle_ManipulationStarted2"
+                                                   ManipulationCompleted="Rectangle_ManipulationCompleted2"
+                                                   Tap="Image_Delete_Tap" />
+
+
+                                        <TextBlock TextTrimming="WordEllipsis"
+                                                   FontSize="32"
+                                                   FontFamily="Segoe WP Semilight"
+                                                   Foreground="{StaticResource PhoneGrayTextOverlayForegroundBrush}"
+                                                   Text="{Binding Title}"
+                                                   Margin="0 16 0 0"
+                                                   HorizontalAlignment="Center"
+                                                   VerticalAlignment="Top" />
+
+
+                                        <TextBlock Foreground="{StaticResource PhoneGrayTextOverlayForegroundBrush}"
+                                                   Margin="0 55 0 0"
+                                                   HorizontalAlignment="Center"
+                                                   FontSize="14.67"
+                                                   VerticalAlignment="Top"
+                                                   Text="{Binding Subtitle}" />
+
+                                        <Border Width="10"
+                                                Margin="10"
+                                                IsHitTestVisible="False"
+                                                Height="10"
+                                                VerticalAlignment="Top"
+                                                HorizontalAlignment="Right"
+                                                Background="{StaticResource PhoneGrayIconForegroundBrush}">
+                                            <Border.OpacityMask>
+                                                <ImageBrush ImageSource="/Resources/NewPost/Deattach-WXGA.png" />
+                                            </Border.OpacityMask>
+                                        </Border>
+                                    </Grid>
+                                </DataTemplate>
+
+                            </posts:OutboundAttachmentTemplateSelector.ForwardedMessageTemplate>
+
+
+                            <posts:OutboundAttachmentTemplateSelector.VideoTemplate>
+                                <DataTemplate>
+                                    <Grid Width="{Binding Width}"
+                                          Height="{Binding Height}"
+                                          Background="{StaticResource PhoneActiveAreaBackgroundBrush}"
+                                          Margin="6"
+                                          HorizontalAlignment="Center"
+                                          VerticalAlignment="Center">
+                                        <Image framework:ImageLoader.UriSource="{Binding ResourceUri}"
+                                               Width="{Binding Width}"
+                                               Height="{Binding Height}"
+                                               Stretch="UniformToFill"
+                                               Tap="Image_Tap" />
+
+
+                                        <Image framework:MultiResImageLoader.UriSource="/Resources/AttachError.png"
+                                               IsHitTestVisible="False"
+                                               Visibility="{Binding IsFailedUploadVisibility}"
+                                               Width="38"
+                                               Height="38" />
+
+                                        <Rectangle Width="30"
+                                                   Height="30"
+                                                   Fill="Black"
+                                                   VerticalAlignment="Top"
+                                                   HorizontalAlignment="Right"
+                                                   Opacity="0.2"
+                                                   ManipulationStarted="Rectangle_ManipulationStarted"
+                                                   ManipulationCompleted="Rectangle_ManipulationCompleted"
+                                                   Tap="Image_Delete_Tap" />
+
+                                        <Border Width="10"
+                                                Margin="10"
+                                                IsHitTestVisible="False"
+                                                Height="10"
+                                                VerticalAlignment="Top"
+                                                HorizontalAlignment="Right"
+                                                Background="White">
+                                            <Border.OpacityMask>
+                                                <ImageBrush ImageSource="/Resources/NewPost/Deattach-WXGA.png" />
+                                            </Border.OpacityMask>
+                                        </Border>
+
+
+                                        <ProgressBar Margin="-12 0 -12 0"
+                                                     VerticalAlignment="Bottom"
+                                                     Foreground="{StaticResource PhoneProgressBarProgressBrush}"
+                                                     Background="{StaticResource PhoneProgressBarBackgroundBrush}"
+                                                     HorizontalAlignment="Stretch"
+                                                     Value="{Binding UploadProgress}"
+                                                     Visibility="{Binding IsUploadingVisibility}" />
+                                    </Grid>
+                                </DataTemplate>
+                            </posts:OutboundAttachmentTemplateSelector.VideoTemplate>
+                            <posts:OutboundAttachmentTemplateSelector.GenericThumbTemplate>
+                                <DataTemplate>
+                                    <Grid Width="{Binding Width}"
+                                          Height="{Binding Height}"
+                                          Background="{StaticResource PhoneActiveAreaBackgroundBrush}"
+                                          Margin="6"
+                                          HorizontalAlignment="Center"
+                                          VerticalAlignment="Center">
+                                        <Image framework:ImageLoader.UriSource="{Binding Thumb}"
+                                               Width="{Binding Width}"
+                                               Height="{Binding Height}"
+                                               Stretch="UniformToFill"
+                                               Tap="Image_Tap" />
+
+                                        <Rectangle Fill="Black"
+                                                   Opacity="0.4" />
+
+                                        <Rectangle Width="30"
+                                                   Height="30"
+                                                   Fill="Black"
+                                                   VerticalAlignment="Top"
+                                                   HorizontalAlignment="Right"
+                                                   Opacity="0.2"
+                                                   Visibility="{Binding RemoveVisibility}"
+                                                   ManipulationStarted="Rectangle_ManipulationStarted"
+                                                   ManipulationCompleted="Rectangle_ManipulationCompleted"
+                                                   Tap="Image_Delete_Tap" />
+
+                                        <Border Width="10"
+                                                Margin="10"
+                                                IsHitTestVisible="False"
+                                                Height="10"
+                                                Visibility="{Binding RemoveVisibility}"
+                                                VerticalAlignment="Top"
+                                                HorizontalAlignment="Right"
+                                                Background="White">
+                                            <Border.OpacityMask>
+                                                <ImageBrush ImageSource="/Resources/NewPost/Deattach-WXGA.png" />
+                                            </Border.OpacityMask>
+                                        </Border>
+
+                                        <StackPanel VerticalAlignment="Center"
+                                                    Margin="4 0">
+                                            <TextBlock FontSize="18"
+                                                       Foreground="White"
+                                                       TextAlignment="Center"
+                                                       SizeChanged="TextBlock_OnSizeChanged"
+                                                       Text="{Binding Title}" />
+                                            <TextBlock FontSize="18"
+                                                       Foreground="White"
+                                                       FontFamily="{StaticResource PhoneFontFamilySemiBold}"
+                                                       TextAlignment="Center"
+                                                       SizeChanged="TextBlock_OnSizeChanged"
+                                                       Text="{Binding Subtitle}" />
+                                        </StackPanel>
+
+                                    </Grid>
+                                </DataTemplate>
+                            </posts:OutboundAttachmentTemplateSelector.GenericThumbTemplate>
+                        </posts:OutboundAttachmentTemplateSelector>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+        </StackPanel>
+    </Grid>
+</UserControl>

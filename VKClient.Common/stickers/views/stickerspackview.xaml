@@ -1,0 +1,254 @@
+﻿<UserControl x:Class="VKClient.Common.Stickers.Views.StickersPackView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:library="clr-namespace:VKClient.Common.Library"
+             xmlns:framework="clr-namespace:VKClient.Common.Framework"
+             xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+             xmlns:views="clr-namespace:VKClient.Common.Stickers.Views"
+             mc:Ignorable="d"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             d:DesignWidth="480"
+             d:DesignHeight="800">
+
+    <UserControl.Resources>
+        <Style TargetType="ListBoxItem"
+               x:Name="ListBoxItemNavDotsStyle">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <Border x:Name="LayoutRoot"
+                                Width="16"
+                                Height="8">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal" />
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="SelectionStates">
+                                    <VisualState x:Name="Unselected" />
+                                    <VisualState x:Name="Selected">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ellipse"
+                                                                           Storyboard.TargetProperty="Opacity">
+                                                <DiscreteObjectKeyFrame KeyTime="0"
+                                                                        Value="0.8">
+                                                </DiscreteObjectKeyFrame>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+
+                            <Ellipse x:Name="ellipse"
+                                     Width="8"
+                                     Height="8"
+                                     Fill="Black"
+                                     HorizontalAlignment="Center"
+                                     Opacity="0.2" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Storyboard x:Name="ShowStoryboard"
+                    Completed="ShowStoryboard_OnCompleted">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="translateContent"
+                                           Storyboard.TargetProperty="Y">
+                <SplineDoubleKeyFrame x:Name="splineKeyFrameShowBegin"
+                                      KeyTime="0"
+                                      Value="800" />
+                <SplineDoubleKeyFrame x:Name="splineKeyFrameShowEnd"
+                                      KeyTime="0:0:0.367"
+                                      Value="0">
+                    <SplineDoubleKeyFrame.KeySpline>
+                        <KeySpline>
+                            <KeySpline.ControlPoint1>
+                                <Point X="0.10000000149011612"
+                                       Y="0.89999997615811421" />
+                            </KeySpline.ControlPoint1>
+                            <KeySpline.ControlPoint2>
+                                <Point X="0.20000000298023224"
+                                       Y="1" />
+                            </KeySpline.ControlPoint2>
+                        </KeySpline>
+                    </SplineDoubleKeyFrame.KeySpline>
+                </SplineDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="rectBackground"
+                                           Storyboard.TargetProperty="Opacity">
+                <SplineDoubleKeyFrame KeyTime="0"
+                                      Value="0" />
+                <SplineDoubleKeyFrame KeyTime="0:0:0.367"
+                                      Value="1">
+                    <SplineDoubleKeyFrame.KeySpline>
+                        <KeySpline>
+                            <KeySpline.ControlPoint1>
+                                <Point X="0.10000000149011612"
+                                       Y="0.89999997615811421" />
+                            </KeySpline.ControlPoint1>
+                            <KeySpline.ControlPoint2>
+                                <Point X="0.20000000298023224"
+                                       Y="1" />
+                            </KeySpline.ControlPoint2>
+                        </KeySpline>
+                    </SplineDoubleKeyFrame.KeySpline>
+                </SplineDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+
+            <!--<DoubleAnimation Storyboard.TargetName="rectBackground"
+                             Storyboard.TargetProperty="Opacity"
+                             To="1"
+                             Duration="0:0:0.367">
+                <DoubleAnimation.EasingFunction>
+                    <E
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>-->
+
+            <!--<DoubleAnimation Storyboard.TargetName="borderContent"
+                             Storyboard.TargetProperty="Opacity"
+                             To="1"
+                             BeginTime="0:0:0.120"
+                             Duration="0:0:0.247" />-->
+        </Storyboard>
+    </UserControl.Resources>
+
+    <Grid UseOptimizedManipulationRouting="False">
+        <Rectangle x:Name="rectBackground"
+                   CacheMode="BitmapCache">
+            <Rectangle.Fill>
+                <SolidColorBrush Color="Black"
+                                 Opacity="0.4" />
+            </Rectangle.Fill>
+        </Rectangle>
+
+        <Border Background="Transparent"
+                CacheMode="BitmapCache"
+                ManipulationStarted="BorderContent_OnManipulationStarted"
+                ManipulationDelta="BorderContent_OnManipulationDelta"
+                ManipulationCompleted="BorderContent_OnManipulationCompleted"
+                Tap="Background_OnTap">
+            <Border.RenderTransform>
+                <TranslateTransform x:Name="translateContent" />
+            </Border.RenderTransform>
+
+            <Border x:Name="borderContent"
+                    Width="416"
+                    VerticalAlignment="Top"
+                    Background="{StaticResource PhoneGray000_Gray800Brush}"
+                    Tap="BorderContent_OnTap">
+
+                <ScrollViewer x:Name="scrollViewerContent"
+                              VerticalScrollBarVisibility="Disabled">
+
+                    <StackPanel Width="416">
+                        <Grid x:Name="gridSlideView"
+                              Width="416"
+                              Height="278"
+                              Background="{StaticResource PhoneGray100_Gray700Brush}">
+                            <Grid.Clip>
+                                <RectangleGeometry Rect="0 0 416 278" />
+                            </Grid.Clip>
+
+                            <Canvas Width="416"
+                                    Height="278">
+                                <Image Width="416"
+                                       Height="278"
+                                       HorizontalAlignment="Center"
+                                       Stretch="UniformToFill"
+                                       framework:ImageLoader.UriSource="{Binding DemoPhotosBackgroundThemed}" />
+                            </Canvas>
+
+                            <library:SlideView x:Name="slideView"
+                                               Width="416"
+                                               Height="278"
+                                               SelectionChanged="SlideView_OnSelectionChanged"
+                                               ItemsSource="{Binding DemoPhotos}"
+                                               IsCycled="{Binding IsDemoPhotosSlideViewCycled}"
+                                               AutoSlideInterval="0:0:3">
+                                <library:SlideView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border Width="384"
+                                                Height="224"
+                                                VerticalAlignment="Center"
+                                                HorizontalAlignment="Center">
+                                            <Image framework:ImageLoader.UriSource="{Binding}"
+                                                   Stretch="Uniform" />
+                                        </Border>
+                                    </DataTemplate>
+                                </library:SlideView.ItemTemplate>
+                            </library:SlideView>
+
+                            <ListBox x:Name="listBoxNavDots"
+                                     Margin="0 0 0 12"
+                                     HorizontalAlignment="Center"
+                                     VerticalAlignment="Bottom"
+                                     Visibility="{Binding NavDostVisibility}"
+                                     ItemContainerStyle="{StaticResource ListBoxItemNavDotsStyle}"
+                                     IsHitTestVisible="False">
+                                <ListBox.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <toolkit:WrapPanel />
+                                    </ItemsPanelTemplate>
+                                </ListBox.ItemsPanel>
+                            </ListBox>
+                        </Grid>
+
+                        <views:StickersPackInfoUC x:Name="ucStickersPackInfo"
+                                                  Height="56"
+                                                  Margin="24 16 24 24"
+                                                  NewIndicatorEnabled="False" />
+
+                        <TextBlock x:Name="textBlockDescription"
+                                   Width="368"
+                                   Margin="24 0 24 24"
+                                   Foreground="{StaticResource PhoneGray800_Gray000Brush}"
+                                   LineStackingStrategy="BlockLineHeight"
+                                   LineHeight="24"
+                                   TextWrapping="Wrap"
+                                   Text="Stickers pack description" />
+
+                        <Grid x:Name="gridSendAsAGift"
+                              Margin="0 -8 0 0"
+                              Height="64">
+
+                            <Rectangle Height="1"
+                                       VerticalAlignment="Top"
+                                       Margin="24 0"
+                                       Opacity="0.1"
+                                       Fill="{StaticResource PhoneForegroundBrush}" />
+                            
+                            <Border Background="Transparent"
+                                    framework:MetroInMotion.Tilt="1.5"
+                                    Tap="SendAsAGift_OnTap">
+                                <StackPanel Orientation="Horizontal"
+                                            VerticalAlignment="Top"
+                                            HorizontalAlignment="Center">
+                                    <Rectangle Width="32"
+                                               Height="32"
+                                               Margin="0 16 12 0"
+                                               Fill="{StaticResource PhoneBlue300_GrayBlue100Brush}">
+                                        <Rectangle.OpacityMask>
+                                            <ImageBrush framework:ImageLoader.ImageBrushMultiResSource="/Resources/Gift32px.png" />
+                                        </Rectangle.OpacityMask>
+                                    </Rectangle>
+
+                                    <TextBlock FontSize="21.33"
+                                               Foreground="{StaticResource PhoneBlue300_GrayBlue100Brush}"
+                                               Margin="0 17 0 0"
+                                               Text="{Binding LocalizedResources.SendAsAGift, Source={StaticResource LocalizedStrings}}" />
+                                </StackPanel>
+                            </Border>
+                        </Grid>
+
+                    </StackPanel>
+
+                </ScrollViewer>
+            </Border>
+        </Border>
+    </Grid>
+</UserControl>

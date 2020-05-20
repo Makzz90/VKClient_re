@@ -1,0 +1,24 @@
+﻿<virtItems:UserControlVirtualizable x:Class="VKClient.Common.Shared.OtherVideosHeaderUC"
+                                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                                    xmlns:virtItems="clr-namespace:VKClient.Common.Library.VirtItems"
+                                    mc:Ignorable="d"
+                                    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                                    FontSize="{StaticResource PhoneFontSizeNormal}"
+                                    Foreground="{StaticResource PhoneForegroundBrush}"
+                                    d:DesignHeight="82"
+                                    d:DesignWidth="480">
+
+    <StackPanel Height="82">
+        <Rectangle Height="16"
+                   Fill="{StaticResource PhoneNewsDividerBrush}" />
+        <TextBlock Text="Другие видео"
+                   Foreground="{StaticResource PhoneProfileInfoLoadingForegroundBrush}"
+                   FontFamily="Segoe WP Semibold"
+                   Margin="16 17 0 0"
+                   FontSize="20" />
+
+    </StackPanel>
+</virtItems:UserControlVirtualizable>

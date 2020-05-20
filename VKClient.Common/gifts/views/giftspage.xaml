@@ -1,0 +1,75 @@
+﻿<framework:PageBase x:Class="VKClient.Common.Gifts.Views.GiftsPage"
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:framework="clr-namespace:VKClient.Common.Framework"
+                    xmlns:uc="clr-namespace:VKClient.Common.UC"
+                    xmlns:views="clr-namespace:VKClient.Common.Gifts.Views"
+                    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                    FontSize="{StaticResource PhoneFontSizeNormal}"
+                    Foreground="{StaticResource PhoneForegroundBrush}"
+                    SupportedOrientations="Portrait"
+                    Orientation="Portrait"
+                    mc:Ignorable="d"
+                    shell:SystemTray.IsVisible="True">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <uc:GenericHeaderUC x:Name="ucHeader" />
+        <uc:PullToRefreshUC x:Name="ucPullToRefresh" />
+
+        <Grid Grid.Row="1"
+              Background="{StaticResource PhoneGray000_Gray900Brush}">
+            <framework:ExtendedLongListSelector x:Name="listBox"
+                                                DataContext="{Binding GiftsVM}"
+                                                ItemsSource="{Binding Collection}"
+                                                Link="ListBox_OnLink"
+                                                ListFooter="{Binding}"
+                                                ListFooterTemplate="{StaticResource FooterTemplate}">
+                <framework:ExtendedLongListSelector.ListHeaderTemplate>
+                    <DataTemplate>
+                        <Rectangle Fill="{StaticResource PhoneNewsDividerBrush}"
+                                   Height="496"
+                                   Margin="0 -480 0 0" />
+                    </DataTemplate>
+                </framework:ExtendedLongListSelector.ListHeaderTemplate>
+                <framework:ExtendedLongListSelector.ItemTemplate>
+                    <DataTemplate>
+                        <views:GiftListItemUC Title="{Binding Name}"
+                                              DeleteClicked="GiftListItemUC_OnDeleteClicked" />
+                    </DataTemplate>
+                </framework:ExtendedLongListSelector.ItemTemplate>
+            </framework:ExtendedLongListSelector>
+        </Grid>
+
+        <Grid Grid.Row="1"
+              Background="{StaticResource PhoneNewsBackgroundBrush}"
+              Visibility="{Binding AccessDeniedVisibility, FallbackValue='Collapsed'}">
+            <StackPanel VerticalAlignment="Center"
+                        Margin="16 0 16 72">
+                <TextBlock FontSize="25.33"
+                           LineStackingStrategy="BlockLineHeight"
+                           LineHeight="32"
+                           Foreground="{StaticResource PhoneGray400_Gray500Brush}"
+                           Text="{Binding LocalizedResources.NoAccessToGifts, Source={StaticResource LocalizedStrings}}"
+                           TextAlignment="Center"
+                           TextWrapping="Wrap" />
+
+                <TextBlock Margin="0 10 0 0"
+                           LineStackingStrategy="BlockLineHeight"
+                           LineHeight="24"
+                           Foreground="{StaticResource PhoneGray400_Gray500Brush}"
+                           Text="{Binding LocalizedResources.UserHasHiddenGifts, Source={StaticResource LocalizedStrings}}"
+                           TextAlignment="Center"
+                           TextWrapping="Wrap" />
+            </StackPanel>
+        </Grid>
+    </Grid>
+
+</framework:PageBase>

@@ -1,0 +1,99 @@
+﻿<UserControl x:Class="VKClient.Common.Shared.OwnerFullHeaderWithSubscribeUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:framework="clr-namespace:VKClient.Common.Framework"
+             mc:Ignorable="d"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             d:DesignHeight="80"
+             d:DesignWidth="480">
+
+    <Grid Height="80"
+          Background="{StaticResource PhoneNewsBackgroundBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <Grid Background="Transparent"
+              framework:MetroInMotion.Tilt="1.1"
+              Tap="Owner_OnTap">
+            <Ellipse Style="{StaticResource PhotoPlaceholderEllipse}"
+                     HorizontalAlignment="Left"
+                     VerticalAlignment="Top"
+                     Width="56"
+                     Height="56"
+                     Margin="16 12 0 0" />
+
+            <Image Width="56"
+                   Height="56"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   Margin="16 12 0 0"
+                   framework:ImageLoader.UriSource="{Binding ImageUri}">
+                <Image.Clip>
+                    <EllipseGeometry Center="28 28"
+                                     RadiusX="28"
+                                     RadiusY="28" />
+                </Image.Clip>
+            </Image>
+
+
+            <StackPanel VerticalAlignment="Center"
+                        Margin="84 -1 0 0">
+                <TextBlock Foreground="{StaticResource PhoneAlmostBlackBrush}"
+                           FontFamily="{StaticResource PhoneFontFamilySemiBold}"
+                           Text="{Binding Title, FallbackValue='Beacon'}" />
+
+                <TextBlock FontSize="18"
+                           Visibility="{Binding SubscribersCountVisibility}"
+                           Foreground="{StaticResource PhoneCaptionGrayBrush}"
+                           Text="{Binding SubscribersCountStr, FallbackValue='7 237 subscribers'}" />
+
+            </StackPanel>
+        </Grid>
+
+        <Border Grid.Column="1"
+                framework:MetroInMotion.Tilt="1.5"
+                Background="Transparent"
+                Tap="SubscribeUnsubscribeButtonTap"
+                Visibility="{Binding SubscribeVisibility}">
+            <TextBlock FontSize="18"
+                       Foreground="{StaticResource PhoneAccentBlueBrush}"
+                       FontFamily="{StaticResource PhoneFontFamilySemiBold}"
+                       TextAlignment="Right"
+                       Margin="16 28"
+                       Text="{Binding Source={StaticResource LocalizedStrings}, Path=LocalizedResources.Group_Follow}" />
+        </Border>
+
+        <Border Grid.Column="1"
+                framework:MetroInMotion.Tilt="1.5"
+                Background="Transparent"
+                Tap="SubscribeUnsubscribeButtonTap"
+                Visibility="{Binding SubscribedVisibility}">
+            <TextBlock FontSize="18"
+                       Foreground="{StaticResource PhoneAccentBlueBrush}"
+                       FontFamily="{StaticResource PhoneFontFamilySemiBold}"
+                       TextAlignment="Right"
+                       Margin="16 28"
+                       Text="{Binding Source={StaticResource LocalizedStrings}, Path=LocalizedResources.GroupPage_Unfollow, Converter={StaticResource StringCapitalizedConverter}}" />
+        </Border>
+
+        <!--<Button Grid.Column="1"
+                Style="{StaticResource VKButtonPrimaryStyle}"
+                Content="{Binding Source={StaticResource LocalizedStrings}, Path=LocalizedResources.Group_Follow}"
+                HorizontalAlignment="Right"
+                Visibility="{Binding IsMember, Converter={StaticResource BoolToVisibilityInverterConverter}}" />
+
+        <Button Tap="SubscribeUnsubscribeButtonTap"
+                Grid.Column="1"
+                Style="{StaticResource VKButtonSecondaryStyle}"
+                Content="{Binding Source={StaticResource LocalizedStrings}, Path=LocalizedResources.Group_Following}"
+                HorizontalAlignment="Right"
+                Visibility="{Binding IsMember, Converter={StaticResource BoolToVisibilityConverter}}" />-->
+
+    </Grid>
+</UserControl>

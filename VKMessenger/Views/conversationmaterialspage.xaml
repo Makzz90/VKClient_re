@@ -1,0 +1,386 @@
+﻿<framework:PageBase 
+    x:Class="VKMessenger.Views.ConversationMaterialsPage"                    
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"                    
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:framework="clr-namespace:VKClient.Common.Framework;assembly=VKClient.Common"
+    xmlns:localization="clr-namespace:VKClient.Common.Localization;assembly=VKClient.Common"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:videoCatalog="clr-namespace:VKClient.Common.VideoCatalog;assembly=VKClient.Common"
+    xmlns:uc="clr-namespace:VKClient.Common.UC;assembly=VKClient.Common"                    
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"                    
+    SupportedOrientations="Portrait"
+    Orientation="Portrait"                    
+    shell:SystemTray.IsVisible="True"
+    shell:SystemTray.Opacity="0">
+
+    <framework:PageBase.Resources>
+        <localization:CommonLocalizedStrings x:Key="LocalizedStrings"/>
+    </framework:PageBase.Resources>
+
+    <Grid>
+        <uc:GenericHeaderUC x:Name="header" Height="138"/>
+        <controls:Pivot x:Name="pivot" 
+                        Style="{StaticResource PivotStyleNoHeader}"  
+                        LoadedPivotItem="pivot_OnItemLoaded" 
+                        Foreground="White"
+                        Margin="0,67,0,0">
+
+            <controls:PivotItem Name="pivotItemPhotos">
+                <controls:PivotItem.Header>
+                    <TextBlock Text="{Binding LocalizedResources.Photos, Source={StaticResource LocalizedStrings}}"
+                               FontFamily="Segoe WP SemiLight"
+                               FontSize="46"/>
+                </controls:PivotItem.Header>
+                <framework:ExtendedLongListSelector x:Name="photosList"
+                                                    DataContext="{Binding PhotosVM}"
+                                                    ItemsSource="{Binding Collection}"
+                                                    Link="photosList_OnLinked"     
+                                                    ListFooterTemplate="{StaticResource FooterTemplate}"
+                                                    framework:TiltEffect.IsTiltEnabled="False"                                                    
+                                                    ListFooter="{Binding}"  
+                                                    IsFlatList="True">
+                    <framework:ExtendedLongListSelector.ListHeader>
+                        <Rectangle Height="2"/>
+                    </framework:ExtendedLongListSelector.ListHeader>
+                    <framework:ExtendedLongListSelector.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                
+                                <Canvas Visibility="{Binding Photo1IsSet}"
+                                        Background="Transparent"
+                                        framework:MetroInMotion.Tilt="1"
+                                        VerticalAlignment="Center"
+                                        Margin="0,2,2,2"
+                                        Height="117"
+                                        Width="117">
+                                    <Rectangle Style="{StaticResource PhotoPlaceholderRectangle}"
+                                               Visibility="{Binding Photo1IsSet}"
+                                               HorizontalAlignment="Left"
+                                               Height="117"
+                                               Width="117"/>
+                                    <Image framework:ImageLoader.UriSource="{Binding Photo1.Src}"
+                                           HorizontalAlignment="Stretch"
+                                           VerticalAlignment="Stretch"
+                                           Stretch="UniformToFill"
+                                           Tap="photo_OnTapped"
+                                           Height="117"
+                                           Width="117"
+                                           Tag="1"/>
+                                    <toolkit:ContextMenuService.ContextMenu>
+                                        <toolkit:ContextMenu Background="{Binding InvertedOpaqueBG, Source={StaticResource ThemeHelper}}" 
+                                                             Foreground="{Binding InvertedOpaqueFG, Source={StaticResource ThemeHelper}}"
+                                                             IsZoomEnabled="False">
+                                            <toolkit:MenuItem Header="{Binding LocalizedResources.GoToMessage, Source={StaticResource LocalizedStrings}}"
+                                                              DataContext="{Binding Photo1}"
+                                                              Click="GoToMessage_OnClicked"/>
+                                        </toolkit:ContextMenu>
+                                    </toolkit:ContextMenuService.ContextMenu>
+                                </Canvas>
+
+                                <Canvas Visibility="{Binding Photo2IsSet}"
+                                        framework:MetroInMotion.Tilt="1"
+                                        VerticalAlignment="Center"
+                                        Background="Transparent"
+                                        Margin="2,2,2,2"
+                                        Height="117"
+                                        Width="117">
+                                    <Rectangle Style="{StaticResource PhotoPlaceholderRectangle}"
+                                               Visibility="{Binding Photo2IsSet}"
+                                               HorizontalAlignment="Left"
+                                               Height="117"
+                                               Width="117"/>
+                                    <Image framework:ImageLoader.UriSource="{Binding Photo2.Src}"
+                                           HorizontalAlignment="Stretch"
+                                           VerticalAlignment="Stretch"
+                                           Stretch="UniformToFill"
+                                           Tap="photo_OnTapped"
+                                           Height="117"
+                                           Width="117"
+                                           Tag="2"/>
+                                    <toolkit:ContextMenuService.ContextMenu>
+                                        <toolkit:ContextMenu Background="{Binding InvertedOpaqueBG, Source={StaticResource ThemeHelper}}" 
+                                                             Foreground="{Binding InvertedOpaqueFG, Source={StaticResource ThemeHelper}}"
+                                                             IsZoomEnabled="False">
+                                            <toolkit:MenuItem Header="{Binding LocalizedResources.GoToMessage, Source={StaticResource LocalizedStrings}}"
+                                                              DataContext="{Binding Photo2}"
+                                                              Click="GoToMessage_OnClicked"/>
+                                        </toolkit:ContextMenu>
+                                    </toolkit:ContextMenuService.ContextMenu>
+                                </Canvas>
+
+                                <Canvas Visibility="{Binding Photo3IsSet}"
+                                        framework:MetroInMotion.Tilt="1"
+                                        VerticalAlignment="Center"
+                                        Background="Transparent"
+                                        Margin="2,2,2,2"
+                                        Height="117"
+                                        Width="117">
+                                    <Rectangle Style="{StaticResource PhotoPlaceholderRectangle}"
+                                               Visibility="{Binding Photo3IsSet}"
+                                               HorizontalAlignment="Left"
+                                               Height="117"
+                                               Width="117"/>
+                                    <Image framework:ImageLoader.UriSource="{Binding Photo3.Src}"
+                                           HorizontalAlignment="Stretch"
+                                           VerticalAlignment="Stretch"
+                                           Stretch="UniformToFill"
+                                           Tap="photo_OnTapped"
+                                           Height="117"
+                                           Width="117"
+                                           Tag="3"/>
+                                    <toolkit:ContextMenuService.ContextMenu>
+                                        <toolkit:ContextMenu Background="{Binding InvertedOpaqueBG, Source={StaticResource ThemeHelper}}" 
+                                                             Foreground="{Binding InvertedOpaqueFG, Source={StaticResource ThemeHelper}}"
+                                                             IsZoomEnabled="False">
+                                            <toolkit:MenuItem Header="{Binding LocalizedResources.GoToMessage, Source={StaticResource LocalizedStrings}}"
+                                                              DataContext="{Binding Photo3}"
+                                                              Click="GoToMessage_OnClicked"/>
+                                        </toolkit:ContextMenu>
+                                    </toolkit:ContextMenuService.ContextMenu>
+                                </Canvas>
+
+                                <Canvas Visibility="{Binding Photo4IsSet}"
+                                        framework:MetroInMotion.Tilt="1"
+                                        VerticalAlignment="Center"
+                                        Background="Transparent"
+                                        Margin="2,2,0,2"
+                                        Height="117"
+                                        Width="117">
+                                    <Rectangle Style="{StaticResource PhotoPlaceholderRectangle}"
+                                               Visibility="{Binding Photo4IsSet}"
+                                               HorizontalAlignment="Left"
+                                               Height="117"
+                                               Width="117"/>
+                                    <Image framework:ImageLoader.UriSource="{Binding Photo4.Src}"
+                                           HorizontalAlignment="Stretch"
+                                           VerticalAlignment="Stretch"
+                                           Stretch="UniformToFill"
+                                           Tap="photo_OnTapped"
+                                           Height="117"
+                                           Width="117"
+                                           Tag="4"/>
+                                    <toolkit:ContextMenuService.ContextMenu>
+                                        <toolkit:ContextMenu Background="{Binding InvertedOpaqueBG, Source={StaticResource ThemeHelper}}" 
+                                                             Foreground="{Binding InvertedOpaqueFG, Source={StaticResource ThemeHelper}}"
+                                                             IsZoomEnabled="False">
+                                            <toolkit:MenuItem Header="{Binding LocalizedResources.GoToMessage, Source={StaticResource LocalizedStrings}}"
+                                                              DataContext="{Binding Photo4}"
+                                                              Click="GoToMessage_OnClicked"/>
+                                        </toolkit:ContextMenu>
+                                    </toolkit:ContextMenuService.ContextMenu>
+                                </Canvas>
+
+                            </StackPanel>
+                        </DataTemplate>
+                    </framework:ExtendedLongListSelector.ItemTemplate>
+                </framework:ExtendedLongListSelector>
+            </controls:PivotItem>
+
+            <controls:PivotItem Name="pivotItemVideos">
+                <controls:PivotItem.Header>
+                    <TextBlock Text="{Binding LocalizedResources.Videos, Source={StaticResource LocalizedStrings}}"
+                               FontFamily="Segoe WP SemiLight"
+                               FontSize="46"/>
+                </controls:PivotItem.Header>
+                <framework:ExtendedLongListSelector x:Name="videosList"  
+                                                    DataContext="{Binding VideosVM}"   
+                                                    ItemsSource="{Binding Collection}"   
+                                                    Link="videosList_OnLinked"   
+                                                    SelectionChanged="videosList_OnSelectionChanged"
+                                                    ListFooterTemplate="{StaticResource FooterTemplate}"                                  
+                                                    ListFooter="{Binding}"
+                                                    IsFlatList="True">
+                    <framework:ExtendedLongListSelector.ListHeader>
+                        <Rectangle Height="8"/>
+                    </framework:ExtendedLongListSelector.ListHeader>
+                    <framework:ExtendedLongListSelector.ItemTemplate>
+                        <DataTemplate>
+                            <videoCatalog:CatalogItemUC Background="Transparent">
+
+                                <toolkit:ContextMenuService.ContextMenu>
+                                    <toolkit:ContextMenu Background="{Binding InvertedOpaqueBG, Source={StaticResource ThemeHelper}}" 
+                                                         Foreground="{Binding InvertedOpaqueFG, Source={StaticResource ThemeHelper}}"
+                                                         IsZoomEnabled="False">
+                                        <toolkit:MenuItem Header="{Binding LocalizedResources.GoToMessage, Source={StaticResource LocalizedStrings}}"
+                                                          Click="GoToMessage_OnClicked"/>
+                                    </toolkit:ContextMenu>
+                                </toolkit:ContextMenuService.ContextMenu>
+                                
+                            </videoCatalog:CatalogItemUC>
+                        </DataTemplate>
+                    </framework:ExtendedLongListSelector.ItemTemplate>
+                </framework:ExtendedLongListSelector>
+            </controls:PivotItem>
+
+            <controls:PivotItem Name="pivotItemAudios">
+                <controls:PivotItem.Header>
+                    <TextBlock Text="{Binding LocalizedResources.Audios, Source={StaticResource LocalizedStrings}}"
+                               FontFamily="Segoe WP SemiLight"
+                               FontSize="46"/>
+                </controls:PivotItem.Header>
+                <framework:ExtendedLongListSelector x:Name="audiosList"  
+                                                    DataContext="{Binding AudiosVM}"   
+                                                    ItemsSource="{Binding Collection}"   
+                                                    Link="audiosList_OnLinked"   
+                                                    SelectionChanged="audiosList_OnSelectionChanged"
+                                                    ListFooterTemplate="{StaticResource FooterTemplate}"     
+                                                    ListFooter="{Binding}"
+                                                    IsFlatList="True">
+                    <framework:ExtendedLongListSelector.ListHeader>
+                        <Rectangle Height="8"/>
+                    </framework:ExtendedLongListSelector.ListHeader>
+                    <framework:ExtendedLongListSelector.ItemTemplate>
+                        <DataTemplate>
+                            <ContentControl ContentTemplate="{StaticResource TrackTemplate}"
+                                            Content="{Binding}" 
+                                            HorizontalContentAlignment="Stretch"
+                                            VerticalContentAlignment="Stretch"
+                                            Background="Transparent">
+
+                                <toolkit:ContextMenuService.ContextMenu>
+                                    <toolkit:ContextMenu Background="{Binding InvertedOpaqueBG, Source={StaticResource ThemeHelper}}" 
+                                                         Foreground="{Binding InvertedOpaqueFG, Source={StaticResource ThemeHelper}}"
+                                                         IsZoomEnabled="False">
+                                        <toolkit:MenuItem Header="{Binding LocalizedResources.GoToMessage, Source={StaticResource LocalizedStrings}}"
+                                                          Click="GoToMessage_OnClicked"/>
+                                    </toolkit:ContextMenu>
+                                </toolkit:ContextMenuService.ContextMenu>
+                                
+                            </ContentControl>
+                        </DataTemplate>
+                    </framework:ExtendedLongListSelector.ItemTemplate>
+                </framework:ExtendedLongListSelector>
+            </controls:PivotItem>
+
+            <controls:PivotItem Name="pivotItemDocuments">
+                <controls:PivotItem.Header>
+                    <TextBlock Text="{Binding LocalizedResources.Messenger_Documents, Source={StaticResource LocalizedStrings}}"
+                               FontFamily="Segoe WP SemiLight"
+                               FontSize="46"/>
+                </controls:PivotItem.Header>
+                <framework:ExtendedLongListSelector x:Name="documentsList"  
+                                                    DataContext="{Binding DocumentsVM}"   
+                                                    ItemsSource="{Binding Collection}"   
+                                                    Link="documentsList_OnLinked"   
+                                                    SelectionChanged="documentsList_OnSelectionChanged"
+                                                    ListFooterTemplate="{StaticResource FooterTemplate}"     
+                                                    ListFooter="{Binding}"
+                                                    IsFlatList="True">
+                    <framework:ExtendedLongListSelector.ListHeader>
+                        <Rectangle Height="8"/>
+                    </framework:ExtendedLongListSelector.ListHeader>
+                    <framework:ExtendedLongListSelector.ItemTemplate>
+                        <DataTemplate>
+                            <ContentControl Template="{StaticResource DocumentTemplate}"
+                                            Background="Transparent">
+                                
+                                <toolkit:ContextMenuService.ContextMenu>
+                                    <toolkit:ContextMenu Background="{Binding InvertedOpaqueBG, Source={StaticResource ThemeHelper}}" 
+                                                         Foreground="{Binding InvertedOpaqueFG, Source={StaticResource ThemeHelper}}"
+                                                         IsZoomEnabled="False">
+                                        <toolkit:MenuItem Header="{Binding LocalizedResources.GoToMessage, Source={StaticResource LocalizedStrings}}"
+                                                          Click="GoToMessage_OnClicked"/>
+                                    </toolkit:ContextMenu>
+                                </toolkit:ContextMenuService.ContextMenu>
+                                
+                            </ContentControl>
+                        </DataTemplate>
+                    </framework:ExtendedLongListSelector.ItemTemplate>
+                </framework:ExtendedLongListSelector>
+            </controls:PivotItem>
+
+            <controls:PivotItem Name="pivotItemLinks">
+                <controls:PivotItem.Header>
+                    <TextBlock Text="{Binding LocalizedResources.FavoritesPage_Links, Source={StaticResource LocalizedStrings}}"
+                               FontFamily="Segoe WP SemiLight"
+                               FontSize="46"/>
+                </controls:PivotItem.Header>
+                <framework:ExtendedLongListSelector x:Name="linksList"  
+                                                    DataContext="{Binding LinksVM}"   
+                                                    ItemsSource="{Binding Collection}"   
+                                                    Link="linksList_OnLinked"   
+                                                    SelectionChanged="linksList_OnSelectionChanged"
+                                                    ListFooterTemplate="{StaticResource FooterTemplate}"     
+                                                    ListFooter="{Binding}"
+                                                    IsFlatList="True">
+                    <framework:ExtendedLongListSelector.ListHeader>
+                        <Rectangle Height="6"/>
+                    </framework:ExtendedLongListSelector.ListHeader>
+                    <framework:ExtendedLongListSelector.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Height="108">
+                                <Grid Background="Transparent" 
+                                      framework:MetroInMotion.Tilt="2.5">
+
+                                    <toolkit:ContextMenuService.ContextMenu>
+                                        <toolkit:ContextMenu Background="{Binding InvertedOpaqueBG, Source={StaticResource ThemeHelper}}" 
+                                                             Foreground="{Binding InvertedOpaqueFG, Source={StaticResource ThemeHelper}}"
+                                                             IsZoomEnabled="False">
+                                            <toolkit:MenuItem Header="{Binding LocalizedResources.GoToMessage, Source={StaticResource LocalizedStrings}}"
+                                                              Click="GoToMessage_OnClicked"/>
+                                        </toolkit:ContextMenu>
+                                    </toolkit:ContextMenuService.ContextMenu>
+
+                                    <Grid HorizontalAlignment="Left"
+                                            VerticalAlignment="Top"
+                                            Margin="12,6,0,6"
+                                            Height="96"
+                                            Width="112">
+                                        <Rectangle Fill="{Binding ThumbnailBackground}"
+                                                   Height="96"
+                                                   Width="112"/>
+                                        <Image framework:ImageLoader.UriSource="{Binding Thumbnail}"
+                                               Stretch="UniformToFill"
+                                               Height="96"
+                                               Width="112"/>
+                                        <TextBlock Text="{Binding ThumbnailPlaceholderLetter}"
+                                                   Foreground="{StaticResource DocumentExtensionForeground}"
+                                                   FontFamily="Segoe WP SemiLight"
+                                                   HorizontalAlignment="Center"
+                                                   VerticalAlignment="Center"
+                                                   FontSize="36.667"
+                                                   Margin="0,0,0,8"/>
+                                    </Grid>
+
+                                    <StackPanel Margin="136,12,16,0">
+                                        <TextBlock Text="{Binding Title}"
+                                                   TextWrapping="{Binding TitleWrapping}"
+                                                   Foreground="{StaticResource PhoneContrastTitleBrush}"
+                                                   FontFamily="Segoe WP SemiBold"
+                                                   FontSize="21.333"
+                                                   MaxHeight="56"/>
+                                        <TextBlock Text="{Binding Description}"
+                                                   Visibility="{Binding DescriptionVisibility}"
+                                                   Foreground="{StaticResource PhoneContrastTitleBrush}"
+                                                   FontSize="20"/>
+                                        <TextBlock Text="{Binding Domain}"
+                                                   Foreground="{StaticResource PhoneProfileInfoLoadingForegroundBrush}"
+                                                   Margin="0,-2,0,0"
+                                                   FontSize="20"/>
+                                    </StackPanel>
+                                    
+                                </Grid>
+
+                                <Rectangle Height="1" 
+                                           Margin="136,0,0,0"
+                                           VerticalAlignment="Bottom"
+                                           HorizontalAlignment="Stretch"
+                                           Fill="{StaticResource PhoneNewsDividerBrush}"/>
+                            </Grid>
+                        </DataTemplate>
+                    </framework:ExtendedLongListSelector.ItemTemplate>
+                </framework:ExtendedLongListSelector>
+            </controls:PivotItem>
+
+        </controls:Pivot>
+        <uc:PullToRefreshUC x:Name="pullToRefresh" />
+      
+    </Grid>
+</framework:PageBase>

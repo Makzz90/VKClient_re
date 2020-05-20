@@ -1,0 +1,80 @@
+﻿<framework:PageBase x:Class="VKClient.Common.Stickers.Views.StickersStorePage"
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:framework="clr-namespace:VKClient.Common.Framework"
+                    xmlns:uc="clr-namespace:VKClient.Common.UC"
+                    xmlns:views="clr-namespace:VKClient.Common.Stickers.Views"
+                    xmlns:library="clr-namespace:VKClient.Common.Library"
+                    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                    FontSize="{StaticResource PhoneFontSizeNormal}"
+                    Foreground="{StaticResource PhoneForegroundBrush}"
+                    SupportedOrientations="Portrait"
+                    Orientation="Portrait"
+                    mc:Ignorable="d"
+                    shell:SystemTray.IsVisible="True">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <uc:GenericHeaderUC x:Name="ucHeader" />
+
+        <ViewportControl x:Name="viewportControl"
+                         Grid.Row="1"
+                         VerticalContentAlignment="Stretch"
+                         HorizontalContentAlignment="Stretch">
+
+            <StackPanel x:Name="stackPanelContent"
+                        VerticalAlignment="Top">
+                <library:SlideView x:Name="slideView"
+                                   Width="480"
+                                   Height="224"
+                                   Background="{StaticResource PhoneChromeBrush}"
+                                   Visibility="{Binding BannersVisibility}"
+                                   ItemsSource="{Binding Banners}"
+                                   IsCycled="{Binding IsSlideViewCycled}">
+                    <library:SlideView.ItemTemplate>
+                        <DataTemplate>
+                            <Canvas Width="480"
+                                    Height="224">
+                                <Image Width="480"
+                                       Height="224"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       framework:ImageLoader.UriSource="{Binding ImageUrl}"
+                                       Stretch="UniformToFill"
+                                       Tap="StoreBanner_OnTap" />
+                            </Canvas>
+                        </DataTemplate>
+                    </library:SlideView.ItemTemplate>
+                </library:SlideView>
+
+                <views:StoreTabsUC />
+
+                <framework:MyVirtualizingPanel2 x:Name="panelStickersList"
+                                                Margin="0 6 0 0"
+                                                VerticalAlignment="Top"
+                                                ItemsSource="{Binding StickersList}" />
+
+                <Rectangle Height="72" />
+            </StackPanel>
+        </ViewportControl>
+        
+        
+        <Border x:Name="borderFloatingTabs"
+                Grid.Row="1"
+                VerticalAlignment="Top"
+                Background="{StaticResource PhoneBackgroundBrush}">
+            <views:StoreTabsUC />
+        </Border>
+
+        <uc:GenericPageLoadInfoUC Grid.Row="1" />
+
+    </Grid>
+
+</framework:PageBase>

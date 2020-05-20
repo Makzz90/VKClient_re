@@ -1,0 +1,55 @@
+﻿<UserControl x:Class="VKClient.Common.UC.Registration.RegistrationStep6UC"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:framework="clr-namespace:VKClient.Common.Framework"
+    mc:Ignorable="d"
+    xmlns:uc="clr-namespace:VKClient.Common.UC"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="480" d:DesignWidth="480">
+
+    <UserControl.Resources>
+
+        <DataTemplate x:Key="RecommendationsItemTemplate">
+            <uc:SubscriptionItemHeaderUC Margin="16 0 16 18" />
+        </DataTemplate>
+        
+        
+        <DataTemplate x:Key="HeaderTemplate">
+            <Grid>
+                <StackPanel Margin="0 32 0 31">
+                    <Image 
+                        Height="160"
+                        framework:ImageLoader.UriSource="../../Resources/NoContentImages/Communities.png" />
+
+
+                    <TextBlock FontFamily="Segoe WP SemiLight"
+                               HorizontalAlignment="Center"
+                               TextAlignment="Center"
+                               FontSize="22.66"
+                               TextWrapping="Wrap"
+                               Margin="18 24 0 0"
+                               Foreground="{StaticResource PhoneVKSubtleBrush}"
+                               Text="{Binding LocalizedResources.SubscribeToInterestingPages, Source={StaticResource LocalizedStrings}}" />
+                </StackPanel>
+                
+            </Grid>
+        </DataTemplate>
+        
+    </UserControl.Resources>    
+    
+    <Grid x:Name="LayoutRoot" DataContext="{Binding SuggestedSourcesVM}" >
+        <framework:ExtendedLongListSelector Name="list"
+                                            ListHeaderTemplate="{StaticResource HeaderTemplate}"
+                                            DataContext="{Binding SuggestedSourcesVM}"
+                                            ItemsSource="{Binding Collection}"
+                                            ItemTemplate="{StaticResource RecommendationsItemTemplate}"
+                                        
+                                            ListFooterTemplate="{StaticResource FooterTemplate}"
+                                            ListFooter="{Binding}"/>
+
+    </Grid>
+</UserControl>

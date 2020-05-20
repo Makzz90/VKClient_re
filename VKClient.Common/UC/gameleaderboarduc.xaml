@@ -1,0 +1,84 @@
+﻿<UserControl x:Class="VKClient.Common.UC.GameLeaderboardUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:framework="clr-namespace:VKClient.Common.Framework"
+             xmlns:uc="clr-namespace:VKClient.Common.UC"
+             mc:Ignorable="d"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             d:DesignHeight="480"
+             d:DesignWidth="480">
+
+    <StackPanel>
+        <uc:GroupHeaderUC Title="{Binding LocalizedResources.PageTitle_Games_Leaderboard, Source={StaticResource LocalizedStrings}}"
+                          IsShowAllVisible="True" />
+
+        <ItemsControl x:Name="itemsControl"
+                      Margin="0 8">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Border Background="{StaticResource PhoneDialogsUnreadBackgroundBrush}"
+                                Visibility="{Binding OwnVisibility}" />
+                        <Grid Height="62"
+                              Margin="0 8"
+                              framework:MetroInMotion.Tilt="1.5"
+                              Tap="LeaderboardItem_OnTap"
+                              VerticalAlignment="Top">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="56" />
+                                <ColumnDefinition Width="62" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>                            
+
+                            <TextBlock Text="{Binding Position}"
+                                       Foreground="{StaticResource PhoneVKSubtleBrush}"
+                                       VerticalAlignment="Top"
+                                       HorizontalAlignment="Left"
+                                       Margin="20 17 0 0 " />
+
+                            <Grid Grid.Column="1">
+                                <Ellipse Style="{StaticResource PhotoPlaceholderEllipse}"
+                                         Width="62"
+                                         Height="62" />
+
+                                <Image framework:ImageLoader.UriSource="{Binding UserIcon}">
+                                    <Image.Clip>
+                                        <EllipseGeometry Center="31 31"
+                                                         RadiusX="31"
+                                                         RadiusY="31" />
+                                    </Image.Clip>
+                                </Image>
+                            </Grid>
+
+                            <StackPanel Grid.Column="2"
+                                        VerticalAlignment="Top"
+                                        Margin="12 -1 0 0">
+                                <TextBlock Text="{Binding UserName}"
+                                           FontSize="25.33"
+                                           Foreground="{StaticResource PhoneContrastTitleBrush}" />
+                                <TextBlock Text="{Binding LevelStr}"
+                                           Visibility="{Binding LevelStrVisibility}"
+                                           Margin="0 -3 0 0"
+                                           Foreground="{StaticResource PhoneVKSubtleBrush}" />
+                                <TextBlock Text="{Binding PointsStr}"
+                                           Visibility="{Binding PointsStrVisibility}"
+                                           Margin="0 -3 0 0"
+                                           Foreground="{StaticResource PhoneVKSubtleBrush}" />
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+        <!--<Image Source="/Temp/wp-gameview.png"
+               Stretch="None"
+               VerticalAlignment="Top"
+               Opacity="0.3"
+               Margin="0 -577 0 0" />-->
+    </StackPanel>
+</UserControl>

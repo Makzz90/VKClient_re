@@ -1,0 +1,64 @@
+﻿<mapAttachments:MapAttachmentUCBase x:Class="VKClient.Common.UC.MapAttachments.MapPlaceSmallAttachmentUC"
+                                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                                    xmlns:framework="clr-namespace:VKClient.Common.Framework"
+                                    xmlns:mapAttachments="clr-namespace:VKClient.Common.UC.MapAttachments"
+                                    mc:Ignorable="d"
+                                    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                                    FontSize="{StaticResource PhoneFontSizeNormal}"
+                                    Foreground="{StaticResource PhoneForegroundBrush}"
+                                    d:DesignWidth="480"
+                                    d:DesignHeight="72">
+
+    <Canvas x:Name="canvas"
+            Background="Transparent"
+            Width="480"
+            Height="72"
+            framework:MetroInMotion.Tilt="1.5">
+
+        <Border Canvas.Left="16"
+                Canvas.Top="8"
+                Width="56"
+                Height="56"
+                Background="{StaticResource PhoneAttachIconBackgroundBrush}">
+            <Border.Clip>
+                <EllipseGeometry Center="28 28"
+                                 RadiusX="28"
+                                 RadiusY="28" />
+            </Border.Clip>
+
+            <Image framework:MultiResImageLoader.UriSource="/Resources/WallPost/AttachPlace.png"
+                   Width="32"
+                   Height="32" />
+        </Border>
+
+        <Image x:Name="imageGroupPhoto"
+               Canvas.Left="16"
+               Canvas.Top="8"
+               Height="56"
+               Width="56">
+            <Image.Clip>
+                <EllipseGeometry Center="28 28"
+                                 RadiusX="28"
+                                 RadiusY="28" />
+            </Image.Clip>
+        </Image>
+
+        <TextBlock x:Name="textBlockTitle"
+                   Canvas.Left="84"
+                   Canvas.Top="8"
+                   FontSize="22.67"
+                   Foreground="{StaticResource PhoneAlmostBlackBrush}"
+                   Text="Штаб VK" />
+
+        <TextBlock x:Name="textBlockSubtitle"
+                   Canvas.Left="84"
+                   Canvas.Top="34"
+                   LineStackingStrategy="BlockLineHeight"
+                   LineHeight="26"
+                   Foreground="{StaticResource PhoneCaptionGrayBrush}"
+                   Text="Невский пр. 28, Санкт-Петербург" />
+    </Canvas>
+</mapAttachments:MapAttachmentUCBase>

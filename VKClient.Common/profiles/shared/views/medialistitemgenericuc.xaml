@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="VKClient.Common.Profiles.Shared.Views.MediaListItemGenericUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:framework="clr-namespace:VKClient.Common.Framework"
+             mc:Ignorable="d"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             d:DesignHeight="120"
+             d:DesignWidth="182">
+
+    <Border Background="{StaticResource PhoneGenericPlaceholderBackgroundBrush}"
+            Width="{Binding ContainerWidth, FallbackValue=182}"
+            Height="{Binding ContainerHeight, FallbackValue=120}">
+        <StackPanel VerticalAlignment="Top"
+                    Margin="8 16 8 0">
+            <Border Width="32"
+                    Height="32"
+                    Background="{StaticResource PhoneProfileBlueIconBrush}">
+                <Border.OpacityMask>
+                    <ImageBrush framework:ImageLoader.ImageBrushMultiResSource="{Binding IconUri}" />
+                </Border.OpacityMask>
+            </Border>
+            <TextBlock FontSize="18"
+                       Margin="0 8 0 0"
+                       TextAlignment="Center"
+                       Text="{Binding GenericTitle, FallbackValue='Daniel Perbenton'}"
+                       FontFamily="{StaticResource PhoneFontFamilySemiBold}"
+                       Foreground="{StaticResource PhoneProfileBlueHeaderBrush}" />
+            <TextBlock FontSize="18"
+                       TextAlignment="Center"
+                       Text="{Binding GenericSubtitle, FallbackValue='Take You Down'}"
+                       Foreground="{StaticResource PhoneProfileBlueSubheaderBrush}" />
+        </StackPanel>
+    </Border>
+</UserControl>

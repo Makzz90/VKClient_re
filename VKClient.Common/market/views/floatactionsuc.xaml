@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="VKClient.Common.Market.Views.FloatActionsUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:framework="clr-namespace:VKClient.Common.Framework"
+             mc:Ignorable="d"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             d:DesignHeight="72"
+             d:DesignWidth="480">
+
+    <Grid Height="72"
+          Background="{StaticResource PhoneAppBarBackgroundBrush}">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <Button Margin="4 0"
+                Visibility="{Binding ContactSellerButtonVisibility, FallbackValue=Collapsed}"
+                Content="{Binding LocalizedResources.ContactSeller, Source={StaticResource LocalizedStrings}}"
+                Style="{StaticResource VKButtonPrimaryStyle}"
+                FontSize="21.3"
+                Height="72"
+                Click="ContactSellerButton_OnClick" />
+
+        <Border Grid.Column="0"
+                Visibility="{Binding ProductUnavailableVisibility}"
+                Background="{StaticResource PhoneCardOverlayBrush}"
+                Height="48"
+                Margin="16 12">
+            <TextBlock VerticalAlignment="Top"
+                       FontSize="21.3"
+                       FontFamily="{StaticResource PhoneFontFamilySemiBold}"
+                       Margin="0 8 0 0"
+                       TextAlignment="Center"
+                       Foreground="{StaticResource PhoneCaptionGrayBrush}"
+                       Text="{Binding LocalizedResources.ProductUnavailable, Source={StaticResource LocalizedStrings}}" />
+        </Border>
+    </Grid>
+</UserControl>

@@ -1,0 +1,164 @@
+﻿<UserControl x:Class="VKClient.Common.UC.FriendsRecommendationsUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:framework="clr-namespace:VKClient.Common.Framework"
+             xmlns:library="clr-namespace:VKClient.Common.Library"
+             mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <DataTemplate x:Key="FriendsRecommendationItemTemplate">
+            <library:FriendRecommendationItemTemplateSelector Content="{Binding}">
+                <library:FriendRecommendationItemTemplateSelector.DefaultTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.Projection>
+                                <PlaneProjection RotationZ="-90"/>
+                            </Grid.Projection>
+                            <Grid Tap="Recommendation_OnTapped"
+                                  framework:MetroInMotion.Tilt="2.1"
+                                  Margin="0,-18,0,0"
+                                  Height="290" 
+                                  Width="256">
+                                <Grid Background="{StaticResource PhoneChromeBrush}"
+                                      HorizontalAlignment="Left"
+                                      VerticalAlignment="Top"
+                                      Height="214"
+                                      Width="256">
+                                    <Image framework:ImageLoader.UriSource="{Binding PhotoImageSource}"
+                                           Margin="{Binding PhotoImageMargin}"
+                                           Height="{Binding PhotoImageHeight}"
+                                           Width="{Binding PhotoImageWidth}"
+                                           Stretch="UniformToFill">
+                                        <Image.Clip>
+                                            <RectangleGeometry Rect="{Binding PhotoImageClipRect}"/>
+                                        </Image.Clip>
+                                    </Image>
+                                </Grid>
+                                <Image framework:MultiResImageLoader.UriSource="../Resources/New/RecommendationHide.png"
+                                       MouseLeftButtonDown="RecommendationHideButton_OnMouseLeftButtonDown"
+                                       Tap="RecommendationHideButton_OnTapped"
+                                       HorizontalAlignment="Right"
+                                       VerticalAlignment="Top"
+                                       Margin="0,8,8,0"
+                                       Height="32"
+                                       Width="32"/>
+                                <Border Background="{Binding AddToFriendsButtonForeground}" 
+                                        MouseLeftButtonDown="RecommendationAddToFriendsButton_OnMouseLeftButtonDown"
+                                        Tap="RecommendationAddToFriendsButton_OnTapped"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Top"
+                                        Margin="216,236,0,0"
+                                        Height="32" 
+                                        Width="32">
+                                    <Border.OpacityMask>
+                                        <ImageBrush framework:ImageLoader.ImageBrushMultiResSource="{Binding AddToFriendsButtonIcon}"/>
+                                    </Border.OpacityMask>
+                                </Border>
+                                <TextBlock Text="{Binding Name}"
+                                           Margin="{Binding NameBlockMargin}"
+                                           Foreground="{StaticResource PhoneContrastTitleBrush}"
+                                           FontFamily="Segoe WP Semibold"
+                                           FontSize="21.333"/>
+                                <TextBlock Text="{Binding Description}"
+                                           Foreground="{StaticResource PhoneProfileInfoLoadingForegroundBrush}"
+                                           Margin="0,248,50,0"
+                                           FontSize="20"/>
+                            </Grid>
+                        </Grid>
+                    </DataTemplate>
+                </library:FriendRecommendationItemTemplateSelector.DefaultTemplate>
+                <library:FriendRecommendationItemTemplateSelector.ContactsSyncPromoTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.Projection>
+                                <PlaneProjection RotationZ="-90"/>
+                            </Grid.Projection>
+                            <Grid Margin="0,-18,0,0"
+                                  Height="290" 
+                                  Width="256">
+                                <Grid Background="{StaticResource PhoneFriendRecommendationBackgroundBrush}"
+                                      Tap="ContactsSyncStartButton_OnTapped"
+                                      VerticalAlignment="Top"
+                                      Height="214"
+                                      Width="256">
+                                    <Ellipse Fill="#5181b8"
+                                             VerticalAlignment="Top"
+                                             HorizontalAlignment="Center"
+                                             Margin="0,24,0,0"
+                                             Height="56"
+                                             Width="56"/>
+                                    <Border Background="White" 
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Top"
+                                            Margin="0,36,0,0"
+                                            Height="32" 
+                                            Width="32">
+                                        <Border.OpacityMask>
+                                            <ImageBrush framework:ImageLoader.ImageBrushMultiResSource="../Resources/Profile/ProfileFriends.png"/>
+                                        </Border.OpacityMask>
+                                    </Border>
+                                    <TextBlock Text="{Binding Path=LocalizedResources.FriendsRecommendations_FindMoreFriends, Source={StaticResource LocalizedStrings}}"
+                                               Foreground="{StaticResource PhoneContrastTitleBrush}"
+                                               FontFamily="Segoe WP Semibold"
+                                               TextAlignment="Center"
+                                               Margin="0,93,0,0"
+                                               FontSize="18"/>
+                                    <TextBlock Text="{Binding Path=LocalizedResources.FriendsRecommendations_ContactsSyncPromoHint, Source={StaticResource LocalizedStrings}}"
+                                               Foreground="{StaticResource PhoneListItemForegroundBrush}"
+                                               TextAlignment="Center"
+                                               TextWrapping="Wrap"
+                                               Margin="0,121,0,0"
+                                               LineHeight="22"
+                                               FontSize="18"/>
+                                </Grid>
+                                <Grid Background="{StaticResource PhoneFriendRecommendationBackgroundBrush}"
+                                      framework:MetroInMotion.Tilt="2.1"
+                                      Tap="ContactsSyncStartButton_OnTapped"
+                                      VerticalAlignment="Top"
+                                      Margin="0,218,0,0"
+                                      Height="64">
+                                    <TextBlock Text="{Binding Path=LocalizedResources.FriendsRecommendations_StartButtonText, Source={StaticResource LocalizedStrings}}"
+                                               FontFamily="Segoe WP Semibold"
+                                               HorizontalAlignment="Center"
+                                               Foreground="#5181b8"
+                                               FontSize="21.333"
+                                               Margin="0,14,0,0"/>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </DataTemplate>
+                </library:FriendRecommendationItemTemplateSelector.ContactsSyncPromoTemplate>
+            </library:FriendRecommendationItemTemplateSelector>
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <framework:ExtendedLongListSelector x:Name="ItemsList"
+                                        ItemTemplate="{StaticResource FriendsRecommendationItemTemplate}"
+                                        ManipulationCompleted="ItemsList_OnManipulationCompleted"
+                                        ScrollPositionChanged="ItemsList_OnScrollPositionChanged"
+                                        ManipulationStarted="ItemsList_OnManipulationStarted"
+                                        ManipulationDelta="ItemsList_OnManipulationDelta"
+                                        Style="{StaticResource PhotosListStyle}"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Top"
+                                        Margin="87,-23,0,-87"
+                                        Height="480" 
+                                        Width="306">
+        <framework:ExtendedLongListSelector.Projection>
+            <PlaneProjection RotationZ="90"/>
+        </framework:ExtendedLongListSelector.Projection>
+        <framework:ExtendedLongListSelector.ListHeaderTemplate>
+            <DataTemplate>
+                <Rectangle Height="8"/>
+            </DataTemplate>
+        </framework:ExtendedLongListSelector.ListHeaderTemplate>
+        <framework:ExtendedLongListSelector.ListFooterTemplate>
+            <DataTemplate>
+                <Rectangle Height="8"/>
+            </DataTemplate>
+        </framework:ExtendedLongListSelector.ListFooterTemplate>
+    </framework:ExtendedLongListSelector>
+
+</UserControl>

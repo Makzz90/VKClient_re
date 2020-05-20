@@ -1,0 +1,75 @@
+﻿<framework:PageBase x:Class="VKClient.Common.Gifts.Views.GiftsCatalogPage"
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:framework="clr-namespace:VKClient.Common.Framework"
+                    xmlns:uc="clr-namespace:VKClient.Common.UC"
+                    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                    FontSize="{StaticResource PhoneFontSizeNormal}"
+                    Foreground="{StaticResource PhoneForegroundBrush}"
+                    SupportedOrientations="Portrait"
+                    Orientation="Portrait"
+                    mc:Ignorable="d"
+                    shell:SystemTray.IsVisible="True">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <uc:GenericHeaderUC x:Name="ucHeader" />
+        <uc:PullToRefreshUC x:Name="ucPullToRefresh" />
+
+        <Grid Grid.Row="1"
+              Background="{StaticResource PhoneGray050_Gray800Brush}">
+
+            <ViewportControl x:Name="viewportControl"
+                             VerticalContentAlignment="Stretch"
+                             HorizontalContentAlignment="Stretch">
+                <StackPanel Name="stackPanel">
+
+                    <Border Height="56"
+                            Background="{StaticResource PhoneGray000_Gray900Brush}"
+                            Visibility="{Binding BalanceVisiblity}">
+                        <TextBlock VerticalAlignment="Top"
+                                   Margin="16 13 16 0"
+                                   TextAlignment="Center"
+                                   Foreground="{StaticResource PhoneGray400_Gray500Brush}">
+                            <Run Text="{Binding LocalizedResources.YourBalance, Source={StaticResource LocalizedStrings}}" /><Run Text=":" />
+                            <Run FontFamily="{StaticResource PhoneFontFamilySemiBold}"
+                                 Text="{Binding Balance, FallbackValue='N'}" />
+                            <Run Text="{Binding BalanceStr, FallbackValue='votes'}" />
+                        </TextBlock>
+                    </Border>
+
+                    <framework:MyVirtualizingPanel2 x:Name="virtPanel"
+                                                    Margin="0 16 0 0"
+                                                    VerticalAlignment="Top"
+                                                    ItemsSource="{Binding Categories}" />
+
+                    <TextBlock Width="448"
+                               Margin="0 28 0 32"
+                               FontSize="21.33"
+                               Foreground="{StaticResource PhoneGray500Brush}"
+                               LineStackingStrategy="BlockLineHeight"
+                               LineHeight="28"
+                               TextWrapping="Wrap">
+                    <Run FontFamily="{StaticResource PhoneFontFamilySemiBold}"
+                         Text="{Binding LocalizedResources.VotesDesc1, Source={StaticResource LocalizedStrings}}" />
+                    <Run Text="{Binding LocalizedResources.VotesDesc2, Source={StaticResource LocalizedStrings}}" />
+                    </TextBlock>
+
+                </StackPanel>
+            </ViewportControl>
+        </Grid>
+
+        <uc:GenericPageLoadInfoUC Grid.Row="1"
+                                  IsTernaryButton="True"
+                                  BackgroundBrush="{StaticResource PhoneGray050_Gray800Brush}" />
+
+    </Grid>
+
+</framework:PageBase>

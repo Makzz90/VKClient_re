@@ -1,0 +1,52 @@
+﻿<UserControl x:Class="VKClient.Common.Shared.OwnerHeaderUC"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:framework="clr-namespace:VKClient.Common.Framework"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    Height="94">
+
+    <Grid x:Name="LayoutRoot"
+          Background="{StaticResource PhoneNewsBackgroundBrush}"
+          Tap="LayoutRoot_Tap"
+          framework:MetroInMotion.Tilt="1.5">
+
+        <!--<Image Source="/Image5.png"
+               Stretch="Fill" />-->
+
+        <Ellipse Style="{StaticResource PhotoPlaceholderEllipse}"
+                 HorizontalAlignment="Left"
+                 Width="62"
+                 Height="62" 
+                 Margin="16 0 0 0"/>
+
+        <Image Width="62"
+               HorizontalAlignment="Left"
+               Height="62"
+               Name="imageUserOrGroup"
+               Margin="16 0 0 0"
+               framework:ImageLoader.UriSource="{Binding ImageUri}">
+            <Image.Clip>
+                <EllipseGeometry Center="31 31"
+                                 RadiusX="31"
+                                 RadiusY="31" />
+            </Image.Clip>
+        </Image>
+
+
+        <TextBlock Name="textBlockName"                   
+                   Foreground="{StaticResource PhoneDarkBlueBrush}"
+                   Style="{StaticResource ItemHeader1Text}"
+                   Text="{Binding Title, FallbackValue='Alexander'}"                   
+                   Margin="92 15 0 0" />
+        <TextBlock Name="textBlockDate"
+                   Text="{Binding Subtitle, FallbackValue='1 200 000'}"
+                   Margin="92 46 0 0"
+                   Foreground="{StaticResource PhoneCaptionGrayBrush}" />
+       
+    </Grid>
+</UserControl>

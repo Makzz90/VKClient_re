@@ -1,0 +1,52 @@
+﻿<framework:PageBase
+    x:Class="VKClient.Common.UC.SelectionPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:uc="clr-namespace:VKClient.Common.UC;assembly=VKClient.Common"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:framework="clr-namespace:VKClient.Common.Framework;assembly=VKClient.Common"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    shell:SystemTray.IsVisible="True"
+    mc:Ignorable="d"
+    
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <uc:GenericHeaderUC Title="{Binding SelectionTitle, Converter={StaticResource StringToUpper}}"
+                            HideSandwitchButton="True"/>
+
+        <framework:ExtendedLongListSelector Grid.Row="1"
+                                            ItemsSource="{Binding Items}">
+            <framework:ExtendedLongListSelector.ListHeader>
+                <Rectangle Height="16"/>
+            </framework:ExtendedLongListSelector.ListHeader>
+            <framework:ExtendedLongListSelector.ListFooter>
+                <Rectangle Height="16"/>
+            </framework:ExtendedLongListSelector.ListFooter>
+            <framework:ExtendedLongListSelector.ItemTemplate>
+                <DataTemplate>
+                    <Grid Background="Transparent" 
+                          framework:MetroInMotion.Tilt="2.5"
+                          Tap="Item_OnClicked"
+                          Height="64">
+                        <TextBlock Text="{Binding Title}"
+                                   Foreground="{Binding Foreground}"
+                                   FontSize="25.333"
+                                   Margin="16,13,16,0"/>
+                    </Grid>
+                </DataTemplate>
+            </framework:ExtendedLongListSelector.ItemTemplate>
+        </framework:ExtendedLongListSelector>
+
+    </Grid>
+
+</framework:PageBase>

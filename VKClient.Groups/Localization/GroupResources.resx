@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="GroupsListPage_Title" xml:space="preserve">
+    <value>GROUPS</value>
+  </data>
+  <data name="GroupsListPage_Manage" xml:space="preserve">
+    <value>managed</value>
+  </data>
+  <data name="TwoFourSubscribersFrm" xml:space="preserve">
+    <value>{0} subscribers</value>
+  </data>
+  <data name="GroupsListPage_FutureEvents" xml:space="preserve">
+    <value>Upcoming events</value>
+  </data>
+  <data name="GroupsListPage_TitleFrm" xml:space="preserve">
+    <value>{0}'S GROUPS</value>
+  </data>
+  <data name="Audios" xml:space="preserve">
+    <value>audios</value>
+  </data>
+  <data name="OneTopicFrm" xml:space="preserve">
+    <value>{0} topic</value>
+  </data>
+  <data name="GroupsListPage_Communities" xml:space="preserve">
+    <value>communities</value>
+  </data>
+  <data name="CancelRequest" xml:space="preserve">
+    <value>cancel request</value>
+  </data>
+  <data name="TwoFourMessagesFrm" xml:space="preserve">
+    <value>{0} messages</value>
+  </data>
+  <data name="JoinGroup" xml:space="preserve">
+    <value>Join </value>
+  </data>
+  <data name="GlobalSearch" xml:space="preserve">
+    <value>Global search</value>
+  </data>
+  <data name="FiveEventsFrm" xml:space="preserve">
+    <value>{0} events</value>
+  </data>
+  <data name="PublicGroup" xml:space="preserve">
+    <value>open community</value>
+  </data>
+  <data name="TwoFourEventsFrm" xml:space="preserve">
+    <value>{0} events</value>
+  </data>
+  <data name="FiveSubscribersFrm" xml:space="preserve">
+    <value>{0} subscribers</value>
+  </data>
+  <data name="Videos" xml:space="preserve">
+    <value>videos</value>
+  </data>
+  <data name="OneMemberFrm" xml:space="preserve">
+    <value>{0} member</value>
+  </data>
+  <data name="OneCommunityFrm" xml:space="preserve">
+    <value>{0} community</value>
+  </data>
+  <data name="EventMaybe" xml:space="preserve">
+    <value>maybe</value>
+  </data>
+  <data name="FiveCommunitiesFrm" xml:space="preserve">
+    <value>{0} communities</value>
+  </data>
+  <data name="Photos" xml:space="preserve">
+    <value>photos</value>
+  </data>
+  <data name="NoCommunitiesFound" xml:space="preserve">
+    <value>No communities</value>
+  </data>
+  <data name="AcceptInvitation" xml:space="preserve">
+    <value>accept invitation</value>
+  </data>
+  <data name="FiveMembersFrm" xml:space="preserve">
+    <value>{0} members</value>
+  </data>
+  <data name="PublicPage" xml:space="preserve">
+    <value>public page</value>
+  </data>
+  <data name="NoInvitations" xml:space="preserve">
+    <value>No invitations yet</value>
+  </data>
+  <data name="NoEvents" xml:space="preserve">
+    <value>No events yet</value>
+  </data>
+  <data name="EventJoin" xml:space="preserve">
+    <value>join</value>
+  </data>
+  <data name="SUBSCRIBERS" xml:space="preserve">
+    <value>SUBSCRIBERS</value>
+  </data>
+  <data name="OneMessageFrm" xml:space="preserve">
+    <value>{0} message</value>
+  </data>
+  <data name="FiveTopicsFrm" xml:space="preserve">
+    <value>{0} topics</value>
+  </data>
+  <data name="Unsubscribe" xml:space="preserve">
+    <value>unsubscribe</value>
+  </data>
+  <data name="OneSubscriberFrm" xml:space="preserve">
+    <value>{0} subscriber</value>
+  </data>
+  <data name="NoParticipantsYet" xml:space="preserve">
+    <value>No participants</value>
+  </data>
+  <data name="LeaveTheGroup" xml:space="preserve">
+    <value>leave the group</value>
+  </data>
+  <data name="NoTopics" xml:space="preserve">
+    <value>No topics yet</value>
+  </data>
+  <data name="TwoFourMembersFrm" xml:space="preserve">
+    <value>{0} members</value>
+  </data>
+  <data name="Event" xml:space="preserve">
+    <value>event</value>
+  </data>
+  <data name="Audio" xml:space="preserve">
+    <value>audio</value>
+  </data>
+  <data name="Group" xml:space="preserve">
+    <value>group</value>
+  </data>
+  <data name="Video" xml:space="preserve">
+    <value>video</value>
+  </data>
+  <data name="Photo" xml:space="preserve">
+    <value>photo</value>
+  </data>
+  <data name="GroupsListPage_PastEvents" xml:space="preserve">
+    <value>Past events</value>
+  </data>
+  <data name="ClosedGroup" xml:space="preserve">
+    <value>closed community</value>
+  </data>
+  <data name="SELECTAGROUP" xml:space="preserve">
+    <value>SELECT A COMMUNITY</value>
+  </data>
+  <data name="FiveMessagesFrm" xml:space="preserve">
+    <value>{0} messages</value>
+  </data>
+  <data name="DeclineInvitation" xml:space="preserve">
+    <value>decline invitation</value>
+  </data>
+  <data name="SendRequest" xml:space="preserve">
+    <value>send request</value>
+  </data>
+  <data name="TwoFourCommunitiesFrm" xml:space="preserve">
+    <value>{0} communities</value>
+  </data>
+  <data name="PARTICIPANTS" xml:space="preserve">
+    <value>PARTICIPANTS</value>
+  </data>
+  <data name="TwoFourTopicsFrm" xml:space="preserve">
+    <value>{0} topics</value>
+  </data>
+  <data name="NoSubscribersYet" xml:space="preserve">
+    <value>No subscribers</value>
+  </data>
+  <data name="GroupInvitationsPage_Title" xml:space="preserve">
+    <value>INVITATIONS</value>
+  </data>
+  <data name="NoCommunites" xml:space="preserve">
+    <value>No communities yet</value>
+  </data>
+  <data name="GroupPage_Page" xml:space="preserve">
+    <value>page</value>
+  </data>
+  <data name="GroupPage_Info" xml:space="preserve">
+    <value>information</value>
+  </data>
+  <data name="Subscriptions" xml:space="preserve">
+    <value>Subscriptions</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>description</value>
+  </data>
+  <data name="themes" xml:space="preserve">
+    <value>topics</value>
+  </data>
+  <data name="PrivateGroup" xml:space="preserve">
+    <value>private community</value>
+  </data>
+  <data name="EventDecline" xml:space="preserve">
+    <value>decline</value>
+  </data>
+  <data name="GroupsListPage_All" xml:space="preserve">
+    <value>all</value>
+  </data>
+  <data name="GroupsListPage_Events" xml:space="preserve">
+    <value>events</value>
+  </data>
+  <data name="ShowOnMap" xml:space="preserve">
+    <value>show on map</value>
+  </data>
+  <data name="OneEventFrm" xml:space="preserve">
+    <value>{0} event</value>
+  </data>
+  <data name="Link" xml:space="preserve">
+    <value>link</value>
+  </data>
+</root>

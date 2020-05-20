@@ -1,0 +1,57 @@
+﻿<virtItems:UserControlVirtualizable x:Class="VKClient.Common.VideoCatalog.CatalogItemsHorizontalExtUC"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:framework="clr-namespace:VKClient.Common.Framework;assembly=VKClient.Common"
+             xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+             xmlns:virtItems="clr-namespace:VKClient.Common.Library.VirtItems;assembly=VKClient.Common"
+             xmlns:local="clr-namespace:VKClient.Common.VideoCatalog"
+             mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="242" d:DesignWidth="480">
+
+    <Grid x:Name="LayoutRoot"
+          Height="242"
+          Width="480"          
+          Background="{StaticResource PhoneNewsBackgroundBrush}">
+
+        <StackPanel VerticalAlignment="Top"
+                    HorizontalAlignment="Left" Margin="0 0 0 0">
+            <framework:ExtendedLongListSelector x:Name="horizontalListBox"                                              
+                                                ManipulationStarted="horizontalListBox_ManipulationStarted"
+                                                ManipulationDelta="horizontalListBox_ManipulationDelta"
+                                                ManipulationCompleted="horizontalListBox_ManipulationCompleted"
+                                                Style="{StaticResource PhotosListStyle}"
+                                                ItemsSource="{Binding CatalogItemsVM.Collection}"
+                                                IsFlatList="True"
+                                                Height="480"
+                                                Width="234"
+                                                Margin="123 -123 0 0"
+                                                Link="ExtendedLongListSelector_Link_1">
+
+                <framework:ExtendedLongListSelector.Projection>
+                    <PlaneProjection RotationZ="90" />
+                </framework:ExtendedLongListSelector.Projection>
+
+                <framework:ExtendedLongListSelector.ItemTemplate>
+                    <DataTemplate>
+                        <local:CatalogHorizontalItemExtUC />
+                    </DataTemplate>
+                </framework:ExtendedLongListSelector.ItemTemplate>
+                <framework:ExtendedLongListSelector.ListHeaderTemplate>
+                    <DataTemplate>
+                        <Grid Height="8" />
+                    </DataTemplate>
+                </framework:ExtendedLongListSelector.ListHeaderTemplate>
+                <framework:ExtendedLongListSelector.ListFooterTemplate>
+                    <DataTemplate>
+                        <Grid Height="8" />
+                    </DataTemplate>
+                </framework:ExtendedLongListSelector.ListFooterTemplate>
+            </framework:ExtendedLongListSelector>
+        </StackPanel>
+    </Grid>
+</virtItems:UserControlVirtualizable>

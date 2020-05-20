@@ -1,0 +1,411 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1DE8BF72-1732-4303-AC92-9AF84CD79334}</ProjectGuid>
+    <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VKClient.Groups</RootNamespace>
+    <AssemblyName>VKClient.Groups</AssemblyName>
+    <TargetFrameworkIdentifier>WindowsPhone</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v8.1</TargetFrameworkVersion>
+    <SilverlightVersion>
+    </SilverlightVersion>
+    <SilverlightApplication>false</SilverlightApplication>
+    <ValidateXaml>true</ValidateXaml>
+    <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <TargetFrameworkProfile />
+    <DefaultLanguage>ru-RU</DefaultLanguage>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\x86\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\x86\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|ARM' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\ARM\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|ARM' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\ARM\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget />
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="CommunityCreationPage.cs">
+      <DependentUpon>communitycreationpage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CommunitySubscribersPage.cs">
+      <DependentUpon>communitysubscriberspage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GroupDiscussionPage.cs">
+      <DependentUpon>groupdiscussionpage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GroupDiscussionsPage.cs">
+      <DependentUpon>groupdiscussionspage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GroupInvitationsPage.cs">
+      <DependentUpon>groupinvitationspage.xaml</DependentUpon>
+    </Compile>
+    <None Include="GroupPage.cs">
+      <DependentUpon>grouppage.xaml</DependentUpon>
+    </None>
+    <Compile Include="GroupsListPage.cs">
+      <DependentUpon>groupslistpage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Library\CommunityCreationViewModel.cs" />
+    <Compile Include="Library\CommunitySubscribersSearchDataProvider.cs" />
+    <Compile Include="Library\CommunitySubscribersViewModel.cs" />
+    <Compile Include="Library\GroupDiscussionsViewModel.cs" />
+    <Compile Include="Library\GroupDiscussionViewModel.cs" />
+    <Compile Include="Library\GroupInvitationsViewModel.cs" />
+    <Compile Include="Library\GroupsListViewModel.cs" />
+    <Compile Include="Library\GroupsSearchDataProvider.cs" />
+    <Compile Include="Library\GroupViewModel.cs" />
+    <Compile Include="Library\ThemeHeader.cs" />
+    <Compile Include="Localization\GroupLocalizedStrings.cs" />
+    <Compile Include="Localization\GroupResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GroupResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Management\BlacklistPage.cs">
+      <DependentUpon>blacklistpage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Management\BlockDurationPicker.cs">
+      <DependentUpon>blockdurationpicker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Management\BlockEditingPage.cs">
+      <DependentUpon>blockeditingpage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Management\Information\InformationPage.cs">
+      <DependentUpon>informationpage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Management\Information\InformationViewModel.cs" />
+    <Compile Include="Management\Information\Library\AgeLimitsViewModel.cs" />
+    <Compile Include="Management\Information\Library\CommonFieldsViewModel.cs" />
+    <Compile Include="Management\Information\Library\CommunityPlacementViewModel.cs" />
+    <Compile Include="Management\Information\Library\CommunityTypeSelectionViewModel.cs" />
+    <Compile Include="Management\Information\Library\EventDatesViewModel.cs" />
+    <Compile Include="Management\Information\Library\EventOrganizerViewModel.cs" />
+    <Compile Include="Management\Information\Library\FoundationDateViewModel.cs" />
+    <Compile Include="Management\Information\PlacementSelectionPage.cs">
+      <DependentUpon>placementselectionpage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Management\Information\PlacementSelectionViewModel.cs" />
+    <Compile Include="Management\Information\UC\AgeLimitsUC.cs">
+      <DependentUpon>agelimitsuc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Management\Information\UC\CommonFieldsUC.cs">
+      <DependentUpon>commonfieldsuc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Management\Information\UC\CommunityPlacementUC.cs">
+      <DependentUpon>communityplacementuc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Management\Information\UC\CommunityTypeSelectionUC.cs">
+      <DependentUpon>communitytypeselectionuc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Management\Information\UC\EventDatesUC.cs">
+      <DependentUpon>eventdatesuc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Management\Information\UC\EventOrganizerUC.cs">
+      <DependentUpon>eventorganizeruc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Management\Information\UC\FoundationDateUC.cs">
+      <DependentUpon>foundationdateuc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Management\InvitationsPage.cs">
+      <DependentUpon>invitationspage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Management\Library\BlacklistViewModel.cs" />
+    <Compile Include="Management\Library\BlockDurationPickerViewModel.cs" />
+    <Compile Include="Management\Library\BlockEditingViewModel.cs" />
+    <Compile Include="Management\Library\InvitationsViewModel.cs" />
+    <Compile Include="Management\Library\LinkCreationViewModel.cs" />
+    <Compile Include="Management\Library\LinksViewModel.cs" />
+    <Compile Include="Management\Library\MainViewModel.cs" />
+    <Compile Include="Management\Library\ManagerEditingViewModel.cs" />
+    <Compile Include="Management\Library\ManagersViewModel.cs" />
+    <Compile Include="Management\Library\RequestsViewModel.cs" />
+    <Compile Include="Management\Library\ServicesViewModel.cs" />
+    <Compile Include="Management\Library\ServiceSwitchViewModel.cs" />
+    <Compile Include="Management\LinkCreationPage.cs">
+      <DependentUpon>linkcreationpage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Management\LinksPage.cs">
+      <DependentUpon>linkspage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Management\MainPage.cs">
+      <DependentUpon>mainpage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Management\ManagerEditingPage.cs">
+      <DependentUpon>managereditingpage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Management\ManagersPage.cs">
+      <DependentUpon>managerspage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Management\RequestsPage.cs">
+      <DependentUpon>requestspage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Management\ServicesPage.cs">
+      <DependentUpon>servicespage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Management\ServiceSwitchPage.cs">
+      <DependentUpon>serviceswitchpage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UC\CommunityDomainTextBox.cs">
+      <DependentUpon>communitydomaintextbox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UC\CommunityInvitationsUC.cs">
+      <DependentUpon>communityinvitationsuc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UC\CommunityInvitationUC.cs">
+      <DependentUpon>communityinvitationuc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UC\LinkUC.cs">
+      <DependentUpon>linkuc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UC\ServiceOptionUC.cs">
+      <DependentUpon>serviceoptionuc.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VKClient.Audio.Base\VKClient.Audio.Base.csproj">
+      <Project>{3f61632e-1f7a-42c4-bf38-ae07d3e9f383}</Project>
+      <Name>VKClient.Audio.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VKClient.Common\VKClient.Common.csproj">
+      <Project>{e174760f-e91e-4bdc-bd36-4f9d54607104}</Project>
+      <Name>VKClient.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Phone.Controls, Version=8.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Phone.Controls.Toolkit, Version=8.0.1.0, Culture=neutral, PublicKeyToken=b772ad94eb9ca604, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\libs\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="communitycreationpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="communitysubscriberspage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="groupdiscussionpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="groupdiscussionspage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="groupinvitationspage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <None Include="grouppage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </None>
+    <Resource Include="groupslistpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="Management\blacklistpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="Management\blockdurationpicker.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="Management\blockeditingpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="Management\Information\informationpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="Management\Information\placementselectionpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="Management\Information\UC\agelimitsuc.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="Management\Information\UC\commonfieldsuc.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="Management\Information\UC\communityplacementuc.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="Management\Information\UC\communitytypeselectionuc.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="Management\Information\UC\eventdatesuc.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="Management\Information\UC\eventorganizeruc.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="Management\Information\UC\foundationdateuc.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="Management\invitationspage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="Management\linkcreationpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="Management\linkspage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="Management\mainpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="Management\managereditingpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="Management\managerspage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="Management\requestspage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="Management\servicespage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="Management\serviceswitchpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="UC\communitydomaintextbox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="UC\communityinvitationsuc.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="UC\communityinvitationuc.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="UC\linkuc.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="UC\serviceoptionuc.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Localization\GroupResources.be-BY.resx" />
+    <EmbeddedResource Include="Localization\GroupResources.kk-KZ.resx" />
+    <EmbeddedResource Include="Localization\GroupResources.pt-BR.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Localization\GroupResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>GroupResources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Localization\GroupResources.ru-RU.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Localization\GroupResources.uk-UA.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
+  <ProjectExtensions />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

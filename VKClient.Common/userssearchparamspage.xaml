@@ -1,0 +1,215 @@
+﻿<framework:PageBase x:Class="VKClient.Common.UsersSearchParamsPage"
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:framework="clr-namespace:VKClient.Common.Framework"
+                    xmlns:uc="clr-namespace:VKClient.Common.UC"
+                    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                    FontSize="{StaticResource PhoneFontSizeNormal}"
+                    Foreground="{StaticResource PhoneForegroundBrush}"
+                    SupportedOrientations="Portrait"
+                    Orientation="Portrait"
+                    mc:Ignorable="d"
+                    shell:SystemTray.IsVisible="True"
+                    d:DesignHeight="1500">
+
+    <framework:PageBase.Resources>
+        <Storyboard x:Name="ShowCustomAgeAnimation">
+            <DoubleAnimation Storyboard.TargetName="customAgeContainer"
+                             Storyboard.TargetProperty="Height"
+                             To="90"
+                             Duration="0:0:0.2">
+                <DoubleAnimation.EasingFunction>
+                    <CubicEase EasingMode="EaseOut" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+        </Storyboard>
+        <Storyboard x:Name="HideCustomAgeAnimation">
+            <DoubleAnimation Storyboard.TargetName="customAgeContainer"
+                             Storyboard.TargetProperty="Height"
+                             To="0"
+                             Duration="0:0:0.2">
+                <DoubleAnimation.EasingFunction>
+                    <CubicEase EasingMode="EaseOut" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+        </Storyboard>
+    </framework:PageBase.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <uc:GenericHeaderUC x:Name="ucHeader" />
+
+        <Grid Grid.Row="1">
+            <ScrollViewer>
+                <StackPanel Margin="24 0">
+
+                    <TextBlock Margin="0 18"
+                               FontFamily="Segoe WP Semibold"
+                               Foreground="{StaticResource PhoneVKSubtleBrush}"
+                               Text="{Binding LocalizedResources.UsersSearch_Region_Title, Source={StaticResource LocalizedStrings}}" />
+
+                    <Grid framework:MetroInMotion.Tilt="1.5"
+                          Tap="CountryPicker_OnTap">
+                        <StackPanel>
+                            <TextBlock FontSize="25.33"
+                                       Text="{Binding LocalizedResources.CountryPicker_Title, Source={StaticResource LocalizedStrings}}" />
+
+                            <TextBlock Foreground="{StaticResource PhoneVKSubtleBrush}"
+                                       Margin="1 -3 0 0"
+                                       Text="{Binding Country.title, FallbackValue='Russia'}" />
+                        </StackPanel>
+                    </Grid>
+
+                    <Grid Margin="0 20 0 0"
+                          Visibility="{Binding CitySelectorVisibility}"
+                          framework:MetroInMotion.Tilt="1.5"
+                          Tap="CityPicker_OnTap">
+                        <StackPanel>
+                            <TextBlock FontSize="25.33"
+                                       Text="{Binding LocalizedResources.CityPicker_Title, Source={StaticResource LocalizedStrings}}" />
+
+                            <TextBlock Foreground="{StaticResource PhoneVKSubtleBrush}"
+                                       Margin="1 -3 0 0"
+                                       Text="{Binding City.title, FallbackValue='Saint Petersburg'}" />
+                        </StackPanel>
+                    </Grid>
+
+                    <Border Background="{StaticResource PhoneGreyDividerBrush}"
+                            Height="2"
+                            Margin="-23 21 -23 0" />
+
+                    <TextBlock Margin="0 18 0 19"
+                               FontFamily="Segoe WP Semibold"
+                               Foreground="{StaticResource PhoneVKSubtleBrush}"
+                               Text="{Binding LocalizedResources.UsersSearch_Gender_Title, Source={StaticResource LocalizedStrings}}" />
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+
+                        <RadioButton Content="{Binding LocalizedResources.Sex_Any, Source={StaticResource LocalizedStrings}}"
+                                     Margin="-12"
+                                     Tag="0"
+                                     GroupName="Sex"
+                                     IsChecked="{Binding IsAnySex, Mode=TwoWay}" />
+                        <RadioButton Grid.Column="1"
+                                     Grid.Row="0"
+                                     Content="{Binding LocalizedResources.Sex_Female, Source={StaticResource LocalizedStrings}}"
+                                     Margin="-12"
+                                     Tag="1"
+                                     GroupName="Sex"
+                                     IsChecked="{Binding IsFemale, Mode=TwoWay}" />
+                        <RadioButton Grid.Column="0"
+                                     Grid.Row="1"
+                                     Content="{Binding LocalizedResources.Sex_Male, Source={StaticResource LocalizedStrings}}"
+                                     Margin="-12 -4 -12 -8"
+                                     Tag="2"
+                                     GroupName="Sex"
+                                     IsChecked="{Binding IsMale, Mode=TwoWay}" />
+                    </Grid>
+
+                    <Border Background="{StaticResource PhoneGreyDividerBrush}"
+                            Height="2"
+                            Margin="-23 21 -23 0" />
+
+                    <TextBlock Margin="0 18 0 19"
+                               FontFamily="Segoe WP Semibold"
+                               Foreground="{StaticResource PhoneVKSubtleBrush}"
+                               Text="{Binding LocalizedResources.UsersSearch_Age_Title, Source={StaticResource LocalizedStrings}}" />
+
+                    <CheckBox Content="{Binding LocalizedResources.AnyAge, Source={StaticResource LocalizedStrings}}"
+                              Checked="AnyAgeCheckBox_OnChecked"
+                              Unchecked="AnyAgeCheckBox_OnUnchecked"
+                              IsChecked="{Binding IsAnyAge, Mode=TwoWay}"
+                              Margin="-12 -12 -12 -5" />
+
+                    <Border x:Name="customAgeContainer"
+                            Height="90"
+                            Margin="0 -7 0 0">
+                        <Grid Margin="0 20">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+
+                            <uc:ListPickerControl Title="{Binding LocalizedResources.UsersSearch_AgeFrom, Source={StaticResource LocalizedStrings}}"
+                                                  PickerWidth="160"
+                                                  ItemsSource="{Binding AgesFrom}"
+                                                  SelectedItem="{Binding AgeFromSelected, Mode=TwoWay}"
+                                                  ItemPrefix="{Binding LocalizedResources.UsersSearch_AgeFrom, Source={StaticResource LocalizedStrings}}" />
+
+                            <uc:ListPickerControl Grid.Column="1"
+                                                  Title="{Binding LocalizedResources.UsersSearch_AgeTo, Source={StaticResource LocalizedStrings}}"
+                                                  PickerWidth="160"
+                                                  ItemsSource="{Binding AgesTo}"
+                                                  SelectedItem="{Binding AgeToSelected, Mode=TwoWay}"
+                                                  ItemPrefix="{Binding LocalizedResources.UsersSearch_AgeTo, Source={StaticResource LocalizedStrings}}" />
+                        </Grid>
+                    </Border>
+
+                    <Border Background="{StaticResource PhoneGreyDividerBrush}"
+                            Height="2"
+                            Margin="-23 1 -23 19" />
+
+                    <TextBlock Margin="0 0 0 25"
+                               FontFamily="Segoe WP Semibold"
+                               Foreground="{StaticResource PhoneVKSubtleBrush}"
+                               Text="{Binding LocalizedResources.UsersSearch_RelationshipStatus_Title, Source={StaticResource LocalizedStrings}}" />
+
+                    <uc:ListPickerControl Title="{Binding LocalizedResources.RelationshipStatusPicker_Title, Source={StaticResource LocalizedStrings}}"
+                                          ItemsSource="{Binding RelationshipTypes}"
+                                          SelectedItem="{Binding RelationshipType, Mode=TwoWay}" />
+
+                    <Border Background="{StaticResource PhoneGreyDividerBrush}"
+                            Height="2"
+                            Margin="-23 21 -23 13" />
+
+                    <CheckBox Content="{Binding LocalizedResources.UsersSearch_WithPhoto, Source={StaticResource LocalizedStrings}}"
+                              IsChecked="{Binding IsWithPhoto, Mode=TwoWay}"
+                              Margin="-12 0" />
+                    <CheckBox Content="{Binding LocalizedResources.UsersSearch_OnlineNow, Source={StaticResource LocalizedStrings}}"
+                              IsChecked="{Binding IsOnlineNow, Mode=TwoWay}"
+                              Margin="-12 -4" />
+
+
+                    <Grid Margin="0 0 0 150">
+
+                        <!--<StackPanel>
+                            <TextBlock FontSize="25.33"
+                                       Text="статус" />
+
+                            <TextBlock Foreground="{StaticResource PhoneVKSubtleBrush}"
+                                       Margin="1 -3 0 0"
+                                       Text="{Binding NewsFilterDescStr, FallbackValue='Не выбран'}" />
+                        </StackPanel>-->
+                    </Grid>
+
+
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+
+        <!--<Image Grid.Row="0"
+               Grid.RowSpan="2"
+               Source="/Temp/wp-search-params.png"
+               Opacity="0.5"
+               VerticalAlignment="Top"
+               Margin="0"
+               Stretch="None" />-->
+    </Grid>
+
+</framework:PageBase>

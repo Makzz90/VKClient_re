@@ -1,0 +1,87 @@
+﻿<UserControl x:Class="VKClient.Common.UC.w10m.ToggleSwitch"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="200" d:DesignWidth="200">
+
+    <UserControl.Resources>
+        <Storyboard x:Name="AnimateChecked">
+            <DoubleAnimation Storyboard.TargetName="SwitchBackground"
+                             Storyboard.TargetProperty="(UIElement.Opacity)"
+                             To="1"
+                             Duration="0:0:0.2"
+                             x:Name="AnimateCheckedAnim"/>
+
+            <DoubleAnimation Storyboard.TargetName="SwitchKnobOn"
+                             Storyboard.TargetProperty="(UIElement.Opacity)"
+                             To="1"
+                             Duration="0:0:0.2"
+                             x:Name="AnimateOp"/>
+        </Storyboard>
+    </UserControl.Resources>
+
+    <StackPanel>
+        <TextBlock Text="Title text" HorizontalAlignment="Left" Name="textBlockTitle" Visibility="Collapsed" TextWrapping="Wrap"/>
+
+        <TextBlock Text="Description text" Name="textBlockDescription" Visibility="Collapsed" TextWrapping="Wrap" Margin="0,5,0,0"/>
+
+        <Grid Tap="Grid_Tap" HorizontalAlignment="Left" Margin="0,5,0,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Rectangle x:Name="OuterBorder"
+                        Height="20"
+                        Width="44"
+                        RadiusX="10"
+                        RadiusY="10"
+                        Stroke="{StaticResource PhoneVKCheckBoxForegroundBrush}"
+                        StrokeThickness="2" />
+            <Rectangle x:Name="SwitchBackground"
+                        Height="20"
+                        Width="44"
+                        RadiusX="10"
+                        RadiusY="10"
+                        Fill="{StaticResource PhoneVKCheckBoxForegroundBrush}"
+                        Opacity="0">
+
+            </Rectangle>
+            <Grid x:Name="SwitchKnobBounds"
+              Width="20"
+              Height="20"
+              Margin="-24 0 0 0"
+              ManipulationDelta="ForeGroundCellGrid_ManipulationDelta"
+              ManipulationCompleted="ForeGroundCellGrid_ManipulationCompleted"
+
+              >
+
+
+                <Ellipse
+                  x:Name="SwitchKnobOff"
+                  Width="10"
+                  Height="10" 
+                  Fill="{StaticResource PhoneVKCheckBoxForegroundBrush}"/>
+                <Ellipse
+                  x:Name="SwitchKnobOn"
+                  Fill="White"
+                  Width="10"
+                  Height="10"
+                  Opacity="0"/>
+                <Grid.RenderTransform>
+                    <CompositeTransform x:Name="ForGroundCellXPos" TranslateX="0"/>
+                </Grid.RenderTransform>
+            </Grid>
+
+            <Grid Grid.Column="1" Margin="12,0,0,0" Name="TextState">
+                <TextBlock Name="TextStateOn" Text="{Binding LocalizedResources.Settings_EnabledNeutral, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Center" Visibility="Collapsed" />
+                <TextBlock Name="TextStateOff" Text="{Binding LocalizedResources.Settings_DisabledNeutral, Source={StaticResource LocalizedStrings}}" VerticalAlignment="Center"/>
+            </Grid>
+        </Grid>
+    </StackPanel>
+</UserControl>

@@ -1,0 +1,329 @@
+﻿<framework:PageBase x:Class="VKClient.Photos.PhotoPickerPhotos"
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+                    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:localization="clr-namespace:VKClient.Photos.Localization"
+                    xmlns:framework="clr-namespace:VKClient.Common.Framework;assembly=VKClient.Common"
+                    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+                    xmlns:uc="clr-namespace:VKClient.Common.UC;assembly=VKClient.Common"
+                    xmlns:photoUC="clr-namespace:VKClient.Photos.UC"
+                    xmlns:imageEditor="clr-namespace:VKClient.Photos.ImageEditor"
+                    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                    FontSize="{StaticResource PhoneFontSizeNormal}"
+                    Foreground="{StaticResource PhoneForegroundBrush}"
+                    SupportedOrientations="Portrait"
+                    Orientation="Portrait"
+                    mc:Ignorable="d"
+                    shell:SystemTray.IsVisible="True"
+                    shell:SystemTray.Opacity="0">
+    <framework:PageBase.Resources>
+        <localization:PhotoLocalizedStrings x:Key="LocStr" />
+        
+        <DataTemplate x:Key="PhotosHeaderTemplate">
+            <Grid Height="2"/>
+        </DataTemplate>
+        <DataTemplate x:Key="PhotosRowTemplate">
+
+            <StackPanel Orientation="Horizontal">
+                <Grid Width="117" 
+                      Height="117"
+                        VerticalAlignment="Center"
+                      Margin="0 2 2 2"
+                      Visibility="{Binding Photo1IsSet}"
+                        framework:MetroInMotion.Tilt="1">
+
+                    <Rectangle Width="117"
+                                   HorizontalAlignment="Left"
+                                   Height="117"
+                                   Style="{StaticResource PhotoPlaceholderRectangle}"
+                                   
+                                   Visibility="{Binding Photo1IsSet}" />
+
+
+                    <Image Width="117"
+                           Height="117"
+                           HorizontalAlignment="Left"
+                           Tag="1"
+                           ManipulationStarted="Image_ManipulationStarted_1"
+                           ManipulationDelta="Image_ManipulationDelta_1"
+                           ManipulationCompleted="Image_ManipulationCompleted_1"
+                           framework:ImageLoader.StreamSource="{Binding Photo1.ThumbnailStream}"
+                           Stretch="UniformToFill"
+                           Tap="Image_Tap_1">
+                    </Image>
+
+
+
+                    <Ellipse Fill="{StaticResource PhoneButtonTextForegroundBrush}"
+                             Width="29"
+                             HorizontalAlignment="Right"
+                             VerticalAlignment="Top"
+                             Height="29"
+                             Opacity="{Binding SelectionOpacity}"
+                             Margin="0 8.5 8.5 0"
+                             Visibility="{Binding Photo1.IsSelectedVisibility}" />
+
+
+                    <Image Width="30"
+                           Height="30"
+                           Tag="1"
+                           HorizontalAlignment="Right"
+                             VerticalAlignment="Top"
+                           Margin="0 8 8 0"
+                           Opacity="{Binding SelectionOpacity}"
+                           framework:ImageLoader.UriSource="{Binding Photo1.SelectUnselectImageUri}">
+
+                        <Image.RenderTransform>
+                            <ScaleTransform />
+                        </Image.RenderTransform>
+                    </Image>
+
+                    <Rectangle Width="45"
+                               Height="45"
+                                HorizontalAlignment="Right"
+                             VerticalAlignment="Top"
+                               Tag="1"
+                               Fill="Transparent"
+                               Tap="SelectUnselectTap"
+                               />
+
+                </Grid>
+
+
+
+                <Grid    Margin="2 2 2 2"
+                         Width="117"
+                         Height="117"
+                         Visibility="{Binding Photo2IsSet}">
+
+                    <Rectangle Width="117"
+                               HorizontalAlignment="Left"
+                               Height="117"
+                               Style="{StaticResource PhotoPlaceholderRectangle}" />
+
+                    <Image Width="117"
+                           Height="117"
+                           HorizontalAlignment="Left"
+                           Tag="2"
+                           ManipulationStarted="Image_ManipulationStarted_1"
+                           ManipulationDelta="Image_ManipulationDelta_1"
+                           ManipulationCompleted="Image_ManipulationCompleted_1"
+                           framework:ImageLoader.StreamSource="{Binding Photo2.ThumbnailStream}"
+                           Stretch="UniformToFill"
+                           Tap="Image_Tap_1">
+
+
+
+                    </Image>
+
+                    <Ellipse Fill="{StaticResource PhoneButtonTextForegroundBrush}"
+                             Width="29"
+                             HorizontalAlignment="Right"
+                             VerticalAlignment="Top"
+                             Height="29"
+                             Opacity="{Binding SelectionOpacity}"
+                             Margin="0 8.5 8.5 0"
+                             Visibility="{Binding Photo2.IsSelectedVisibility}" />
+
+
+                    <Image Width="30"
+                           Height="30"
+                           Tag="2"
+                           HorizontalAlignment="Right"
+                             VerticalAlignment="Top"
+                           Margin="0 8 8 0"
+                           Opacity="{Binding SelectionOpacity}"
+                           framework:ImageLoader.UriSource="{Binding Photo2.SelectUnselectImageUri}">
+
+                        <Image.RenderTransform>
+                            <ScaleTransform />
+                        </Image.RenderTransform>
+                    </Image>
+
+                    <Rectangle Width="45"
+                               Height="45"
+                                HorizontalAlignment="Right"
+                             VerticalAlignment="Top"
+                               Tag="2"
+                               Fill="Transparent"
+                               Tap="SelectUnselectTap"
+                               />
+
+
+                </Grid>
+
+
+
+
+                <Grid   Margin="2 2 2 2"
+                        Width="117"
+                        Height="117"
+                        Visibility="{Binding Photo3IsSet}">
+
+                    <Rectangle Width="117"
+                               Height="117"
+                               HorizontalAlignment="Left"
+                               Style="{StaticResource PhotoPlaceholderRectangle}" />
+
+                    <Image Width="117"
+                           Height="117"
+                           ManipulationStarted="Image_ManipulationStarted_1"
+                           ManipulationDelta="Image_ManipulationDelta_1"
+                           ManipulationCompleted="Image_ManipulationCompleted_1"
+                           framework:ImageLoader.StreamSource="{Binding Photo3.ThumbnailStream}"
+                           HorizontalAlignment="Left"
+                           Tag="3"
+                           Stretch="UniformToFill"
+                           Tap="Image_Tap_1">
+
+                    </Image>
+
+                    <Ellipse Fill="{StaticResource PhoneButtonTextForegroundBrush}"
+                             Width="29"
+                             HorizontalAlignment="Right"
+                             VerticalAlignment="Top"
+                             Height="29"
+                             Opacity="{Binding SelectionOpacity}"
+                             Margin="0 8.5 8.5 0"
+                             Visibility="{Binding Photo3.IsSelectedVisibility}" />
+
+
+                    <Image Width="30"
+                           Height="30"
+                           Tag="3"
+                           HorizontalAlignment="Right"
+                             VerticalAlignment="Top"
+                           Margin="0 8 8 0"
+                           Opacity="{Binding SelectionOpacity}"
+                           framework:ImageLoader.UriSource="{Binding Photo3.SelectUnselectImageUri}">
+
+                        <Image.RenderTransform>
+                            <ScaleTransform />
+                        </Image.RenderTransform>
+                    </Image>
+
+                    <Rectangle Width="45"
+                               Height="45"
+                                HorizontalAlignment="Right"
+                             VerticalAlignment="Top"
+                               Tag="3"
+                               Fill="Transparent"
+                               Tap="SelectUnselectTap"
+                               />
+
+
+                </Grid>
+
+
+                <Grid     Margin="2 2 2 2"
+                          Width="117"
+                          Height="117"
+                          Visibility="{Binding Photo4IsSet}">
+
+                    <Rectangle Width="117"
+                               Height="117"
+                               Style="{StaticResource PhotoPlaceholderRectangle}"
+                               HorizontalAlignment="Left" />
+
+
+                    <Image Width="117"
+                           Height="117"
+                           ManipulationStarted="Image_ManipulationStarted_1"
+                           ManipulationDelta="Image_ManipulationDelta_1"
+                           ManipulationCompleted="Image_ManipulationCompleted_1"
+                           HorizontalAlignment="Left"
+                           Tag="4"
+                           framework:ImageLoader.StreamSource="{Binding Photo4.ThumbnailStream}"
+                           Tap="Image_Tap_1"
+                           Stretch="UniformToFill">
+
+
+                    </Image>
+
+                    <Ellipse Fill="{StaticResource PhoneButtonTextForegroundBrush}"
+                             Width="29"
+                             HorizontalAlignment="Right"
+                             VerticalAlignment="Top"
+                             Height="29"
+                             Opacity="{Binding SelectionOpacity}"
+                             Margin="0 8.5 8.5 0"
+                             Visibility="{Binding Photo4.IsSelectedVisibility}" />
+
+
+                    <Image Width="30"
+                           Height="30"
+                           Tag="4"
+                           HorizontalAlignment="Right"
+                             VerticalAlignment="Top"
+                           Margin="0 8 8 0"
+                           Opacity="{Binding SelectionOpacity}"
+                           framework:ImageLoader.UriSource="{Binding Photo4.SelectUnselectImageUri}">
+
+                        <Image.RenderTransform>
+                            <ScaleTransform />
+                        </Image.RenderTransform>
+                    </Image>
+
+                    <Rectangle Width="45"
+                               Height="45"
+                                HorizontalAlignment="Right"
+                             VerticalAlignment="Top"
+                               Tag="4"
+                               Fill="Transparent"
+                               Tap="SelectUnselectTap"
+                               />
+
+                </Grid>
+
+            </StackPanel>
+
+
+        </DataTemplate>
+
+
+        <DataTemplate x:Key="PhotosFooterTemplate">
+            <TextBlock Style="{StaticResource GrayTextStyle}"
+                       Margin="0,12,0,84"
+                       Text="{Binding PhotosCountStr}"
+                       HorizontalAlignment="Center">
+
+            </TextBlock>
+        </DataTemplate>
+    </framework:PageBase.Resources>
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot"          
+          Background="Transparent">        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+             
+        
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Grid.Row="1">
+            <framework:ExtendedLongListSelector Name="itemsControlPhotos"                                               
+                                                framework:TiltEffect.IsTiltEnabled="False"
+                                                ListFooter="{Binding}"
+                                                ListFooterTemplate="{StaticResource PhotosFooterTemplate}"
+                                                ListHeaderTemplate="{StaticResource PhotosHeaderTemplate}"
+                                                IsFlatList="True"
+                                                Link="photosLink"
+                                                ItemsSource="{Binding Photos}"
+                                                ItemTemplate="{StaticResource PhotosRowTemplate}">
+
+            </framework:ExtendedLongListSelector>
+        </Grid>
+
+
+        <photoUC:PickAlbumUC x:Name="ucPickAlbum" Visibility="Collapsed" DataContext="{x:Null}" Grid.Row="1"/>
+        <uc:GenericHeaderUC x:Name="ucHeader" HideSandwitchButton="True" />
+        <imageEditor:ImageEditorDecorator2UC x:Name="imageEditor" 
+                                           Grid.RowSpan="2"  
+                                            />
+    </Grid>
+
+</framework:PageBase>

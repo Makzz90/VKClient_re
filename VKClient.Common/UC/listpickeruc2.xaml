@@ -1,0 +1,109 @@
+﻿<UserControl x:Class="VKClient.Common.UC.ListPickerUC2"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:framework="clr-namespace:VKClient.Common.Framework"
+             mc:Ignorable="d"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             d:DesignHeight="480"
+             d:DesignWidth="480"
+             CacheMode="BitmapCache">
+
+    <UserControl.Resources>
+        <Storyboard x:Name="AnimClip">
+            <DoubleAnimation Storyboard.TargetName="listBox"
+                             Storyboard.TargetProperty="Opacity"
+                             Duration="0"
+                             From="0"
+                             To="1" />
+            <DoubleAnimation Storyboard.TargetName="scaleTransform"
+                             Storyboard.TargetProperty="ScaleY"
+                             Duration="0:0:0.300"
+                             From="0"
+                             To="1">
+                <DoubleAnimation.EasingFunction>
+                    <CubicEase EasingMode="EaseOut" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+        </Storyboard>
+
+        <Storyboard x:Name="AnimClipHide">
+            <DoubleAnimation Storyboard.TargetName="transform"
+                             Storyboard.TargetProperty="Y"
+                             Duration="0:0:0.320"
+                             To="5">
+                <DoubleAnimation.EasingFunction>
+                    <CubicEase EasingMode="EaseOut" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetName="containerGrid"
+                             Storyboard.TargetProperty="Opacity"
+                             Duration="0:0:0.160"
+                             BeginTime="0:0:0.160"
+                             To="0">
+                <DoubleAnimation.EasingFunction>
+                    <CubicEase EasingMode="EaseOut" />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+        </Storyboard>
+    </UserControl.Resources>
+
+    <Grid x:Name="containerGrid"
+          Background="#f2f2f2"
+          CacheMode="BitmapCache">
+
+        <Grid.RenderTransform>
+            <TranslateTransform x:Name="transform" />
+        </Grid.RenderTransform>
+
+        <Grid.Clip>
+            <RectangleGeometry x:Name="rectGeometry">
+                <RectangleGeometry.Transform>
+                    <ScaleTransform x:Name="scaleTransform"
+                                    CenterX="0"
+                                    CenterY="0"
+                                    ScaleX="1"
+                                    ScaleY="1" />
+                </RectangleGeometry.Transform>
+            </RectangleGeometry>
+        </Grid.Clip>
+
+        <Grid x:Name="gridListBoxContainer"
+              Height="800"
+              VerticalAlignment="Top"
+              CacheMode="BitmapCache">
+            <framework:ExtendedLongListSelector x:Name="listBox"
+                                                VerticalAlignment="Top"
+                                                SizeChanged="ListBox_OnSizeChanged"
+                                                Tap="ListBox_OnTap">
+
+                <framework:ExtendedLongListSelector.ListHeader>
+                    <Canvas x:Name="listHeader" />
+                </framework:ExtendedLongListSelector.ListHeader>
+
+                <framework:ExtendedLongListSelector.ListFooter>
+                    <Canvas x:Name="listFooter" />
+                </framework:ExtendedLongListSelector.ListFooter>
+
+                <framework:ExtendedLongListSelector.ItemTemplate>
+                    <DataTemplate>
+                        <Border framework:MetroInMotion.Tilt="1.5"
+                                Height="64"
+                                Background="Transparent">
+                            <TextBlock FontSize="25.33"
+                                       Margin="16 15"
+                                       Text="{Binding}" />
+                        </Border>
+                    </DataTemplate>
+                </framework:ExtendedLongListSelector.ItemTemplate>
+            </framework:ExtendedLongListSelector>
+        </Grid>
+
+        <Border x:Name="borderDisable"
+                Background="Transparent"
+                Visibility="Collapsed" />
+    </Grid>
+</UserControl>

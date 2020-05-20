@@ -1,0 +1,89 @@
+﻿<framework:PageBase x:Class="VKClient.Common.CreateEditPollPage"
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:framework="clr-namespace:VKClient.Common.Framework;assembly=VKClient.Common"
+                    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+                    xmlns:library="clr-namespace:VKClient.Common.Library"
+                    xmlns:uc="clr-namespace:VKClient.Common.UC"
+                    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:emoji="clr-namespace:VKClient.Common.Emoji"
+                    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                    FontSize="{StaticResource PhoneFontSizeNormal}"
+                    Foreground="{StaticResource PhoneForegroundBrush}"
+                    SupportedOrientations="Portrait"
+                    Orientation="Portrait"
+                    mc:Ignorable="d"
+                    shell:SystemTray.IsVisible="False">
+
+    <framework:PageBase.Resources>
+
+        <DataTemplate x:Key="PollOptionTemplate">
+            <Grid>
+                <uc:RemovableItemUC Margin="-12 0 -12 0"
+                                    GotFocus="TextBox_OnGotFocus"
+                                    LostFocus="TextBox_OnLostFocus" />
+            </Grid>
+        </DataTemplate>
+
+    </framework:PageBase.Resources>
+
+    <Grid x:Name="LayoutRoot"
+          Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <uc:GenericHeaderUC x:Name="ucHeader" />
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <ScrollViewer x:Name="scrollViewer">
+                <StackPanel x:Name="stackPanel"
+                            Margin="16 16 16 88">
+                    <TextBlock Margin="0 16 0 0 "
+                               Foreground="{StaticResource PhoneVKSubtleBrush}"
+                               Text="{Binding LocalizedResources.Poll_Question, Source={StaticResource LocalizedStrings}}" />
+
+                    <TextBox Margin="-12 -5 -12 0"
+                             KeyUp="textBox_KeyUp"
+                             InputScope="Text"
+                             Text="{Binding Question, Mode=TwoWay, UpdateSourceTrigger=Explicit}"
+                             x:Name="textBoxQuestion"
+                             GotFocus="TextBox_OnGotFocus"
+                             LostFocus="TextBox_OnLostFocus"
+                             TextChanged="TextBox_TextChanged" />
+
+                    <CheckBox Margin="-12 -8 0 0 "
+                              Visibility="{Binding CanChangeIsAnonymous, Converter={StaticResource BoolToVisibilityConverter}}"
+                              IsChecked="{Binding IsAnonymous, Mode=TwoWay}"
+                              Content="{Binding LocalizedResources.Poll_AnonymousPoll, Source={StaticResource LocalizedStrings}}" />
+
+                    <TextBlock Margin="0 20  0 0"
+                               Text="{Binding LocalizedResources.Poll_PollOptions, Source={StaticResource LocalizedStrings}}"
+                               Foreground="{StaticResource PhoneVKSubtleBrush}" />
+
+                    <ItemsControl HorizontalContentAlignment="Stretch"
+                                  ItemsSource="{Binding PollOptions}"
+                                  ItemTemplate="{StaticResource PollOptionTemplate}" />
+
+                    <uc:InlineAddButtonUC Visibility="{Binding CanAdd, Converter={StaticResource BoolToVisibilityConverter}}"
+                                          Margin="0 12 0 0"
+                                          x:Name="ucAddOption" />
+                </StackPanel>
+            </ScrollViewer>
+
+            <emoji:TextBoxPanelControl x:Name="textBoxPanel"
+                                       Grid.Row="1" />
+        </Grid>
+
+        <!--<Image Source="Temp/wp-publish-newpoll.png" Opacity="0.5" Width="480" VerticalAlignment="Top" Stretch="None" Grid.RowSpan="2"/>-->
+    </Grid>
+
+</framework:PageBase>

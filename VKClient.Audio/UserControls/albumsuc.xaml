@@ -1,0 +1,57 @@
+﻿<UserControl x:Class="VKClient.Audio.AlbumsUC"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:localization="clr-namespace:VKClient.Audio.Localization"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:framework="clr-namespace:VKClient.Common.Framework;assembly=VKClient.Common"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="480" d:DesignWidth="480">
+    <UserControl.Resources>
+        <localization:AudioLocalizedStrings x:Key="LocalizedStrings" />
+
+        <DataTemplate x:Key="HeaderTemplate">
+            <Grid Height="7"/>
+        </DataTemplate>
+        
+        <DataTemplate x:Key="AlbumTemplate">
+            <Grid framework:MetroInMotion.Tilt="2.5"
+                  >
+            
+                <TextBlock Text="{Binding Title}"
+                           Margin="16,7,16,7"
+                           FontSize="30"
+                           Foreground="{StaticResource PhoneContrastTitleBrush}"
+                           FontFamily="Segoe WP SemiLight"
+                           />            
+
+                <!--<toolkit:ContextMenuService.ContextMenu>
+                    <toolkit:ContextMenu  Background="{Binding InvertedOpaqueBG, Source={StaticResource ThemeHelper}}" Foreground="{Binding InvertedOpaqueFG, Source={StaticResource ThemeHelper}}"  IsZoomEnabled="False" IsEnabled="{Binding IsMenuEnabled}">
+                        <toolkit:MenuItem Header="{Binding Path=LocalizedResources.Edit, 
+                                               Source={StaticResource LocalizedStrings}}"
+                                      Click="EditAlbumItem_Tap"/>
+                        <toolkit:MenuItem Header="{Binding Path=LocalizedResources.Delete, 
+                                               Source={StaticResource LocalizedStrings}}"
+                                      Click="DeleteAlbumItem_Tap"/>
+                    </toolkit:ContextMenu>
+                </toolkit:ContextMenuService.ContextMenu>-->
+            </Grid>
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <framework:ExtendedLongListSelector x:Name="AllAlbums"                                       
+                                        DataContext="{Binding AllAlbumsVM.AllAlbums}"
+                                        ItemsSource="{Binding Collection}"
+                                        ItemTemplate="{StaticResource AlbumTemplate}"
+                                        ListFooter="{Binding}"
+                                        ListFooterTemplate="{StaticResource FooterTemplate}"
+                                        ListHeaderTemplate="{StaticResource HeaderTemplate}"
+                                        IsFlatList="True"
+                                        Link="AllAlbums_Link_1">
+    </framework:ExtendedLongListSelector>
+   
+</UserControl>

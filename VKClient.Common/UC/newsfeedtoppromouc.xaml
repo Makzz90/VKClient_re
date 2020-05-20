@@ -1,0 +1,152 @@
+﻿<uc:NewsfeedPromoUC x:Class="VKClient.Common.UC.NewsfeedTopPromoUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:framework="clr-namespace:VKClient.Common.Framework"
+             xmlns:uc="clr-namespace:VKClient.Common.UC"
+             mc:Ignorable="d"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             d:DesignWidth="480"
+             d:DesignHeight="800">
+
+    <uc:NewsfeedPromoUC.Resources>
+        <Style x:Key="ElementBackgroundStyle"
+               TargetType="Rectangle">
+            <Setter Property="Fill"
+                    Value="Black" />
+            <Setter Property="Opacity"
+                    Value="0.4" />
+        </Style>
+    </uc:NewsfeedPromoUC.Resources>
+
+    <Grid UseOptimizedManipulationRouting="False">
+        <Grid x:Name="gridBackground"
+              Tap="GridBackground_OnTap">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="32" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="42" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Rectangle Grid.Row="0"
+                       Grid.Column="0"
+                       Grid.RowSpan="3"
+                       Style="{StaticResource ElementBackgroundStyle}" />
+            <Rectangle Grid.Row="0"
+                       Grid.Column="2"
+                       Grid.RowSpan="3"
+                       Style="{StaticResource ElementBackgroundStyle}" />
+            <Rectangle Grid.Row="0"
+                       Grid.Column="1"
+                       Style="{StaticResource ElementBackgroundStyle}" />
+            <Rectangle Grid.Row="2"
+                       Grid.Column="1"
+                       Style="{StaticResource ElementBackgroundStyle}" />
+
+            <Grid x:Name="gridCutArea"
+                  Grid.Row="1"
+                  Grid.Column="1"
+                  Width="200"
+                  Height="44">
+                <Rectangle Fill="Black"
+                           Opacity="0.4"
+                           HorizontalAlignment="Left"
+                           Width="22"
+                           Height="44">
+                    <Rectangle.Clip>
+                        <PathGeometry>
+                            <PathGeometry.Figures>
+                                <PathFigure StartPoint="0 0"
+                                            IsClosed="True"
+                                            IsFilled="True">
+                                    <LineSegment Point="22 0" />
+                                    <ArcSegment Point="22 44"
+                                                Size="22 22" />
+                                    <LineSegment Point="0 44" />
+                                </PathFigure>
+                            </PathGeometry.Figures>
+                        </PathGeometry>
+                    </Rectangle.Clip>
+                </Rectangle>
+
+                <Rectangle Fill="Black"
+                           Opacity="0.4"
+                           HorizontalAlignment="Right"
+                           Width="22"
+                           Height="44">
+                    <Rectangle.Clip>
+                        <PathGeometry>
+                            <PathGeometry.Figures>
+                                <PathFigure StartPoint="22 0"
+                                            IsClosed="True"
+                                            IsFilled="True">
+                                    <LineSegment Point="0 0" />
+                                    <ArcSegment Point="0 44"
+                                                Size="22 22"
+                                                SweepDirection="Clockwise" />
+                                    <LineSegment Point="22 44" />
+                                </PathFigure>
+                            </PathGeometry.Figures>
+                        </PathGeometry>
+                    </Rectangle.Clip>
+                </Rectangle>
+            </Grid>
+        </Grid>
+
+        <Polygon x:Name="polygonTriangle"
+                 Points="118,108 130,96 142,108"
+                 Fill="{StaticResource PhoneNotificationBubbleMessageBackgroundBrush}" />
+
+        <Grid x:Name="gridMessage"
+              Width="416"
+              Margin="20 108 0 0"
+              HorizontalAlignment="Left"
+              VerticalAlignment="Top"
+              Background="{StaticResource PhoneNotificationBubbleMessageBackgroundBrush}">
+            <StackPanel Margin="20 16 20 20">
+
+                <TextBlock FontFamily="{StaticResource PhoneFontFamilySemiBold}"
+                           Foreground="{StaticResource PhoneAlmostBlackBrush}"
+                           LineStackingStrategy="BlockLineHeight"
+                           LineHeight="26"
+                           TextWrapping="Wrap"
+                           Text="{Binding Title, FallbackValue='Title'}" />
+
+                <TextBlock Margin="0 3 0 0"
+                           FontSize="18"
+                           Foreground="{StaticResource PhoneDarkGrayBrush}"
+                           TextWrapping="Wrap"
+                           Text="{Binding Message, FallbackValue='Message'}" />
+
+                <StackPanel Margin="0 19 0 0"
+                            Orientation="Horizontal">
+
+                    <Button Style="{StaticResource VKButtonCardOverlayStyle}"
+                            Margin="-12"
+                            MaxWidth="298"
+                            Content="{Binding ButtonPrimaryContent, FallbackValue='Primary action'}"
+                            Tap="ButtonPrimary_OnTap" />
+
+                    <Border Background="Transparent"
+                            Margin="8 0 0 0"
+                            framework:MetroInMotion.Tilt="1.5"
+                            Tap="ButtonSecondary_OnTap">
+                        <TextBlock Margin="12 6 12 0"
+                                   VerticalAlignment="Top"
+                                   FontFamily="{StaticResource PhoneFontFamilySemiBold}"
+                                   Foreground="{StaticResource PhoneNotificationBubbleButtonForegroundBrush}"
+                                   Text="{Binding ButtonSecondaryContent, FallbackValue='Secondary action'}" />
+                    </Border>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</uc:NewsfeedPromoUC>

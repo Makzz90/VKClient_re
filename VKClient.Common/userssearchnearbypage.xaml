@@ -1,0 +1,120 @@
+﻿<framework:PageBase x:Class="VKClient.Common.UsersSearchNearbyPage"
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:framework="clr-namespace:VKClient.Common.Framework"
+                    xmlns:uc="clr-namespace:VKClient.Common.UC"
+                    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                    FontSize="{StaticResource PhoneFontSizeNormal}"
+                    Foreground="{StaticResource PhoneForegroundBrush}"
+                    SupportedOrientations="Portrait"
+                    Orientation="Portrait"
+                    mc:Ignorable="d"
+                    shell:SystemTray.IsVisible="True">
+
+    <Grid>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="CommonStates">
+                <VisualState Name="Normal" />
+                <VisualState Name="Disabled">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="progressRing"
+                                                       Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                    Value="Collapsed" />
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="textBlockDescription"
+                                                       Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                    Value="Collapsed" />
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="listUsers"
+                                                       Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                    Value="Collapsed" />
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="textBlockDisabled"
+                                                       Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                    Value="Visible" />
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="buttonOpenSettings"
+                                                       Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                    Value="Visible" />
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <uc:GenericHeaderUC x:Name="ucHeader" />
+
+        <StackPanel Grid.Row="1">
+            <uc:ProgressRing x:Name="progressRing"
+                             Margin="0 79 0 39"
+                             IsActive="True"
+                             Height="80"
+                             Width="80"
+                             BorderThickness="5"
+                             Foreground="{StaticResource PhoneSidebarSelectedIconBackgroundBrush}" />
+
+            <TextBlock x:Name="textBlockDescription"
+                       Text="{Binding LocalizedResources.UsersSearch_Nearby_Description, Source={StaticResource LocalizedStrings}}"
+                       FontFamily="{StaticResource PhoneFontFamilySemiLight}"
+                       Foreground="{StaticResource PhoneVKSubtleBrush}"
+                       Margin="16 24 16 0"
+                       TextWrapping="Wrap"
+                       TextAlignment="Center"
+                       LineStackingStrategy="BlockLineHeight"
+                       LineHeight="28"
+                       FontSize="22.67" />
+
+            <TextBlock x:Name="textBlockDisabled"
+                       Text="{Binding LocalizedResources.GeolocationDisabledDescription, Source={StaticResource LocalizedStrings}}"
+                       FontFamily="{StaticResource PhoneFontFamilySemiLight}"
+                       Foreground="{StaticResource PhoneVKSubtleBrush}"
+                       Margin="16 24 16 0"
+                       TextWrapping="Wrap"
+                       TextAlignment="Center"
+                       LineStackingStrategy="BlockLineHeight"
+                       Visibility="Collapsed"
+                       LineHeight="28"
+                       FontSize="22.67" />
+
+            <Button x:Name="buttonOpenSettings"
+                    Visibility="Collapsed"
+                    Content="{Binding LocalizedResources.OpenSettings, Source={StaticResource LocalizedStrings}}"
+                    HorizontalAlignment="Center"
+                    Margin="0 16"
+                    Click="ButtonOpenSettings_OnClick"
+                    Style="{StaticResource VKButtonPrimaryStyle}" />
+        </StackPanel>
+
+        <framework:ExtendedLongListSelector x:Name="listUsers"
+                                            Grid.Row="2"
+                                            ItemsSource="{Binding Users}"
+                                            Margin="0 66 0 0">
+            <framework:ExtendedLongListSelector.ItemTemplate>
+                <DataTemplate>
+                    <uc:SubscriptionItemHeaderUC Margin="16 0 16 16" />
+                </DataTemplate>
+            </framework:ExtendedLongListSelector.ItemTemplate>
+        </framework:ExtendedLongListSelector>
+
+        <!--<Image Source="/Temp/wp-friends-nearby.png"
+               Grid.Row="0"
+               Grid.RowSpan="3"
+               Stretch="None"
+               Opacity="0.5" />-->
+    </Grid>
+
+</framework:PageBase>

@@ -1,0 +1,208 @@
+﻿<framework:PageBase x:Class="VKClient.Common.EditPrivacyPage"
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:framework="clr-namespace:VKClient.Common.Framework;assembly=VKClient.Common"
+                    xmlns:uc="clr-namespace:VKClient.Common.UC"
+                    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                    FontSize="{StaticResource PhoneFontSizeNormal}"
+                    Foreground="{StaticResource PhoneForegroundBrush}"
+                    SupportedOrientations="Portrait"
+                    Orientation="Portrait"
+                    mc:Ignorable="d"
+                    shell:SystemTray.IsVisible="True">
+
+    <framework:PageBase.Resources>
+
+        <DataTemplate x:Key="HeaderTemplate">
+            <StackPanel Margin=" 0 0 0 7">
+                <TextBlock FontSize="25.33"
+                           Margin="16 28 0 22"
+                           TextWrapping="Wrap"
+                           Text="{Binding PrivacyQuestionLowerCase, FallbackValue=кто видит основную информацию моей страницы}" />
+                <!--<TextBlock FontFamily="Segoe WP SemiLight"
+                           Margin="17 34 0 9"
+                           Foreground="{StaticResource PhoneVKSubtleBrush}"
+                           Text="{Binding LocalizedResources.Privacy_AllowedTo, Source={StaticResource LocalizedStrings}}"/>-->
+
+
+                <RadioButton  Visibility="{Binding AllUsersVisibility}"
+                              Margin="5 -6 0 -6"
+                              IsChecked="{Binding AllUsers, Mode=TwoWay}"
+                              GroupName="PrivacyAllowed"
+                              Content="{Binding LocalizedResources.Privacy_AllUsers, Source={StaticResource LocalizedStrings}}" />
+                <RadioButton  Visibility="{Binding FriendsVisibility}"
+                              Margin="5 -6 0 -6"
+                              IsChecked="{Binding Friends, Mode=TwoWay}"
+                              GroupName="PrivacyAllowed"
+                              Content="{Binding LocalizedResources.Privacy_Friends, Source={StaticResource LocalizedStrings}}" />
+                <RadioButton  Visibility="{Binding FriendsOfFriendsVisibility}"
+                              Margin="5 -6 0 -6"
+                              IsChecked="{Binding FriendsOfFriends, Mode=TwoWay}"
+                              GroupName="PrivacyAllowed"
+                              Content="{Binding LocalizedResources.Privacy_FriendsOfFriends, Source={StaticResource LocalizedStrings}}" />
+                <RadioButton  Visibility="{Binding FriendsOfFriendsOnlyVisibility}"
+                              Margin="5 -6 0 -6"
+                              IsChecked="{Binding FriendsOfFriendsOnly, Mode=TwoWay}"
+                              GroupName="PrivacyAllowed"
+                              Content="{Binding LocalizedResources.Privacy_FriendsOfFriends, Source={StaticResource LocalizedStrings}}" />
+                <RadioButton  Visibility="{Binding OnlyMeVisibility}"
+                              Margin="5 -6 0 -6"
+                              IsChecked="{Binding OnlyMe, Mode=TwoWay}"
+                              GroupName="PrivacyAllowed"
+                              Content="{Binding LocalizedResources.Privacy_OnlyMe, Source={StaticResource LocalizedStrings}}" />
+                <RadioButton  Visibility="{Binding NobodyVisibility}"
+                              Margin="5 -6 0 -6"
+                              IsChecked="{Binding Nobody, Mode=TwoWay}"
+                              GroupName="PrivacyAllowed"
+                              Content="{Binding LocalizedResources.Privacy_Nobody, Source={StaticResource LocalizedStrings}}" />
+                <RadioButton  Visibility="{Binding CertainUsersVisibility}"
+                              Margin="5 -6 0 -6"
+                              IsChecked="{Binding CertainUsers, Mode=TwoWay}"
+                              GroupName="PrivacyAllowed"
+                              Content="{Binding LocalizedResources.Privacy_CertainFriends, Source={StaticResource LocalizedStrings}}" />
+            </StackPanel>
+        </DataTemplate>
+
+        <DataTemplate x:Key="PrivacyGroupHeaderTemplate">
+            <Grid>
+                <TextBlock  Margin="16 21 0 17"
+                            Foreground="{StaticResource PhoneVKSubtleBrush}"
+                            Text="{Binding Title}"
+                            Visibility="{Binding HasTitleVisibility}" />
+            </Grid>
+        </DataTemplate>
+
+
+        <DataTemplate x:Key="PrivacyGroupFooterTemplate">
+            <Grid framework:MetroInMotion.Tilt="1.5"
+                  Tap="PickMoreUsersTap"
+                  Margin="16 7 0 17">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="42" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Border Background="{StaticResource PhoneButtonTextForegroundBrush}"
+                        Width="32"
+                        VerticalAlignment="Top"
+                        Height="32"
+                        HorizontalAlignment="Left">
+                    <Border.OpacityMask>
+                        <ImageBrush framework:ImageLoader.ImageBrushMultiResSource="/Resources/New/InlineAdd.png" />
+                    </Border.OpacityMask>
+                </Border>
+                <TextBlock FontSize="25.33"
+                           Grid.Column="1"
+                           Margin="4 -5 0 0"
+                           Foreground="{StaticResource PhoneButtonTextForegroundBrush}"
+                           Text="{Binding LocalizedResources.Privacy_PickUsersOrLists, Source={StaticResource LocalizedStrings}}" />
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="FriendOrListItemTemplate">
+
+            <Grid Height="62"
+                  Background="Transparent"
+                  framework:MetroInMotion.Tilt="2.5"
+                  Margin="16,6,16,6">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="62" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+
+
+
+                <Ellipse Style="{StaticResource PhotoPlaceholderEllipse}"
+                         Height="62"
+                         Grid.Column="1"
+                         Width="62"
+                         Fill="{Binding PlaceholderFill}"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Center" />
+                <Image HorizontalAlignment="Left"
+                       Grid.Column="1"
+                       Height="62"
+                       Width="62"
+                       Visibility="{Binding IsNotListVisibility}"
+                       framework:ImageLoader.UriSource="{Binding ImageUrl, Mode=OneWay}"
+                       VerticalAlignment="Center">
+                    <Image.Clip>
+                        <!--<EllipseGeometry Center="31 31"
+                                         RadiusX="31"
+                                         RadiusY="31" />-->
+                        <RectangleGeometry Rect="0 0 62 62"
+							RadiusX="31"
+							RadiusY="31"/>
+                    </Image.Clip>
+                </Image>
+
+                <Border HorizontalAlignment="Left"
+                        Grid.Column="1"
+                        Height="62"
+                        Width="62"
+                        Visibility="{Binding IsListVisibility}"
+                        Background="{Binding FriendListBackground}"
+                        VerticalAlignment="Center">
+                    <Border.OpacityMask>
+                        <ImageBrush framework:ImageLoader.ImageBrushMultiResSource="/Resources/New/PlaceholderGroup62.png" />
+                    </Border.OpacityMask>
+
+                </Border>
+
+                <TextBlock Margin="12,0,12,6"
+                           Grid.Column="2"
+                           Text="{Binding FullName}"
+                           TextWrapping="NoWrap"
+                           Style="{StaticResource PhoneTextLargeStyle}"
+                           Foreground="{StaticResource PhoneContrastTitleBrush}"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Left" />
+                <Grid  Grid.Column="3"
+                       Background="Transparent"
+                       Tap="RemoveUserOrListTap">
+                    <Border Width="38"
+                            Height="38"
+                            Background="{StaticResource PhoneGrayIconForegroundBrush}">
+                        <Border.OpacityMask>
+                            <ImageBrush ImageSource="/Resources/appbar.cancel.rest.png" />
+                        </Border.OpacityMask>
+                    </Border>
+                </Grid>
+            </Grid>
+
+        </DataTemplate>
+
+    </framework:PageBase.Resources>
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot"
+          Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <uc:GenericHeaderUC x:Name="Header" />
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel"
+              Grid.Row="1">
+
+            <framework:ExtendedLongListSelector Name="mainList"
+                                                ListHeaderTemplate="{StaticResource HeaderTemplate}"
+                                                ListHeader="{Binding}"
+                                                IsFlatList="False"
+                                                GroupHeaderTemplate="{StaticResource PrivacyGroupHeaderTemplate}"
+                                                GroupFooterTemplate="{StaticResource PrivacyGroupFooterTemplate}"
+                                                ItemTemplate="{StaticResource FriendOrListItemTemplate}"
+                                                ItemsSource="{Binding AllowedDeniedCollection}" />
+
+        </Grid>
+    </Grid>
+
+</framework:PageBase>

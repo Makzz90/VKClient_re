@@ -1,0 +1,75 @@
+﻿<UserControl x:Class="VKClient.Common.Market.Views.ProductsSearchResultsUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:uc="clr-namespace:VKClient.Common.UC"
+             xmlns:framework="clr-namespace:VKClient.Common.Framework"
+             xmlns:views="clr-namespace:VKClient.Common.Market.Views"
+             mc:Ignorable="d"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             d:DesignHeight="800"
+             d:DesignWidth="480">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="104" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0"
+              Background="{StaticResource PhoneHeaderBackgroundBrush}">
+            <TextBox x:Name="textBoxSearch"
+                     Height="72"
+                     VerticalAlignment="Bottom"
+                     Margin="4 0 4 4"
+                     Style="{StaticResource TextBoxSearchStyle}"
+                     InputScope="Text"
+                     KeyUp="TextBoxSearch_OnKeyUp"
+                     TextChanged="TextBoxSearch_OnTextChanged"
+                     GotFocus="TextBoxSearch_OnGotFocus" />
+
+            <TextBlock Text="{Binding Source={StaticResource LocalizedStrings}, Path=LocalizedResources.Search}"
+                       IsHitTestVisible="False"
+                       Margin="27 0 24 25"
+                       VerticalAlignment="Bottom"
+                       Name="textBlockWatermarkText"
+                       FontSize="25.33"
+                       Foreground="{StaticResource PhoneTextBoxSearchWatermarkForegroundBrush}" />
+        </Grid>
+
+        <Grid x:Name="gridSearchResults"
+              Grid.Row="1"
+              Background="{StaticResource PhoneNewsBackgroundBrush}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <uc:SearchParamsSummaryUC Grid.Row="0"
+                                      DataContext="{Binding SearchParamsViewModel}" 
+                                      ClearButtonTap="SearchParamsSummaryUC_OnClearButtonTap"/>
+
+            <framework:ExtendedLongListSelector x:Name="listBoxProducts"
+                                                Grid.Row="1"
+                                                ItemsSource="{Binding Collection}"
+                                                DataContext="{Binding SearchVM}"
+                                                ListFooterTemplate="{StaticResource FooterTemplate}"
+                                                ListFooter="{Binding}"
+                                                IsFlatList="True"
+                                                Link="ListBoxProducts_OnLink"
+                                                ManipulationStarted="ListBoxProducts_OnManipulationStarted">
+                <framework:ExtendedLongListSelector.ItemTemplate>
+                    <DataTemplate>
+                        <views:ProductsTwoInARowUC Margin="0 8 0 0" />
+                    </DataTemplate>
+                </framework:ExtendedLongListSelector.ItemTemplate>
+
+            </framework:ExtendedLongListSelector>
+        </Grid>
+
+        <uc:PullToRefreshUC x:Name="ucPullToRefresh" />
+    </Grid>
+</UserControl>

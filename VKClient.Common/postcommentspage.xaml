@@ -1,0 +1,64 @@
+﻿<framework:PageBase x:Class="VKClient.Common.PostCommentsPage"
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+                    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:framework="clr-namespace:VKClient.Common.Framework;assembly=VKClient.Common"
+                    xmlns:localization="clr-namespace:VKClient.Common.Localization"
+                    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+                    xmlns:posts="clr-namespace:VKClient.Common.Library.Posts"
+                    xmlns:uc="clr-namespace:VKClient.Common.UC"
+                    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                    FontSize="{StaticResource PhoneFontSizeNormal}"
+                    Foreground="{StaticResource PhoneForegroundBrush}"
+                    SupportedOrientations="Portrait"
+                    Orientation="Portrait"
+                    mc:Ignorable="d"
+                    d:DesignHeight="768"
+                    d:DesignWidth="480"
+                    shell:SystemTray.IsVisible="True"
+                    shell:SystemTray.Opacity="0">
+
+    <framework:PageBase.Resources>
+        <localization:CommonLocalizedStrings x:Key="LocStr" />
+    </framework:PageBase.Resources>
+
+    <Grid>
+        <!--LayoutRoot is the root grid where all page content is placed-->
+        <Grid x:Name="LayoutRoot"
+              Background="Transparent">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+
+            </Grid.RowDefinitions>
+
+
+            <ViewportControl Name="scroll"
+                             Margin="0 96 0 0"
+                             VerticalContentAlignment="Stretch"
+                             HorizontalContentAlignment="Stretch">
+                <StackPanel Name="scrollableGrid">
+                    <Grid>
+                        <framework:MyVirtualizingPanel2 VerticalAlignment="Top"
+                                                        x:Name="panel" />
+                    </Grid>
+                </StackPanel>
+            </ViewportControl>
+
+
+            <uc:NewMessageUC x:Name="ucNewMessage"
+                             Grid.Row="1" />
+
+            <uc:GenericHeaderUC x:Name="Header" />
+            <uc:PullToRefreshUC x:Name="ucPullToRefresh" />
+            <uc:MoreActionsUC VerticalAlignment="Top"
+                              HorizontalAlignment="Right"
+                              Margin="0 39 12 0"
+                              x:Name="ucMoreActions" />
+        </Grid>
+    </Grid>
+
+</framework:PageBase>

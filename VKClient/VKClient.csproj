@@ -1,0 +1,261 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1C4BD564-5426-417B-A5A0-E141ABE6F858}</ProjectGuid>
+    <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VKClient</RootNamespace>
+    <AssemblyName>VKClient</AssemblyName>
+    <TargetFrameworkIdentifier>WindowsPhone</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v8.1</TargetFrameworkVersion>
+    <SilverlightVersion>
+    </SilverlightVersion>
+    <SilverlightApplication>true</SilverlightApplication>
+    <SupportedCultures>be-BY%3bkk-KZ%3bpt-BR%3buk-UA%3bru-RU</SupportedCultures>
+    <XapOutputs>true</XapOutputs>
+    <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
+    <XapFilename>VKClient_$(Configuration)_$(Platform).xap</XapFilename>
+    <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
+    <SilverlightAppEntry>VKClient.App</SilverlightAppEntry>
+    <ValidateXaml>true</ValidateXaml>
+    <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\x86\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\x86\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|ARM' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\ARM\Debug</OutputPath>
+    <DefineConstants>TRACE;DEBUG;SILVERLIGHT;WINDOWS_PHONE;MY_MOD</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|ARM' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\ARM\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE;MY_MOD</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Framework\MemoryCheckpoint.cs" />
+    <Compile Include="Framework\MemoryDiagnosticsHelper.cs" />
+    <Compile Include="Library\AccentColorTypes.cs" />
+    <Compile Include="Library\BGType.cs" />
+    <Compile Include="Library\BGTypes.cs" />
+    <Compile Include="Library\CustomUriMapper.cs" />
+    <Compile Include="Library\GZipEncoder.cs" />
+    <Compile Include="Library\LanguagesList.cs" />
+    <Compile Include="Library\MessengerStateManager.cs" />
+    <Compile Include="Library\NavigatorImpl.cs" />
+    <Compile Include="Library\SettingsViewModel.cs" />
+    <Compile Include="Localization\AppResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Localization\LocalizedStrings.cs" />
+    <Compile Include="LoginPage.cs">
+      <DependentUpon>loginpage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PrivacyPage.cs">
+      <DependentUpon>privacypage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VKTelemetryInitializer.cs" />
+    <Compile Include="WelcomePage.cs">
+      <DependentUpon>welcomepage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AppIcon.png" />
+    <Content Include="AppResLib.dll.0419.mui" />
+    <None Include="microsoft.system.package.metadata\S-1-5-21-2702878673-795188819-444038987-2781.recovery" />
+    <None Include="Properties\AppManifest.xml" />
+    <None Include="Properties\WMAppManifest.xml">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AppResLib.dll" />
+    <Content Include="Assets\BadgeLogo.png" />
+    <Content Include="Assets\Logo.png" />
+    <Content Include="Assets\SplashScreen.png" />
+    <Content Include="Assets\SquareTile150x150.png" />
+    <Content Include="Assets\SquareTile71x71.png" />
+    <Content Include="Assets\StoreLogo.png" />
+    <Content Include="Assets\WideLogo.png" />
+    <Content Include="avcodec-57.dll" />
+    <Content Include="avdevice-57.dll" />
+    <Content Include="avfilter-6.dll" />
+    <Content Include="avformat-57.dll" />
+    <Content Include="avutil-55.dll" />
+    <Content Include="ClrCompression.dll" />
+    <Content Include="ServerHost-ARM-Release.exe" />
+    <Content Include="swresample-2.dll" />
+    <Content Include="swscale-4.dll" />
+    <Content Include="TileBig.png" />
+    <Content Include="TileSmall.png" />
+    <Content Include="VKClient.FFmpeg.dll" />
+    <Content Include="VKClient.Opus.dll" />
+    <Content Include="WindowsPhoneRuntimeComponent2.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AudioPlaybackAgent\AudioPlaybackAgent.csproj">
+      <Project>{cf72c193-7244-48eb-b56b-ba924caadc9c}</Project>
+      <Name>AudioPlaybackAgent</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VKClient.Audio.Base\VKClient.Audio.Base.csproj">
+      <Project>{3f61632e-1f7a-42c4-bf38-ae07d3e9f383}</Project>
+      <Name>VKClient.Audio.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VKClient.Common\VKClient.Common.csproj">
+      <Project>{e174760f-e91e-4bdc-bd36-4f9d54607104}</Project>
+      <Name>VKClient.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VKClient.Groups\VKClient.Groups.csproj">
+      <Project>{1de8bf72-1732-4303-ac92-9af84cd79334}</Project>
+      <Name>VKClient.Groups</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VKClient.Photos\VKClient.Photos.csproj">
+      <Project>{904ef96f-e4db-4861-98b2-b94971740008}</Project>
+      <Name>VKClient.Photos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VKClient.ScheduledUpdater\VKClient.ScheduledUpdater.csproj">
+      <Project>{87a8fea6-5070-4972-b398-6cce57753734}</Project>
+      <Name>VKClient.ScheduledUpdater</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VKClient.Video\VKClient.Video.csproj">
+      <Project>{1c568a90-fe73-4f56-b910-5ecfc4268088}</Project>
+      <Name>VKClient.Video</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VKMessenger\VKMessenger.csproj">
+      <Project>{85bdc29e-2e29-41e0-bac5-6ff314644627}</Project>
+      <Name>VKMessenger</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Facebook.Client">
+      <HintPath>..\libs\Facebook.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights">
+      <HintPath>..\libs\Microsoft.ApplicationInsights.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights.Extensibility.Windows">
+      <HintPath>..\libs\Microsoft.ApplicationInsights.Extensibility.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Phone.Controls, Version=8.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Phone.Controls.Toolkit, Version=8.0.1.0, Culture=neutral, PublicKeyToken=b772ad94eb9ca604, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\libs\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Compression">
+      <HintPath>..\libs\System.IO.Compression.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Localization\AppResources.be-BY.resx" />
+    <EmbeddedResource Include="Localization\AppResources.kk-KZ.resx" />
+    <EmbeddedResource Include="Localization\AppResources.pt-BR.resx" />
+    <EmbeddedResource Include="Localization\AppResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Localization\AppResources.ru-RU.resx" />
+    <EmbeddedResource Include="Localization\AppResources.uk-UA.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
+    <Resource Include="loginpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="privacypage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="welcomepage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Common\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions />
+</Project>

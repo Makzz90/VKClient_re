@@ -1,0 +1,320 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1C568A90-FE73-4F56-B910-5ECFC4268088}</ProjectGuid>
+    <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VKClient.Video</RootNamespace>
+    <AssemblyName>VKClient.Video</AssemblyName>
+    <TargetFrameworkIdentifier>WindowsPhone</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v8.1</TargetFrameworkVersion>
+    <SilverlightVersion>
+    </SilverlightVersion>
+    <SilverlightApplication>false</SilverlightApplication>
+    <ValidateXaml>true</ValidateXaml>
+    <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <TargetFrameworkProfile />
+    <DefaultLanguage>ru-RU</DefaultLanguage>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\x86\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\x86\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|ARM' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\ARM\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|ARM' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\ARM\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget />
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="AddEditVideoPage.cs">
+      <DependentUpon>addeditvideopage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="PickVideoAlbumPage.cs">
+      <DependentUpon>pickvideoalbumpage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VideoCatalog\CatalogCategoryViewModel.cs" />
+    <Compile Include="VideoCatalog\CatalogHorizontalItemExtUC.cs">
+      <DependentUpon>CatalogHorizontalItemExtUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VideoCatalog\CatalogHorizontalItemUC.cs">
+      <DependentUpon>CatalogHorizontalItemUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VideoCatalog\CatalogItemsHorizontalExtUC.cs">
+      <DependentUpon>CatalogItemsHorizontalExtUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VideoCatalog\CatalogItemsHorizontalUC.cs">
+      <DependentUpon>CatalogItemsHorizontalUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VideoCatalog\CatalogItemsHorizontalViewModel.cs" />
+    <Compile Include="VideoCatalog\CategoryMoreFooter.cs" />
+    <Compile Include="VideoCatalog\CategoryMoreFooterUC.cs">
+      <DependentUpon>CategoryMoreFooterUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VideoCatalog\DividerSpaceDownUC.cs">
+      <DependentUpon>DividerSpaceDownUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VideoCatalog\DividerSpaceDownViewModel.cs" />
+    <Compile Include="VideoCatalog\DividerSpaceUpUC.cs">
+      <DependentUpon>DividerSpaceUpUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VideoCatalog\DividerSpaceUpViewModel.cs" />
+    <Compile Include="VideoCatalog\VideoCatalogPage.cs">
+      <DependentUpon>VideoCatalogPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VideoCatalog\VideoCatalogTemplateSelector.cs" />
+    <Compile Include="VideoCatalog\VideoCatalogViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VideoCommentsPage.cs">
+      <DependentUpon>videocommentspage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VideoPage.cs">
+      <DependentUpon>videopage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Video\Library\AddEditVideoViewModel.cs" />
+    <Compile Include="Video\Library\AlbumPageViewModel.cs" />
+    <Compile Include="Video\Library\MoveVideoToAlbum.cs" />
+    <Compile Include="Video\Library\VideoCommentsViewModel.cs" />
+    <Compile Include="Video\Library\VideoResolution.cs" />
+    <Compile Include="Video\Library\VideosSearchDataProvider.cs" />
+    <Compile Include="Video\Library\VideoStartPlaying.cs" />
+    <Compile Include="Localization\VideoLocalizedStrings.cs" />
+    <None Include="Localization\VideoResources.cs" />
+    <Compile Include="VideoCatalog\AddToAlbumPage.cs">
+      <DependentUpon>AddToAlbumPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VideoCatalog\AddToAlbumViewModel.cs" />
+    <Compile Include="VideoCatalog\AlbumsListHorizontalViewModel.cs" />
+    <Compile Include="VideoCatalog\CatalogItemCompactUC.cs">
+      <DependentUpon>CatalogItemCompactUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VideoCatalog\CatalogItemTwoInARowUC.cs">
+      <DependentUpon>CatalogItemTwoInARowUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VideoCatalog\CatalogItemTwoInARowViewModel.cs" />
+    <Compile Include="VideoCatalog\CreateEditVideoAlbumPage.cs">
+      <DependentUpon>CreateEditVideoAlbumPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VideoCatalog\CreateEditVideoAlbumUC.cs">
+      <DependentUpon>CreateEditVideoAlbumUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VideoCatalog\CreateEditVideoAlbumViewModel.cs" />
+    <Compile Include="VideoCatalog\GroupVideosPage.cs">
+      <DependentUpon>GroupVideosPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VideoCatalog\GroupVideosViewModel.cs" />
+    <Compile Include="VideoCatalog\PickableAlbumUC.cs">
+      <DependentUpon>PickableAlbumUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VideoCatalog\UserVideosUC.cs">
+      <DependentUpon>UserVideosUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VideoCatalog\UserVideosViewModel.cs" />
+    <Compile Include="VideoCatalog\VideoAlbumsListPage.cs">
+      <DependentUpon>VideoAlbumsListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VideoCatalog\VideoAlbumsListViewModel.cs" />
+    <Compile Include="VideoCatalog\VideoCatalogItemUCFactory.cs" />
+    <Compile Include="VideoCatalog\VideoListPage.cs">
+      <DependentUpon>VideoListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VideoCatalog\VideoListViewModel.cs" />
+    <Compile Include="Localization\VideoResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VideoResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Video\VideosOfOwnerViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Localization\VideoResources.be-BY.resx" />
+    <EmbeddedResource Include="Localization\VideoResources.kk-KZ.resx" />
+    <EmbeddedResource Include="Localization\VideoResources.pt-BR.resx" />
+    <EmbeddedResource Include="Localization\VideoResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>VideoResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Localization\VideoResources.ru-RU.resx" />
+    <EmbeddedResource Include="Localization\VideoResources.uk-UA.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="addeditvideopage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="pickvideoalbumpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="VideoCatalog\addtoalbumpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="VideoCatalog\cataloghorizontalitemextuc.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="VideoCatalog\cataloghorizontalitemuc.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="VideoCatalog\catalogitemcompactuc.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="VideoCatalog\catalogitemshorizontalextuc.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="VideoCatalog\catalogitemshorizontaluc.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="VideoCatalog\catalogitemtwoinarowuc.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="VideoCatalog\categorymorefooteruc.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="VideoCatalog\createeditvideoalbumpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="VideoCatalog\createeditvideoalbumuc.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="VideoCatalog\dividerspacedownuc.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="VideoCatalog\dividerspaceupuc.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="VideoCatalog\groupvideospage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="VideoCatalog\pickablealbumuc.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="VideoCatalog\uservideosuc.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="VideoCatalog\videoalbumslistpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="VideoCatalog\videocatalogpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="VideoCatalog\videolistpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="videocommentspage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="videopage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VKClient.Audio.Base\VKClient.Audio.Base.csproj">
+      <Project>{3f61632e-1f7a-42c4-bf38-ae07d3e9f383}</Project>
+      <Name>VKClient.Audio.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VKClient.Common\VKClient.Common.csproj">
+      <Project>{e174760f-e91e-4bdc-bd36-4f9d54607104}</Project>
+      <Name>VKClient.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Phone.Controls, Version=8.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Phone.Controls.Toolkit">
+      <HintPath>..\libs\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
+  <ProjectExtensions />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

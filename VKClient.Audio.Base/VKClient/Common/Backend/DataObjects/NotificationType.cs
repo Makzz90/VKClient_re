@@ -1,0 +1,36 @@
+namespace VKClient.Common.Backend.DataObjects
+{
+  public enum NotificationType
+  {
+    follow,
+    friend_accepted,
+    mention,
+    mention_comments,
+    wall,
+    comment_post,
+    comment_photo,
+    comment_video,
+    reply_comment,
+    reply_topic,
+    like_post,
+    like_comment,
+    like_photo,
+    like_video,
+    copy_post,
+    copy_photo,
+    copy_video,
+    reply_comment_photo,
+    reply_comment_video,
+    like_comment_photo,
+    like_comment_video,
+    like_comment_topic,
+    unknown,
+    mention_comment_photo,
+    mention_comment_video,
+    wall_publish,
+    reply_comment_market,
+    money_transfer_received,
+    money_transfer_accepted,
+    money_transfer_declined,
+  }
+}

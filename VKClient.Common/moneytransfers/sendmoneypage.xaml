@@ -1,0 +1,249 @@
+﻿<framework:PageBase x:Class="VKClient.Common.MoneyTransfers.SendMoneyPage"
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    mc:Ignorable="d"
+                    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                    Foreground="{StaticResource PhoneForegroundBrush}"
+                    FontSize="{StaticResource PhoneFontSizeNormal}"
+                    xmlns:framework="clr-namespace:VKClient.Common.Framework;assembly=VKClient.Common"
+                    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+                    xmlns:uc="clr-namespace:VKClient.Common.UC"
+                    xmlns:emoji="clr-namespace:VKClient.Common.Emoji"
+                    SupportedOrientations="Portrait"
+                    Orientation="Portrait"
+                    shell:SystemTray.IsVisible="True"
+                    shell:SystemTray.Opacity="0">
+
+    <framework:PageBase.Resources>
+        <Style x:Key="TextBoxStyle"
+               TargetType="TextBox">
+            <Setter Property="Background"
+                    Value="Transparent" />
+            <Setter Property="BorderThickness"
+                    Value="0" />
+            <Setter Property="Height"
+                    Value="NaN" />
+            <Setter Property="FontFamily"
+                    Value="{StaticResource PhoneFontFamilyNormal}" />
+            <Setter Property="FontSize"
+                    Value="{StaticResource PhoneFontSizeMediumLarge}" />
+            <Setter Property="Foreground"
+                    Value="Black" />
+            <Setter Property="BorderBrush"
+                    Value="{StaticResource PhoneTextBoxDefaultBorderBrush}" />
+            <Setter Property="CaretBrush"
+                    Value="{StaticResource PhoneAccentBrush}" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Grid Background="Transparent">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal" />
+                                    <VisualState x:Name="MouseOver" />
+                                    <VisualState x:Name="Disabled" />
+                                    <VisualState x:Name="ReadOnly" />
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="FocusStates">
+                                    <VisualState x:Name="Focused" />
+                                    <VisualState x:Name="Unfocused" />
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Border x:Name="MainBorder"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    Background="{TemplateBinding Background}"
+                                    Margin="{StaticResource PhoneTouchTargetOverhang}" />
+                            <Border x:Name="ReadonlyBorder"
+                                    BorderBrush="{StaticResource PhoneDisabledBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    Background="Transparent"
+                                    Margin="{StaticResource PhoneTouchTargetOverhang}"
+                                    Visibility="Collapsed" />
+                            <Border BorderBrush="Transparent"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    Background="Transparent"
+                                    Margin="{StaticResource PhoneTouchTargetOverhang}">
+                                <ContentControl x:Name="ContentElement"
+                                                BorderThickness="0"
+                                                HorizontalContentAlignment="Stretch"
+                                                Margin="8 3 10 0"
+                                                Padding="{TemplateBinding Padding}"
+                                                VerticalContentAlignment="Stretch" />
+                            </Border>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </framework:PageBase.Resources>
+
+    <Grid Background="{StaticResource PhoneNewsDividerBrush}">
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto"
+                      Name="Viewer">
+            <Grid Margin="0,96,0,0"
+                  Name="ViewerContent">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*"
+                                   MinHeight="172"
+                                   MaxHeight="344" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Grid Height="56"
+                      Margin="24,24,24,0"
+                      HorizontalAlignment="Stretch"
+                      Background="{StaticResource PhoneAttachmentPickerBackgroundBrush}"
+                      Grid.Row="0">
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Center">
+                        <Ellipse Fill="{StaticResource PhoneChromeBrush}"
+                                 Height="40"
+                                 Width="40" />
+                        <Image Margin="-40,0,0,0"
+                               Height="40"
+                               Width="40"
+                               Stretch="UniformToFill"
+                               framework:ImageLoader.UriSource="{Binding Photo}">
+                            <Image.Clip>
+                                <EllipseGeometry Center="20,20"
+                                                 RadiusX="20"
+                                                 RadiusY="20" />
+                            </Image.Clip>
+                        </Image>
+                        <TextBlock FontSize="20"
+                                   FontFamily="Segoe WP SemiBold"
+                                   Foreground="{StaticResource PhoneContrastTitleBrush}"
+                                   Text="{Binding Title}"
+                                   MaxWidth="348"
+                                   Margin="12,13,0,0" />
+                    </StackPanel>
+                    <Path Name="bubbleTail"
+                          Fill="{StaticResource PhoneAttachmentPickerBackgroundBrush}"
+                          VerticalAlignment="Top"
+                          HorizontalAlignment="Right"
+                          Margin="0,12,-12,0"
+                          Height="16"
+                          Width="12" />
+                    <Rectangle Height="1"
+                               Fill="{StaticResource PhoneNewsDividerBrush}"
+                               HorizontalAlignment="Stretch"
+                               VerticalAlignment="Bottom" />
+                </Grid>
+
+                <Grid Background="{StaticResource PhoneAttachmentPickerBackgroundBrush}"
+                      Tap="AmountPanel_OnClicked"
+                      Hold="AmountPanel_OnClicked"
+                      Margin="24,0,24,0"
+                      Grid.Row="1">
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Name="AmountPanel"
+                                Margin="32,0,0,6">
+                        <TextBox FontSize="64"
+                                 Text="{Binding Amount, Mode=TwoWay}"
+                                 Foreground="{StaticResource PhoneContrastTitleBrush}"
+                                 Style="{StaticResource TextBoxStyle}"
+                                 MaxLength="{Binding MaxAmountLength}"
+                                 Name="AmountBox"
+                                 Margin="-22,0,-10,0"
+                                 Loaded="AmountBox_OnLoaded"
+                                 KeyDown="AmountBox_OnKeyDown"
+                                 TextChanged="TextBox_OnTextChanged"
+                                 GotFocus="TextBox_OnGotFocus"
+                                 LostFocus="TextBox_OnLostFocus"
+                                 FontFamily="Segoe WP Light"
+                                 InputScope="CurrencyAmount" />
+                        <TextBlock FontSize="32"
+                                   Foreground="{StaticResource PhoneContrastTitleBrush}"
+                                   Text="{Binding Path=LocalizedResources.Currency_RUB, Source={StaticResource LocalizedStrings}}"
+                                   Margin="-19,51,0,0" />
+                    </StackPanel>
+                    <TextBlock Text="0"
+                               Margin="32,-2,100,0"
+                               Name="AmountPlaceholder"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               Foreground="{StaticResource PhoneGray200_Gray700Brush}"
+                               FontFamily="Segoe WP Light"
+                               IsHitTestVisible="False"
+                               FontSize="64" />
+                    <TextBlock VerticalAlignment="Bottom"
+                               Foreground="{Binding AmountLimitsHintForeground}"
+                               HorizontalAlignment="Center"
+                               Margin="0,0,0,16"
+                               Text="{Binding AmountLimitsHint}" />
+                </Grid>
+
+                <Grid Background="{StaticResource PhoneAttachmentPickerBackgroundBrush}"
+                      VerticalAlignment="Stretch"
+                      Margin="24,0,24,0"
+                      Grid.Row="2">
+                    <Rectangle Height="1"
+                               HorizontalAlignment="Stretch"
+                               VerticalAlignment="Top"
+                               Fill="{StaticResource PhoneNewsDividerBrush}" />
+                    <TextBox FontSize="22.777"
+                             InputScope="Text"
+                             MaxLength="128"
+                             Name="CommentBox"
+                             Text="{Binding Comment, Mode=TwoWay, UpdateSourceTrigger=Explicit}"
+                             Foreground="{StaticResource PhoneContrastTitleBrush}"
+                             Style="{StaticResource TextBoxStyle}"
+                             TextChanged="TextBox_OnTextChanged"
+                             GotFocus="TextBox_OnGotFocus"
+                             LostFocus="TextBox_OnLostFocus"
+                             KeyUp="CommentBox_OnKeyUp"
+                             TextWrapping="Wrap"
+                             Margin="-6,-3,-6,5" />
+                    <TextBlock FontSize="22.777"
+                               Name="CommentPlaceholder"
+                               Text="{Binding Path=LocalizedResources.Share_YourComment, Source={StaticResource LocalizedStrings}}"
+                               Foreground="{StaticResource PhoneGray300_Gray600Brush}"
+                               IsHitTestVisible="False"
+                               Margin="16,14,0,0" />
+                </Grid>
+
+                <Button Content="{Binding Path=LocalizedResources.SendTransfer, Source={StaticResource LocalizedStrings}}"
+                        Style="{StaticResource VKButtonPrimaryStyle}"
+                        HorizontalAlignment="Stretch"
+                        Click="SendButton_OnClicked"
+                        Padding="0,-4,0,0"
+                        Height="80"
+                        FontSize="25.333"
+                        FontFamily="Segoe WP"
+                        Margin="12,0,12,12"
+                        Grid.Row="3" />
+
+                <emoji:TextBoxPanelControl x:Name="TextBoxPanel"
+                                           Grid.Row="4" />
+
+            </Grid>
+        </ScrollViewer>
+
+        <uc:GenericHeaderUC Title="{Binding Path=LocalizedResources.Transfer, Source={StaticResource LocalizedStrings}, Converter={StaticResource StringToUpper}}"
+                            HideSandwitchButton="True" />
+
+        <Grid HorizontalAlignment="Right"
+              VerticalAlignment="Top"
+              framework:MetroInMotion.Tilt="1.5"
+              Tap="HelpButton_OnClicked"
+              Background="Transparent"
+              Margin="0,32,0,0"
+              Height="64"
+              Width="64">
+            <Image Width="32"
+                   Height="32"
+                   framework:MultiResImageLoader.UriSource="/Resources/MoneyTransfers/Help32px.png" />
+        </Grid>
+
+    </Grid>
+
+</framework:PageBase>

@@ -1,0 +1,172 @@
+﻿<UserControl x:Class="VKClient.Common.Gifts.Views.GiftListItemUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:framework="clr-namespace:VKClient.Common.Framework"
+             mc:Ignorable="d"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             d:DesignWidth="480"
+             d:DesignHeight="506">
+
+    <StackPanel>
+        <Grid x:Name="gridHeader"
+              VerticalAlignment="Top"
+              Margin="0 4 0 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Border Background="Transparent"
+                    framework:MetroInMotion.Tilt="{Binding NameTilt}"
+                    Tap="ItemHeader_OnTap">
+                <StackPanel Orientation="Horizontal">
+                    <Grid VerticalAlignment="Top"
+                          Margin="16 12 0 8">
+                        <Ellipse Width="64"
+                                 Height="64"
+                                 Fill="{StaticResource PhonePlaceholderBackgroundBrush}" />
+
+                        <Rectangle Width="32"
+                                   Height="32"
+                                   Fill="{StaticResource PhonePlaceholderForegroundBrush}">
+                            <Rectangle.OpacityMask>
+                                <ImageBrush framework:ImageLoader.ImageBrushMultiResSource="/Resources/User32px.png" />
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+
+                        <Image Width="64"
+                               Height="64"
+                               framework:ImageLoader.UriSource="{Binding Photo}">
+                            <Image.Clip>
+                                <EllipseGeometry Center="32 32"
+                                                 RadiusX="32"
+                                                 RadiusY="32" />
+                            </Image.Clip>
+                        </Image>
+                    </Grid>
+
+                    <StackPanel Margin="12 13 0 0"
+                                VerticalAlignment="Top">
+                        <TextBlock x:Name="textBlockName"
+                                   FontSize="25.33"
+                                   Foreground="{StaticResource PhoneDarkBlueBrush}"
+                                   Text="{Binding Name}" />
+                        <TextBlock Foreground="{StaticResource PhoneGray400_Gray500Brush}"
+                                   LineStackingStrategy="BlockLineHeight"
+                                   LineHeight="26"
+                                   Text="{Binding Date}" />
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <Border Grid.Column="1"
+                    Width="64"
+                    Height="64"
+                    VerticalAlignment="Top"
+                    Margin="0 4 0 0"
+                    Tap="ItemMoreActions_OnTap"
+                    Visibility="{Binding MoreActionsVisibility, FallbackValue=Collapsed}">
+                <Border Width="64"
+                        Height="64"
+                        VerticalAlignment="Top"
+                        Background="Transparent"
+                        framework:MetroInMotion.Tilt="1.5">
+
+                    <Rectangle Width="32"
+                               Height="32"
+                               Margin="0 -8 0 0"
+                               Fill="{StaticResource PhoneMoreActionsBrush}">
+                        <Rectangle.OpacityMask>
+                            <ImageBrush framework:ImageLoader.ImageBrushMultiResSource="/Resources/MoreHorizontal32px.png" />
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+                </Border>
+            </Border>
+        </Grid>
+
+        <Grid Width="256"
+              Height="256"
+              Margin="0 8 0 12">
+
+            <Image Width="256"
+                   Height="256"
+                   Visibility="{Binding LightThemeVisibility}"
+                   framework:ImageLoader.UriSource="{Binding GiftImage}" />
+
+            <Rectangle Width="256"
+                       Height="256"
+                       Visibility="{Binding DarkThemeVisibility}"
+                       Fill="{StaticResource PhoneGray000Brush}"
+                       RadiusX="28"
+                       RadiusY="28" />
+
+            <Image Width="216"
+                   Height="216"
+                   Visibility="{Binding DarkThemeVisibility}"
+                   framework:ImageLoader.UriSource="{Binding GiftImage}" />
+        </Grid>
+
+        <StackPanel Margin="16 0 16 12"
+                    Visibility="{Binding MessageOrPrivacyDescriptionVisibility}">
+
+            <framework:ScrollableTextBlock HorizontalAlignment="Center"
+                                           FontSize="21.33"
+                                           Foreground="{StaticResource PhoneAlmostBlackBrush}"
+                                           TextWrapping="Wrap"
+                                           TextAlignment="Center"
+                                           Visibility="{Binding MessageVisiblity}"
+                                           Text="{Binding Message}" />
+
+            <TextBlock Margin="0 1 0 0"
+                       FontSize="18"
+                       Foreground="{StaticResource PhoneGray400_Gray500Brush}"
+                       LineStackingStrategy="BlockLineHeight"
+                       LineHeight="24"
+                       TextWrapping="Wrap"
+                       TextAlignment="Center"
+                       Visibility="{Binding PrivacyDescriptionVisibility}"
+                       Text="{Binding LocalizedResources.Gifts_PrivacyDescription, Source={StaticResource LocalizedStrings}}" />
+        </StackPanel>
+
+        <Rectangle Margin="0 -12 0 0"
+                   Height="24" />
+
+        <Grid Height="64"
+              Visibility="{Binding SendBackVisibility}">
+            <Rectangle Height="1"
+                       VerticalAlignment="Top"
+                       Margin="16 0"
+                       Opacity="0.1"
+                       Fill="{StaticResource PhoneForegroundBrush}" />
+            <Border Background="Transparent"
+                    framework:MetroInMotion.Tilt="1.5"
+                    Tap="SendGiftBack_OnTap">
+                <StackPanel Orientation="Horizontal"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Center">
+                    <Rectangle Width="32"
+                               Height="32"
+                               Margin="0 16 12 0"
+                               Fill="{StaticResource PhoneBlue300_GrayBlue400Brush}">
+                        <Rectangle.OpacityMask>
+                            <ImageBrush framework:ImageLoader.ImageBrushMultiResSource="/Resources/Gift32px.png" />
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+
+                    <TextBlock FontSize="21.33"
+                               Foreground="{StaticResource PhoneDarkBlueBrush}"
+                               Margin="0 17 0 0"
+                               Text="{Binding LocalizedResources.SendGiftBack, Source={StaticResource LocalizedStrings}}" />
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <Rectangle Height="16"
+                   Fill="{StaticResource PhoneNewsDividerBrush}" />
+
+    </StackPanel>
+</UserControl>

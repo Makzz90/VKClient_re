@@ -1,0 +1,141 @@
+﻿<uc:NewsLinkUCBase x:Class="VKClient.Common.UC.MessagesLinkMediumUC"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+                   
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:uc="clr-namespace:VKClient.Common.UC"
+                   
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+                   
+    d:DesignHeight="112"
+    d:DesignWidth="360">
+
+    <Grid Background="Transparent"
+          VerticalAlignment="Top"
+          Tap="LayoutRoot_OnClicked"
+          Name="LayoutRoot">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Rectangle Style="{StaticResource PhotoPlaceholderRectangle}"
+                   Grid.Column="0"/>
+
+        <Grid x:Name="imageContainer"
+              Grid.Column="0"
+              Width="112">
+            <Image x:Name="image"
+                   Stretch="UniformToFill"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"/>
+        </Grid>
+
+        <StackPanel x:Name="textContainer"
+                    Grid.Column="1"
+                    Margin="12,-3,12,3"
+                    VerticalAlignment="Center">
+
+            <TextBlock x:Name="titleBlock"
+                       Foreground="{StaticResource PhoneAlmostBlackBrush}"
+                       LineStackingStrategy="BlockLineHeight"
+                       FontFamily="Segoe WP SemiBold"
+                       HorizontalAlignment="Left"
+                       TextWrapping="Wrap"
+                       Margin="0,0,-12,0"
+                       LineHeight="26"
+                       MaxHeight="78"
+                       Width="197"/>
+            <TextBlock x:Name="priceBlock"
+                       Foreground="{StaticResource PhoneAlmostBlackBrush}"
+                       LineStackingStrategy="BlockLineHeight"
+                       HorizontalAlignment="Left"
+                       Visibility="Collapsed"
+                       Margin="0,0,-12,0"
+                       LineHeight="26"
+                       Width="197"/>
+            <TextBlock x:Name="descriptionBlock"
+                       Foreground="{StaticResource PhoneAlmostBlackBrush}"
+                       LineStackingStrategy="BlockLineHeight"
+                       HorizontalAlignment="Left"
+                       Visibility="Collapsed"
+                       TextWrapping="Wrap"
+                       Margin="0,0,-12,0"
+                       LineHeight="26"
+                       MaxHeight="52"
+                       Width="197"/>
+
+            <StackPanel x:Name="productContainer"
+                        Orientation="Horizontal"
+                        Margin="0,-1,0,0"
+                        Height="26">
+                
+                <TextBlock x:Name="ratingPriceBlock"
+                           Margin="0,0,8,0"
+                           Foreground="{StaticResource PhoneAlmostBlackBrush}"
+                           LineStackingStrategy="BlockLineHeight"
+                           LineHeight="26"/>
+                    
+                <toolkit:Rating x:Name="ratingUC"
+                                Height="16"
+                                Width="95"
+                                Margin="0,2,0,0"
+                                Background="Transparent"
+                                AllowHalfItemIncrement="True"
+                                ReadOnly="True">
+                    <toolkit:Rating.FilledItemStyle>
+                        <Style TargetType="toolkit:RatingItem">
+                            <Setter Property="Background"
+                                    Value="{StaticResource PhoneForegroundBrush}"/>
+                            <Setter Property="Margin"
+                                    Value="1,0"/>
+                            <Setter Property="Opacity"
+                                    Value="0.5"/>
+                        </Style>
+                    </toolkit:Rating.FilledItemStyle>
+                    <toolkit:Rating.UnfilledItemStyle>
+                        <Style TargetType="toolkit:RatingItem">
+                            <Setter Property="Background"
+                                    Value="{StaticResource PhoneForegroundBrush}"/>
+                            <Setter Property="Margin"
+                                    Value="1,0"/>
+                            <Setter Property="Opacity"
+                                    Value="0.14"/>
+                        </Style>
+                    </toolkit:Rating.UnfilledItemStyle>
+                </toolkit:Rating>
+
+                <TextBlock x:Name="votesCountBlock"
+                           Foreground="{StaticResource PhoneCaptionGrayBrush}"
+                           Margin="8,3,0,0"
+                           FontSize="18"/>
+                    
+            </StackPanel>
+                
+            <TextBlock x:Name="captionBlock"
+                       TextWrapping="Wrap"
+                       LineStackingStrategy="BlockLineHeight"
+                       Foreground="{StaticResource PhoneCaptionGrayBrush}"
+                       LineHeight="26"
+                       MaxHeight="52"/>
+
+            <Button x:Name="actionButton"
+                    Visibility="Collapsed"
+                    Style="{StaticResource VKButtonTernaryStyle}"
+                    Tap="ActionButton_OnClicked"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Bottom"
+                    Margin="-12,-3,-12,-13"
+                    Height="64"/>
+                
+        </StackPanel>
+        
+    </Grid>
+    
+</uc:NewsLinkUCBase>

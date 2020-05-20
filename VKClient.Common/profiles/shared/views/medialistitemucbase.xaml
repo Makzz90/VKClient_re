@@ -1,0 +1,72 @@
+﻿<UserControl x:Class="VKClient.Common.Profiles.Shared.Views.MediaListItemUCBase"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:VKClient.Common.Profiles.Shared.ViewModels"
+             xmlns:views="clr-namespace:VKClient.Common.Profiles.Shared.Views"
+             mc:Ignorable="d"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             d:DesignWidth="180"
+             d:DesignHeight="120">
+
+    <ContentControl Content="{Binding}"
+                    HorizontalContentAlignment="Stretch"
+                    VerticalContentAlignment="Stretch"
+                    Width="{Binding ContainerWidth, FallbackValue=180}"
+                    Height="{Binding ContainerHeight, FallbackValue=120}">
+        <ContentControl.ContentTemplate>
+            <DataTemplate>
+                <viewModels:ProfileMediaListItemTemplateSelector Content="{Binding}">
+                    <viewModels:ProfileMediaListItemTemplateSelector.GenericTemplate>
+                        <DataTemplate>
+                            <views:MediaListItemGenericUC />
+                        </DataTemplate>
+                    </viewModels:ProfileMediaListItemTemplateSelector.GenericTemplate>
+                    <viewModels:ProfileMediaListItemTemplateSelector.PhotoAlbumTemplate>
+                        <DataTemplate>
+                            <views:MediaListItemPhotoAlbumUC />
+                        </DataTemplate>
+                    </viewModels:ProfileMediaListItemTemplateSelector.PhotoAlbumTemplate>
+                    <viewModels:ProfileMediaListItemTemplateSelector.VideoAlbumTemplate>
+                        <DataTemplate>
+                            <views:MediaListItemVideoAlbumUC />
+                        </DataTemplate>
+                    </viewModels:ProfileMediaListItemTemplateSelector.VideoAlbumTemplate>
+                    <viewModels:ProfileMediaListItemTemplateSelector.SubscriptionsTemplate>
+                        <DataTemplate>
+                            <views:MediaListItemSubscriptionsUC />
+                        </DataTemplate>
+                    </viewModels:ProfileMediaListItemTemplateSelector.SubscriptionsTemplate>
+                    <viewModels:ProfileMediaListItemTemplateSelector.PhotoTemplate>
+                        <DataTemplate>
+                            <views:MediaListItemPhotoUC />
+                        </DataTemplate>
+                    </viewModels:ProfileMediaListItemTemplateSelector.PhotoTemplate>
+                    <viewModels:ProfileMediaListItemTemplateSelector.VideoTemplate>
+                        <DataTemplate>
+                            <views:MediaListItemVideoUC Title="{Binding Title}" />
+                        </DataTemplate>
+                    </viewModels:ProfileMediaListItemTemplateSelector.VideoTemplate>
+                    <viewModels:ProfileMediaListItemTemplateSelector.ProductTemplate>
+                        <DataTemplate>
+                            <views:MediaListItemProductUC Title="{Binding Title}" />
+                        </DataTemplate>
+                    </viewModels:ProfileMediaListItemTemplateSelector.ProductTemplate>
+                    <viewModels:ProfileMediaListItemTemplateSelector.GiftsTemplate>
+                        <DataTemplate>
+                            <views:MediaListItemGiftsUC />
+                        </DataTemplate>
+                    </viewModels:ProfileMediaListItemTemplateSelector.GiftsTemplate>
+                    <viewModels:ProfileMediaListItemTemplateSelector.EmptyDataTemplate>
+                        <DataTemplate>
+                            <views:MediaListItemEmptyDataUC />
+                        </DataTemplate>
+                    </viewModels:ProfileMediaListItemTemplateSelector.EmptyDataTemplate>
+                </viewModels:ProfileMediaListItemTemplateSelector>
+            </DataTemplate>
+        </ContentControl.ContentTemplate>
+    </ContentControl>
+</UserControl>

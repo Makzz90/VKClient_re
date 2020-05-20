@@ -1,0 +1,72 @@
+﻿<UserControl
+    x:Class="VKClient.Groups.UC.LinkUC"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:framework="clr-namespace:VKClient.Common.Framework;assembly=VKClient.Common"
+    
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    
+    mc:Ignorable="d">
+
+    <Grid Height="80"
+          Background="Transparent"
+          framework:MetroInMotion.Tilt="2.5">
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        
+        <Ellipse Style="{StaticResource PhotoPlaceholderEllipse}"
+                 Fill="{StaticResource PhoneChromeBrush}"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Center"
+                 Height="64"
+                 Width="64"
+                 Margin="16,8,0,0"/>
+        <Image HorizontalAlignment="Left"
+               Height="64"
+               Width="64"
+               framework:ImageLoader.UriSource="{Binding Photo}"
+               VerticalAlignment="Center"
+               Margin="16,8,0,0">
+            <Image.Clip>
+                <EllipseGeometry Center="32,32" RadiusX="32" RadiusY="32"/>
+            </Image.Clip>
+        </Image>
+
+        <TextBlock Text="{Binding Title}"
+                   Foreground="{StaticResource PhoneContrastTitleBrush}"
+                   Margin="{Binding TitleMargin}"
+                   FontSize="25.333"/>
+        <TextBlock Margin="92,43,16,0"
+                   Text="{Binding Description}"
+                   Foreground="{StaticResource PhoneGray400Brush}"
+                   FontSize="20"/>
+
+        <Grid Background="Transparent"
+              HorizontalAlignment="Right"
+              MouseLeftButtonDown="ActionButton_OnPressed"
+              Tap="ActionButton_OnClicked"
+              Visibility="{Binding ActionButtonVisibility}"
+              Margin="0,8,4,8"
+              Grid.Column="1"
+              Height="64"
+              Width="64">
+            <Border Width="{Binding ActionButtonSize}"
+                    Height="{Binding ActionButtonSize}"
+                    Background="{StaticResource PhoneGrayIconForegroundBrush}"
+                    Margin="0,8,0,0">
+                <Border.OpacityMask>
+                    <ImageBrush framework:ImageLoader.ImageBrushMultiResSource="{Binding ActionButtonIcon}"/>
+                </Border.OpacityMask>
+            </Border>
+        </Grid>
+
+    </Grid>
+
+</UserControl>

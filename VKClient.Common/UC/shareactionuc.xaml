@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="VKClient.Common.UC.ShareActionUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:framework="clr-namespace:VKClient.Common.Framework"
+             mc:Ignorable="d"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             d:DesignHeight="32"
+             d:DesignWidth="480">
+
+    <Grid Background="Transparent"
+          framework:MetroInMotion.Tilt="2.2">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Border Width="32"
+                Height="32"
+                Margin="0 5 0 0"
+                Background="{StaticResource PhoneButtonTextForegroundBrush}">
+            <Border.OpacityMask>
+                <ImageBrush x:Name="imageBrushIcon"
+                            Stretch="Uniform" />
+            </Border.OpacityMask>
+        </Border>
+        <TextBlock x:Name="textBlockTitle"
+                   Grid.Column="1"
+                   Margin="20 0 0 0"
+                   Foreground="{StaticResource PhoneButtonTextForegroundBrush}"
+                   FontSize="25.667" />
+    </Grid>
+</UserControl>

@@ -1,0 +1,64 @@
+﻿<mapAttachments:MapAttachmentUCBase x:Class="VKClient.Common.UC.MapAttachments.MapPointFullAttachmentUC"
+                                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                                    xmlns:mapAttachments="clr-namespace:VKClient.Common.UC.MapAttachments"
+                                    xmlns:framework="clr-namespace:VKClient.Common.Framework"
+                                    mc:Ignorable="d"
+                                    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                                    FontSize="{StaticResource PhoneFontSizeNormal}"
+                                    Foreground="{StaticResource PhoneForegroundBrush}"
+                                    d:DesignWidth="464"
+                                    d:DesignHeight="336">
+
+    <Canvas x:Name="canvas"
+            Background="Transparent"
+            framework:MetroInMotion.Tilt="1.5"
+            Width="464"
+            Height="336">
+
+        <Rectangle x:Name="rectanglePlaceholder"
+                   Width="464"
+                   Height="261"
+                   Fill="{StaticResource PhoneChromeBrush}" />
+        <Image x:Name="imageMap"
+               Width="464"
+               Height="261" />
+        <Image x:Name="imageMapIcon"
+               framework:MultiResImageLoader.UriSource="/Resources/MapPin.png"
+               Width="28"
+               Height="44"
+               Canvas.Left="218"
+               Canvas.Top="86.5" />
+
+        <Rectangle x:Name="rectMapBorderBottom"
+                   Width="462"
+                   Canvas.Top="260"
+                   Canvas.Left="1"
+                   Fill="{StaticResource PhoneAttachmentBorderBrush}"
+                   Height="1" />
+
+        <TextBlock x:Name="textBlockTitle"
+                   Canvas.Top="270"
+                   Canvas.Left="16"
+                   FontFamily="{StaticResource PhoneFontFamilySemiBold}"
+                   LineStackingStrategy="BlockLineHeight"
+                   LineHeight="28"
+                   FontSize="21.33"
+                   Foreground="{StaticResource PhoneAlmostBlackBrush}"
+                   Text="Невский пр-т, 28" />
+        <TextBlock x:Name="textBlockSubtitle"
+                   Canvas.Top="297"
+                   Canvas.Left="16"
+                   Foreground="{StaticResource PhoneCaptionGrayBrush}"
+                   Text="Санкт-Петербург" />
+
+        <Rectangle x:Name="rectBorder"
+                   Width="464"
+                   Height="336"
+                   IsHitTestVisible="False"
+                   Stroke="{StaticResource PhoneAttachmentBorderBrush}"
+                   StrokeThickness="1" />
+    </Canvas>
+</mapAttachments:MapAttachmentUCBase>

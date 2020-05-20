@@ -1,0 +1,91 @@
+﻿<framework:PageBase
+    x:Class="VKClient.Groups.Management.ServiceSwitchPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:uc="clr-namespace:VKClient.Common.UC;assembly=VKClient.Common"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:framework="clr-namespace:VKClient.Common.Framework;assembly=VKClient.Common"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    shell:SystemTray.IsVisible="True"
+    mc:Ignorable="d"
+    
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <uc:GenericHeaderUC x:Name="Header" 
+                            HideSandwitchButton="True"
+                            Title="{Binding PageTitle}"/>
+        
+        <ScrollViewer Grid.Row="1">
+            <StackPanel Margin="0,16,0,12">
+
+                <Grid Background="Transparent"
+                      framework:MetroInMotion.Tilt="2.5"
+                      Tap="Disabled_OnClicked">
+                    <TextBlock Text="{Binding DisabledTitle}"
+                               Foreground="{Binding DisabledForeground}"
+                               Margin="16,13,16,17"
+                               FontSize="25.333"/>
+                </Grid>
+                
+                <Grid Background="Transparent"
+                      framework:MetroInMotion.Tilt="2.5"
+                      Tap="Opened_OnClicked">
+                    <TextBlock Text="{Binding OpenedTitle}"
+                               Foreground="{Binding OpenedForeground}"
+                               Margin="16,13,16,0"
+                               FontSize="25.333"/>
+                    <TextBlock Text="{Binding OpenedDescription}"
+                               Foreground="{StaticResource PhoneGray400Brush}"
+                               TextWrapping="Wrap"
+                               Margin="16,44,16,16"
+                               FontSize="20"/>
+                    <TextBlock/>
+                </Grid>
+
+                <Grid Background="Transparent"
+                      framework:MetroInMotion.Tilt="2.5"
+                      Tap="Limited_OnClicked">
+                    <TextBlock Text="{Binding LimitedTitle}"
+                               Foreground="{Binding LimitedForeground}"
+                               Margin="16,13,16,0"
+                               FontSize="25.333"/>
+                    <TextBlock Text="{Binding LimitedDescription}"
+                               Foreground="{StaticResource PhoneGray400Brush}"
+                               TextWrapping="Wrap"
+                               Margin="16,44,16,16"
+                               FontSize="20"/>
+                    <TextBlock/>
+                </Grid>
+
+                <Grid Background="Transparent"
+                      framework:MetroInMotion.Tilt="2.5"
+                      Visibility="{Binding ClosedVisibility}"
+                      Tap="Closed_OnClicked">
+                    <TextBlock Text="{Binding Path=LocalizedResources.Closed, Source={StaticResource LocalizedStrings}}"
+                               Foreground="{Binding ClosedForeground}"
+                               Margin="16,13,16,0"
+                               FontSize="25.333"/>
+                    <TextBlock Text="{Binding Path=LocalizedResources.ClosedWallDescription, Source={StaticResource LocalizedStrings}}"
+                               Foreground="{StaticResource PhoneGray400Brush}"
+                               TextWrapping="Wrap"
+                               Margin="16,44,16,16"
+                               FontSize="20"/>
+                    <TextBlock/>
+                </Grid>
+
+            </StackPanel>
+        </ScrollViewer>
+        
+    </Grid>
+
+</framework:PageBase>

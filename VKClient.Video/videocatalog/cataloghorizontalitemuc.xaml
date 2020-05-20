@@ -1,0 +1,85 @@
+﻿<virtItems:UserControlVirtualizable x:Class="VKClient.Common.VideoCatalog.CatalogHorizontalItemUC"
+                                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                                    mc:Ignorable="d"
+                                    xmlns:virtItems="clr-namespace:VKClient.Common.Library.VirtItems;assembly=VKClient.Common"
+                                    xmlns:framework="clr-namespace:VKClient.Common.Framework;assembly=VKClient.Common"
+                                    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                                    FontSize="{StaticResource PhoneFontSizeNormal}"
+                                    Foreground="{StaticResource PhoneForegroundBrush}"
+                                    d:DesignHeight="480"
+                                    d:DesignWidth="480">
+
+    <Canvas Width="208"
+            Height="272"
+            framework:MetroInMotion.Tilt="1.5">
+
+        <Grid x:Name="LayoutRoot"
+              Width="256"
+              Height="192"
+              Background="Transparent"
+              Margin="8"
+             
+              Tap="LayoutRoot_Tap">
+
+            <Grid.Projection>
+                <PlaneProjection RotationZ="-90"
+                                 LocalOffsetX="32"
+                                 LocalOffsetY="32" />
+            </Grid.Projection>
+
+            <Grid VerticalAlignment="Top"
+                  HorizontalAlignment="Left">
+
+                <Canvas VerticalAlignment="Center">
+                <Rectangle VerticalAlignment="Top"
+                           Width="256"
+                        
+                           Height="144"
+                           HorizontalAlignment="Left"
+                           Style="{StaticResource PhotoPlaceholderRectangle}" />
+
+
+                <Image framework:ImageLoader.UriSource="{Binding ImageUri}"                       
+                       Width="256"
+                       VerticalAlignment="Top"
+                       Stretch="UniformToFill"
+                       Height="144" />
+                </Canvas>
+            </Grid>
+            <Grid VerticalAlignment="Top"
+                  HorizontalAlignment="Right"
+                  Margin=" 0 108 8 8"
+                  Height="28">
+                <Rectangle Fill="Black"
+                           Opacity="0.5" />
+                <TextBlock HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           FontSize="18"
+                           Margin="8 -2 8 0"
+                           Foreground="White"
+                           Text="{Binding UIDuration, FallbackValue='2:55'}" />
+
+            </Grid>
+
+            <TextBlock Text="{Binding Title, FallbackValue='Как японцы печатают иероглифы'}"
+                       FontSize="22.67"
+                       Foreground="{StaticResource PhoneContrastTitleBrush}"
+                       Grid.Column="1"
+                       LineHeight="26"
+                       LineStackingStrategy="BlockLineHeight"
+                       Margin="0 152 0 0" />
+
+
+            <!--<TextBlock Text="{Binding Subtitle1, FallbackValue='Павел Дуров'}"
+                       Margin="0 180 0 0"
+                       LineHeight="24"
+                       LineStackingStrategy="BlockLineHeight"
+                       Foreground="{StaticResource PhoneVKSubtleBrush}" />-->
+
+
+        </Grid>
+    </Canvas>
+</virtItems:UserControlVirtualizable>

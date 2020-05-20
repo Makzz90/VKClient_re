@@ -1,0 +1,77 @@
+﻿<UserControl x:Class="VKClient.Common.UC.FriendsImportUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:uc="clr-namespace:VKClient.Common.UC"
+             xmlns:framework="clr-namespace:VKClient.Common.Framework"
+             xmlns:library="clr-namespace:VKClient.Common.Library"
+             mc:Ignorable="d"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             d:DesignHeight="800"
+             d:DesignWidth="480">
+
+    <UserControl.Resources>
+        <DataTemplate x:Key="FooterTemplate">
+            <Grid VerticalAlignment="Top">
+                <StackPanel Margin="16 16 16 0">
+                    <ProgressBar IsIndeterminate="True"
+                                 Margin="0 6 0 0"
+                                 Foreground="{StaticResource PhoneProgressBarForegroundBrush}"
+                                 Visibility="{Binding IsLoadingVisibility}"
+                                 IsEnabled="{Binding IsLoading}" />
+                    <TextBlock Foreground="{StaticResource PhoneVKSubtleBrush}"
+                               FontFamily="Segoe WP SemiLight"
+                               FontSize="22.667"
+                               LineStackingStrategy="BlockLineHeight"
+                               LineHeight="30"
+                               TextWrapping="Wrap"
+                               Text="{Binding StatusText}"
+                               Visibility="{Binding StatusTextVisibility}"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Top" />
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+    </UserControl.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <uc:GenericHeaderUC x:Name="ucHeader" />
+
+        <framework:ExtendedLongListSelector Grid.Row="1"
+                                            ItemsSource="{Binding Collection}"
+                                            GroupHeaderTemplate="{StaticResource GroupHeaderTemplateTextSubtle}"
+                                            ListFooterTemplate="{StaticResource FooterTemplate}"
+                                            ListFooter="{Binding}"
+                                            IsFlatList="False">
+            <framework:ExtendedLongListSelector.ListHeaderTemplate>
+                <DataTemplate>
+                    <Border Height="16" />
+                </DataTemplate>
+            </framework:ExtendedLongListSelector.ListHeaderTemplate>
+            <framework:ExtendedLongListSelector.ItemTemplate>
+                <DataTemplate>
+                    <library:SubscriptionItemHeaderTemplateSelector Content="{Binding}">
+                        <library:SubscriptionItemHeaderTemplateSelector.SubscriptionItemTemplate>
+                            <DataTemplate>
+                                <uc:SubscriptionItemHeaderUC Margin="16 0 16 16" />
+                            </DataTemplate>
+                        </library:SubscriptionItemHeaderTemplateSelector.SubscriptionItemTemplate>
+                        <library:SubscriptionItemHeaderTemplateSelector.InvitationItemTemplate>
+                            <DataTemplate>
+                                <uc:InvitationItemHeaderUC Margin="16 16 16 0" />
+                            </DataTemplate>
+                        </library:SubscriptionItemHeaderTemplateSelector.InvitationItemTemplate>
+                    </library:SubscriptionItemHeaderTemplateSelector>
+                </DataTemplate>
+            </framework:ExtendedLongListSelector.ItemTemplate>
+        </framework:ExtendedLongListSelector>
+    </Grid>
+</UserControl>

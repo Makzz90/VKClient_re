@@ -1,0 +1,144 @@
+<UserControl x:Class="VKClient.Common.Profiles.Users.Views.ProfileInfoHeaderUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:framework="clr-namespace:VKClient.Common.Framework"
+             mc:Ignorable="d"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             d:DesignHeight="320"
+             d:DesignWidth="480">
+
+    <Grid Height="320"
+          Background="{StaticResource PhoneProfilePhotoPlaceholderBrush}">
+
+        <Border Width="160"
+                Height="160"
+                Visibility="{Binding DeactivatedPhotoVisibility}"
+                Background="{StaticResource PhoneProfileDeactivatedIconBrush}">
+            <Border.OpacityMask>
+                <ImageBrush framework:ImageLoader.ImageBrushMultiResSource="/Resources/Profile/PlaceholderBanned-160px.png" />
+            </Border.OpacityMask>
+        </Border>
+
+        <Border Width="160"
+                Height="160"
+                Visibility="{Binding NoPhotoVisibility, FallbackValue=Collapsed}"
+                Background="{StaticResource PhoneProfileDeactivatedIconBrush}">
+            <Border.OpacityMask>
+                <ImageBrush framework:ImageLoader.ImageBrushMultiResSource="/Resources/Profile/PlaceholderUser-160px.png" />
+            </Border.OpacityMask>
+        </Border>
+
+        <Grid Width="480"
+              Height="320"
+              Visibility="{Binding AvatarVisibility}">
+            <Image x:Name="image"
+                   Stretch="UniformToFill"
+                   Width="{Binding ProfileImageWidth}"
+                   Height="{Binding ProfileImageHeight}"
+                   VerticalAlignment="Top"
+                   HorizontalAlignment="Left"
+                   framework:ImageLoader.UriSource="{Binding ProfileImageUrl}"
+                   Margin="{Binding ProfileImageMargin}"
+                   ImageOpened="ImageProfile_OnImageOpened">
+                <Image.Clip>
+                    <RectangleGeometry Rect="{Binding ProfileImageClipRect}" />
+                </Image.Clip>
+            </Image>
+
+            <Grid x:Name="gridScrim"
+                  Height="320"
+                  Visibility="Visible">
+                <Image framework:MultiResImageLoader.UriSource="/Resources/Profile/Scrim.png"
+                       Opacity="0.5"
+                       VerticalAlignment="Top"
+                       Margin="0 -1 0 0"
+                       Width="480"
+                       Height="144"
+                       Stretch="Fill">
+                    <Image.Clip>
+                        <RectangleGeometry Rect="0 1 480 144" />
+                    </Image.Clip>
+                </Image>
+                <Image framework:MultiResImageLoader.UriSource="/Resources/Profile/Scrim.png"
+                       VerticalAlignment="Bottom"
+                       Margin="0 0 0 -1"
+                       Width="480"
+                       Height="144"
+                       Stretch="Fill">
+                    <Image.RenderTransform>
+                        <RotateTransform CenterX="240"
+                                         CenterY="72"
+                                         Angle="180" />
+                    </Image.RenderTransform>
+                    <Image.Clip>
+                        <RectangleGeometry Rect="0 1 480 144" />
+                    </Image.Clip>
+                </Image>
+            </Grid>
+        </Grid>
+
+        <StackPanel VerticalAlignment="Bottom"
+                    Margin="0 0 0 16">
+            <StackPanel Orientation="Horizontal"
+                        Margin="16 0 0 0">
+                <TextBlock Foreground="White"
+                           FontSize="32"
+                           MaxWidth="{Binding NameWidth, FallbackValue=420}"
+                           Text="{Binding Name, FallbackValue='User name'}" />
+                <Image framework:MultiResImageLoader.UriSource="/Resources/Profile/Verified.png"
+                       Visibility="{Binding VerifiedVisibility}"
+                       Opacity="0.6"
+                       Width="24"
+                       Height="24"
+                       Margin="8 7 0 0" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                        Visibility="{Binding OnlineStatusVisibility}">
+                <TextBlock Foreground="White"
+                           FontSize="22.67"
+                           Opacity="0.6"
+                           Margin="16 -4 0 0"
+                           Text="{Binding OnlineStatus, FallbackValue='online'}" />
+                <Border Width="12"
+                        Height="18"
+                        Margin="8 -2 0 0"
+                        Background="White"
+                        Opacity="0.6"
+                        Visibility="{Binding MobileVisibility}">
+                    <Border.OpacityMask>
+                        <ImageBrush framework:ImageLoader.ImageBrushMultiResSource="/VKClient.Common;component/Resources/OnlineMobileMark.png" />
+                    </Border.OpacityMask>
+                </Border>
+            </StackPanel>
+        </StackPanel>
+
+        <Border x:Name="borderOverlay"
+                Visibility="Collapsed"
+                Background="Transparent"
+                Tap="GridRoot_OnTap" />
+
+        <Border Width="64"
+                Height="64"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Right"
+                Background="Transparent"
+                framework:MetroInMotion.Tilt="1.5"
+                Visibility="{Binding AddPhotoIconVisibility}"
+                Tap="BorderAddPhoto_OnTap">
+            <Image Width="32"
+                   Height="32"
+                   Opacity="0.4"
+                   framework:MultiResImageLoader.UriSource="/Resources/Profile/ProfileAddPhoto.png" />
+        </Border>
+
+        <Rectangle x:Name="rectBackground"
+                   Opacity="0"
+                   Visibility="Collapsed"
+                   Fill="{StaticResource PhoneHeaderBackgroundBrush}"
+                   CacheMode="BitmapCache" />
+    </Grid>
+</UserControl>

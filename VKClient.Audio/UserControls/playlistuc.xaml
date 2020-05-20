@@ -1,0 +1,100 @@
+﻿<UserControl x:Class="VKClient.Audio.UserControls.PlaylistUC"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:framework="clr-namespace:VKClient.Common.Framework;assembly=VKClient.Common"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="480" d:DesignWidth="480">
+
+    <UserControl.Resources>
+
+        <DataTemplate x:Key="TrackTemplate">
+            <Grid  Margin="16 0 16 0"
+                   Background="Transparent"
+                   framework:MetroInMotion.Tilt="2.5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Margin="0,10"
+                                Orientation="Vertical"
+                                >
+                    <TextBlock Text="{Binding Title}" Margin="0 0 0 0" 
+                               
+                                   FontSize="36.67"
+                               Foreground="{Binding TitleBrush}"
+                               FontFamily="Segoe WP SemiLight"/>
+                    <TextBlock Text="{Binding Artist}"
+                                   Margin="1, -8, 0, 0"
+                               Foreground="{Binding SubtitleBrush}"
+                                
+                               Style="{StaticResource PhoneTextSubtleStyle}"/>
+                </StackPanel>
+
+
+                <Border
+                    Background="{StaticResource PhoneForegroundBrush}"
+                    Width="26"
+                       Height="26"
+                       Grid.Column="1"
+                       Margin="0 24 0 0"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Top"
+                       Visibility="{Binding IsCachedVisibility}">
+                    <Border.OpacityMask>
+                        <ImageBrush framework:ImageLoader.ImageBrushMultiResSource="/Resources/New/MusicCached.png"/>
+                    </Border.OpacityMask>
+                </Border>
+
+
+
+                <!--<Image Width="26"
+                       Height="26"
+                       Grid.Column="1"
+                       Margin="0 24 0 0"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Top"
+                       Visibility="{Binding IsCachedVisibility}"
+                       framework:MultiResImageLoader.UriSource="/Resources/New/MusicCached.png">
+
+                </Image>-->
+
+                <TextBlock Text="{Binding UIDuration}"
+                           Grid.Column="1"
+                           VerticalAlignment="Bottom"
+                           Margin="8 0 0 11"
+                           Foreground="{Binding SubtitleBrush}"/>
+
+            </Grid>
+        </DataTemplate>
+    </UserControl.Resources>
+    
+    
+    <Grid x:Name="LayoutRoot" Background="{StaticResource PhoneMenuBackgroundBrush}">
+        <TextBlock 
+                    Name="textBlockTitle"
+                Margin="25 45 0 0"
+                Text="Title" FontSize="22.677"
+            VerticalAlignment="Top"
+                Foreground="{StaticResource PhoneAudioPlayerForeground1Brush}"
+                FontFamily="Segoe WP Semibold"/>
+
+
+        <framework:ExtendedLongListSelector x:Name="AllAudios"
+                                      Margin="0 88 0 0"
+                                        DataContext="{Binding Audios}"                                       
+                                        ItemsSource="{Binding Collection}"
+                                        IsFlatList="True"
+                                        ItemTemplate="{StaticResource TrackTemplate}"                        
+                                        ListFooterTemplate="{StaticResource FooterTemplate }"
+                                        ListFooter="{Binding}"
+                                            SelectionChanged="AllAudios_SelectionChanged">
+        </framework:ExtendedLongListSelector>
+
+    </Grid>
+</UserControl>

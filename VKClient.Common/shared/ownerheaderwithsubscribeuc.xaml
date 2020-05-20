@@ -1,0 +1,73 @@
+﻿<virtItems:UserControlVirtualizable x:Class="VKClient.Common.Shared.OwnerHeaderWithSubscribeUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:virtItems="clr-namespace:VKClient.Common.Library.VirtItems;assembly=VKClient.Common"
+             mc:Ignorable="d"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             xmlns:framework="clr-namespace:VKClient.Common.Framework"
+             d:DesignHeight="68"
+             d:DesignWidth="480">
+
+    <Grid x:Name="LayoutRoot" Height="68" Background="{StaticResource PhoneNewsBackgroundBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <!--<Image Margin="0,0,-20,0"
+               Source="/Image1.png"
+               Stretch="Fill" />-->
+
+
+
+        <Grid Background="Transparent" framework:MetroInMotion.Tilt="1.1"
+              Tap="gridOwnerTap">
+        <Ellipse Style="{StaticResource PhotoPlaceholderEllipse}"
+                 HorizontalAlignment="Left"
+                 Width="44"
+                 Height="44"
+                 Margin="16 0 0 0" />
+
+        <Image Width="44"
+               HorizontalAlignment="Left"
+               Height="44"
+               Name="imageUserOrGroup"
+               Margin="16 0 0 0"
+               framework:ImageLoader.UriSource="{Binding ImageUri}">
+            <Image.Clip>
+                <EllipseGeometry Center="22 22"
+                                 RadiusX="22"
+                                 RadiusY="22" />
+            </Image.Clip>
+        </Image>
+
+
+        <TextBlock Name="textBlockName"
+                   FontFamily="Segoe WP Semibold"
+                   FontSize="21.3"
+                   Foreground="{StaticResource PhoneContrastTitleBrush}"
+                   Text="{Binding Title, FallbackValue='Alexander'}"
+                   Margin="72 18 0 0" />
+
+        </Grid>
+
+        <Button Tap="SubscribeUnsubscribeButtonTap"
+                Grid.Column="1"
+                Style="{StaticResource VKButtonPrimaryStyle}"
+                Content="{Binding Source={StaticResource LocalizedStrings}, Path=LocalizedResources.Group_Follow}"
+                HorizontalAlignment="Right"
+                Visibility="{Binding FollowButtonVisibility}"/>
+
+        <Button Tap="SubscribeUnsubscribeButtonTap"
+                Grid.Column="1"
+                Style="{StaticResource VKButtonSecondaryStyle}"
+                Content="{Binding Source={StaticResource LocalizedStrings}, Path=LocalizedResources.GroupPage_Unfollow, Converter={StaticResource StringCapitalizedConverter}}"
+                HorizontalAlignment="Right"
+                Visibility="{Binding UnfollowButtonVisibility}"/>
+
+    </Grid>
+</virtItems:UserControlVirtualizable>

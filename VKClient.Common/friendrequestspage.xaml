@@ -1,0 +1,54 @@
+﻿<framework:PageBase x:Class="VKClient.Common.FriendRequestsPage"
+                    xmlns:framework="clr-namespace:VKClient.Common.Framework;assembly=VKClient.Common"
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:uc="clr-namespace:VKClient.Common.UC"
+                    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                    FontSize="{StaticResource PhoneFontSizeNormal}"
+                    Foreground="{StaticResource PhoneForegroundBrush}"
+                    SupportedOrientations="Portrait"
+                    Orientation="Portrait"
+                    mc:Ignorable="d"
+                    shell:SystemTray.IsVisible="True"
+                    shell:SystemTray.Opacity="0">
+
+    <Grid x:Name="LayoutRoot"
+          Background="Transparent">
+
+        <framework:ExtendedLongListSelector Margin="0 96 0 0"
+                                            DataContext="{Binding FriendRequestsVM}"
+                                            ItemsSource="{Binding Collection}"
+                                            ListFooter="{Binding}"
+                                            ListFooterTemplate="{StaticResource FooterNewTemplate}"
+                                            IsFlatList="True"
+                                            Link="ExtendedLongListSelector_Link_1"
+                                            x:Name="listBoxFriendRequests"
+                                            SelectionChanged="ExtendedLongListSelector_SelectionChanged_1">
+            <framework:ExtendedLongListSelector.ListHeader>
+                <Grid Background="{StaticResource PhoneRequestOrInvitationBackgroundBrush}">
+                    <TextBlock Text="{Binding FooterText}"
+                                Foreground="{StaticResource PhoneProfileInfoLoadingForegroundBrush}"
+                                FontFamily="Segoe WP Semibold"
+                                Margin="16,17,0,21"
+                                FontSize="20"/>
+                </Grid>
+            </framework:ExtendedLongListSelector.ListHeader>
+            <framework:ExtendedLongListSelector.ItemTemplate>
+                <DataTemplate>
+                    <uc:FriendRequestUC Model="{Binding Model}"
+                                        Profiles="{Binding Profiles}"
+                                        IsSuggestedFriend="{Binding IsSuggestedFriend}"
+                                        NeedBottomSeparatorLine="True"
+                                        VerticalAlignment="Top"
+                                        />
+                </DataTemplate>
+            </framework:ExtendedLongListSelector.ItemTemplate>
+        </framework:ExtendedLongListSelector>
+        <uc:GenericHeaderUC x:Name="ucHeader" />
+        <uc:PullToRefreshUC x:Name="ucPullToRefresh" />
+    </Grid>
+
+</framework:PageBase>

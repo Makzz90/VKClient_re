@@ -1,0 +1,147 @@
+﻿<UserControl x:Class="VKClient.Photos.UC.PickAlbumUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:framework="clr-namespace:VKClient.Common.Framework;assembly=VKClient.Common"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             d:DesignHeight="480"
+             d:DesignWidth="480"
+             VerticalAlignment="Top">
+
+    <UserControl.Resources>
+
+        <DataTemplate x:Key="HeaderTemplate">
+            <Grid Height="8"/>
+        </DataTemplate>
+        <DataTemplate x:Key="Albums">
+            <StackPanel Orientation="Horizontal" Margin="0 8 0 8" Height="162" >
+                <Grid 
+                        Width="215"
+                        Height="162"
+                        Tag="1"
+                    Background="Transparent"
+                    framework:MetroInMotion.Tilt="2.1"
+                        Tap="Image_Tap"
+                        HorizontalAlignment="Left"
+                        Margin="16 0 0 0" Visibility="{Binding HaveFirstHeader}">                
+
+                        <Rectangle Style="{StaticResource PhotoPlaceholderRectangle}"
+                                   Width="215"
+                                   Height="162"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Top" />
+
+                    <Canvas VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Width="215"
+                            Height="162"
+                            >
+                        <Image Width="215"
+                               Height="162"
+                               Stretch="UniformToFill"
+                               framework:ImageLoader.StreamSource="{Binding AlbumHeader1.ImageStream}"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Top" />
+                    </Canvas>
+                    <Rectangle Fill="Black"
+                                   Opacity="0.25"
+                                   Width="215"
+                                   Height="162" />
+                        <TextBlock FontFamily="Segoe WP Semibold"
+                                   FontSize="20"
+                                   Foreground="White"
+                                    HorizontalAlignment="Left" 
+                                   VerticalAlignment="Bottom"
+                                   Margin="16, 0,0,35"
+                                   Width="198"
+                                  Text="{Binding AlbumHeader1.AlbumName}" />
+
+                        <TextBlock FontFamily="Segoe WP"
+                                   FontSize="20"
+                                   Foreground="White"
+                                  HorizontalAlignment="Left" 
+                                   VerticalAlignment="Bottom"
+                                   Width="198"
+                                   Margin="16 0 0 10"
+                                  Text="{Binding AlbumHeader1.PhotosCountString}" />
+
+
+                </Grid>
+
+                <Grid Background="Transparent"
+                    framework:MetroInMotion.Tilt="2.1"
+                        Width="215"
+                        Height="162"
+                        Tag="2"
+                        Tap="Image_Tap"
+                        HorizontalAlignment="Left"
+                        Margin="16 0 0 0" Visibility="{Binding HaveSecondHeader}">
+
+                    <Rectangle Style="{StaticResource PhotoPlaceholderRectangle}"
+                                   Width="215"
+                                   Height="162"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Top" />
+
+                    <Canvas VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Width="215"
+                            Height="162"
+                            >
+                        <Image Width="215"
+                               Height="162"
+                               Stretch="UniformToFill"
+                               framework:ImageLoader.StreamSource="{Binding AlbumHeader2.ImageStream}"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Top" />
+                    </Canvas>
+                    <Rectangle Fill="Black"
+                                   Opacity="0.25"
+                                   Width="215"
+                                   Height="162" />
+                    <TextBlock FontFamily="Segoe WP Semibold"
+                                   FontSize="20"
+                                   Foreground="White"
+                                    HorizontalAlignment="Left" 
+                                   VerticalAlignment="Bottom"
+                                   Margin="16, 0,0,35"
+                                   Width="198"
+                                  Text="{Binding AlbumHeader2.AlbumName}" />
+
+                    <TextBlock FontFamily="Segoe WP"
+                                   FontSize="20"
+                                   Foreground="White"
+                                  HorizontalAlignment="Left" 
+                                   VerticalAlignment="Bottom"
+                                   Width="198"
+                                   Margin="16 0 0 10"
+                                  Text="{Binding AlbumHeader2.PhotosCountString}" />
+
+
+                </Grid>
+            </StackPanel>
+        </DataTemplate>
+
+    </UserControl.Resources>
+
+    <Grid x:Name="LayoutRoot"
+         
+          Background="{StaticResource PhoneMenuBackgroundBrush}">
+        <framework:ExtendedLongListSelector 
+                                            Name="listBoxAlbums"
+                                            ItemsSource="{Binding Albums}"
+                                            VerticalAlignment="Top"
+                                            IsFlatList="True"
+                                            ItemTemplate="{StaticResource Albums}"
+                                           ListHeaderTemplate="{StaticResource HeaderTemplate}"
+            ListFooterTemplate="{StaticResource HeaderTemplate}"
+            >
+        </framework:ExtendedLongListSelector>
+
+
+    </Grid>
+</UserControl>

@@ -1,0 +1,129 @@
+﻿<UserControl x:Class="VKClient.Common.UC.MenuUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:framework="clr-namespace:VKClient.Common.Framework;assembly=VKClient.Common"
+             xmlns:uc="clr-namespace:VKClient.Common.UC"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             d:DesignHeight="800"
+             d:DesignWidth="416">
+
+    <Grid Background="{StaticResource PhoneMainMenuBackgroundBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <ScrollViewer Name="scrollViewer"
+                      HorizontalAlignment="Left"
+                      VerticalScrollBarVisibility="Hidden"
+                      Width="416">
+            <StackPanel>
+
+                <Grid Margin="0,32,0,0"
+                      Tap="Search_OnClicked"
+                      Background="Transparent"
+                      HorizontalAlignment="Stretch"
+                      framework:MetroInMotion.Tilt="1.5">
+                    <Rectangle Fill="{StaticResource PhoneMainMenuSearchBoxBackgroundBrush}"
+                               Margin="16,8,16,8"
+                               Height="48" />
+                    <TextBlock Text="{Binding Path=LocalizedResources.MainMenu_Search, Source={StaticResource LocalizedStrings}}"
+                               IsHitTestVisible="False"
+                               Margin="32,14,0,0"
+                               FontSize="22.777"
+                               Foreground="White"
+                               Opacity="0.4" />
+                </Grid>
+
+                <Grid framework:MetroInMotion.Tilt="2.5"
+                      Tap="Profile_OnClicked"
+                      Hold="Profile_OnHolding"
+                      Background="Transparent"
+                      Margin="0,10,0,0"
+                      Height="60">
+                    <Ellipse Fill="{StaticResource PhoneMenuImagePlaceholderBackgroundBrush}"
+                             HorizontalAlignment="Left"
+                             VerticalAlignment="Top"
+                             Margin="16,6,0,0"
+                             Height="48"
+                             Width="48" />
+                    <Image framework:ImageLoader.UriSource="{Binding UserPhoto}"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Top"
+                           Margin="16,6,0,0"
+                           Height="48"
+                           Width="48">
+                        <Image.Clip>
+                            <!--<EllipseGeometry Center="24,24"
+                                             RadiusX="24"
+                                             RadiusY="24" />-->
+                            <RectangleGeometry Rect="0 0 48 48" x:Name="rectangleGeometry"
+					            RadiusX="24"
+					            RadiusY="24"/>
+                        </Image.Clip>
+                    </Image>
+                    <TextBlock FontSize="25.333"
+                               Foreground="White"
+                               Margin="80,12,16,0"
+                               framework:CorrectableTextBlock.Text="{Binding UserName}"
+                               MaxWidth="320"/>
+                </Grid>
+
+                <StackPanel Margin="0,0,0,16">
+                    <uc:MenuItemUC DataContext="{Binding NewsItem}"
+                                   ItemTap="News_OnClicked"
+                                   ItemHold="News_OnHolding" />
+                    <uc:MenuItemUC DataContext="{Binding NotificationsItem}"
+                                   ItemTap="Notifications_OnClicked"
+                                   ItemHold="Notifications_OnHolding" />
+                    <uc:MenuItemUC DataContext="{Binding MessagesItem}"
+                                   ItemTap="Messages_OnClicked"
+                                   ItemHold="Messages_OnHolding" />
+                    <uc:MenuItemUC DataContext="{Binding FriendsItem}"
+                                   ItemTap="Friends_OnClicked"
+                                   ItemHold="Friends_OnHolding"
+                                   CounterTap="FriendsRequests_OnClicked"
+                                   CounterHold="FriendsRequests_OnHolding" />
+                    <uc:MenuItemUC DataContext="{Binding CommunitiesItem}"
+                                   ItemTap="Communities_OnClicked"
+                                   ItemHold="Communities_OnHolding"
+                                   CounterTap="GroupRequests_Tap"
+                                   CounterHold="GroupRequests_Hold" />
+                    <uc:MenuItemUC DataContext="{Binding PhotosItem}"
+                                   ItemTap="Photos_OnClicked"
+                                   ItemHold="Photos_OnHolding" />
+                    <uc:MenuItemUC DataContext="{Binding VideosItem}"
+                                   ItemTap="Videos_OnClicked"
+                                   ItemHold="Videos_OnHolding" />
+                    <uc:MenuItemUC DataContext="{Binding AudiosItem}"
+                                   ItemTap="Audios_OnClicked"
+                                   ItemHold="Audios_OnHolding" />
+                    <uc:MenuItemUC DataContext="{Binding GamesItem}"
+                                   ItemTap="Games_OnClicked"
+                                   ItemHold="Games_OnHolding"
+                                   CounterTap="GamesRequests_Tap"
+                                   CounterHold="GamesRequests_Hold" />
+                    <uc:MenuItemUC DataContext="{Binding BookmarksItem}"
+                                   ItemTap="Bookmarks_OnClicked"
+                                   ItemHold="Bookmarks_OnHolding" />
+                    <uc:MenuItemUC DataContext="{Binding SettingsItem}"
+                                   ItemTap="Settings_OnClicked"
+                                   ItemHold="Settings_OnHolding" />
+                </StackPanel>
+
+                <uc:BirthdaysUC DataContext="{Binding BirthdaysVM}"
+                                Margin="0,0,0,16" />
+
+            </StackPanel>
+        </ScrollViewer>
+
+        <uc:MiniPlayerUC x:Name="miniPlayerUC"
+                         Grid.Row="1" />
+    </Grid>
+
+</UserControl>

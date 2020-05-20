@@ -1,0 +1,378 @@
+﻿<framework:PageBase x:Class="VKClient.Common.Graffiti.Views.GraffitiDrawPage"
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:framework="clr-namespace:VKClient.Common.Framework"
+                    xmlns:views="clr-namespace:VKClient.Common.Graffiti.Views"
+                    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                    FontSize="{StaticResource PhoneFontSizeNormal}"
+                    Foreground="{StaticResource PhoneForegroundBrush}"
+                    SupportedOrientations="Portrait"
+                    Orientation="Portrait"
+                    mc:Ignorable="d"
+                    shell:SystemTray.IsVisible="True"
+                    IsTransitionEnabled="False">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Canvas x:Name="drawCanvas"
+                Margin="0 63 0 0"
+                Background="{StaticResource PhoneGray050Brush}" />
+
+        <Grid x:Name="gridRecipient"
+              Height="64"
+              VerticalAlignment="Top"
+              Background="{StaticResource PhoneGray050Brush}">
+            <Rectangle Height="1"
+                       VerticalAlignment="Bottom"
+                       Fill="Black"
+                       Opacity="0.1" />
+
+            <Canvas Width="480"
+                    Height="64">
+                <Grid x:Name="gridRecipientAvatar"
+                      Width="40"
+                      Height="40"
+                      CacheMode="BitmapCache"
+                      DataContext="{Binding ConversationAvatarVM}">
+                    <Grid.RenderTransform>
+                        <CompositeTransform CenterX="20"
+                                            CenterY="20" />
+                    </Grid.RenderTransform>
+
+                    <Canvas HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Visibility="{Binding IsNotChatVisibility}">
+                        <Rectangle Width="40"
+                                   Height="40"
+                                   Fill="{StaticResource PhoneGray100Brush}">
+                            <Rectangle.Clip>
+                                <EllipseGeometry Center="20 20"
+                                                 RadiusX="20"
+                                                 RadiusY="20" />
+                            </Rectangle.Clip>
+                        </Rectangle>
+
+                        <Image framework:ImageLoader.UriSource="{Binding Path=UIImageUrl, Mode=OneWay}"
+                               Width="40"
+                               Height="40"
+                               VerticalAlignment="Center">
+                            <Image.Clip>
+                                <EllipseGeometry Center="20 20"
+                                                 RadiusX="20"
+                                                 RadiusY="20" />
+                            </Image.Clip>
+                        </Image>
+                    </Canvas>
+
+                    <Canvas Visibility="{Binding IsChatVisibility}"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top">
+
+                        <Rectangle Width="19"
+                                   Height="19"
+                                   Fill="{StaticResource PhoneGray100Brush}">
+                            <Rectangle.Clip>
+                                <EllipseGeometry Center="19 19"
+                                                 RadiusX="19"
+                                                 RadiusY="19" />
+                            </Rectangle.Clip>
+                        </Rectangle>
+                        <Image Width="19"
+                               Height="19"
+                               framework:ImageLoader.UriSource="{Binding Path=UIChatImage1Url, Mode=OneWay}">
+                            <Image.Clip>
+                                <EllipseGeometry Center="19 19"
+                                                 RadiusX="19"
+                                                 RadiusY="19" />
+                            </Image.Clip>
+                        </Image>
+
+
+                        <Rectangle Width="19"
+                                   Height="19"
+                                   Margin="21 0 0 0"
+                                   Fill="{StaticResource PhoneGray100Brush}">
+                            <Rectangle.Clip>
+                                <EllipseGeometry Center="0 19"
+                                                 RadiusX="19"
+                                                 RadiusY="19" />
+                            </Rectangle.Clip>
+                        </Rectangle>
+                        <Image Width="19"
+                               Height="19"
+                               Margin="21 0 0 0"
+                               framework:ImageLoader.UriSource="{Binding Path=UIChatImage2Url, Mode=OneWay}">
+                            <Image.Clip>
+                                <EllipseGeometry Center="0 19"
+                                                 RadiusX="19"
+                                                 RadiusY="19" />
+                            </Image.Clip>
+                        </Image>
+
+
+                        <Rectangle Width="19"
+                                   Height="19"
+                                   Margin="0 21 0 0"
+                                   Fill="{StaticResource PhoneGray100Brush}">
+                            <Rectangle.Clip>
+                                <EllipseGeometry Center="19 0"
+                                                 RadiusX="19"
+                                                 RadiusY="19" />
+                            </Rectangle.Clip>
+                        </Rectangle>
+                        <Image Width="19"
+                               Height="19"
+                               Margin="0 21 0 0"
+                               framework:ImageLoader.UriSource="{Binding Path=UIChatImage3Url, Mode=OneWay}">
+                            <Image.Clip>
+                                <EllipseGeometry Center="19 0"
+                                                 RadiusX="19"
+                                                 RadiusY="19" />
+                            </Image.Clip>
+                        </Image>
+
+
+                        <Rectangle Width="19"
+                                   Height="19"
+                                   Margin="21 21 0 0"
+                                   Fill="{StaticResource PhoneGray100Brush}">
+                            <Rectangle.Clip>
+                                <EllipseGeometry Center="0 0"
+                                                 RadiusX="19"
+                                                 RadiusY="19" />
+                            </Rectangle.Clip>
+                        </Rectangle>
+                        <Image Width="19"
+                               Height="19"
+                               Margin="21 21 0 0"
+                               framework:ImageLoader.UriSource="{Binding Path=UIChatImage4Url, Mode=OneWay}">
+                            <Image.Clip>
+                                <EllipseGeometry Center="0 0"
+                                                 RadiusX="19"
+                                                 RadiusY="19" />
+                            </Image.Clip>
+                        </Image>
+
+
+
+                        <Canvas Visibility="{Binding ChatLeftImageVisibility}">
+                            <Rectangle Width="19"
+                                       Height="40"
+                                       Fill="{StaticResource PhoneGray100Brush}">
+                                <Rectangle.Clip>
+                                    <EllipseGeometry Center="19 19"
+                                                     RadiusX="19"
+                                                     RadiusY="19" />
+                                </Rectangle.Clip>
+                            </Rectangle>
+
+                            <Image framework:ImageLoader.UriSource="{Binding Path=ChatLeftImageUrl, Mode=OneWay}"
+                                   Width="19"
+                                   Height="40"
+                                   Stretch="UniformToFill"
+                                   VerticalAlignment="Center">
+                                <Image.Clip>
+                                    <EllipseGeometry Center="19 19"
+                                                     RadiusX="19"
+                                                     RadiusY="19" />
+                                </Image.Clip>
+                            </Image>
+
+                        </Canvas>
+
+                        <Canvas Visibility="{Binding ChatRightImageVisibility}"
+                                Margin="21 0 0 0">
+                            <Rectangle Width="19"
+                                       Height="40"
+                                       Fill="{StaticResource PhoneGray100Brush}">
+                                <Rectangle.Clip>
+                                    <EllipseGeometry Center="0 19"
+                                                     RadiusX="19"
+                                                     RadiusY="19" />
+                                </Rectangle.Clip>
+                            </Rectangle>
+
+                            <Image framework:ImageLoader.UriSource="{Binding Path=ChatRightImageUrl, Mode=OneWay}"
+                                   Width="19"
+                                   Height="40"
+                                   Stretch="UniformToFill"
+                                   VerticalAlignment="Center">
+                                <Image.Clip>
+                                    <EllipseGeometry Center="0 19"
+                                                     RadiusX="19"
+                                                     RadiusY="19" />
+                                </Image.Clip>
+                            </Image>
+
+                        </Canvas>
+
+                    </Canvas>
+                </Grid>
+
+                <TextBlock x:Name="textBlockRecipientName"
+                           CacheMode="BitmapCache"
+                           Text="Алексей"
+                           Foreground="{StaticResource PhoneGray500Brush}">
+                    <TextBlock.RenderTransform>
+                        <TranslateTransform x:Name="translateRecipientName" />
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+            </Canvas>
+        </Grid>
+
+        <!-- DEBUG INFO -->
+        <StackPanel Margin="0 32 12 0"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Right"
+                    IsHitTestVisible="False">
+            <TextBlock x:Name="textBlockEncodeElapsed"
+                       TextAlignment="Right"
+                       Foreground="{StaticResource PhoneGray500Brush}" />
+            <TextBlock x:Name="textBlockRenderImageSize"
+                       TextAlignment="Right"
+                       Foreground="{StaticResource PhoneGray500Brush}" />
+            <TextBlock x:Name="textBlockRenderFileSize"
+                       TextAlignment="Right"
+                       Foreground="{StaticResource PhoneGray500Brush}" />
+        </StackPanel>
+
+        <StackPanel x:Name="panelControls"
+                    Grid.Row="1"
+                    Height="160"
+                    CacheMode="BitmapCache"
+                    Background="{StaticResource PhoneGray000_Gray800Brush}">
+            <Grid x:Name="gridPallete">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <views:GraffitiPalleteUC x:Name="ucGraffitiPallete"
+                                         ColorSelected="OnColorSelected" />
+
+                <Border x:Name="borderThickness"
+                        Grid.Column="1"
+                        Width="64"
+                        Height="64"
+                        Background="Transparent"
+                        CacheMode="BitmapCache"
+                        Tap="BrushThickness_OnTap">
+                    <Border.RenderTransform>
+                        <RotateTransform CenterX="32"
+                                         CenterY="32" />
+                    </Border.RenderTransform>
+
+                    <Border Width="32"
+                            Height="32"
+                            Background="{StaticResource PhoneGray400_Gray500Brush}">
+                        <Border.OpacityMask>
+                            <ImageBrush framework:ImageLoader.ImageBrushMultiResSource="/Resources/StrokeWeight32px.png" />
+                        </Border.OpacityMask>
+                    </Border>
+                </Border>
+            </Grid>
+
+            <Grid Height="88">
+                <Rectangle Height="1"
+                           VerticalAlignment="Top"
+                           Fill="{StaticResource PhoneForegroundBrush}"
+                           Opacity="0.1" />
+
+                <Border x:Name="borderClose"
+                        Width="64"
+                        Height="64"
+                        HorizontalAlignment="Left"
+                        Background="Transparent"
+                        CacheMode="BitmapCache"
+                        Tap="Close_OnTap">
+                    <Border.RenderTransform>
+                        <RotateTransform CenterX="32"
+                                         CenterY="32" />
+                    </Border.RenderTransform>
+
+                    <Border Width="32"
+                            Height="32"
+                            Background="{StaticResource PhoneGray400_Gray500Brush}">
+                        <Border.OpacityMask>
+                            <ImageBrush framework:ImageLoader.ImageBrushMultiResSource="/Resources/Close32px.png" />
+                        </Border.OpacityMask>
+                    </Border>
+                </Border>
+
+                <Grid x:Name="gridAttach"
+                      Width="64"
+                      Height="64"
+                      HorizontalAlignment="Center"
+                      Background="Transparent"
+                      Opacity="0.4"
+                      CacheMode="BitmapCache"
+                      Tap="Attach_OnClick">
+                    <Grid.RenderTransform>
+                        <RotateTransform CenterX="32"
+                                         CenterY="32" />
+                    </Grid.RenderTransform>
+
+                    <Ellipse Width="64"
+                             Height="64"
+                             Fill="{StaticResource PhoneBlue300_GrayBlue100Brush}" />
+
+                    <Border Width="40"
+                            Height="40"
+                            Background="{StaticResource PhoneGray050_Gray800Brush}">
+                        <Border.OpacityMask>
+                            <ImageBrush framework:ImageLoader.ImageBrushMultiResSource="/Resources/Done40px.png" />
+                        </Border.OpacityMask>
+                    </Border>
+                </Grid>
+
+                <Border x:Name="borderUndo"
+                        Width="64"
+                        Height="64"
+                        HorizontalAlignment="Right"
+                        Background="Transparent"
+                        Opacity="0.4"
+                        CacheMode="BitmapCache"
+                        Tap="Undo_OnTap"
+                        Hold="Undo_OnHold">
+                    <Border.RenderTransform>
+                        <RotateTransform CenterX="32"
+                                         CenterY="32" />
+                    </Border.RenderTransform>
+
+                    <Border Width="32"
+                            Height="32"
+                            Background="{StaticResource PhoneGray400_Gray500Brush}">
+                        <Border.OpacityMask>
+                            <ImageBrush framework:ImageLoader.ImageBrushMultiResSource="/Resources/Undo32px.png" />
+                        </Border.OpacityMask>
+                    </Border>
+                </Border>
+            </Grid>
+        </StackPanel>
+
+        <Border x:Name="borderThicknessPopupOverlay"
+                Grid.RowSpan="2"
+                Background="Transparent"
+                Visibility="Collapsed"
+                ManipulationStarted="BorderThicknessPopupOverlay_OnManipulationStarted" />
+
+        <views:GraffitiBrushThicknessUC x:Name="ucBrushThickness"
+                                        HorizontalAlignment="Right"
+                                        VerticalAlignment="Bottom"
+                                        CacheMode="BitmapCache"
+                                        ThicknessSelected="OnThicknessSelected">
+            <views:GraffitiBrushThicknessUC.RenderTransform>
+                <TranslateTransform X="-8"
+                                    Y="-8" />
+            </views:GraffitiBrushThicknessUC.RenderTransform>
+        </views:GraffitiBrushThicknessUC>
+    </Grid>
+
+</framework:PageBase>

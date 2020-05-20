@@ -1,0 +1,121 @@
+﻿<UserControl x:Class="VKClient.Common.UC.FooterUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:framework="clr-namespace:VKClient.Common.Framework;assembly=VKClient.Common"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}">
+
+    <Grid VerticalAlignment="Top">
+        <TextBlock Foreground="{StaticResource PhoneVKSubtleBrush}"
+                           Margin="12,12,12,84"
+                           Text="{Binding FooterText}"
+                           Visibility="{Binding FooterTextVisibility}"
+                           HorizontalAlignment="Center" />
+        <TextBlock Foreground="{StaticResource PhoneVKSubtleBrush}"
+                           Margin="16,12,12,84"
+                           TextWrapping="Wrap"
+                           HorizontalAlignment="Left"
+                           Text="{Binding NoItemsDescription}"
+                           Visibility="{Binding NoItemsDescriptionVisibility}" />
+        <StackPanel Margin="16,24,16,84">
+            <ProgressBar IsIndeterminate="True"
+                                 Margin="0,6,0,0"
+                                 Foreground="{StaticResource PhoneProgressBarForegroundBrush}"
+                                 Visibility="{Binding IsLoadingVisibility}"
+                                 IsEnabled="{Binding IsLoading}" />
+            <TextBlock Foreground="{StaticResource PhoneVKSubtleBrush}"
+                               FontFamily="Segoe WP SemiLight"
+                               FontSize="22.667"
+                               LineStackingStrategy="BlockLineHeight"
+                               LineHeight="30"
+                               TextWrapping="Wrap"
+                               Text="{Binding StatusText}"
+                               Visibility="{Binding StatusTextVisibility}"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Top" />
+            <Button Style="{StaticResource VKButtonSecondaryStyle}"
+                            HorizontalAlignment="Left"
+                            Margin="-12,12,0,0"
+                            Width="200"
+                            Tap="ButtonTryAgain_OnTap"
+                            Visibility="{Binding TryAgainVisibility, FallbackValue=Collapsed}"
+                            Content="{Binding LocalizedResources.TryAgain, Source={StaticResource LocalizedStrings }}" />
+        </StackPanel>
+        <StackPanel Margin="0,48,0,0"
+                            Visibility="{Binding NoContentBlockVisibility}">
+            <Image Height="224"
+                           Source="{Binding NoContentImage}" />
+            <TextBlock TextAlignment="Center"
+                               Margin="16,22,16,0"
+                               TextWrapping="Wrap"
+                               FontSize="22.667"
+                               LineHeight="28"
+                               Foreground="{StaticResource PhoneVKSubtleBrush}"
+                               Text="{Binding NoContentText}"
+                               FontFamily="Segoe WP SemiLight" />
+            <Grid Height="94"
+                  Background="Transparent"
+                  Visibility="{Binding NoContentNewsButtonsVisibility}"
+                  Tap="OnFriendsSearchTapped"
+                  Margin="0,17,0,-8"
+                  framework:MetroInMotion.Tilt="2.1">
+                <Ellipse Height="62"
+                         Width="62"
+                         HorizontalAlignment="Left"
+                         Margin="16,0,0,0"
+                         Fill="#5888B7" />
+                <Border Background="White"
+                        HorizontalAlignment="Left"
+                        Height="62"
+                        Width="62"
+                        Margin="16,0,0,0">
+                    <Border.OpacityMask>
+                        <ImageBrush framework:ImageLoader.ImageBrushMultiResSource="../Resources/FindFriends.png" />
+                    </Border.OpacityMask>
+                </Border>
+                <TextBlock Margin="90,15,0,0"
+                           Foreground="{StaticResource PhoneContrastTitleBrush}"
+                           FontSize="25.333"
+                           CharacterSpacing="-10"
+                           Text="{Binding LocalizedResources.FindFriends, Source={StaticResource LocalizedStrings}}" />
+                <TextBlock Margin="90,46,0,0"
+                           Foreground="{StaticResource PhoneVKSubtleBrush}"
+                           FontSize="20"
+                           Text="{Binding LocalizedResources.FindFriendsHint, Source={StaticResource LocalizedStrings}}" />
+            </Grid>
+            <Grid Height="94"
+                  Background="Transparent"
+                  Visibility="{Binding NoContentNewsButtonsVisibility}"
+                  Tap="OnNoteworthyPagesSearchTapped"
+                  Margin="0,-8,0,0"
+                  framework:MetroInMotion.Tilt="2.1">
+                <Ellipse Height="62"
+                         Width="62"
+                         HorizontalAlignment="Left"
+                         Margin="16,0,0,0"
+                         Fill="#DFE3E8" />
+                <Border Background="#7188A2"
+                        HorizontalAlignment="Left"
+                        Height="62"
+                        Width="62"
+                        Margin="16,0,0,0">
+                    <Border.OpacityMask>
+                        <ImageBrush framework:ImageLoader.ImageBrushMultiResSource="../Resources/RecommendedPages.png" />
+                    </Border.OpacityMask>
+                </Border>
+                <TextBlock Margin="90,15,0,0"
+                           Foreground="{StaticResource PhoneContrastTitleBrush}"
+                           FontSize="25.333"
+                           CharacterSpacing="-10"
+                           Text="{Binding LocalizedResources.NoteworthyPages, Source={StaticResource LocalizedStrings}}" />
+                <TextBlock Margin="90,46,0,0"
+                           Foreground="{StaticResource PhoneVKSubtleBrush}"
+                           FontSize="20"
+                           Text="{Binding LocalizedResources.FindNoteworthyPages, Source={StaticResource LocalizedStrings}}" />
+            </Grid>
+        </StackPanel>
+    </Grid>
+
+</UserControl>

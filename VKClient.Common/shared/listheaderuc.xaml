@@ -1,0 +1,104 @@
+﻿<virtItems:UserControlVirtualizable x:Class="VKClient.Common.Shared.ListHeaderUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:framework="clr-namespace:VKClient.Common.Framework;assembly=VKClient.Common"
+             xmlns:uc="clr-namespace:VKClient.Common.UC"
+             xmlns:virtItems="clr-namespace:VKClient.Common.Library.VirtItems;assembly=VKClient.Common"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             d:DesignHeight="84"
+             d:DesignWidth="480">
+
+
+    <Grid x:Name="LayoutRoot"
+          Height="84"
+          Background="{StaticResource PhoneNewsBackgroundBrush}"
+          >
+        <!--<Image Margin="0,0,-20,0"
+               Source="/Image1.png"
+               Stretch="Fill" />-->
+
+
+        <Rectangle Height="16"
+                   VerticalAlignment="Top"
+                   Fill="{StaticResource PhoneNewsDividerBrush}" />
+
+        <Grid Background="Transparent"
+              Tap="LayoutRoot_Tap"
+              framework:MetroInMotion.Tilt="{Binding Tilt}">
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Visibility="{Binding HaveIconOrImage, Converter={StaticResource BoolToVisibilityConverter}}" >
+                <Ellipse Height="44"
+                         Width="44"
+                         VerticalAlignment="Top"
+                         HorizontalAlignment="Left"
+                         Fill="{StaticResource PhoneAttachIconBackgroundBrush}"
+                         Margin="16 28 0 0" />
+
+                <Image Width="24"
+                       Height="24"
+                       VerticalAlignment="Top"
+                       HorizontalAlignment="Left"
+                       Margin="26 38 0 0"
+                       framework:MultiResImageLoader.UriSource="{Binding IconUri}" />
+
+
+                <Image Width="44"
+                       Height="44"
+                       VerticalAlignment="Top"
+                       HorizontalAlignment="Left"
+                       Margin="16 28 0 0"
+                       framework:ImageLoader.UriSource="{Binding ImageUri}">
+                    <Image.Clip>
+                        <EllipseGeometry Center="22 22"
+                                         RadiusX="22"
+                                         RadiusY="22" />
+                    </Image.Clip>
+                </Image>
+
+
+                <TextBlock Text="{Binding Title, FallbackValue='Новые видео'}"
+                           FontFamily="Segoe WP Semibold"
+                           FontSize="21.3"
+                           Foreground="{StaticResource PhoneContrastTitleBrush}"
+                           Margin="72 33 16 0" />
+            </Grid>
+
+
+            <TextBlock Text="{Binding Title, FallbackValue='Новые видео'}"
+                       FontFamily="Segoe WP Semibold"
+                       FontSize="21.3"
+                       Visibility="{Binding HaveIconOrImage, Converter={StaticResource BoolToVisibilityInverterConverter},FallbackValue=Collapsed}"
+                       Foreground="{StaticResource PhoneContrastTitleBrush}"
+                       Margin="16 33 16 0" />
+
+            <StackPanel Name="MoreContainerPanel"
+                        Grid.Column="1"
+                        Visibility="{Binding ShowAllVisibility}"
+                        HorizontalAlignment="Right"
+                        Orientation="Horizontal"
+                        Margin="0 34 16 0">
+                <TextBlock Text="{Binding LocalizedResources.ShowAll, Source={StaticResource LocalizedStrings}}"
+                           Margin="0 0 0 0"
+                          
+                           Foreground="{StaticResource PhoneButtonTextForegroundBrush}" />
+
+            </StackPanel>
+
+            <uc:MoreActionsUC 
+                Visibility="{Binding ShowMoreActionsVisibility}"
+                Grid.Column="1" Margin="0 16 12 0"/>
+
+
+        </Grid>
+    </Grid>
+</virtItems:UserControlVirtualizable>

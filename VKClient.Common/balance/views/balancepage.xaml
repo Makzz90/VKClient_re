@@ -1,0 +1,95 @@
+﻿<framework:PageBase x:Class="VKClient.Common.Balance.Views.BalancePage"
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:framework="clr-namespace:VKClient.Common.Framework"
+                    xmlns:uc="clr-namespace:VKClient.Common.UC"
+                    xmlns:views="clr-namespace:VKClient.Common.Balance.Views"
+                    xmlns:library="clr-namespace:VKClient.Common.Library"
+                    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                    FontSize="{StaticResource PhoneFontSizeNormal}"
+                    Foreground="{StaticResource PhoneForegroundBrush}"
+                    SupportedOrientations="Portrait"
+                    Orientation="Portrait"
+                    mc:Ignorable="d"
+                    shell:SystemTray.IsVisible="True">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <uc:GenericHeaderUC x:Name="ucHeader"
+                            OptionsMenuItemSelected="OnOptionsMenuItemSelected">
+            <uc:GenericHeaderUC.OptionsMenu>
+                <library:OptionsMenuItem Type="More" />
+            </uc:GenericHeaderUC.OptionsMenu>
+        </uc:GenericHeaderUC>
+
+        <ScrollViewer x:Name="scrollViewer"
+                      Grid.Row="1">
+            <StackPanel Margin="16 0">
+
+                <TextBlock Margin="0 28 0 0"
+                           FontSize="21.33"
+                           Foreground="{StaticResource PhoneGray500Brush}"
+                           LineStackingStrategy="BlockLineHeight"
+                           LineHeight="28"
+                           TextWrapping="Wrap">
+                    <Run FontFamily="{StaticResource PhoneFontFamilySemiBold}"
+                         Text="{Binding LocalizedResources.VotesDesc1, Source={StaticResource LocalizedStrings}}" />
+                    <Run Text="{Binding LocalizedResources.VotesDesc2, Source={StaticResource LocalizedStrings}}" />
+                </TextBlock>
+
+                <TextBlock Margin="0 25 0 0"
+                           Foreground="{StaticResource PhoneGray400_Gray500Brush}"
+                           LineStackingStrategy="BlockLineHeight"
+                           LineHeight="26"
+                           Text="{Binding LocalizedResources.YourBalance, Source={StaticResource LocalizedStrings}}" />
+                <TextBlock FontSize="25.33"
+                           Foreground="{StaticResource PhoneGray800_Gray000Brush}"
+                           Text="{Binding BalanceStr, FallbackValue='Votes count'}" />
+
+                <Rectangle Height="1"
+                           Margin="-16 29 -16 0"
+                           Opacity="0.1"
+                           Fill="{StaticResource PhoneForegroundBrush}" />
+
+                <TextBlock Margin="0 17 0 19"
+                           FontFamily="{StaticResource PhoneFontFamilySemiBold}"
+                           Foreground="{StaticResource PhoneGray400_Gray500Brush}"
+                           Text="{Binding LocalizedResources.TopUpBalance, Source={StaticResource LocalizedStrings}, Converter={StaticResource StringToUpper}}" />
+
+                <views:BalanceRefillUC BalanceTopup="settings" />
+
+                <RichTextBox Margin="-12 32 -12 44"
+                             IsReadOnly="True"
+                             FontSize="21.33"
+                             Foreground="{StaticResource PhoneGray500Brush}"
+                             LineStackingStrategy="BlockLineHeight"
+                             LineHeight="28">
+                    <Paragraph>
+                        <Run Text="{Binding LocalizedResources.VotesPurchaseDisclaimer1, Source={StaticResource LocalizedStrings}}" />
+
+                        <Hyperlink x:Name="hyperlinkLicenseAgreement"
+                                   Foreground="{StaticResource PhoneNameBlueBrush}"
+                                   MouseOverForeground="{StaticResource PhoneNameBlueBrush}"
+                                   Click="HyperlinkLicenseAgreement_OnClick">
+                            <Run Text="{Binding LocalizedResources.VotesPurchaseDisclaimer2, Source={StaticResource LocalizedStrings}}" />
+                        </Hyperlink><Run Text="." />
+
+                        <Run Text="{Binding LocalizedResources.VotesPurchaseDisclaimer3, Source={StaticResource LocalizedStrings}}" />
+                    </Paragraph>
+                </RichTextBox>
+
+            </StackPanel>
+        </ScrollViewer>
+
+        <uc:GenericPageLoadInfoUC Grid.Row="1" />
+
+    </Grid>
+
+</framework:PageBase>

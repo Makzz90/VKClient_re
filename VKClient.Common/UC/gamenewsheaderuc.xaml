@@ -1,0 +1,48 @@
+﻿<UserControl x:Class="VKClient.Common.UC.GameNewsHeaderUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:framework="clr-namespace:VKClient.Common.Framework"
+             mc:Ignorable="d"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             d:DesignHeight="82">
+
+    <StackPanel Height="82">
+        <Border Height="16"
+                Background="{StaticResource PhoneNewsDividerBrush}" />
+
+        <Border Height="64"
+                Background="{StaticResource PhoneNewsBackgroundBrush}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Margin="15 -1 0 0"
+                           VerticalAlignment="Center"
+                           FontFamily="Segoe WP Semibold"
+                           Text="{Binding LocalizedResources.Games_News, Source={StaticResource LocalizedStrings}}" />
+
+                <Border Background="Transparent"
+                        Grid.Column="1"
+                        framework:MetroInMotion.Tilt="2.5"
+                        Tap="SubscribeUnsubscribe_OnTapped">
+                    <TextBlock x:Name="textBlockSubscribe"
+                               Visibility="Collapsed"
+                               Text="{Binding LocalizedResources.Games_NewsSubscribe, Source={StaticResource LocalizedStrings}}"
+                               Margin="22 0"
+                               VerticalAlignment="Center"
+                               framework:MetroInMotion.Tilt="2"
+                               Foreground="{StaticResource PhoneAccentBlueBrush}" />
+                </Border>
+            </Grid>
+        </Border>
+
+        <Border Height="2"
+                Background="{StaticResource PhoneNewsDividerBrush}" />
+    </StackPanel>
+</UserControl>

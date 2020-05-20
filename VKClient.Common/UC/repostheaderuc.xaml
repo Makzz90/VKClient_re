@@ -1,0 +1,73 @@
+﻿<virtItems:UserControlVirtualizable x:Class="VKClient.Common.UC.RepostHeaderUC"
+                                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                                    xmlns:virtItems="clr-namespace:VKClient.Common.Library.VirtItems"
+                                    xmlns:framework="clr-namespace:VKClient.Common.Framework"
+                                    mc:Ignorable="d"
+                                    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                                    FontSize="{StaticResource PhoneFontSizeNormal}"
+                                    Foreground="{StaticResource PhoneForegroundBrush}"
+                                    d:DesignHeight="56"
+                                    d:DesignWidth="480">
+
+    <Grid Height="56"
+          x:Name="gridRoot"
+          Tap="LayoutRoot_Tap"
+          Background="{StaticResource TransparentBrush}">
+
+        <Ellipse Width="56"
+                 Height="56"
+                 Style="{StaticResource PhotoPlaceholderEllipse}"
+                 HorizontalAlignment="Left"
+                 Margin="16 0 0 0" />
+
+        <Image x:Name="imageUserOrGroup"
+               Width="56"
+               Height="56"
+               HorizontalAlignment="Left"
+               Margin="16 0 0 0">
+            <Image.Clip>
+                <EllipseGeometry Center="28 28"
+                                 RadiusX="28"
+                                 RadiusY="28" />
+            </Image.Clip>
+        </Image>
+
+        <Border Width="15"
+                Height="15"
+                Margin="84 9 0 0"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                Background="{StaticResource PhoneRepostHeaderIconBrush}">
+            <Border.OpacityMask>
+                <ImageBrush framework:ImageLoader.ImageBrushMultiResSource="/Resources/RepostArrow16px.png" />
+            </Border.OpacityMask>
+        </Border>
+
+        <TextBlock Name="textBlockUserOrGroupName"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   Margin="107 0 0 0"
+                   FontSize="22.7"
+                   Text="Андрей Мима"
+                   Foreground="{StaticResource PhoneNameBlueBrush}" />
+
+        <StackPanel Margin="84 25 0 0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Orientation="Horizontal">
+            <TextBlock Name="textBlockDate"
+                       VerticalAlignment="Top"
+                       Foreground="{StaticResource PhoneCaptionGrayBrush}"
+                       Text="вчера в 21:22" />
+            <Border x:Name="postSourceBorder"
+                    VerticalAlignment="Top"
+                    Height="16"
+                    Width="16"
+                    Margin="8 7 0 0"
+                    Background="{StaticResource PhoneGreyIconBrush}" />
+        </StackPanel>
+    </Grid>
+</virtItems:UserControlVirtualizable>

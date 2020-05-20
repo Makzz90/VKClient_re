@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="VKClient.Common.UC.CommentsGenericUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:commonUC="clr-namespace:VKClient.Common.UC;assembly=VKClient.Common"
+             xmlns:framework="clr-namespace:VKClient.Common.Framework;assembly=VKClient.Common"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             d:DesignHeight="480"
+             d:DesignWidth="480">
+
+    <Grid x:Name="LayoutRoot" >
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <framework:MyVirtualizingPanel2
+                x:Name="virtPanel" />
+
+            <!--<TextBlock framework:MetroInMotion.Tilt="3"
+                       Grid.Row="1"
+                        Margin="16 0 0 4"
+                       Tap="textBlockReplyToName_Tap_1"
+                       Name="textBlockReplyToName"
+                       Visibility="Collapsed"
+                       FontSize="20" />-->
+
+
+            <!--<commonUC:NewCommentUC x:Name="ucNewComment" Margin="16  0 16 0"  Grid.Row="2"/>-->
+        </Grid>
+
+        <TextBlock VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   Text="ERROR"
+                   Name="textBlockError"
+                   Visibility="Collapsed"
+                   Grid.Row="1"
+                   Style="{StaticResource GrayTextStyle}" />
+    </Grid>
+</UserControl>

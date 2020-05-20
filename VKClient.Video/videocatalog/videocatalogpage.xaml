@@ -1,0 +1,78 @@
+﻿<framework:PageBase x:Class="VKClient.Common.VideoCatalog.VideoCatalogPage"
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+                    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+                    xmlns:framework="clr-namespace:VKClient.Common.Framework;assembly=VKClient.Common"
+                    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:uc="clr-namespace:VKClient.Common.UC;assembly=VKClient.Common"
+                    xmlns:local="clr-namespace:VKClient.Common.VideoCatalog"
+                    xmlns:localVid="clr-namespace:VKClient.Video.VideoCatalog"
+                    xmlns:shared="clr-namespace:VKClient.Common.Shared;assembly=VKClient.Common"
+                    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                    FontSize="{StaticResource PhoneFontSizeNormal}"
+                    Foreground="{StaticResource PhoneForegroundBrush}"
+                    SupportedOrientations="Portrait"
+                    Orientation="Portrait"
+                    mc:Ignorable="d">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot"
+          Background="Transparent">
+
+        <uc:GenericHeaderUC x:Name="ucHeader"
+                            Height="138" />
+        <uc:PullToRefreshUC x:Name="ucPullToRefresh" />
+
+        <controls:Pivot Foreground="White"
+                        Style="{StaticResource PivotStyleNoHeader}"
+                        Margin="0 67 0 0"
+                        Name="pivot"
+                        LoadedPivotItem="pivot_LoadedPivotItem"
+                        SelectionChanged="pivot_SelectionChanged">
+
+
+            <controls:PivotItem Name="pivotItemCatalog">
+
+                <controls:PivotItem.Header>
+                    <TextBlock FontSize="46"
+                               FontFamily="Segoe WP SemiLight"
+                               Text="{Binding LocalizedResources.VideoCatalog_Recommendations, Source={StaticResource LocalizedStrings}}" />
+                </controls:PivotItem.Header>
+
+
+                <ViewportControl Name="scroll"
+                                 VerticalContentAlignment="Stretch"
+                                 HorizontalContentAlignment="Stretch">
+                    <StackPanel Name="stackPanel">
+                        <framework:MyVirtualizingPanel2 VerticalAlignment="Top"
+                                                        x:Name="virtPanel"
+                                                        DataContext="{Binding CategoriesVM}"
+                                                        ItemsSource="{Binding MergedCollection}">
+
+                        </framework:MyVirtualizingPanel2>
+
+                        <uc:FooterUC DataContext="{Binding CategoriesVM}" />                   
+                    </StackPanel>
+                </ViewportControl>
+
+            </controls:PivotItem>
+
+            <controls:PivotItem Name="pivotItemMyVideos">
+                <controls:PivotItem.Header>
+                    <TextBlock FontSize="46"
+                               FontFamily="Segoe WP SemiLight"
+                               Text="{Binding LocalizedResources.VideoCatalog_MyVideos, Source={StaticResource LocalizedStrings}}" />
+                </controls:PivotItem.Header>
+
+
+                <localVid:UserVideosUC  DataContext="{Binding UserVideosVM}"
+                                        Name="ucMyVideos" />
+            </controls:PivotItem>
+
+        </controls:Pivot>
+    </Grid>
+
+</framework:PageBase>

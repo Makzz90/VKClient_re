@@ -1,0 +1,125 @@
+﻿<UserControl x:Class="VKClient.Common.UC.AudioRecorderPreviewUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:framework="clr-namespace:VKClient.Common.Framework"
+             xmlns:uc="clr-namespace:VKClient.Common.UC"
+             mc:Ignorable="d"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             d:DesignHeight="72"
+             d:DesignWidth="480">
+
+    <Grid Background="{StaticResource PhoneBackgroundBrush}"
+          Height="72"
+          VerticalAlignment="Bottom">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <Border Width="64"
+                Background="Transparent"
+                framework:MetroInMotion.Tilt="1.5"
+                Tap="Cancel_OnTap">
+            <Rectangle Width="32"
+                       Height="32"
+                       Fill="{StaticResource PhoneGray300_Gray500Brush}">
+                <Rectangle.OpacityMask>
+                    <ImageBrush framework:ImageLoader.ImageBrushMultiResSource="/Resources/Close32px.png" />
+                </Rectangle.OpacityMask>
+            </Rectangle>
+        </Border>
+
+        <Grid Height="48"
+              Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Rectangle Grid.ColumnSpan="3"
+                       RadiusX="24"
+                       RadiusY="24"
+                       Fill="{StaticResource PhoneGray300_Gray500Brush}" />
+
+            <Grid Margin="0 0 8 0">
+                <Border x:Name="borderPlay"
+                        Width="32"
+                        Height="32"
+                        Margin="12 8 0 8"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Background="Transparent"
+                        framework:MetroInMotion.Tilt="1.5"
+                        Tap="Play_OnTap">
+                    <Rectangle Width="32"
+                               Height="32"
+                               Fill="{StaticResource PhoneGray000Brush}">
+                        <Rectangle.OpacityMask>
+                            <ImageBrush framework:ImageLoader.ImageBrushMultiResSource="/Resources/WallPost/AttachPlay.png" />
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+                </Border>
+
+                <Border x:Name="borderPause"
+                        Width="32"
+                        Height="32"
+                        Margin="12 8 0 8"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Background="Transparent"
+                        framework:MetroInMotion.Tilt="1.5"
+                        Tap="Pause_OnTap">
+                    <Rectangle Width="32"
+                               Height="32"
+                               Fill="{StaticResource PhoneGray000Brush}">
+                        <Rectangle.OpacityMask>
+                            <ImageBrush framework:ImageLoader.ImageBrushMultiResSource="/Resources/WallPost/AttachPause.png" />
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+                </Border>
+            </Grid>
+
+            <Border Grid.Column="1"
+                    Margin="0 8 0 0"
+                    SizeChanged="OnSizeChanged">
+                <uc:WaveformControl x:Name="waveformPreview"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Top"
+                                    Height="32"                                    
+                                    Foreground="{StaticResource PhoneGray000Brush}" />
+            </Border>
+
+            <TextBlock x:Name="textBlockDuration"
+                       Grid.Column="2"
+                       Width="44"
+                       Margin="8 11 16 0"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Top"
+                       FontSize="18"
+                       Foreground="{StaticResource PhoneGray000Brush}"
+                       Text="00:00" />
+        </Grid>
+
+        <Border Width="64"
+                Grid.Column="2"
+                Background="Transparent"
+                framework:MetroInMotion.Tilt="1.5"
+                Tap="Send_OnTap">
+            <Rectangle Width="32"
+                       Height="32"
+                       Fill="{StaticResource PhoneBlue300_GrayBlue400Brush}">
+                <Rectangle.OpacityMask>
+                    <ImageBrush framework:ImageLoader.ImageBrushMultiResSource="/Resources/Send32px.png" />
+                </Rectangle.OpacityMask>
+            </Rectangle>
+        </Border>
+
+
+    </Grid>
+</UserControl>

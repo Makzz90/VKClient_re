@@ -1,0 +1,45 @@
+﻿<framework:PageBase x:Class="VKClient.Common.GamesInvitesPage"
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:framework="clr-namespace:VKClient.Common.Framework"
+                    xmlns:uc="clr-namespace:VKClient.Common.UC"
+                    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                    FontSize="{StaticResource PhoneFontSizeNormal}"
+                    Foreground="{StaticResource PhoneForegroundBrush}"
+                    SupportedOrientations="Portrait"
+                    Orientation="Portrait"
+                    mc:Ignorable="d"
+                    shell:SystemTray.IsVisible="True">
+
+    <framework:PageBase.Resources>
+        <DataTemplate x:Key="GameInviteTemplate">
+            <uc:GameInvitationHeaderUC DataProvider="{Binding}"
+                                       IsSeparatorVisible="True" />
+        </DataTemplate>
+    </framework:PageBase.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <uc:GenericHeaderUC x:Name="HeaderUC" />
+        <uc:PullToRefreshUC x:Name="PullToRefreshUC" />
+
+        <framework:ExtendedLongListSelector x:Name="GamesInvitesListBox"
+                                            Grid.Row="1"
+                                            framework:TiltEffect.IsTiltEnabled="False"
+                                            ItemsSource="{Binding Collection}"
+                                            ItemTemplate="{StaticResource GameInviteTemplate}"
+                                            DataContext="{Binding GamesInvitesVM}"
+                                            IsFlatList="True"
+                                            Link="ExtendedLongListSelector_Link"
+                                            ListFooter="{Binding}"
+                                            ListFooterTemplate="{StaticResource FooterTemplate}" />
+    </Grid>
+
+</framework:PageBase>

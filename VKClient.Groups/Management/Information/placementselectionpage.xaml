@@ -1,0 +1,100 @@
+﻿<framework:PageBase
+    x:Class="VKClient.Groups.Management.Information.PlacementSelectionPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:uc="clr-namespace:VKClient.Common.UC;assembly=VKClient.Common"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:framework="clr-namespace:VKClient.Common.Framework;assembly=VKClient.Common"
+    xmlns:maps="clr-namespace:Microsoft.Phone.Maps.Controls;assembly=Microsoft.Phone.Maps"
+    xmlns:emoji="clr-namespace:VKClient.Common.Emoji;assembly=VKClient.Common"
+
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    shell:SystemTray.IsVisible="True"
+    mc:Ignorable="d"
+    
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <uc:GenericHeaderUC Title="{Binding Path=LocalizedResources.PlacementEditing, Source={StaticResource LocalizedStrings}, Converter={StaticResource StringToUpper}}"
+                            HideSandwitchButton="True"/>
+
+        <ScrollViewer Grid.Row="1"
+                      Name="Viewer">
+            <StackPanel Margin="0,0,0,84"
+                        Name="ViewerContent">
+
+                <uc:CustomListPicker Title="{Binding Path=LocalizedResources.Settings_EditProfile_Country, Source={StaticResource LocalizedStrings}}"
+                                     Placeholder="{Binding Path=LocalizedResources.ChooseCountry, Source={StaticResource LocalizedStrings}}"
+                                     SelectedItemPlaceholder="{Binding Country}"
+                                     IsHitTestVisible="{Binding IsFormEnabled}"
+                                     Click="CountryPicker_OnClicked"
+                                     Margin="16,24,16,12"/>
+                <uc:CustomListPicker Title="{Binding Path=LocalizedResources.Settings_EditProfile_City, Source={StaticResource LocalizedStrings}}"
+                                     Placeholder="{Binding Path=LocalizedResources.ChooseCity, Source={StaticResource LocalizedStrings}}"
+                                     SelectedItemPlaceholder="{Binding City}"
+                                     IsHitTestVisible="{Binding IsFormEnabled}"
+                                     Visibility="{Binding CityFieldVisibility}"
+                                     Click="CityPicker_OnClicked"
+                                     Margin="16,13,16,12"/>
+
+                <TextBlock Text="{Binding Path=LocalizedResources.Address, Source={StaticResource LocalizedStrings}}"
+                           Foreground="{StaticResource PhoneCaptionGrayBrush}"
+                           Visibility="{Binding AddressFieldVisibility}"
+                           Margin="16,13,0,0"/>
+                <TextBox Height="76"
+                         InputScope="Text"
+                         Margin="4,-4,4,0"
+                         KeyDown="TextBox_OnKeyDown"
+                         Text="{Binding Address, Mode=TwoWay, UpdateSourceTrigger=Explicit}"
+                         Visibility="{Binding AddressFieldVisibility}"
+                         TextChanged="TextBox_OnTextChanged"
+                         IsHitTestVisible="{Binding IsFormEnabled}"
+                         GotFocus="TextBox_OnGotFocus"
+                         LostFocus="TextBox_OnLostFocus"/>
+                <TextBlock Text="{Binding Path=LocalizedResources.NotDefined, Source={StaticResource LocalizedStrings}}"
+                           Foreground="{StaticResource PhoneCommunityManagementSectionIconBrush}"
+                           FontSize="{StaticResource PhoneFontSizeMediumLarge}"
+                           Opacity="{Binding AddressPlaceholderOpacity}"
+                           Visibility="{Binding AddressFieldVisibility}"
+                           IsHitTestVisible="False"
+                           Margin="0,-60,0,12"
+                           Padding="25,4,0,0"/>
+
+                <TextBlock Text="{Binding Path=LocalizedResources.MapAttachment_Place, Source={StaticResource LocalizedStrings}}"
+                           Foreground="{StaticResource PhoneCaptionGrayBrush}"
+                           Margin="16,13,0,0"/>
+                <TextBox Height="76"
+                         InputScope="Text"
+                         Margin="4,-4,4,0"
+                         KeyDown="TextBox_OnKeyDown"
+                         Text="{Binding Place, Mode=TwoWay, UpdateSourceTrigger=Explicit}"
+                         TextChanged="TextBox_OnTextChanged"
+                         IsHitTestVisible="{Binding IsFormEnabled}"
+                         GotFocus="TextBox_OnGotFocus"
+                         LostFocus="TextBox_OnLostFocus"/>
+
+                <maps:Map x:Name="Map"
+                          Loaded="Map_OnLoaded"
+                          Tap="Map_OnTapped"
+                          Margin="16,21,16,4"
+                          Height="252"/>
+                
+            </StackPanel>
+        </ScrollViewer>
+
+        <emoji:TextBoxPanelControl x:Name="TextBoxPanel"
+                                   Grid.Row="2"/>
+        
+    </Grid>
+
+</framework:PageBase>

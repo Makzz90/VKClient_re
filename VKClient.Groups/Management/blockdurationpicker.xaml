@@ -1,0 +1,137 @@
+﻿<framework:PageBase
+    x:Class="VKClient.Groups.Management.BlockDurationPicker"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:uc="clr-namespace:VKClient.Common.UC;assembly=VKClient.Common"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:framework="clr-namespace:VKClient.Common.Framework;assembly=VKClient.Common"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    shell:SystemTray.IsVisible="True"
+    mc:Ignorable="d"
+    
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <uc:GenericHeaderUC x:Name="Header" 
+                            HideSandwitchButton="True"
+                            Title="{Binding Path=LocalizedResources.BlockDuration, Source={StaticResource LocalizedStrings}, Converter={StaticResource StringToUpper}}"/>
+        
+        <ScrollViewer Grid.Row="1">
+            <StackPanel Margin="0,16,0,12">
+
+                <Grid Height="64"
+                      Background="Transparent"
+                      framework:MetroInMotion.Tilt="2.5"
+                      Tap="CurrentDuration_OnClicked">
+                    <TextBlock Text="{Binding CurrentDuration}"
+                               Foreground="{StaticResource PhoneBlue300Brush}"
+                               Margin="16,13,16,0"
+                               FontSize="25.333"/>
+                </Grid>
+
+                <Grid Height="88"
+                      Background="Transparent"
+                      framework:MetroInMotion.Tilt="2.5"
+                      Visibility="{Binding ForeverVisibility}"
+                      Tap="Forever_OnClicked">
+                    <TextBlock Text="{Binding Path=LocalizedResources.Forever, Source={StaticResource LocalizedStrings}}"
+                               Foreground="{StaticResource PhoneContrastTitleBrush}"
+                               Margin="16,13,16,0"
+                               FontSize="25.333"/>
+                    <TextBlock Text="{Binding Path=LocalizedResources.UnblockByManager, Source={StaticResource LocalizedStrings}}"
+                               Foreground="{StaticResource PhoneGray400Brush}"
+                               Margin="16,44,16,0"
+                               FontSize="20"/>
+                    <TextBlock/>
+                </Grid>
+
+                <Grid Height="88"
+                      Background="Transparent"
+                      framework:MetroInMotion.Tilt="2.5"
+                      Tap="ForYear_OnClicked">
+                    <TextBlock Text="{Binding Path=LocalizedResources.ForYear, Source={StaticResource LocalizedStrings}}"
+                               Foreground="{StaticResource PhoneContrastTitleBrush}"
+                               Margin="16,13,16,0"
+                               FontSize="25.333"/>
+                    <TextBlock Text="{Binding YearDuration}"
+                               Foreground="{StaticResource PhoneGray400Brush}"
+                               Margin="16,44,16,0"
+                               FontSize="20"/>
+                    <TextBlock/>
+                </Grid>
+
+                <Grid Height="88"
+                      Background="Transparent"
+                      framework:MetroInMotion.Tilt="2.5"
+                      Tap="ForMonth_OnClicked">
+                    <TextBlock Text="{Binding Path=LocalizedResources.ForMonth, Source={StaticResource LocalizedStrings}}"
+                               Foreground="{StaticResource PhoneContrastTitleBrush}"
+                               Margin="16,13,16,0"
+                               FontSize="25.333"/>
+                    <TextBlock Text="{Binding MonthDuration}"
+                               Foreground="{StaticResource PhoneGray400Brush}"
+                               Margin="16,44,16,0"
+                               FontSize="20"/>
+                    <TextBlock/>
+                </Grid>
+
+                <Grid Height="88"
+                      Background="Transparent"
+                      framework:MetroInMotion.Tilt="2.5"
+                      Tap="ForWeek_OnClicked">
+                    <TextBlock Text="{Binding Path=LocalizedResources.ForWeek, Source={StaticResource LocalizedStrings}}"
+                               Foreground="{StaticResource PhoneContrastTitleBrush}"
+                               Margin="16,13,16,0"
+                               FontSize="25.333"/>
+                    <TextBlock Text="{Binding WeekDuration}"
+                               Foreground="{StaticResource PhoneGray400Brush}"
+                               Margin="16,44,16,0"
+                               FontSize="20"/>
+                    <TextBlock/>
+                </Grid>
+
+                <Grid Height="88"
+                      Background="Transparent"
+                      framework:MetroInMotion.Tilt="2.5"
+                      Tap="ForDay_OnClicked">
+                    <TextBlock Text="{Binding Path=LocalizedResources.ForDay, Source={StaticResource LocalizedStrings}}"
+                               Foreground="{StaticResource PhoneContrastTitleBrush}"
+                               Margin="16,13,16,0"
+                               FontSize="25.333"/>
+                    <TextBlock Text="{Binding DayDuration}"
+                               Foreground="{StaticResource PhoneGray400Brush}"
+                               Margin="16,44,16,0"
+                               FontSize="20"/>
+                    <TextBlock/>
+                </Grid>
+
+                <Grid Height="88"
+                      Background="Transparent"
+                      framework:MetroInMotion.Tilt="2.5"
+                      Tap="ForHour_OnClicked">
+                    <TextBlock Text="{Binding Path=LocalizedResources.ForHour, Source={StaticResource LocalizedStrings}}"
+                               Foreground="{StaticResource PhoneContrastTitleBrush}"
+                               Margin="16,13,16,0"
+                               FontSize="25.333"/>
+                    <TextBlock Text="{Binding HourDuration}"
+                               Foreground="{StaticResource PhoneGray400Brush}"
+                               Margin="16,44,16,0"
+                               FontSize="20"/>
+                    <TextBlock/>
+                </Grid>
+
+            </StackPanel>
+        </ScrollViewer>
+        
+    </Grid>
+
+</framework:PageBase>

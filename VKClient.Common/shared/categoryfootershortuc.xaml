@@ -1,0 +1,27 @@
+﻿<virtItems:UserControlVirtualizable x:Class="VKClient.Common.Shared.CategoryFooterShortUC"
+                                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                                    xmlns:framework="clr-namespace:VKClient.Common.Framework"
+                                    xmlns:virtItems="clr-namespace:VKClient.Common.Library.VirtItems"
+                                    mc:Ignorable="d"
+                                    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                                    FontSize="{StaticResource PhoneFontSizeNormal}"
+                                    Foreground="{StaticResource PhoneForegroundBrush}"
+                                    d:DesignHeight="64"
+                                    d:DesignWidth="480">
+
+    <Grid Background="{StaticResource PhoneNewsBackgroundBrush}"
+          Height="64">
+        <Border Background="Transparent"
+                framework:MetroInMotion.Tilt="1.5"
+                Tap="Border_OnTap">
+            <TextBlock FontFamily="{StaticResource PhoneFontFamilySemiBold}"
+                       Foreground="{StaticResource PhoneAccentBlueBrush}"
+                       TextAlignment="Center"
+                       Margin="0 16 0 0"
+                       Text="{Binding LocalizedResources.More, Source={StaticResource LocalizedStrings}}" />
+        </Border>
+    </Grid>
+</virtItems:UserControlVirtualizable>

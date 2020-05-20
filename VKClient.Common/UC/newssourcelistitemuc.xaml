@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="VKClient.Common.UC.NewsSourceListItemUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:framework="clr-namespace:VKClient.Common.Framework"
+             mc:Ignorable="d"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             d:DesignHeight="56"
+             d:DesignWidth="480">
+
+    <Grid Height="56"
+          Background="Transparent"
+          framework:MetroInMotion.Tilt="1.5">
+
+        <Border x:Name="borderFadeOut"
+                Background="{StaticResource PhoneNewsfeedPromoToggleFadeOutBrush}"
+                Opacity="1" />
+
+        <StackPanel Orientation="Horizontal"
+                    Margin="16 0">
+
+            <Border Width="32"
+                    Height="32"
+                    Margin="0 12 0 0"
+                    VerticalAlignment="Top"
+                    CacheMode="BitmapCache"
+                    Opacity="{Binding Opacity}"
+                    Background="{Binding IconBackground, FallbackValue='#afbac7'}">
+                <Border.OpacityMask>
+                    <ImageBrush framework:ImageLoader.ImageBrushMultiResSource="{Binding Icon}" />
+                </Border.OpacityMask>
+            </Border>
+
+            <TextBlock VerticalAlignment="Top"
+                       Foreground="{Binding Foreground, FallbackValue={StaticResource PhoneAlmostBlackBrush}}"
+                       FontSize="25.33"
+                       Text="{Binding Title, FallbackValue='News'}"
+                       Margin="16 9 0 0" />
+
+        </StackPanel>
+    </Grid>
+</UserControl>

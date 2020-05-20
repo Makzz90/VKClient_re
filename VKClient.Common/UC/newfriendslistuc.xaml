@@ -1,0 +1,55 @@
+﻿<UserControl x:Class="VKClient.Common.UC.NewFriendsListUC"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:localization="clr-namespace:VKClient.Common.Localization"
+             mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="800" d:DesignWidth="480" VerticalAlignment="Top"
+             >
+
+    <UserControl.Resources>
+        <localization:CommonLocalizedStrings x:Key="LocStr" />
+    </UserControl.Resources>
+    
+    <Grid x:Name="LayoutRoot" Margin="0 -32 0 0"
+           Background="{StaticResource PhoneChromeBrush}" >
+        <StackPanel>
+            <TextBlock Text="{Binding Path=LocalizedResources.NewFriendsList_Title, 
+                                               Source={StaticResource LocStr}}"
+                       FontFamily="Segoe WP Semibold"
+                       FontSize="32"
+                       Visibility="{Binding IsNewListVisibility}"
+                       Margin="20,40,0,0" />
+
+            <TextBlock Text="{Binding Path=LocalizedResources.NewFriendsList_EditTitle, 
+                                               Source={StaticResource LocStr}}"
+                       FontFamily="Segoe WP Semibold"
+                       FontSize="32"
+                       Visibility="{Binding IsEditListVisibility}"
+                       Margin="20,40,0,0" />
+
+            <TextBlock Text="{Binding Path=LocalizedResources.NewFriendsList_TitleLbl, 
+                                               Source={StaticResource LocStr}}"
+                       Margin="22,26, 0, 0"/>
+            <TextBox Name="textBoxTitle" InputScope="Text" Margin="12,-6,12,0"  TextChanged="textBoxTitle_TextChanged_1"/>
+
+            <Button Name="buttonCreate" Content="{Binding Path=LocalizedResources.NewFriendsList_Create, 
+                                               Source={StaticResource LocStr}}"
+                    Visibility="{Binding IsNewListVisibility}"
+                    Margin="12,24" Width="265" HorizontalAlignment="Left"/>
+            <Button Name="buttonSave"
+                Content="{Binding Path=LocalizedResources.NewFriendsList_Save, 
+                                               Source={StaticResource LocStr}}"
+                    Visibility="{Binding IsEditListVisibility}"
+                    Margin="12,24"
+                    Width="265"
+                    HorizontalAlignment="Left" />
+        </StackPanel>
+        
+        <!--<Image Source="Messages_CreateChat.png" Opacity="0.5" />-->
+    </Grid>
+</UserControl>

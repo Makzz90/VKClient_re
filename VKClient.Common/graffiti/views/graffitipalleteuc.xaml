@@ -1,0 +1,53 @@
+﻿<UserControl x:Class="VKClient.Common.Graffiti.Views.GraffitiPalleteUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:VKClient.Common.Graffiti.ViewModels"
+             mc:Ignorable="d"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             d:DesignWidth="480"
+             d:DesignHeight="72"
+             d:DataContext="{d:DesignInstance viewModels:GraffitiPalleteViewModel}">
+
+    <UserControl.DataContext>
+        <viewModels:GraffitiPalleteViewModel />
+    </UserControl.DataContext>
+
+    <Grid Background="Transparent"
+          Height="72"
+          ManipulationStarted="OnManipulationStarted"
+          ManipulationDelta="OnManipulationDelta"
+          ManipulationCompleted="OnManipulationCompleted">
+        <ItemsControl Margin="8 0"
+                      ItemsSource="{Binding Colors}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Grid Width="44"
+                          Height="64"
+                          Background="Transparent"
+                          MouseEnter="Color_OnMouseEnter">
+                        <Ellipse Width="24"
+                                 Height="24"
+                                 Fill="{Binding ColorHex}"
+                                 StrokeThickness="{Binding ExtraStroke}"
+                                 Stroke="{StaticResource PhoneGray200Brush}" />
+
+                        <Ellipse Width="36"
+                                 Height="36"
+                                 Visibility="{Binding SelectedVisibility}"
+                                 Stroke="{StaticResource PhoneBlue300_GrayBlue100Brush}"
+                                 StrokeThickness="3" />
+                    </Grid>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </Grid>
+</UserControl>

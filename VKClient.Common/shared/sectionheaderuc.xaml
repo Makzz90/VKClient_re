@@ -1,0 +1,110 @@
+﻿<virtItems:UserControlVirtualizable x:Class="VKClient.Common.Shared.SectionHeaderUC"
+                                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                                    mc:Ignorable="d"
+                                    xmlns:framework="clr-namespace:VKClient.Common.Framework;assembly=VKClient.Common"
+                                    xmlns:uc="clr-namespace:VKClient.Common.UC"
+                                    xmlns:virtItems="clr-namespace:VKClient.Common.Library.VirtItems;assembly=VKClient.Common"
+                                    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                                    FontSize="{StaticResource PhoneFontSizeNormal}"
+                                    Foreground="{StaticResource PhoneForegroundBrush}"
+                                    d:DesignHeight="80"
+                                    d:DesignWidth="480">
+
+    <Grid x:Name="LayoutRoot"
+          Height="80"
+          Background="{StaticResource PhoneNewsBackgroundBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="16" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Rectangle Height="16"
+                   Grid.ColumnSpan="2"
+                   VerticalAlignment="Top"
+                   Fill="{StaticResource PhoneNewsDividerBrush}" />
+
+        <StackPanel Orientation="Horizontal"
+                    Margin="16 16 16 0"
+                    Grid.Row="1"
+                    Visibility="{Binding ShowOptionsVisibility}">
+            <TextBlock Foreground="{StaticResource PhoneAlmostBlackBrush}"
+                       Text="{Binding Title, FallbackValue=Альбомы}"
+                       FontFamily="Segoe WP Semibold" />
+
+            <TextBlock Foreground="{StaticResource PhoneCaptionGrayBrush}"
+                       Text="{Binding CountStr, FallbackValue=5}"
+                       FontFamily="Segoe WP Semibold"
+                       Margin="5 0 0 0" />
+
+        </StackPanel>
+
+        <Grid Grid.ColumnSpan="2"
+              Grid.Row="1"
+              Visibility="{Binding ShowAllVisibility}"
+              Tap="Grid_Tap"
+              framework:MetroInMotion.Tilt="1.1"
+              Background="Transparent">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+
+            <StackPanel Orientation="Horizontal"
+                        Margin="16 16 16 0">
+                <TextBlock Foreground="{StaticResource PhoneAlmostBlackBrush}"
+                           Text="{Binding Title, FallbackValue=Альбомы}"
+                           FontFamily="Segoe WP Semibold" />
+
+                <TextBlock Foreground="{StaticResource PhoneCaptionGrayBrush}"
+                           Text="{Binding CountStr, FallbackValue=5}"
+                           FontFamily="Segoe WP Semibold"
+                           Margin="5 0 0 0" />
+
+            </StackPanel>
+
+            <TextBlock Text="{Binding LocalizedResources.ShowAll, Source={StaticResource LocalizedStrings}}"
+                       Grid.Row="1"
+                       Grid.Column="1"
+                       Margin="0 16 16 0"
+                       Foreground="{StaticResource PhoneAccentBlueBrush}" />
+
+        </Grid>
+
+        <uc:ListPickerControl Grid.Row="1"
+                              Visibility="{Binding ShowOptionsVisibility}"
+                              Grid.Column="1"
+                              Margin="0 4 16 0"
+                              ItemsSource="{Binding HeaderOptions}"
+                              SelectedItem="{Binding SelectedOption, Mode=TwoWay}">
+            <uc:ListPickerControl.Template>
+                <ControlTemplate TargetType="uc:ListPickerControl">
+                    <Grid framework:MetroInMotion.Tilt="1.5"
+                          VerticalAlignment="Top"
+                          Height="50">
+                        <StackPanel Orientation="Horizontal"
+                                    VerticalAlignment="Center">
+                            <TextBlock Text="{TemplateBinding SelectedItemStr}"
+                                       Foreground="{StaticResource PhoneAccentBlueBrush}" />
+                            <Border Width="16"
+                                    Height="16"
+                                    Margin="6 4 0 0"
+                                    Background="{StaticResource PhoneAccentBlueBrush}">
+                                <Border.OpacityMask>
+                                    <ImageBrush framework:ImageLoader.ImageBrushMultiResSource="/Resources/DropdownArrow16px.png" />
+                                </Border.OpacityMask>
+                            </Border>
+                        </StackPanel>
+                    </Grid>
+                </ControlTemplate>
+            </uc:ListPickerControl.Template>
+        </uc:ListPickerControl>
+    </Grid>
+</virtItems:UserControlVirtualizable>

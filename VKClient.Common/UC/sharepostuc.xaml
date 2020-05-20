@@ -1,0 +1,94 @@
+﻿<UserControl x:Class="VKClient.Common.UC.SharePostUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:uc="clr-namespace:VKClient.Common.UC"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             d:DesignHeight="388"
+             d:DesignWidth="480"
+             VerticalAlignment="Top">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Resources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid Background="{StaticResource PhoneBackgroundBrush}">
+
+        <!--<Image Source="/Temp/wp-share.png"
+               Width="480"
+               Height="800"
+               Opacity="0.5" />-->
+
+        <StackPanel>
+            <Border Height="32"
+                    Background="{StaticResource PhoneHeaderBackgroundBrush}" />
+
+            <TextBlock x:Name="textBlockTitle"
+                       FontFamily="{StaticResource PhoneFontFamilySemiBold}"
+                       Foreground="{StaticResource PhoneAlmostBlackBrush}"
+                       FontSize="22.67"
+                       Margin="16,19,0,0" />
+
+            <StackPanel>
+                <ScrollViewer x:Name="scroll"
+                              Margin="0 31 0 0"
+                              MaxHeight="480"
+                              HorizontalScrollBarVisibility="Disabled">
+                    <Grid Margin="14 0 0 0">
+                        <TextBox x:Name="textBoxText"
+                                 Style="{StaticResource TextBoxFramelessStyle}"
+                                 CaretBrush="{StaticResource PhoneForeground2Brush}"
+                                 BorderThickness="0"
+                                 Background="Transparent"
+                                 InputScope="Text"
+                                 TextWrapping="Wrap"
+                                 VerticalAlignment="Top"
+                                 AcceptsReturn="True"
+                                 Margin="-13 -8 0 0"
+                                 FontFamily="Segoe WP SemiLight"
+                                 FontSize="22.667"
+                                 TextChanged="TextBox_OnTextChanged" />
+                        <TextBlock Text="{Binding LocalizedResources.NewsPage_EnterComment, Source={StaticResource LocalizedStrings}}"
+                                   IsHitTestVisible="False"
+                                   Margin="2,6, 0, 0"
+                                   VerticalAlignment="Top"
+                                   Name="textBlockWatermarkText"
+                                   FontSize="22.67"
+                                   FontFamily="Segoe WP SemiLight"
+                                   Foreground="{StaticResource PhoneWatermarkTextForegroundBrush}" />
+                    </Grid>
+                </ScrollViewer>
+
+                <Rectangle Height="2"
+                           Margin="0 7 0 0"
+                           Visibility="{Binding IsInNewTopicModeVisibility}"
+                           Fill="{StaticResource PhoneActiveAreaBackgroundBrush}" />
+
+                <uc:ShareActionUC x:Name="buttonShare"
+                                  Margin="24 24 0 25"
+                                  Icon="/VKClient.Common;component/Resources/ShareExternal/SharePost.png"
+                                  Title="{Binding LocalizedResources.Share_ShareToWall, Source={StaticResource LocalizedStrings}}"
+                                  Tap="ButtonShare_OnTap" />
+
+                <uc:ShareActionUC x:Name="buttonShareCommunity"
+                                  Margin="24 0 0 25"
+                                  Icon="/VKClient.Common;component/Resources/ShareExternal/ShareCommunity.png"
+                                  Title="{Binding LocalizedResources.Share_ShareWithCommunity, Source={StaticResource LocalizedStrings}}"
+                                  Tap="ShareWithCommunity_OnTap" />
+
+                <uc:ShareActionUC Margin="24 0 0 25"
+                                  Icon="/Resources/MenuMessages.png"
+                                  Title="{Binding LocalizedResources.Share_SendWithMessage, Source={StaticResource LocalizedStrings}}"
+                                  Tap="ButtonSend_OnTap" />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

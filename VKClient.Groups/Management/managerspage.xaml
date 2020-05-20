@@ -1,0 +1,50 @@
+﻿<framework:PageBase
+    x:Class="VKClient.Groups.Management.ManagersPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:uc="clr-namespace:VKClient.Common.UC;assembly=VKClient.Common"
+    xmlns:groupsUC="clr-namespace:VKClient.Groups.UC;assembly=VKClient.Groups"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:framework="clr-namespace:VKClient.Common.Framework;assembly=VKClient.Common"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    shell:SystemTray.IsVisible="True"
+    mc:Ignorable="d"
+    
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <uc:GenericHeaderUC x:Name="Header" 
+                            Title="{Binding Path=LocalizedResources.Management_Managers, Source={StaticResource LocalizedStrings}, Converter={StaticResource StringToUpper}}"/>
+
+        <framework:ExtendedLongListSelector x:Name="List"
+                                            Link="List_OnLinked"
+                                            DataContext="{Binding Managers}"
+                                            ItemsSource="{Binding Collection}"
+                                            ListFooterTemplate="{StaticResource FooterTemplate}"
+                                            SelectionChanged="List_OnSelectionChanged"
+                                            ListFooter="{Binding}"
+                                            Grid.Row="1">
+            <framework:ExtendedLongListSelector.ListHeader>
+                <Rectangle Height="4"/>
+            </framework:ExtendedLongListSelector.ListHeader>
+            <framework:ExtendedLongListSelector.ItemTemplate>
+                <DataTemplate>
+                    <groupsUC:LinkUC/>
+                </DataTemplate>
+            </framework:ExtendedLongListSelector.ItemTemplate>
+        </framework:ExtendedLongListSelector>
+
+        <uc:PullToRefreshUC x:Name="PullToRefresh"/>
+
+    </Grid>
+
+</framework:PageBase>

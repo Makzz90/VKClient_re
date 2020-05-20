@@ -1,0 +1,47 @@
+﻿<UserControl
+    x:Class="VKClient.Common.UC.FooterNewUC"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid VerticalAlignment="Top" Margin="0,0,0,54" MinHeight="18">
+        <StackPanel Margin="16,-42,16,0">
+            <ProgressBar Foreground="{StaticResource PhoneProgressBarForegroundBrush}"
+                         Visibility="{Binding IsLoadingVisibility}"
+                         IsEnabled="{Binding IsLoading}"
+                         IsIndeterminate="True"
+                         Margin="0,0,0,8"/>
+            <TextBlock Foreground="{StaticResource PhoneVKSubtleBrush}"
+                       Visibility="{Binding StatusTextVisibility}"
+                       LineStackingStrategy="BlockLineHeight"
+                       FontFamily="Segoe WP SemiLight"
+                       Text="{Binding StatusText}"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Top"
+                       TextWrapping="Wrap"
+                       FontSize="22.667"
+                       LineHeight="30"/>
+            <Button Content="{Binding LocalizedResources.TryAgain, Source={StaticResource LocalizedStrings}}" 
+                    Visibility="{Binding TryAgainVisibility, FallbackValue=Collapsed}"
+                    Style="{StaticResource VKButtonSecondaryStyle}"
+                    Tap="ButtonTryAgain_OnTap"
+                    HorizontalAlignment="Left"
+                    Margin="-12,3,0,0"
+                    Width="200"/>
+        </StackPanel>
+        <StackPanel Margin="0,64,0,201" Visibility="{Binding NoContentBlockVisibility}">
+            <Image Height="224" Source="{Binding NoContentImage}" />
+            <TextBlock Foreground="{StaticResource PhoneVKSubtleBrush}"
+                       Text="{Binding NoContentText}"
+                       FontFamily="Segoe WP SemiLight"
+                       TextAlignment="Center"
+                       Margin="16,22,16,0"
+                       TextWrapping="Wrap"
+                       FontSize="22.667"
+                       LineHeight="28"/>
+        </StackPanel>
+    </Grid>
+
+</UserControl>

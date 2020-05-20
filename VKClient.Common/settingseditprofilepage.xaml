@@ -1,0 +1,340 @@
+﻿<framework:PageBase x:Class="VKClient.Common.SettingsEditProfilePage"
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:framework="clr-namespace:VKClient.Common.Framework;assembly=VKClient.Common"
+                    xmlns:uc="clr-namespace:VKClient.Common.UC"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+                    xmlns:myPicker="clr-namespace:VKClient.Common.Framework.DatePicker"
+                    xmlns:emoji="clr-namespace:VKClient.Common.Emoji"
+                    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                    FontSize="{StaticResource PhoneFontSizeNormal}"
+                    Foreground="{StaticResource PhoneForegroundBrush}"
+                    SupportedOrientations="Portrait"
+                    Orientation="Portrait"
+                    mc:Ignorable="d"
+                    d:DesignHeight="2311">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <uc:GenericHeaderUC x:Name="ucHeader" />
+
+        <Grid Grid.Row="1"
+              Visibility="{Binding IsLoaded, Converter={StaticResource BoolToVisibilityConverter}}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <ScrollViewer x:Name="scrollViewer">
+                <StackPanel x:Name="stackPanel"
+                            Margin="16 0 16 88">
+
+                    <!-- HEADER -->
+                    <StackPanel Margin="0 16 0 -4"
+                                Visibility="{Binding HaveNameRequestInProgress, Converter={StaticResource BoolToVisibilityConverter}}">
+
+                        <TextBlock Margin="0 13 0 0"
+                                   Foreground="{StaticResource PhoneVKSubtleBrush}"
+                                   Text="{Binding LocalizedResources.Settings_EditProfile_NewNameIsBeingReviewed, Source={StaticResource LocalizedStrings}}" />
+
+
+                        <TextBlock Text="{Binding RequestedName, FallbackValue='John Doe'}"
+                                   FontSize="25.33" />
+
+                        <Button Style="{StaticResource VKButtonSecondaryStyle}"
+                                Margin="-12  6  0 0"
+                                MinWidth="220"
+                                HorizontalAlignment="Left"
+                                Tap="CancelNameRequestButtonTap"
+                                Content="{Binding LocalizedResources.Settings_EditProfile_CancelRequest, Source={StaticResource LocalizedStrings}}" />
+
+                        <Grid Background="{StaticResource PhoneGreyDividerBrush}"
+                              Height="2"
+                              Margin="-16 16 -16 0" />
+                    </StackPanel>
+                    
+                    <!-- Name last name-->
+                    <Grid Margin="0 32 0 0">
+                        <Grid Width="120"
+                              Visibility="{Binding HavePhoto, Converter={StaticResource BoolToVisibilityInverterConverter}}"
+                              HorizontalAlignment="Left"
+                              VerticalAlignment="Top"
+                              Height="120"
+                              framework:MetroInMotion.Tilt="1.5"
+                              Tap="ChoosePhotoTap"
+                              Background="{StaticResource PhoneActiveAreaBackgroundBrush}">
+                            <Grid.Clip>
+                                <!--<EllipseGeometry Center="60 60"
+                                                 RadiusX="60"
+                                                 RadiusY="60" />-->
+                                <RectangleGeometry Rect="0 0 120 120" x:Name="rectangleGeometry"
+                                                       RadiusX="60"
+                                                       RadiusY="60"/>
+                            </Grid.Clip>
+
+                            <TextBlock IsHitTestVisible="False"
+                                       TextWrapping="Wrap"
+                                       TextAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       Foreground="{StaticResource PhoneNewsActionForegroundBrush}"
+                                       Text="{Binding LocalizedResources.Settings_EditProfile_ChoosePhoto, Source={StaticResource LocalizedStrings}}" />
+                        </Grid>
+
+                        <Grid Width="120"
+                              Visibility="{Binding HavePhoto, Converter={StaticResource BoolToVisibilityConverter}}"
+                              HorizontalAlignment="Left"
+                              VerticalAlignment="Top"
+                              Height="120"
+                              Tap="GridPhotoTap"
+                              Background="{StaticResource PhoneChromeBrush}">
+                            <Grid.Clip>
+                                <!--<EllipseGeometry Center="60 60"
+                                                 RadiusX="60"
+                                                 RadiusY="60" />-->
+                                <RectangleGeometry Rect="0 0 120 120" x:Name="rectangleGeometry2"
+                                                       RadiusX="60"
+                                                       RadiusY="60"/>
+                            </Grid.Clip>
+                            
+
+                            <toolkit:ContextMenuService.ContextMenu>
+                                <toolkit:ContextMenu  Name="PhotoMenu"
+                                                      Background="{Binding InvertedOpaqueBG, Source={StaticResource ThemeHelper}}"
+                                                      Foreground="{Binding InvertedOpaqueFG, Source={StaticResource ThemeHelper}}"
+                                                      IsZoomEnabled="False">
+
+                                    <toolkit:MenuItem Click="ChosePhotoMenuClick"
+                                                      Header="{Binding Path=LocalizedResources.Settings_EditProfile_ChoosePhoto, Source={StaticResource LocalizedStrings}, Converter={StaticResource StringToLowerConverter}}" />
+                                    <toolkit:MenuItem Click="DeletePhotoMenuClick"
+                                                      Header="{Binding Path=LocalizedResources.Delete, 
+                                               Source={StaticResource LocalizedStrings}, Converter={StaticResource StringToLowerConverter}}" />
+                                </toolkit:ContextMenu>
+                            </toolkit:ContextMenuService.ContextMenu>
+
+                            <Image Width="120"
+                                   IsHitTestVisible="False"
+                                   Height="120"
+                                   framework:ImageLoader.UriSource="{Binding AvatarUri}"
+                                   >
+                                <Image.Clip>
+                                    <RectangleGeometry Rect="0 0 120 120" x:Name="rectangleGeometry3"
+                                                       RadiusX="60"
+                                                       RadiusY="60"/>
+                                </Image.Clip>
+                            </Image>
+
+                        </Grid>
+                        <TextBox VerticalAlignment="Top"
+                                 InputScope="Text"
+                                 GotFocus="TextBox_OnGotFocus"
+                                 LostFocus="TextBox_OnLostFocus"
+                                 KeyDown="TextBox_OnKeyDown"
+                                 Text="{Binding FirstName, Mode=TwoWay, UpdateSourceTrigger=Explicit}"
+                                 Margin="124 -12 -12 0"
+                                 MaxLength="32"
+                                 TextChanged="textBoxFirstNameChanged" />
+
+                        <TextBox VerticalAlignment="Top"
+                                 InputScope="Text"
+                                 GotFocus="TextBox_OnGotFocus"
+                                 LostFocus="TextBox_OnLostFocus"
+                                 KeyDown="TextBox_OnKeyDown"
+                                 Text="{Binding LastName, Mode=TwoWay, UpdateSourceTrigger=Explicit}"
+                                 Margin="124 60 -12 0"
+                                 MaxLength="32"
+                                 TextChanged="textBoxLastNameChanged" />
+
+                    </Grid>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+
+                        <RadioButton IsChecked="{Binding IsMale, Mode=TwoWay}"
+                                     Content="{Binding LocalizedResources.Settings_EditProfile_Male, Source={StaticResource LocalizedStrings}}"
+                                     GroupName="MaleFemale"
+                                     Margin="-12 8 0 0" />
+                        <RadioButton Grid.Column="1"
+                                     Content="{Binding LocalizedResources.Settings_EditProfile_Female, Source={StaticResource LocalizedStrings}}"
+                                     IsChecked="{Binding IsFemale, Mode=TwoWay}"
+                                     GroupName="MaleFemale"
+                                     Margin="-12 7 0 0" />
+
+                    </Grid>
+
+                    <Grid framework:MetroInMotion.Tilt="1.5"
+                          Tap="BirthdayTap"
+                          Margin="0 17 0 0">
+                        <StackPanel>
+                            <TextBlock FontSize="25.33"
+                                       Text="{Binding LocalizedResources.Settings_EditProfile_BirthDate, Source={StaticResource LocalizedStrings}}" />
+
+                            <TextBlock Foreground="{StaticResource PhoneVKSubtleBrush}"
+                                       Margin="0 -3 0 0"
+                                       Text="{Binding BirthDateStr, FallbackValue='12/01/20'}" />
+                        </StackPanel>
+                        <myPicker:MyDatePicker Visibility="Collapsed"
+                                               Name="datePicker"
+                                               Value="{Binding BirthDateValue, Mode=TwoWay}">
+                        </myPicker:MyDatePicker>
+                    </Grid>
+
+                    <toolkit:ListPicker VerticalAlignment="Top"
+                                        Header="{Binding LocalizedResources.Settings_EditProfile_OnYourPage, FallbackValue=Фон, Source={StaticResource LocalizedStrings}}"
+                                        ItemsSource="{Binding BirthdaysShowTypes}"
+                                        SelectedItem="{Binding BirthdayShowType, Mode=TwoWay}"
+                                        ExpansionMode="FullScreenOnly"
+                                        FullModeItemTemplate="{StaticResource PickableItemTemplate}"
+                                        Margin="0, 23, 0, 0" />
+
+                    <Grid Background="{StaticResource PhoneGreyDividerBrush}"
+                          Height="2"
+                          Margin="-16 24 -16 0" />
+
+
+                    <toolkit:ListPicker VerticalAlignment="Top"
+                                        Header="{Binding LocalizedResources.Settings_EditProfile_RelationshipStatus, FallbackValue=Фон, Source={StaticResource LocalizedStrings}}"
+                                        ItemsSource="{Binding RelationshipTypes}"
+                                        SelectedItem="{Binding RelationshipType, Mode=TwoWay}"
+                                        ExpansionMode="FullScreenOnly"
+                                        FullModeItemTemplate="{StaticResource PickableItemTemplate}"
+                                        Margin="0, 30, 0, 0" />
+
+
+                    <!-- Relationship Partner -->
+                    <StackPanel>
+                        <StackPanel Visibility="{Binding IsPartnerApplicable, Converter={StaticResource BoolToVisibilityConverter}, FallbackValue=Collapsed}">
+                            <Grid framework:MetroInMotion.Tilt="1.5"
+                                  Tap="ChoosePartnerTap"
+                                  Visibility="{Binding HavePartner, Converter={StaticResource BoolToVisibilityInverterConverter}}">
+                                <TextBlock Margin="0 8 0 0"
+                                           FontSize="25.33"
+                                           Text="{Binding LocalizedResources.Settings_EditProfile_ChooseAPartner, FallbackValue='choose a partner', Source={StaticResource LocalizedStrings}}" />
+                            </Grid>
+
+
+                            <Grid Height="62"
+                                  Visibility="{Binding HavePartner, Converter={StaticResource BoolToVisibilityConverter}}"
+                                  Background="Transparent"
+                                  Tap="PartnerTap"
+                                  framework:MetroInMotion.Tilt="2.5"
+                                  Margin="0,16,0,6">
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="62" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <Ellipse Style="{StaticResource PhotoPlaceholderEllipse}"
+                                         Height="62"
+                                         Grid.Column="1"
+                                         Width="62"
+                                         HorizontalAlignment="Left"
+                                         VerticalAlignment="Center" />
+                                <Image HorizontalAlignment="Left"
+                                       Grid.Column="1"
+                                       Height="62"
+                                       Width="62"
+                                       DataContext="{Binding Partner}"
+                                       framework:ImageLoader.UriSource="{Binding photo_max, Mode=OneWay}"
+                                       VerticalAlignment="Center">
+                                    <Image.Clip>
+                                        <EllipseGeometry Center="31 31"
+                                                         RadiusX="31"
+                                                         RadiusY="31" />
+                                    </Image.Clip>
+                                </Image>
+
+
+
+                                <TextBlock Margin="12,0,12,6"
+                                           Grid.Column="2"
+                                           Text="{Binding Name}"
+                                           DataContext="{Binding Partner}"
+                                           TextWrapping="NoWrap"
+                                           Style="{StaticResource PhoneTextLargeStyle}"
+                                           Foreground="{StaticResource PhoneContrastTitleBrush}"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Left" />
+                                <Grid  Grid.Column="3"
+                                       Background="Transparent"
+                                       Tap="RemovePartnerTap">
+                                    <Border Width="38"
+                                            Height="38"
+                                            Background="{StaticResource PhoneGrayIconForegroundBrush}">
+                                        <Border.OpacityMask>
+                                            <ImageBrush ImageSource="/Resources/appbar.cancel.rest.png" />
+                                        </Border.OpacityMask>
+                                    </Border>
+                                </Grid>
+                            </Grid>
+
+                            <RichTextBox Margin="-12 0 0 0"
+                                         Foreground="{StaticResource PhoneVKSubtleBrush}"
+                                         framework:BrowserNavigationService.Text="{Binding PendingPartnerText}"
+                                         Visibility="{Binding HavePendingPartner, Converter={StaticResource BoolToVisibilityConverter}}" />
+
+
+                        </StackPanel>
+
+                        <RichTextBox Margin="-12 6 0 0"
+                                     Foreground="{StaticResource PhoneVKSubtleBrush}"
+                                     framework:BrowserNavigationService.Text="{Binding RelationRequestsText}"
+                                     Visibility="{Binding HaveRelationRequests, Converter={StaticResource BoolToVisibilityConverter}}" />
+
+
+                    </StackPanel>
+
+                    <Grid Background="{StaticResource PhoneGreyDividerBrush}"
+                          Height="2"
+                          Margin="-16 24 -16 0" />
+
+                    <Grid Margin="0 29 0 0"
+                          framework:MetroInMotion.Tilt="1.5"
+                          Tap="CountryPicker_OnTap">
+                        <StackPanel>
+                            <TextBlock FontSize="25.33"
+                                       Text="{Binding LocalizedResources.CountryPicker_Title, Source={StaticResource LocalizedStrings}}" />
+
+                            <TextBlock Foreground="{StaticResource PhoneVKSubtleBrush}"
+                                       Margin="1 -3 0 0"
+                                       Text="{Binding Country.title, FallbackValue='Russia'}" />
+                        </StackPanel>
+                    </Grid>
+
+                    <Grid Margin="0 20 0 0"
+                          Visibility="{Binding CitySelectorVisibility}"
+                          framework:MetroInMotion.Tilt="1.5"
+                          Tap="CityPicker_OnTap">
+                        <StackPanel>
+                            <TextBlock FontSize="25.33"
+                                       Text="{Binding LocalizedResources.CityPicker_Title, Source={StaticResource LocalizedStrings}}" />
+
+                            <TextBlock Foreground="{StaticResource PhoneVKSubtleBrush}"
+                                       Margin="1 -3 0 0"
+                                       Text="{Binding City.title, FallbackValue='Saint Petersburg'}" />
+                        </StackPanel>
+                    </Grid>
+
+                </StackPanel>
+            </ScrollViewer>
+            
+            <emoji:TextBoxPanelControl x:Name="textBoxPanel"
+                                       Grid.Row="1" />
+        </Grid>
+
+        <uc:GenericPageLoadInfoUC Grid.Row="1"/>
+
+    </Grid>
+
+</framework:PageBase>

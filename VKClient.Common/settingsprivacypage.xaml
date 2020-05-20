@@ -1,0 +1,67 @@
+﻿<framework:PageBase
+       x:Class="VKClient.Common.SettingsPrivacyPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:framework="clr-namespace:VKClient.Common.Framework;assembly=VKClient.Common"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:library="clr-namespace:VKClient.Common.Library"
+    xmlns:uc="clr-namespace:VKClient.Common.UC"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <framework:PageBase.Resources>
+        <DataTemplate x:Key="PrivacySectionGroupHeaderTemplate">
+            <Grid Margin="16 21 16 17">
+                <TextBlock FontFamily="Segoe WP Semibold"
+                           Text="{Binding Title}"
+                           Foreground="{StaticResource PhoneVKSubtleBrush}"/>
+            </Grid>
+        </DataTemplate>
+        
+        <DataTemplate x:Key="PrivacySettingTemplate">
+            <Grid Margin="16 11 16 11">
+                <uc:PrivacyHeaderUC Tap="PrivacyTap"/>
+            </Grid>
+        </DataTemplate>
+        
+        <DataTemplate x:Key="FooterTemplate">
+            <Grid Height="10" />
+        </DataTemplate>
+        <DataTemplate x:Key="GroupFooterTemplate">
+            <Grid Height="2" Margin="0 18 0 0" Background="{StaticResource PhoneGreyDividerBrush}">
+                
+            </Grid>
+        </DataTemplate>
+    </framework:PageBase.Resources>
+    
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <uc:GenericHeaderUC x:Name="Header"/>
+        
+        <Grid Grid.Row="1">
+            <framework:ExtendedLongListSelector 
+             Name="mainList"
+                DataContext="{Binding PrivacyCollection}"
+                IsFlatList="False"
+                GroupHeaderTemplate="{StaticResource PrivacySectionGroupHeaderTemplate}"     
+                GroupFooterTemplate="{StaticResource GroupFooterTemplate}"
+                ItemTemplate="{StaticResource PrivacySettingTemplate}"
+                ItemsSource="{Binding Collection}"
+                ListFooter="{StaticResource FooterTemplate}"/>
+        </Grid>
+        
+    </Grid>
+
+</framework:PageBase>

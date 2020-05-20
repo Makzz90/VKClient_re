@@ -1,0 +1,53 @@
+﻿<UserControl x:Class="VKClient.Common.Profiles.Shared.Views.MediaListItemVideoUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:framework="clr-namespace:VKClient.Common.Framework"
+             mc:Ignorable="d"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             d:DesignHeight="200"
+             d:DesignWidth="256">
+
+    <StackPanel Width="{Binding ContainerWidth, FallbackValue=256}"
+                Height="{Binding ContainerHeight, FallbackValue=200}">
+        <Grid Width="{Binding ContainerWidth, FallbackValue=256}"
+              Height="144"
+              Background="{StaticResource PhoneChromeBrush}">
+            <Image framework:ImageLoader.UriSource="{Binding ImageUri}"
+                   Width="{Binding ContainerWidth}"
+                   Height="{Binding ContainerHeight}"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   Stretch="UniformToFill" />
+
+            <Border VerticalAlignment="Bottom"
+                    HorizontalAlignment="Right"
+                    Visibility="{Binding DurationVisibility}"
+                    Margin="0 0 8 8"
+                    Height="28">
+                <Border.Background>
+                    <SolidColorBrush Color="#0d0d0d"
+                                     Opacity="0.6" />
+                </Border.Background>
+                <TextBlock Text="{Binding Duration, FallbackValue='0:00'}"
+                           FontSize="18"
+                           Margin="8 0"
+                           FontFamily="{StaticResource PhoneFontFamilySemiBold}"
+                           Foreground="White"
+                           VerticalAlignment="Center"
+                           TextAlignment="Center"/>
+            </Border>
+        </Grid>
+
+        <TextBlock x:Name="textBlockTitle"
+                   Text="{Binding Title}"
+                   FontSize="22.7"
+                   LineStackingStrategy="BlockLineHeight"
+                   LineHeight="26"
+                   Margin="0 8 0 0"
+                   Foreground="{StaticResource PhoneContrastTitleBrush}" />
+    </StackPanel>
+</UserControl>

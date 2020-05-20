@@ -1,0 +1,137 @@
+﻿<framework:PageBase x:Class="VKClient.Groups.GroupDiscussionsPage"
+                    xmlns:framework="clr-namespace:VKClient.Common.Framework;assembly=VKClient.Common"
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+                    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:commonUC="clr-namespace:VKClient.Common.UC;assembly=VKClient.Common"
+                    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                    FontSize="{StaticResource PhoneFontSizeNormal}"
+                    Foreground="{StaticResource PhoneForegroundBrush}"
+                    SupportedOrientations="Portrait"
+                    Orientation="Portrait"
+                    mc:Ignorable="d"
+                    shell:SystemTray.IsVisible="True"
+                    shell:SystemTray.Opacity="0">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot"
+          Background="Transparent">
+
+
+
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <!--
+        <StackPanel Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock Margin="12,0,0,0" Text="{Binding Title, FallbackValue=LIVE}" Style="{StaticResource AppTitleText}"/>
+            <TextBlock Text="{Binding Subtitle, FallbackValue=themes}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+        </StackPanel>-->
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel"
+              Margin="0 96 0 0">
+
+            <framework:ExtendedLongListSelector x:Name="listBoxThemeHeaders"
+                                                IsFlatList="True"
+                                                ListFooterTemplate="{StaticResource FooterTemplate}"
+                                                ListFooter="{Binding}"
+                                                SelectionChanged="listBoxThemeHeaders_SelectionChanged_1"
+                                                Link="listBoxThemeHeaders_Link_1"
+                                                ItemsSource="{Binding Collection}"
+                                                DataContext="{Binding DiscussionsVM}">
+
+                <framework:ExtendedLongListSelector.ItemTemplate>
+                    <DataTemplate>
+
+                        <Grid Height="162">
+                            <Grid Margin="16 0">
+                                <TextBlock VerticalAlignment="Top"
+                                           Foreground="{StaticResource PhoneNameBlueBrush}"
+                                           Text="{Binding Header, FallbackValue='Вопросы по ВКонтакте'}"
+                                           FontSize="25.33"
+                                           Margin="-1 10 0 0" />
+                                <TextBlock VerticalAlignment="Top"
+                                           Text="{Binding MessagesCountStr, FallbackValue='22769 сообщений'}"
+                                           Margin="-1 41 0 0"
+                                           Foreground="{StaticResource  PhoneVKSubtleBrush }" />
+
+                                <Ellipse Style="{StaticResource PhotoPlaceholderEllipse}"
+                                         Width="62"
+                                         Height="62"
+                                         VerticalAlignment="Top"
+                                         HorizontalAlignment="Left"
+                                         Margin="0 83 0 0" />
+                                <Image framework:ImageLoader.UriSource="{Binding ImageSrc}"
+                                       VerticalAlignment="Top"
+                                       HorizontalAlignment="Left"
+                                       Width="62"
+                                       Height="62"
+                                       Margin="0 83 0 0">
+                                    <Image.Clip>
+                                        <EllipseGeometry Center="31 31"
+                                                         RadiusX="31"
+                                                         RadiusY="31" />
+                                    </Image.Clip>
+                                </Image>
+
+                                <TextBlock Text="{Binding Name, FallbackValue='Шапка Невидимка'}"
+                                           FontSize="22.667"
+                                           Margin="74 85 0 0 "
+                                           VerticalAlignment="Top" />
+                                <!--<TextBlock Text="{Binding Text, FallbackValue='Как можно очистить'}"
+                               Margin="61 114 0 0"
+                           Foreground="VKS"    
+                           Height="28"
+                               VerticalAlignment="Top"
+                               />-->
+
+                                <TextBlock Text="{Binding Date, FallbackValue='2 минуты назад'}"
+                                           VerticalAlignment="Top"
+                                           Foreground="{StaticResource PhoneVKSubtleBrush}"
+                                           Margin="74 114 0 0" />
+
+                                <Grid Background="Transparent"
+                                      HorizontalAlignment="Stretch"
+                                      VerticalAlignment="Top"
+                                      Height="70"
+                                      Tap="Grid_Tap_1" />
+                                <Grid Background="Transparent"
+                                      HorizontalAlignment="Stretch"
+                                      VerticalAlignment="Top"
+                                      Height="70"
+                                      Tap="Grid_Tap_1" />
+
+                                <Grid Background="Transparent"
+                                      HorizontalAlignment="Stretch"
+                                      VerticalAlignment="Bottom"
+                                      Height="115"
+                                      Tap="Grid_Tap_2" />
+                            </Grid>
+                            <Rectangle VerticalAlignment="Bottom"
+                                       Height="2"
+                                       Margin="0 0 -16 0"
+                                       Fill="{StaticResource PhoneTableSeparatorBrush}" />
+
+                        </Grid>
+
+
+                    </DataTemplate>
+                </framework:ExtendedLongListSelector.ItemTemplate>
+
+            </framework:ExtendedLongListSelector>
+
+
+
+            <!--<Image Grid.RowSpan="2" IsHitTestVisible="False" Source="Temp/Group_Threads.png"  Margin="0 -32 0 0"
+               Opacity="0.8"/>-->
+
+
+        </Grid>
+
+        <commonUC:GenericHeaderUC x:Name="Header" />
+        <commonUC:PullToRefreshUC x:Name="ucPullToRefresh" />
+    </Grid>
+</framework:PageBase>

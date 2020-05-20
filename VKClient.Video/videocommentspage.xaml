@@ -1,0 +1,148 @@
+﻿<framework:PageBase x:Class="VKClient.Video.VideoCommentsPage"
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:framework="clr-namespace:VKClient.Common.Framework;assembly=VKClient.Common"
+                    xmlns:commonUC="clr-namespace:VKClient.Common.UC;assembly=VKClient.Common"
+                    xmlns:shared="clr-namespace:VKClient.Common.Shared;assembly=VKClient.Common"
+                    xmlns:vidCatCommon="clr-namespace:VKClient.Common.VideoCatalog;assembly=VKClient.Common"
+                    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                    FontSize="{StaticResource PhoneFontSizeNormal}"
+                    Foreground="{StaticResource PhoneForegroundBrush}"
+                    SupportedOrientations="Portrait"
+                    Orientation="Portrait"
+                    mc:Ignorable="d"
+                    shell:SystemTray.IsVisible="True">
+
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <commonUC:GenericHeaderUC />
+
+            <ViewportControl x:Name="scroll"
+                             Grid.Row="1"
+                             VerticalContentAlignment="Stretch"
+                             HorizontalContentAlignment="Stretch">
+                <StackPanel x:Name="stackPanel"
+                            Width="480"
+                            VerticalAlignment="Top">
+                    <Grid SizeChanged="GridContent_OnSizeChanged">
+                        <Canvas x:Name="canvasBackground"
+                                VerticalAlignment="Top" />
+
+                        <StackPanel SizeChanged="StackPanelProductInfo_OnSizeChanged"
+                                    Width="480">
+
+                            <shared:OwnerFullHeaderWithSubscribeUC DataContext="{Binding OwnerHeaderViewModel}" />
+
+                            <Grid Width="480"
+                                  Height="270">
+                                <Rectangle Style="{StaticResource PhotoPlaceholderRectangle}"
+                                           Tap="Play_OnTap" />
+                                <Image Stretch="UniformToFill"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       Tap="Play_OnTap"
+                                       framework:ImageLoader.UriSource="{Binding ImageSrc}" />
+
+                                <Image Visibility="{Binding CannotPlayVisibility}"
+                                       framework:MultiResImageLoader.UriSource="/Resources/VideoCantPlay.png"
+                                       Width="36"
+                                       Height="36"
+                                       IsHitTestVisible="False" />
+
+                                <Image Visibility="{Binding CanPlayVisibility}"
+                                       framework:MultiResImageLoader.UriSource="/Resources/VideoBigPlay.png"
+                                       Width="64"
+                                       Height="64"
+                                       IsHitTestVisible="False" />
+
+
+
+                                <vidCatCommon:VideoDurationUC VerticalAlignment="Bottom"
+                                                              HorizontalAlignment="Right"
+                                                              Height="28"
+                                                              Margin="0 0 16 16" />
+                            </Grid>
+
+                            <Grid Margin="16 16 16 0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <StackPanel Margin="0 0 16 0">
+                                    <TextBlock FontSize="25.33"
+                                               LineStackingStrategy="BlockLineHeight"
+                                               LineHeight="30"
+                                               Foreground="{StaticResource PhoneAlmostBlackBrush}"
+                                               TextWrapping="Wrap"
+                                               Text="{Binding VideoTitle, FallbackValue=Title}" />
+                                    <TextBlock x:Name="textBlockMetaData"
+                                               LineStackingStrategy="BlockLineHeight"
+                                               LineHeight="26"
+                                               Foreground="{StaticResource PhoneCaptionGrayBrush}"
+                                               TextWrapping="Wrap"
+                                               Text="{Binding MetaDataStr, FallbackValue='8 просмотров · 17 авг 2015 в 21:15'}"
+                                               SizeChanged="TextBlockMetaData_OnSizeChanged" />
+                                </StackPanel>
+
+                                <commonUC:ListPickerControl Grid.Column="1"
+                                                            Visibility="{Binding HaveManyResolutionsVisibility}"
+                                                            ItemsSource="{Binding Resolutions}"
+                                                            SelectedItem="{Binding Resolution, Mode=TwoWay}"
+                                                            VerticalAlignment="Top">
+                                    <commonUC:ListPickerControl.Template>
+                                        <ControlTemplate TargetType="commonUC:ListPickerControl">
+                                            <Button Style="{StaticResource VKButtonSecondaryActionStyle}"
+                                                    Margin="-12"
+                                                    Content="{TemplateBinding SelectedItemStr}" />
+                                        </ControlTemplate>
+                                    </commonUC:ListPickerControl.Template>
+                                </commonUC:ListPickerControl>
+                            </Grid>
+
+                            <StackPanel Visibility="{Binding DescriptionVisibility}"
+                                        Tap="Description_OnTap"
+                                        Margin="16">
+                                <framework:ScrollableTextBlock FontSize="20"
+                                                               LineHeight="26"
+                                                               TextWrapping="Wrap"
+                                                               Foreground="{StaticResource PhoneAlmostBlackBrush}"
+                                                               Text="{Binding VideoDescription, FallbackValue=Description}" />
+                                <TextBlock LineStackingStrategy="BlockLineHeight"
+                                           LineHeight="26"
+                                           Foreground="{StaticResource PhoneAccentBlueBrush}"
+                                           FontFamily="{StaticResource PhoneFontFamilySemiBold}"
+                                           Text="{Binding LocalizedResources.ReadInFull, Source={StaticResource LocalizedStrings}}"
+                                           Visibility="{Binding ExpandDescriptionVisibility, FallbackValue=Collapsed}" />
+                            </StackPanel>
+                        </StackPanel>
+
+                    </Grid>
+                    <commonUC:CommentsGenericUC x:Name="ucCommentGeneric" />
+
+                </StackPanel>
+            </ViewportControl>
+
+            <commonUC:NewMessageUC x:Name="ucNewMessage"
+                                   Grid.Row="2" />
+
+            <commonUC:MoreActionsUC VerticalAlignment="Top"
+                                    HorizontalAlignment="Right"
+                                    Margin="0 39 0 0"
+                                    x:Name="ucMoreActions" />
+
+            <commonUC:GenericPageLoadInfoUC Grid.Row="1"
+                                            Grid.RowSpan="2" />
+        </Grid>
+    </Grid>
+
+</framework:PageBase>

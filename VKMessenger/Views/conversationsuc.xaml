@@ -1,0 +1,63 @@
+﻿<dataObjects:ConversationsUCBase x:Class="VKMessenger.Views.ConversationsUC"
+                                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                                 mc:Ignorable="d"
+                                 xmlns:framework="clr-namespace:VKClient.Common.Framework;assembly=VKClient.Common"
+                                 xmlns:mFramework="clr-namespace:VKMessenger.Framework"
+                                 xmlns:commonUC="clr-namespace:VKClient.Common.UC;assembly=VKClient.Common"
+                                 xmlns:views="clr-namespace:VKMessenger.Views"
+                                 xmlns:dataObjects="clr-namespace:VKClient.Audio.Base.DataObjects;assembly=VKClient.Audio.Base"
+                                 FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                                 FontSize="{StaticResource PhoneFontSizeNormal}"
+                                 Foreground="{StaticResource PhoneForegroundBrush}"
+                                 Background="Transparent"
+                                 d:DesignHeight="480"
+                                 d:DesignWidth="480">
+
+    <dataObjects:ConversationsUCBase.Resources>
+
+        <mFramework:BoolToStyleConverter x:Key="AccentTextConverter"
+                                         TrueStyle="{StaticResource PhoneTextSubtleStyle}"
+                                         FalseStyle="{StaticResource PhoneTextAccentStyle }" />
+
+
+
+        <DataTemplate x:Key="DialogItemTemplate">
+            <views:ConversationHeaderUC />
+
+        </DataTemplate>
+
+        <DataTemplate x:Key="HeaderTemplate">
+            <Grid></Grid>
+        </DataTemplate>
+
+
+    </dataObjects:ConversationsUCBase.Resources>
+
+
+    <Grid x:Name="LayoutRoot">
+
+
+        <ViewportControl Name="scrollConversations"
+                         VerticalContentAlignment="Stretch"
+                         HorizontalContentAlignment="Stretch">
+            <StackPanel Name="stackPanelConversations">
+
+                <framework:MyVirtualizingPanel2 VerticalAlignment="Top"
+                                                x:Name="conversationsListBox"
+                                                DataContext="{Binding ConversationsGenCol}"
+                                                ItemsSource="{Binding Collection}">
+
+                </framework:MyVirtualizingPanel2>
+
+                <commonUC:FooterUC DataContext="{Binding ConversationsGenCol}" />
+
+            </StackPanel>
+
+        </ViewportControl>
+
+
+    </Grid>
+</dataObjects:ConversationsUCBase>

@@ -1,0 +1,50 @@
+﻿<UserControl x:Class="VKClient.Common.UC.GroupFooterUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:framework="clr-namespace:VKClient.Common.Framework"
+             mc:Ignorable="d"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             d:DesignHeight="60">
+
+    <Border Background="{StaticResource PhoneNewsBackgroundBrush}">
+        <Border framework:MetroInMotion.Tilt="1"
+                CacheMode="BitmapCache"
+                Background="Transparent"
+                Margin="37 0 37 0"
+                Tap="More_OnTapped">
+            <StackPanel Margin="8 0 0 0"
+                        Height="60"
+                        Orientation="Horizontal">
+                <Border Width="4"
+                        Height="20"
+                        Background="{StaticResource PhoneButtonTextForegroundBrush}">
+                    <Border.Projection>
+                        <PlaneProjection RotationZ="90" />
+                    </Border.Projection>
+                    <Border.OpacityMask>
+                        <ImageBrush framework:ImageLoader.ImageBrushMultiResSource="/Resources/New/MoreActions.png" />
+                    </Border.OpacityMask>
+                </Border>
+                <TextBlock x:Name="textBlockFooter"
+                           Text="{Binding LocalizedResources.ShowAll, Source={StaticResource LocalizedStrings}}"
+                           Margin="42 -5 0 0"
+                           FontFamily="Segoe WP Semibold"
+                           Foreground="{StaticResource PhoneButtonTextForegroundBrush}"
+                           VerticalAlignment="Center" />
+            </StackPanel>
+
+            <!--<Image Width="480"
+               Grid.ColumnSpan="2"
+               VerticalAlignment="Top"
+               Margin="-16 -1100 0 0"
+               Opacity=".5"
+               Stretch="None"
+               Grid.RowSpan="2"
+               Source="/Temp/wp-games-v6.png" />-->
+        </Border>
+    </Border>
+</UserControl>

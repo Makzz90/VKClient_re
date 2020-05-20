@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="VKClient.Common.UC.PublishSocialUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:framework="clr-namespace:VKClient.Common.Framework"
+             mc:Ignorable="d"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             d:DesignHeight="56"
+             d:DesignWidth="56">
+
+    <Grid Height="56"
+          Width="56"
+          Background="Transparent"
+          Tap="OnTapped">
+        <Image x:Name="imageIcon"
+               Width="32"
+               Height="32"
+               Opacity="0.5"
+               framework:MultiResImageLoader.UriSource="/Resources/NewPost/ImportTwitter.png" />
+    </Grid>
+</UserControl>

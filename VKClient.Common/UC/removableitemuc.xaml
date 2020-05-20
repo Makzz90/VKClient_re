@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="VKClient.Common.UC.RemovableItemUC"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    >
+
+    <Grid VerticalAlignment="Top">
+        <TextBox VerticalAlignment="Top" Padding="2 2 45 2" 
+                 TextChanged="TextBox_TextChanged"
+                 Name="textBoxText"
+                 KeyUp="textBox_KeyUp"
+                 GotFocus="TextBox_OnGotFocus"
+                 LostFocus="TextBox_OnLostFocus"
+                 InputScope="Text"
+                 Tag="RemovableTextBox"
+                 Text="{Binding Text, UpdateSourceTrigger=Explicit, Mode=TwoWay}"></TextBox>
+
+        <Grid  HorizontalAlignment="Right"                        
+                       Margin="0 0 16 0"                       
+                       Background="Transparent" Tap="RemoveOptionTap">
+            <Border Width="38" Height="38" Background="{StaticResource PhoneGrayIconForegroundBrush}"
+                       >
+                <Border.OpacityMask>
+                    <ImageBrush ImageSource="/Resources/appbar.cancel.rest.png"/>
+                </Border.OpacityMask>
+            </Border>
+        </Grid>
+
+    </Grid>
+</UserControl>

@@ -1,0 +1,362 @@
+﻿<framework:PageBase x:Class="VKClient.Groups.GroupPage"
+                    xmlns:framework="clr-namespace:VKClient.Common.Framework;assembly=VKClient.Common"
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:localization="clr-namespace:VKClient.Groups.Localization"
+                    xmlns:uc="clr-namespace:VKClient.Common.UC;assembly=VKClient.Common"
+                    xmlns:views="clr-namespace:VKClient.Common.Profiles.Shared.Views;assembly=VKClient.Common"
+                    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                    FontSize="{StaticResource PhoneFontSizeNormal}"
+                    Foreground="{StaticResource PhoneForegroundBrush}"
+                    SupportedOrientations="Portrait"
+                    Orientation="Portrait"
+                    mc:Ignorable="d"
+                    shell:SystemTray.IsVisible="True"
+                    shell:SystemTray.Opacity="0">
+
+    <framework:PageBase.Resources>
+
+        <localization:GroupLocalizedStrings x:Key="LocStr" />
+
+
+
+    </framework:PageBase.Resources>
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot"
+          Background="Transparent">
+
+
+
+        <uc:GenericHeaderUC  x:Name="Header"
+                             Height="138" />
+
+        <controls:Pivot Name="pivot"
+                        Margin="0 67 0 0 "
+                        Style="{StaticResource PivotStyleNoHeader}"
+                        Foreground="White">
+            <!--Pivot item one-->
+            <controls:PivotItem Name="pivotItemMain"
+                                Foreground="{StaticResource PhoneForegroundBrush}">
+                <controls:PivotItem.Header>
+                    <TextBlock FontSize="46"
+                               FontFamily="Segoe WP SemiLight"
+                               Text="{Binding LocalizedResources.GroupPage_Page, Source={StaticResource LocStr}}" />
+                </controls:PivotItem.Header>
+
+
+                <ViewportControl VerticalContentAlignment="Stretch"
+                                 HorizontalContentAlignment="Stretch"
+                                 Name="scrollViewer">
+                    <uc:MyVirtualizingStackPanel Name="stackPanelMain">
+                        <Grid Height="120"
+                              Margin="16 16 0 0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Foreground="{StaticResource PhoneContrastTitleBrush}"
+                                               Margin="0 -2 0 0"
+                                               MaxWidth="282"
+                                               LineStackingStrategy="BlockLineHeight"
+                                               LineHeight="30"
+                                               VerticalAlignment="Top"
+                                               FontSize="25.33"
+                                               TextTrimming="WordEllipsis"
+                                               TextWrapping="Wrap"
+                                               Text="{Binding GroupName, FallbackValue='ВКонтакте для Windows '}">
+
+                                    </TextBlock>
+                                    <Border Background="{StaticResource PhoneVerifiedIconBackgroundBrush}"
+                                            Grid.Column="1"
+                                            VerticalAlignment="Top"
+                                            HorizontalAlignment="Left"
+                                            Width="20"
+                                            Margin="6 6 0 0"
+                                            Visibility="{Binding IsVerifiedVisibility}"
+                                            Height="15">
+                                        <Border.OpacityMask>
+                                            <ImageBrush framework:ImageLoader.ImageBrushMultiResSource="/Resources/New/VerifiedCheck.png" />
+                                        </Border.OpacityMask>
+                                    </Border>
+                                </Grid>
+
+                                <TextBlock Foreground="{StaticResource PhoneVKSubtleBrush}"
+                                           VerticalAlignment="Top"
+                                           Text="{Binding GroupTypeStr, FallbackValue=Публичная}"
+                                           Margin="0 0 0 0" />
+                                <TextBlock Foreground="{StaticResource PhoneVKSubtleBrush}"
+                                           VerticalAlignment="Top"
+                                           Text="{Binding GroupText, FallbackValue=27}"
+                                           Margin="0 0 0 0"
+                                           TextWrapping="NoWrap"
+                                           TextTrimming="WordEllipsis" />
+                            </StackPanel>
+
+
+
+                            <Ellipse Grid.Column="1"
+                                     Style="{StaticResource PhotoPlaceholderEllipse}"
+                                     HorizontalAlignment="Right"
+                                     Margin="12 0 16 0"
+                                     Width="120" />
+
+                            <Image Grid.Column="1"
+                                   framework:ImageLoader.UriSource="{Binding Avatar}"
+                                   HorizontalAlignment="Left"
+                                   Stretch="UniformToFill"
+                                   Width="120"
+                                   Height="120"
+                                   Margin="12 0 16 0"
+                                   Tap="Avatar_Tap">
+                                <Image.Clip>
+                                    <!--<EllipseGeometry Center="60 60"
+                                                     RadiusX="60"
+                                                     RadiusY="60" />-->
+                                    <RectangleGeometry Rect="0 0 120 120" x:Name="rectangleGeometry"
+							RadiusX="60"
+							RadiusY="60"/>
+                                </Image.Clip>
+                            </Image>
+
+
+                        </Grid>
+
+                        <views:MembershipButtonsUC DataContext="{Binding GroupMembershipInfo}"
+                                                   Margin="0 5" />
+
+                        <ScrollViewer HorizontalScrollBarVisibility="Hidden"
+                                      VerticalScrollBarVisibility="Disabled">
+                            <ItemsControl ItemsSource="{Binding NavigateButtons}"
+                                          Margin="16 0 0 12">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal" />
+                                    </ItemsPanelTemplate>
+
+                                </ItemsControl.ItemsPanel>
+
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+
+                                        <Grid Background="Transparent"
+                                              Margin="0 0 26 0"
+                                              Tap="Button_Tap_1"
+                                              framework:MetroInMotion.Tilt="2.5">
+
+                                            <TextBlock  FontSize="32"
+                                                        FontFamily="Segoe WP SemiLight"
+                                                        Foreground="{StaticResource PhoneForegroundBrush}"
+                                                        HorizontalAlignment="Center"
+                                                        Margin="0 4 0 0"
+                                                        Text="{Binding ButtonTitle, FallbackValue=520}" />
+                                            <TextBlock FontSize="20"
+                                                       Foreground="{StaticResource PhoneVKSubtleBrush}"
+                                                       HorizontalAlignment="Center"
+                                                       Margin="0 42 0 0"
+                                                       Text="{Binding ButtonSubtitle, FallbackValue=друг}" />
+                                        </Grid>
+
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </ScrollViewer>
+
+
+                        <ItemsControl ItemsSource="{Binding ActionButtons}"
+                                      Margin="0 16 0 -8">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock FontSize="25.33"
+                                               Margin="16 0 0 22"
+                                               Foreground="{StaticResource PhoneNameBlueBrush}"
+                                               framework:MetroInMotion.Tilt="2.2"
+                                               Tap="ActionButton_Tap"
+                                               Text="{Binding ActionButtonText}" />
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+
+                        <!--<TextBlock FontSize="25.33"
+                                   Margin="16 3 0 22"
+                                   Foreground="{StaticResource PhoneNameBlueBrush}"
+                                   framework:MetroInMotion.Tilt="2.2"
+                                   Tap="ActionButton_Tap"
+                                   Text="2 предлагаемые новости" />
+
+                        <TextBlock FontSize="25.33"
+                                   Margin="16 0 0 26"
+                                   Foreground="{StaticResource PhoneNameBlueBrush}"
+                                   framework:MetroInMotion.Tilt="2.2"
+                                   Tap="ActionButton_Tap"
+                                   Text="5 отложенных новостей" />-->
+
+                        <Border Visibility="{Binding ActionButtonsSeparatorVisibility}"
+                                Margin="0 0 0 -16">
+                            <Rectangle Visibility="{Binding AllVSGroupPostsVisibilityInversed}"
+                                       Fill="{StaticResource PhoneNewsDividerBrush}"
+                                       Height="16" />
+                        </Border>
+
+
+                        <StackPanel Orientation="Horizontal"
+                                    Margin="0 3 0 -16"
+                                    Height="60"
+                                    Visibility="{Binding AllVSGroupPostsVisibility}"
+                                    Background="{StaticResource PhoneNewsDividerBrush}">
+
+                            <Border Padding="20 17 32 0"
+                                    Tap="AllPosts_OnTap">
+                                <TextBlock Foreground="{StaticResource PhoneProfileTabForegroundBrush}"
+                                           Opacity="{Binding AllPostsOpacity}"
+                                           framework:MetroInMotion.Tilt="2.5"
+                                           FontFamily="Segoe WP SemiBold"
+                                           Text="{Binding AllPostsText, FallbackValue='ВCЕ ЗАПИСИ'}" />
+                            </Border>
+
+                            <Border  Padding="0 17 32 0"
+                                     Tap="GroupPosts_OnTap">
+                                <TextBlock  Foreground="{StaticResource PhoneProfileTabForegroundBrush}"
+                                            Opacity="{Binding GroupPostsOpacity}"
+                                            framework:MetroInMotion.Tilt="2.5"
+                                            FontFamily="Segoe WP SemiBold"
+                                            Text="{Binding GroupPostsText, FallbackValue='ЗАПИСИ АЛЕКСАНДРА'}" />
+
+                            </Border>
+
+
+                        </StackPanel>
+
+                        <framework:MyVirtualizingPanel2 Name="wallPanel"
+                                                        Visibility="{Binding IsLoadedVisibility}"
+                                                        DataContext="{Binding WallVM}"
+                                                        ItemsSource="{Binding Collection}"
+                                                        Margin="16 16 0 0" />
+
+                        <uc:FooterUC DataContext="{Binding WallVM}" />
+                    </uc:MyVirtualizingStackPanel>
+                </ViewportControl>
+            </controls:PivotItem>
+
+            <!--Pivot item two-->
+            <controls:PivotItem>
+
+                <controls:PivotItem.Header>
+                    <TextBlock FontSize="46"
+                               FontFamily="Segoe WP SemiLight"
+                               Text="{Binding LocalizedResources.GroupPage_Info, Source={StaticResource LocStr}}" />
+                </controls:PivotItem.Header>
+                <Grid>
+                    <ScrollViewer>
+                        <StackPanel Margin="0 0 0 84">
+                            <Grid Height="120"
+                                  Margin="16 16 0 0">
+                                <Ellipse Style="{StaticResource PhotoPlaceholderEllipse}"
+                                         HorizontalAlignment="Right"
+                                         Margin="12 0 16 0"
+                                         Width="120"
+                                         Height="120" />
+
+                                <Image framework:ImageLoader.UriSource="{Binding Avatar}"
+                                       HorizontalAlignment="Right"
+                                       Stretch="UniformToFill"
+                                       Width="120"
+                                       Height="120"
+                                       Margin="12 0 16 0"
+                                       Tap="Avatar_Tap">
+                                    <Image.Clip>
+                                        <!--<EllipseGeometry Center="60 60"
+                                                         RadiusX="60"
+                                                         RadiusY="60" />-->
+                                        <RectangleGeometry Rect="0 0 120 120" x:Name="rectangleGeometry2"
+							RadiusX="60"
+							RadiusY="60"/>
+                                    </Image.Clip>
+                                </Image>
+
+                                <TextBlock Foreground="{StaticResource PhoneVKSubtleBrush}"
+                                           HorizontalAlignment="Left"
+                                           Text="{Binding GroupTypeStr, FallbackValue=Публичная}"
+                                           Margin="0 -4 0 0" />
+                                <TextBlock Foreground="{StaticResource PhoneVKSubtleBrush}"
+                                           Text="{Binding GroupText, FallbackValue=27}"
+                                           Margin="0 24 150 0"
+                                           TextWrapping="Wrap"
+                                           TextTrimming="WordEllipsis" />
+                            </Grid>
+
+
+                            <ItemsControl ItemsSource="{Binding InformationRows}"
+                                          Margin="5 4 0 0">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+
+                                        <Grid MinHeight="96"
+                                              Margin="0 1 0 0"
+                                              Tap="ButtonInformation_Tap"
+                                              framework:MetroInMotion.Tilt="{Binding Path=Tilt}">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <Rectangle Style="{StaticResource PhotoPlaceholderRectangle}"
+                                                       Visibility="{Binding HaveImage}"
+                                                       VerticalAlignment="Bottom"
+                                                       Margin="8 0 0 10"
+                                                       Width="60"
+                                                       Height="60" />
+                                            <Image framework:ImageLoader.UriSource="{Binding ImageUri, FallbackValue='https://vk.com/photo62177_207657582'}"
+                                                   Visibility="{Binding HaveImage}"
+                                                   VerticalAlignment="Bottom"
+                                                   Margin="8 0 0 10"
+                                                   Width="60"
+                                                   Height="60" />
+                                            <TextBlock FontSize="36.667"
+                                                       Foreground="{Binding  TitleForegroundBrush}"
+                                                       FontFamily="Segoe WP SemiLight"
+                                                       Grid.Column="1"
+                                                       Margin="8 12 0 0"
+                                                       Text="{Binding Title, FallbackValue=семейное}" />
+
+                                            <framework:ScrollableTextBlock Text="{Binding Subtitle, FallbackValue=не}"
+                                                                           Grid.Column="1"
+                                                                           Foreground="{Binding SubtitleForegroundBrush}"
+                                                                           Margin="10 57 0 0" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+
+                        </StackPanel>
+
+                    </ScrollViewer>
+                </Grid>
+            </controls:PivotItem>
+        </controls:Pivot>
+
+        <uc:PullToRefreshUC x:Name="ucPullToRefresh" />
+
+        <!--<Image Source="Temp/Profile_Info.png"
+               Margin="0 -32 0 0"
+               Opacity="0.3" />-->
+        <!--<Image Source="Temp/Group.png"
+               Margin="0 -32 0 0"
+               Grid.RowSpan="2"
+               Opacity="0.3" />-->
+    </Grid>
+
+
+</framework:PageBase>

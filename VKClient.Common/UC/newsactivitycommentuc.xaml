@@ -1,0 +1,82 @@
+﻿<virtItems:UserControlVirtualizable x:Class="VKClient.Common.UC.NewsActivityCommentUC"
+                                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                                    xmlns:virtItems="clr-namespace:VKClient.Common.Library.VirtItems"
+                                    xmlns:framework="clr-namespace:VKClient.Common.Framework"
+                                    mc:Ignorable="d"
+                                    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                                    FontSize="{StaticResource PhoneFontSizeNormal}"
+                                    Foreground="{StaticResource PhoneForegroundBrush}"
+                                    d:DesignWidth="480"
+                                    d:DesignHeight="96">
+
+    <Canvas x:Name="canvasBackground"
+            Width="480"
+            Background="{StaticResource PhoneWallPostActivityBackgroundBrush}">
+
+        <Canvas x:Name="canvas"
+                Width="480"
+                Background="Transparent"
+                framework:MetroInMotion.Tilt="1.5">
+            <Ellipse Width="48"
+                     Height="48"
+                     Canvas.Left="16"
+                     Canvas.Top="12"
+                     Style="{StaticResource PhotoPlaceholderEllipse}" />
+
+            <Image x:Name="image"
+                   Width="48"
+                   Height="48"
+                   Canvas.Left="16"
+                   Canvas.Top="12">
+                <Image.Clip>
+                    <EllipseGeometry RadiusX="24"
+                                     RadiusY="24"
+                                     Center="24 24" />
+                </Image.Clip>
+            </Image>
+
+            <TextBlock x:Name="textBlockName"
+                       Width="364"
+                       Canvas.Top="7"
+                       Canvas.Left="76"
+                       Foreground="{StaticResource PhoneGray600_Gray100Brush}"
+                       FontFamily="{StaticResource PhoneFontFamilySemiBold}"
+                       Text="Алексей Цветков-Омеличев" />
+
+            <Border Canvas.Top="33"
+                    Canvas.Left="76">
+                <RichTextBox x:Name="textBoxComment"
+                             Width="364"
+                             IsReadOnly="True"
+                             MaxHeight="48"
+                             Margin="-12 4 -12 0"
+                             LineStackingStrategy="BlockLineHeight"
+                             LineHeight="24"
+                             Foreground="{StaticResource PhoneWallPostActivityCaptionForegroundBrush}" />
+            </Border>
+
+            <Border x:Name="borderChevron"
+                    Width="32"
+                    Height="32"
+                    Canvas.Left="440"
+                    Canvas.Top="32"
+                    Background="{StaticResource PhoneGray200_Gray500Brush}">
+                <Border.OpacityMask>
+                    <ImageBrush framework:ImageLoader.ImageBrushMultiResSource="/Resources/WallPost/ChevronRight32px.png" />
+                </Border.OpacityMask>
+            </Border>
+        </Canvas>
+
+        <Rectangle x:Name="rectSeparator"
+                   Width="448"
+                   Canvas.Left="16"
+                   Canvas.Top="95"
+                   Height="1"
+                   Opacity="0.05"
+                   Fill="{StaticResource PhoneForegroundBrush}" />
+
+    </Canvas>
+</virtItems:UserControlVirtualizable>

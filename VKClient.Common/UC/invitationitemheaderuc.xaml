@@ -1,0 +1,87 @@
+﻿<UserControl x:Class="VKClient.Common.UC.InvitationItemHeaderUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:framework="clr-namespace:VKClient.Common.Framework"
+             mc:Ignorable="d"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             d:DesignHeight="62"
+             d:DesignWidth="480">
+    
+    <Grid Height="62">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Orientation="Horizontal"
+                    Background="Transparent">
+            <Grid>
+                <Ellipse Style="{StaticResource PhotoPlaceholderEllipse}"
+                         Height="62"
+                         Width="62"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Center" />
+                <Image HorizontalAlignment="Left"
+                       Height="62"
+                       Width="62"
+                       framework:ImageLoader.UriSource="{Binding ImageUrl}"
+                       VerticalAlignment="Center">
+                    <Image.Clip>
+                        <EllipseGeometry Center="31 31"
+                                         RadiusX="31"
+                                         RadiusY="31" />
+                    </Image.Clip>
+                </Image>
+                <Image HorizontalAlignment="Left"
+                       Height="62"
+                       Width="62"
+                       framework:ImageLoader.StreamSource="{Binding ImageStream}"
+                       VerticalAlignment="Center">
+                    <Image.Clip>
+                        <EllipseGeometry Center="31 31"
+                                         RadiusX="31"
+                                         RadiusY="31" />
+                    </Image.Clip>
+                </Image>
+            </Grid>
+
+            <StackPanel VerticalAlignment="Top"
+                        Margin="12 -2 0 0">
+                <TextBlock Text="{Binding Title, FallbackValue='Павел Дуров'}"
+                           HorizontalAlignment="Left"
+                           FontSize="25.33" />
+                <TextBlock Text="{Binding Subtitle, FallbackValue='СПбГУ  06'}"
+                           Margin="0 -2 0 0"
+                           Foreground="{StaticResource PhoneVKSubtleBrush}" />
+            </StackPanel>
+        </StackPanel>
+
+        <Border Grid.Column="1"
+                Height="36"
+                Width="52"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Right"
+                Margin="12 13 0 0"
+                Visibility="{Binding InvitedVisibility}"
+                Background="{StaticResource PhoneSeparatorBackgroundBrush}">
+            <Border Background="{StaticResource PhoneAddedFriendIconButtonForegroundBrush}">
+                <Border.OpacityMask>
+                    <ImageBrush framework:ImageLoader.ImageBrushMultiResSource="/Resources/UsersSearch/SearchAddedFriend.png" />
+                </Border.OpacityMask>
+            </Border>
+        </Border>
+        
+        <Button Grid.Column="1"
+                Content="{Binding LocalizedResources.Invite, Source={StaticResource LocalizedStrings}}"
+                Style="{StaticResource VKButtonSecondaryStyle}"
+                Visibility="{Binding InviteVisibility}"
+                VerticalAlignment="Top"
+                Height="60"
+                Margin="0 1 -12 2"
+                Click="Invite_OnClick" />
+    </Grid>
+</UserControl>

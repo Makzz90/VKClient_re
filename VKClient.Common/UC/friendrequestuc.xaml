@@ -1,0 +1,100 @@
+﻿<UserControl
+    x:Class="VKClient.Common.UC.FriendRequestUC"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:framework="clr-namespace:VKClient.Common.Framework"
+    mc:Ignorable="d">
+
+    <Grid framework:MetroInMotion.Tilt="2.5"
+          Background="{StaticResource PhoneRequestOrInvitationBackgroundBrush}"
+          Tap="Request_OnTapped">
+        
+        <Ellipse Style="{StaticResource PhotoPlaceholderEllipse}"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Top"
+                 Margin="16,0,0,16"
+                 Height="64"
+                 Width="64"/>
+        <Image Name="RequestPhoto"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Top"
+               Stretch="Uniform"
+               Margin="16,0,0,16"
+               Height="64"
+               Width="64">
+            <Image.Clip>
+                <EllipseGeometry Center="32,32" RadiusX="32" RadiusY="32"/>
+            </Image.Clip>
+        </Image>
+
+        <StackPanel Margin="92,4,16,16">
+            <TextBlock Name="RequestName" 
+                       Foreground="{StaticResource PhoneContrastTitleBrush}" 
+                       Margin="0,0,0,-3"
+                       FontSize="25.3"/>
+            <TextBlock Name="RequestOccupation" 
+                       Foreground="{StaticResource PhoneVKSubtleBrush}" 
+                       Margin="0,0,0,-1"/>
+            <TextBlock Name="RequestMessage" 
+                       Foreground="{StaticResource PhoneVKSubtleBrush}" 
+                       FontFamily="Segoe WP SemiBold"
+                       Visibility="Collapsed"
+                       Margin="0,0,0,-1"/>
+                
+            <Grid Name="RecommenderPanel"
+                  HorizontalAlignment="Left"
+                  Visibility="Collapsed"
+                  Margin="0,0,0,-1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="{Binding Source={StaticResource LocalizedStrings}, Path=LocalizedResources.Friends_RecommendationBy}"
+                           Foreground="{StaticResource PhoneVKSubtleBrush}" 
+                           Margin="0,0,6,0"
+                           Grid.Column="0"/>
+                <TextBlock Name="RecommenderName" 
+                           Foreground="{StaticResource PhoneButtonTextForegroundBrush}"
+                           MouseLeftButtonDown="RecommenderName_OnMouseLeftButtonDown" 
+                           Tap="RecommenderName_OnTapped"
+                           Grid.Column="1"/>
+            </Grid>
+
+            <Grid Name="MutualFriendsPanel" Visibility="Collapsed">
+                <TextBlock Name="MutualFriendsCountBlock" Foreground="{StaticResource PhoneVKSubtleBrush}" />
+                <StackPanel Name="MutualFriendsPhotosPanel" 
+                            Orientation="Horizontal"
+                            Margin="0,39,0,4"/>
+            </Grid>
+
+            <StackPanel Orientation="Horizontal" 
+                        VerticalAlignment="Top" 
+                        Margin="0,0,0,12">
+                <Button Name="AddButton"
+                        Content="{Binding Source={StaticResource LocalizedStrings}, Path=LocalizedResources.Friends_Add}" 
+                        Style="{StaticResource VKButtonPrimaryStyle}" 
+                        Click="Button_OnClicked"
+                        Tap="Button_OnTapped"
+                        Margin="-12,0,-12,0"/>
+                <Button Name="HideButton"
+                        Content="{Binding Source={StaticResource LocalizedStrings}, Path=LocalizedResources.Communities_Hide}" 
+                        Style="{StaticResource VKButtonSecondaryStyle}"
+                        Click="Button_OnClicked"
+                        Tap="Button_OnTapped"/>
+            </StackPanel>
+
+            <Rectangle Name="BottomSeparatorRectangle"
+                       MouseLeftButtonDown="RecommenderName_OnMouseLeftButtonDown"
+                       Fill="{StaticResource PhoneGreyDividerBrush}"
+                       HorizontalAlignment="Stretch"
+                       VerticalAlignment="Bottom"
+                       Visibility="Collapsed"
+                       Margin="-92,-10,-16,0"
+                       Height="2"/>
+            
+        </StackPanel>
+    </Grid>
+
+</UserControl>

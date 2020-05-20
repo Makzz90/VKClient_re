@@ -1,0 +1,282 @@
+﻿<framework:PageBase x:Class="VKClient.Common.SettingsNewPage"
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:framework="clr-namespace:VKClient.Common.Framework;assembly=VKClient.Common"
+                    xmlns:uc="clr-namespace:VKClient.Common.UC"
+                    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                    FontSize="{StaticResource PhoneFontSizeNormal}"
+                    Foreground="{StaticResource PhoneForegroundBrush}"
+                    SupportedOrientations="Portrait"
+                    Orientation="Portrait"
+                    mc:Ignorable="d"
+                    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot"
+          Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <uc:GenericHeaderUC x:Name="Header" />
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel"
+              Grid.Row="1">
+            <ScrollViewer>
+                <StackPanel Margin="16 16 16 0">
+                    <StackPanel Orientation="Horizontal">
+                        <Image  framework:ImageLoader.UriSource="{Binding CurrentUser.photo_max, Mode=OneWay}"
+                                Width="80"
+                                Height="80"
+                                Stretch="Uniform">
+                            <Image.Clip>
+                                <EllipseGeometry Center="40 40"
+                                                 RadiusX="40"
+                                                 RadiusY="40" />
+                            </Image.Clip>
+                        </Image>
+                        <TextBlock Text="{Binding FullName}"
+                                   VerticalAlignment="Center"
+                                   Style="{StaticResource PhoneTextTitle2Style}"
+                                   Margin="17,0,0,0" />
+                    </StackPanel>
+
+                    <Button Content="{Binding LocalizedResources.Edit, Source={StaticResource LocalizedStrings}, Converter={StaticResource StringToLowerConverter}}"
+                            MinWidth="160"
+                            Style="{StaticResource VKButtonSecondaryStyle}"
+                            Click="ButtonChange_Click"
+                            HorizontalAlignment="Left"
+                            Margin="-12,4,0,0" />
+
+                    <TextBlock Margin="0 24 0 0"
+                               FontFamily="Segoe WP Semibold"
+                               Foreground="{StaticResource PhoneVKSubtleBrush}"
+                               Text="{Binding Source={StaticResource LocalizedStrings}, Path=LocalizedResources.Settings}" />
+
+
+                    <StackPanel Orientation="Horizontal"
+                                Background="Transparent"
+                                Width="400"
+                                HorizontalAlignment="Left"
+                                framework:MetroInMotion.Tilt="2.1"
+                                Tap="Notifications_Tap"
+                                Margin="0 19 0 0">
+                        <Border Width="25"
+                                Height="29"
+                                Margin="1 9 0 0"
+                                Name="borderFeedback"
+                                Background="{StaticResource PhoneSettingsIconBrush}">
+                            <Border.OpacityMask>
+                                <ImageBrush framework:ImageLoader.ImageBrushMultiResSource="../Resources/New/SettingsNotifications.png" />
+                            </Border.OpacityMask>
+                        </Border>
+                        <TextBlock Style="{StaticResource MenuTextStyle}"
+                                   Foreground="{StaticResource PhoneContrastTitleBrush}"
+                                   Margin="25,-4,0,0"
+                                   Name="textBlockFeedback"
+                                   Text="{Binding Path=LocalizedResources.NewSettings_Notifications, Source={StaticResource LocalizedStrings}}" />
+
+
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal"
+                                Background="Transparent"
+                                Width="400"
+                                HorizontalAlignment="Left"
+                                framework:MetroInMotion.Tilt="2.1"
+                                Tap="General_Tap"
+                                Margin="0 19 0 0">
+                        <Border Width="29"
+                                Height="29"
+                                Margin="1 9 0 0"
+                                Name="borderGeneral"
+                                Background="{StaticResource PhoneSettingsIconBrush}">
+                            <Border.OpacityMask>
+                                <ImageBrush framework:ImageLoader.ImageBrushMultiResSource="../Resources/MenuSettings.png" />
+                            </Border.OpacityMask>
+                        </Border>
+                        <TextBlock Style="{StaticResource MenuTextStyle}"
+                                   Foreground="{StaticResource PhoneContrastTitleBrush}"
+                                   Margin="21,-4,0,0"
+                                   Name="textBlockGeneral"
+                                   Text="{Binding Path=LocalizedResources.NewSettings_General, Source={StaticResource LocalizedStrings}}" />
+
+
+                    </StackPanel>
+
+
+                    <StackPanel Orientation="Horizontal"
+                                Background="Transparent"
+                                Width="400"
+                                HorizontalAlignment="Left"
+                                framework:MetroInMotion.Tilt="2.1"
+                                Tap="Account_Tap"
+                                Margin="0 19 0 0">
+                        <Border Width="27"
+                                Height="26"
+                                Margin="1 9 0 0"
+                                Name="borderAccount"
+                                Background="{StaticResource PhoneSettingsIconBrush}">
+                            <Border.OpacityMask>
+                                <ImageBrush framework:ImageLoader.ImageBrushMultiResSource="../Resources/MenuFriends.png" />
+                            </Border.OpacityMask>
+                        </Border>
+                        <TextBlock Style="{StaticResource MenuTextStyle}"
+                                   Foreground="{StaticResource PhoneContrastTitleBrush}"
+                                   Margin="23,-4,0,0"
+                                   Name="textBlockAccount"
+                                   Text="{Binding Path=LocalizedResources.NewSettings_Account, Source={StaticResource LocalizedStrings}}" />
+
+
+                    </StackPanel>
+
+
+                    <StackPanel Orientation="Horizontal"
+                                Background="Transparent"
+                                Width="400"
+                                HorizontalAlignment="Left"
+                                framework:MetroInMotion.Tilt="2.1"
+                                Tap="Privacy_Tap"
+                                Margin="0 19 0 0">
+                        <Border Width="28"
+                                Height="30"
+                                Margin="1 9 0 0"
+                                Name="borderPrivacy"
+                                Background="{StaticResource PhoneSettingsIconBrush}">
+                            <Border.OpacityMask>
+                                <ImageBrush framework:ImageLoader.ImageBrushMultiResSource="../Resources/New/SettingsPrivacy.png" />
+                            </Border.OpacityMask>
+                        </Border>
+                        <TextBlock Style="{StaticResource MenuTextStyle}"
+                                   Foreground="{StaticResource PhoneContrastTitleBrush}"
+                                   Margin="22,-4,0,0"
+                                   Name="textBlockPrivacy"
+                                   Text="{Binding Path=LocalizedResources.NewSettings_Privacy, Source={StaticResource LocalizedStrings}}" />
+
+
+                    </StackPanel>
+
+
+
+                    <StackPanel Orientation="Horizontal"
+                                Background="Transparent"
+                                Width="400"
+                                HorizontalAlignment="Left"
+                                framework:MetroInMotion.Tilt="2.1"
+                                Tap="BlackList_Tap"
+                                Margin="0 19 0 0">
+                        <Border Width="33"
+                                Height="23"
+                                Margin="1 9 0 0"
+                                Name="borderBlackList"
+                                Background="{StaticResource PhoneSettingsIconBrush}">
+                            <Border.OpacityMask>
+                                <ImageBrush framework:ImageLoader.ImageBrushMultiResSource="../Resources/MenuCommunities.png" />
+                            </Border.OpacityMask>
+                        </Border>
+                        <TextBlock Style="{StaticResource MenuTextStyle}"
+                                   Foreground="{StaticResource PhoneContrastTitleBrush}"
+                                   Margin="17,-4,0,0"
+                                   Name="textBlockBlackList"
+                                   Text="{Binding Path=LocalizedResources.NewSettings_BlackList, Source={StaticResource LocalizedStrings}}" />
+
+
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal"
+                                Background="Transparent"
+                                Width="400"
+                                HorizontalAlignment="Left"
+                                framework:MetroInMotion.Tilt="2.1"
+                                Tap="Balance_Tap"
+                                Margin="0 19 0 0">
+                        <Border Width="40"
+                                Height="40"
+                                Margin="-4 0 0 0"
+                                Background="{StaticResource PhoneSettingsIconBrush}">
+                            <Border.OpacityMask>
+                                <ImageBrush framework:ImageLoader.ImageBrushMultiResSource="/Resources/SettingsBalance40px.png" />
+                            </Border.OpacityMask>
+                        </Border>
+                        <TextBlock Style="{StaticResource MenuTextStyle}"
+                                   Foreground="{StaticResource PhoneContrastTitleBrush}"
+                                   Margin="15,-4,0,0"
+                                   Text="{Binding LocalizedResources.Balance, Source={StaticResource LocalizedStrings}, Converter={StaticResource StringToLowerConverter}}" />
+
+
+                    </StackPanel>
+
+
+
+                    <TextBlock Margin="0 43 0 0"
+                               FontFamily="Segoe WP Semibold"
+                               Foreground="{StaticResource PhoneVKSubtleBrush}"
+                               Text="{Binding Source={StaticResource LocalizedStrings}, Path=LocalizedResources.NewSettings_Help}" />
+
+                    <StackPanel Orientation="Horizontal"
+                                Background="Transparent"
+                                Width="400"
+                                HorizontalAlignment="Left"
+                                framework:MetroInMotion.Tilt="2.1"
+                                Tap="QA_Tap"
+                                Margin="0 19 0 0">
+                        <Border Width="30"
+                                Height="30"
+                                Margin="1 9 0 0"
+                                Name="borderQA"
+                                Background="{StaticResource PhoneSettingsIconBrush}">
+                            <Border.OpacityMask>
+                                <ImageBrush framework:ImageLoader.ImageBrushMultiResSource="../Resources/New/MenuHelp.png" />
+                            </Border.OpacityMask>
+                        </Border>
+                        <TextBlock Style="{StaticResource MenuTextStyle}"
+                                   Margin="20,-4,0,0"
+                                   Foreground="{StaticResource PhoneContrastTitleBrush}"
+                                   Name="textBlockQA"
+                                   Text="{Binding Path=LocalizedResources.NewSettings_QuestionsAndAnswers, Source={StaticResource LocalizedStrings}}" />
+
+
+                    </StackPanel>
+
+
+
+                    <StackPanel Orientation="Horizontal"
+                                Background="Transparent"
+                                Width="400"
+                                HorizontalAlignment="Left"
+                                framework:MetroInMotion.Tilt="2.1"
+                                Tap="About_Tap"
+                                Margin="0 19 0 0">
+                        <Border Width="30"
+                                Height="30"
+                                Margin="1 9 0 0"
+                                x:Name="borderAbout"
+                                Background="{StaticResource PhoneSettingsIconBrush}">
+                            <Border.OpacityMask>
+                                <ImageBrush framework:ImageLoader.ImageBrushMultiResSource="/Resources/New/SettingsAbout.png" />
+                            </Border.OpacityMask>
+                        </Border>
+                        <TextBlock Style="{StaticResource MenuTextStyle}"
+                                   Foreground="{StaticResource PhoneContrastTitleBrush}"
+                                   Margin="20,-4,0,0"
+                                   x:Name="textBlockAbout"
+                                   Text="{Binding LocalizedResources.Menu_About, Source={StaticResource LocalizedStrings}}" />
+
+
+                    </StackPanel>
+
+                    <Button MinWidth="160"
+                            HorizontalAlignment="Left"
+                            Margin="-12 38  0 38"
+                            Style="{StaticResource VKButtonSecondaryStyle}"
+                            Content="{Binding LocalizedResources.Settings_LogOut, Source={StaticResource LocalizedStrings}}"
+                            Click="Logout_Click" />
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</framework:PageBase>
